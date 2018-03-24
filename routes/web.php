@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::group(['namespace' => 'Auth', 'middleware' => 'language'], function ($router)
+{
+    $router->get('login', 'LoginController@showLoginForm')->name('auth.loginform');
+    $router->post('login', 'LoginController@login')->name('auth.login');
+    $router->post('logout', 'LoginController@logout')->name('auth.logout');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

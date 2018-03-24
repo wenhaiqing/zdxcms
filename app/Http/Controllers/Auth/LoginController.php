@@ -36,4 +36,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * 自定义登录视图
+     * @author wenhaiqing
+     * @date   2018-03-24
+     * @return [type]     [description]
+     */
+    public function showLoginForm()
+    {
+        return view('themes.admin.'.getTheme().'.auth.login');
+    }
 }
