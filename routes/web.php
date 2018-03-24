@@ -15,11 +15,39 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Auth', 'middleware' => 'language'], function ($router)
+Route::group([ 'middleware' => 'language'], function ($router)
 {
-    $router->get('login', 'LoginController@showLoginForm')->name('auth.loginform');
-    $router->post('login', 'LoginController@login')->name('auth.login');
-    $router->post('logout', 'LoginController@logout')->name('auth.logout');
+    // Authentication Routes...
+    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'Auth\LoginController@login');
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'Auth\RegisterController@register');
+
+// Password Reset Routes...
+    Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+});
+
+Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['auth', 'language']],function ($router)
+{
+    $router->get('/','HomeController@index')->name('zdxadmin.home');
+    $router->get('/main','HomeController@main')->name('zdxadmin.main');
+    $router->get('/menu','HomeController@getmenu')->name('zdxadmin.getmenu');
+    // 权限
+//    $router->resource('permission','PermissionController');
+//    // 角色
+//    $router->resource('role','RoleController');
+//    // 用户
+//    $router->resource('user','UserController');
+//    // 菜单
+//    $router->get('menu/clear','MenuController@cacheClear');
+//    $router->resource('menu','MenuController');
+//    $router->get('setting/{lang}', 'SettingController@language');
 });
 
 //Auth::routes();

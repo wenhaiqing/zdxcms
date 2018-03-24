@@ -6,7 +6,7 @@
 if (!function_exists('getThemeView')) {
     function getThemeView($view)
     {
-        return 'themes.admin.' . getTheme() . '.' . $view;
+        return 'admin.' . getTheme() . '.' . $view;
     }
 }
 /**
@@ -29,7 +29,7 @@ if (!function_exists('getTheme')) {
 if (!function_exists('getThemeAssets')) {
     function getThemeAssets($asset, $vendors = false)
     {
-        return $vendors ? 'vendors/' . $asset : 'themes/admin/' . getTheme() . '/' . $asset;
+        return $vendors ? 'vendors/' . $asset : 'admin/' . getTheme() . '/' . $asset;
     }
 }
 
