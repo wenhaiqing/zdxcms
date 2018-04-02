@@ -20,7 +20,6 @@ class RolesTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
-        $admin->givePermissionTo('console');
         $admin->givePermissionTo('manage_system');
         $admin->givePermissionTo('manage_users');
         $admin->givePermissionTo('manage_roles');
@@ -32,6 +31,6 @@ class RolesTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
-        $member->givePermissionTo('console');
+       
     }
 }

@@ -17,16 +17,7 @@ class PermissionsTableSeeder extends Seeder
     {
         // 重置角色和权限的缓存
         app()['cache']->forget('spatie.permission.cache');
-         Permission::create([
-            'name' => "console",
-            'pid' => 0,
-            'icon' => "fa fa-cog",
-            'url' => "zdxadmin",
-            'status' =>1,
-            'remarks' => "控制台",
-             'created_at'=>Carbon::now()->toDateTimeString(),
-             'updated_at'=>Carbon::now()->toDateTimeString()
-         ]);
+
         $system = Permission::create([
             'name' => "manage_system",
             'pid' => 0,
