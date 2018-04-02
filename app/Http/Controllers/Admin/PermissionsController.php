@@ -40,7 +40,7 @@ class PermissionsController extends Controller
     {
         $this->authorize('create',$permission);
         $res = $permission->create($request->only(['name','remarks','icon','url','status','sort','pid']));
-        return redirect()->route('permissions.index')->with('success',trans('permissions.stored'));
+        return redirect()->route('permissions.index')->with('success',trans('global.stored'));
 
     }
 
@@ -57,14 +57,14 @@ class PermissionsController extends Controller
         $this->authorize('update',$permission);
         $permission->update($request->only(['name','remarks','icon','url','status','sort','pid']));
 
-        return redirect()->route('permissions.index')->with('success',trans('permissions.updated'));
+        return redirect()->route('permissions.index')->with('success',trans('global.updated'));
     }
 
     public function destroy(Permission $permission)
     {
         $this->authorize('delete',$permission);
         $permission->delete();
-        return redirect()->route('permissions.index')->with('success', trans('permissions.destoried'));
+        return redirect()->route('permissions.index')->with('success', trans('global.destoried'));
     }
 
 }
