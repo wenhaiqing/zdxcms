@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /**
+         * 视图composer共享数据
+         */
+        view()->composer(
+            getThemeView('layouts.app'), 'App\Http\ViewComposers\MenuComposer'
+        );
     }
 
     /**

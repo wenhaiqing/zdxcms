@@ -1,92 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, minimal-ui, user-scalable=no">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>登录 - {{ config('app.name', 'ZdxCms')  }}</title>
-    <script>
+  <meta charset="utf-8">
+  <title>登录 - {{ config('app.name', 'ZdxCms')  }}</title>
+  <meta name="renderer" content="webkit">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('layui/css/pageDemo/login/login1.css')}}"/>
+	<script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token()
         ]) !!};
-    </script>
-    <!-- Fonts -->
-
-    <!-- Styles -->
-    <link href="{{asset('layui/css/layui.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/zdxadmin.css')}}" rel="stylesheet" type="text/css">
-    <link rel="apple-touch-icon" href="/favicon.png">
-    @yield('styles')
+	</script>
 </head>
-<body class="layui-container {{ route_class() }}-body">
 
-<div id="app" class="layui-layout-admin {{ route_class() }}-page">
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
-    <div class="layui-row">
-        <div class="layui-col-md4 layui-col-md-offset4">
-            <div class="login-title">{{ config('app.name') }}</div>
-        </div>
+<body>
+	<div class="qiqiu1 qiqiu">
+    	<img src="{{asset('layui/img/login/login1/q2.png')}}"/>
+        <div class="text">love</div>
     </div>
-
-    <div class="layui-row">
-        <div class="layui-col-md4 layui-col-md-offset4">
-            <div class="grid-login">
-                <div class="login-form">
-                    <form class="layui-form layui-form-pane"  method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="layui-form-item">
-                            <input id="email" type="email" name="email" lay-verify="required|email" autocomplete="off" placeholder="邮箱" value="{{ old('email') }}" autofocus class="layui-input">
-                        </div>
-                        <div class="layui-form-item">
-                            <input type="password" name="password" lay-verify="pass" autocomplete="off" placeholder="密码" class="layui-input">
-                        </div>
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <input type="text" name="captcha" lay-verify="required" autocomplete="off" placeholder="验证码"  class="layui-input">
-                            </div>
-                            <div class="layui-inline">
-                                <img class="thumbnail captcha" src="{{ captcha_src('login') }}" onclick="this.src='/captcha/login?'+Math.random()" title="点击图片重新获取验证码">
-                            </div>
-                        </div>
-
-                        <div class="layui-form-item">
-
-                        </div>
-
-                        <div class="layui-form-item">
-                            <input type="checkbox" name="remember" lay-skin="primary" title="记住我" {{ old('remember') ? 'checked' : '' }}>
-                        </div>
-
-                        <div class="layui-form-item">
-                            <button type="submit" class="layui-btn  layui-btn-fluid" lay-submit="" lay-filter="login">登录</button>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
-        </div>
+    	<div class="qiqiu2 qiqiu">
+    	<img src="{{asset('layui/img/login/login1/q3.png')}}"/>
+        <div class="text">love</div>
     </div>
-</div>
+    	<div class="qiqiu3 qiqiu">
+    	<img src="{{asset('layui/img/login/login1/q4.png')}}"/>
+        <div class="text">love</div>
+    </div>
+    	<div class="qiqiu4 qiqiu">
+    	<img src="{{asset('layui/img/login/login1/q5.png')}}"/>
+        <div class="text">love</div>
+    </div>
+    	<div class="qiqiu5 qiqiu">
+    	<img src="{{asset('layui/img/login/login1/q6.png')}}"/>
+        <div class="text">love</div>
+    </div>
+<div class="login">
+	    <h1>{{ config('app.name') }}</h1>
+	    <form class="layui-form" method="POST" action="{{ route('login') }}">
+			{{ csrf_field() }}
+	    	<div class="layui-form-item">
+				<input id="email" type="email" name="email" lay-verify="required|email" autocomplete="off" placeholder="邮箱" value="{{ old('email') }}" autofocus class="layui-input">
+		    </div>
+		    <div class="layui-form-item">
+				<input type="password" name="password" lay-verify="pass" autocomplete="off" placeholder="密码" class="layui-input">
+		    </div>
+		    <div class="layui-form-item form_code">
+				<input type="text" name="captcha" lay-verify="required" autocomplete="off" placeholder="验证码"  class="layui-input">
+				<div class="code">
+					<img class="thumbnail captcha" src="{{ captcha_src('login') }}" onclick="this.src='/captcha/login?'+Math.random()" title="点击图片重新获取验证码" width="116" height="36">
+				</div>
+		    </div>
+			<button type="submit" class="layui-btn login_btn" lay-submit="" lay-filter="login">登录</button>
+		</form>
+	</div>
 
-<!-- Scripts -->
-<script src="{{asset('layui/layui.all.js')}}"></script>
-<script src="{{asset('js/zdxadmin.js')}}"></script>
+</body>
 
-@include('admin.default.layouts._message')
+<script src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+<script>
 
-@include('admin.default.layouts._error')
+</script>
+@if (count($errors) > 0)
+	<script> layer.alert('@foreach ($errors->all() as $error) {{ $error }} <br /> @endforeach', {icon: 2,time:3000});</script>
+@endif
 
-@yield('scripts')
+<script>
+
+</script>
 </body>
 </html>

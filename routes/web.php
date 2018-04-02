@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return view('welcome');
+});
 
 Route::group([ 'middleware' => 'language'], function ($router)
 {
@@ -37,13 +40,14 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
 {
     $router->get('/','HomeController@index')->name('zdxadmin.home');
     $router->get('/main','HomeController@main')->name('zdxadmin.main');
-    $router->get('/menu','HomeController@getmenu')->name('zdxadmin.getmenu');
     // 权限
-//    $router->resource('permission','PermissionController');
-//    // 角色
-//    $router->resource('role','RoleController');
-//    // 用户
-//    $router->resource('user','UserController');
+    $router->resource('permissions','PermissionsController');
+    // 角色
+    $router->resource('roles','RolesController');
+    // 用户
+    $router->resource('users','UsersController');
+    $router->get('users/{user}/password','UsersController@editPassword')->name('zdxadmin.password.edit');
+    $router->put('user/password/{user}','UsersController@updatePassword')->name('zdxadmin.password.update');
 //    // 菜单
 //    $router->get('menu/clear','MenuController@cacheClear');
 //    $router->resource('menu','MenuController');
