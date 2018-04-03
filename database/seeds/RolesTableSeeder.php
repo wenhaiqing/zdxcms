@@ -31,6 +31,6 @@ class RolesTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
-       
+
     }
 }
