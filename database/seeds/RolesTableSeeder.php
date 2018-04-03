@@ -24,6 +24,15 @@ class RolesTableSeeder extends Seeder
         $admin->givePermissionTo('manage_users');
         $admin->givePermissionTo('manage_roles');
         $admin->givePermissionTo('manage_permission');
+        $admin->givePermissionTo('create_users');
+        $admin->givePermissionTo('edit_users');
+        $admin->givePermissionTo('destory_users');
+        $admin->givePermissionTo('create_roles');
+        $admin->givePermissionTo('edit_roles');
+        $admin->givePermissionTo('destory_roles');
+        $admin->givePermissionTo('create_permission');
+        $admin->givePermissionTo('edit_permission');
+        $admin->givePermissionTo('destory_permission');
 
         $member = Role::create([
             'name' => "member",
