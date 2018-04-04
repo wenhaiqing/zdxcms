@@ -37,3 +37,10 @@ function route_class()
 {
     return str_replace('.', '-', Route::currentRouteName());
 }
+
+/**
+ * 生成 object_id
+ */
+function create_object_id(){
+    return base_convert(uniqid(), 16, 10);
+}

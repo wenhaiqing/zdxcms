@@ -15,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         \App\Models\User::class  => \App\Policies\UserPolicy::class,
+        \App\Models\Wechat::class  => \App\Policies\WechatPolicy::class,
         \Spatie\Permission\Models\Role::class  => \App\Policies\RolePolicy::class,
         \Spatie\Permission\Models\Permission::class  => \App\Policies\PermissionPolicy::class,
     ];
