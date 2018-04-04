@@ -13,7 +13,7 @@ class WechatObserver
     }
 
     public function saving(Wechat $wechat){
-        $wechat->token || $wechat->token = str_random(64);
+        $wechat->token || $wechat->token = str_random(5);
     }
 
 }
