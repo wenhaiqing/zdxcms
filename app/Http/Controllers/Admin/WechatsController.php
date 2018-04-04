@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Wechat;
 use App\Http\Requests\Admin\WechatRequest;
 
-class WeChatsController extends BaseController
+class WechatsController extends BaseController
 {
     public function index(Wechat $wechat)
     {
