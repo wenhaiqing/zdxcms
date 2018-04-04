@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
+use Spatie\Permission\Models\Permission;
 class RolesTableSeeder extends Seeder
 {
     /**
@@ -20,6 +21,7 @@ class RolesTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+
         $admin->givePermissionTo('manage_system');
         $admin->givePermissionTo('manage_users');
         $admin->givePermissionTo('manage_roles');
@@ -33,6 +35,10 @@ class RolesTableSeeder extends Seeder
         $admin->givePermissionTo('create_permission');
         $admin->givePermissionTo('edit_permission');
         $admin->givePermissionTo('destory_permission');
+        $admin->givePermissionTo('manage_wechats');
+        $admin->givePermissionTo('destory_wechats');
+        $admin->givePermissionTo('edit_wechats');
+        $admin->givePermissionTo('create_wechats');
 
         $member = Role::create([
             'name' => "member",

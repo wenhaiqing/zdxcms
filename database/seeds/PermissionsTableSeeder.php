@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
+use App\Models\Wechat;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -138,6 +139,44 @@ class PermissionsTableSeeder extends Seeder
             'icon' => "fa fa-users",
             'url' => "zdxadmin/permissions",
             'remarks' => "删除权限",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+
+        $wechat = Permission::create([
+            'name' => "manage_wechats",
+            'pid' => $system->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/wechats",
+            'status' => 1,
+            'remarks' => "微信管理",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_wechats",
+            'pid' => $permissions->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/wechats/create",
+            'remarks' => "添加微信",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_wechats",
+            'pid' => $permissions->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/wechats",
+            'remarks' => "修改微信",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destory_wechats",
+            'pid' => $permissions->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/wechats",
+            'remarks' => "删除微信",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
