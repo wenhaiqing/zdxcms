@@ -15,9 +15,9 @@ class WeChatController extends Controller
     public function serve()
     {
         $config = [
-            'app_id'  => 'wxefd3d1c409019dd3',      // AppID
-            'secret'  => '7e00bc00ebb378ae84b428f39c569686',      // AppSecret
-            'token'   => 'weixinceshi',       // Token
+            'app_id'  => 'wx6351cef52b856924',      // AppID
+            'secret'  => '0bcfdf333565fa937fbdc8081654ab60',      // AppSecret
+            'token'   => 'zdxcms',       // Token
             'aes_key' => '',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
             'log' => [
                 'level' => 'debug',
