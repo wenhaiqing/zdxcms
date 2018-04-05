@@ -19,7 +19,7 @@ Route::get('/home', function () {
 });
 
 // 微信路由
-Route::any('wechat/{wechat}.html', 'WeChatController@serve')->name('wechat.api');
+Route::any('wechat', 'WeChatController@serve')->name('wechat.api');
 
 Route::group([ 'middleware' => 'language'], function ($router)
 {

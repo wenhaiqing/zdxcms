@@ -15,11 +15,10 @@ class WeChatController extends Controller
     public function serve()
     {
         $config = [
-            'app_id'  => 'wxefd3d1c409019dd3',      // AppID
-            'secret'  => '7e00bc00ebb378ae84b428f39c569686',      // AppSecret
-            'token'   => 'lldj',       // Token
+            'app_id'  => 'wx2207a3be4176e664',      // AppID
+            'secret'  => 'd4624c36b6795d1d99dcf0547af5443d',      // AppSecret
+            'token'   => 'weixinceshi',       // Token
             'aes_key' => '',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
-            'response_type' => 'array',
             'log' => [
                 'level' => 'debug',
                 'file' => storage_path('logs/wechat.log'),  //这个必须要有，要不调试有问题，你都会找不到原因
@@ -29,6 +28,7 @@ class WeChatController extends Controller
 
         //$app = app('wechat.official_account');
         $app = Factory::officialAccount($config);
+
         $app->server->push(function($message){
             return "欢迎关注 overtrue！";
         });
