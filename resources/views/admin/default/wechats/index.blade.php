@@ -73,6 +73,6 @@
 @endsection
 
 
-@section('scripts')
+@section('js')
     @include(getThemeView('layouts._paginate'),[ 'count' => $wechats->total(), ])
 @endsection
