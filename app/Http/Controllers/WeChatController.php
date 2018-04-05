@@ -15,10 +15,10 @@ class WeChatController extends Controller
     public function serve()
     {
         $config = [
-            'app_id'  => 'wx6351cef52b856924',      // AppID
-            'secret'  => '0bcfdf333565fa937fbdc8081654ab60',      // AppSecret
-            'token'   => 'zdxcms',       // Token
-            'aes_key' => 'YeQoU6u61adO8xHfZuYZ4p2msVoJQxNWqcKGrGXs5vW',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
+            'app_id'  => 'wxefd3d1c409019dd3',      // AppID
+            'secret'  => '7e00bc00ebb378ae84b428f39c569686',      // AppSecret
+            'token'   => 'lldj',       // Token
+            'aes_key' => 'SyEN049GeYa91a93S501sPj313211P328a3ayQ49jja',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
             'response_type' => 'array',
             'log' => [
                 'level' => 'debug',
@@ -27,11 +27,11 @@ class WeChatController extends Controller
         ];
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
 
-        $app = app('wechat.official_account');
-        //$app = Factory::officialAccount($config);
-        $app->server->push(function($message){
-            return "欢迎关注 overtrue！";
-        });
+        //$app = app('wechat.official_account');
+        $app = Factory::officialAccount($config);
+//        $app->server->push(function($message){
+//            return "欢迎关注 overtrue！";
+//        });
 
         return $app->server->serve();
     }
