@@ -18,7 +18,7 @@ class WeChatController extends Controller
             'app_id'  => 'wxefd3d1c409019dd3',      // AppID
             'secret'  => '7e00bc00ebb378ae84b428f39c569686',      // AppSecret
             'token'   => 'lldj',       // Token
-            'aes_key' => 'SyEN049GeYa91a93S501sPj313211P328a3ayQ49jja',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
+            'aes_key' => '',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
             'response_type' => 'array',
             'log' => [
                 'level' => 'debug',
@@ -29,9 +29,9 @@ class WeChatController extends Controller
 
         //$app = app('wechat.official_account');
         $app = Factory::officialAccount($config);
-//        $app->server->push(function($message){
-//            return "欢迎关注 overtrue！";
-//        });
+        $app->server->push(function($message){
+            return "欢迎关注 overtrue！";
+        });
 
         return $app->server->serve();
     }
