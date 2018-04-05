@@ -45,7 +45,7 @@ class WechatsController extends BaseController
 
     public function destroy(Wechat $wechat)
     {
-        $this->authorize('destroy', $wechat);
+        $this->authorize('delete', $wechat);
         $wechat->delete();
 
         return redirect()->route('wechats.index')->with('success', '删除成功.');
