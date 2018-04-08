@@ -40,7 +40,7 @@ class WeChatController extends Controller
                     return $this->getkeyword($message);
                     break;
                 case 'image':
-                    return '收到图片消息';
+                    return $this->getkeyword($message);
                     break;
                 case 'voice':
                     return '收到语音消息';
@@ -52,7 +52,7 @@ class WeChatController extends Controller
                     return '收到坐标消息';
                     break;
                 case 'link':
-                    return '收到链接消息';
+                    return $this->getkeyword($message);
                     break;
                 // ... 其它消息
                 default:
