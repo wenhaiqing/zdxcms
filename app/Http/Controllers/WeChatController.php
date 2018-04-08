@@ -6,6 +6,7 @@ use App\Models\Wechat;
 use Illuminate\Http\Request;
 use Log;
 use EasyWeChat\Factory;
+use App\Models\WechatResponse;
 class WeChatController extends Controller
 {
     /**
@@ -36,7 +37,7 @@ class WeChatController extends Controller
                     return '收到事件消息';
                     break;
                 case 'text':
-                    return '收到文字消息';
+                    return $this->getkeyword($message);
                     break;
                 case 'image':
                     return '收到图片消息';
@@ -61,5 +62,15 @@ class WeChatController extends Controller
         });
 
         return $app->server->serve();
+    }
+
+    public function getkeyword($message)
+    {
+        Log::info($message['Content']);
+        $wechat_response = WechatResponse::where('key',$message['Content'])->get();
+        $content = is_json($wechat_response->content) ? json_decode($wechat_response->content) : new \stdClass();
+        $text = $content->text ?? '小编不知道该怎么回你';
+        Log::info($text);
+        return $text;
     }
 }
