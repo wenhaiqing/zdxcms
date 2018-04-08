@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Administrator;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-class WechatRequest extends FormRequest
+class WechatResponseRequest extends FormRequest
 {
 
     public function authorize()
@@ -13,18 +13,21 @@ class WechatRequest extends FormRequest
     }
     public function rules()
     {
+        return [
+            // CREATE ROLES
+            'wechat_id' => 'required|integer',
+            'type' => 'required|'.Rule::in(['text','link','news']),
+            'key' => 'required|min:1|max:128',
+            'group' => 'required|string|min:1|max:128',
+            'content' => 'required|array',
+        ];
+
         switch($this->method())
         {
             // CREATE
             case 'POST':
             {
                 return [
-                    // CREATE ROLES
-                    'type' => 'required|'.Rule::in(['subscribe','service']),
-                    'name' => 'required|min:1|max:64',
-                    'account' => 'required|min:1|max:30',
-                    'app_id' => 'required|min:1|max:30',
-                    'app_secret' => 'required|min:1|max:32',
                 ];
             }
             // UPDATE
@@ -32,11 +35,6 @@ class WechatRequest extends FormRequest
             case 'PATCH':
             {
                 return [
-                    'type' => 'required|'.Rule::in(['subscribe','service']),
-                    'name' => 'required|min:1|max:64',
-                    'account' => 'required|min:1|max:30',
-                    'app_id' => 'required|min:1|max:30',
-                    'app_secret' => 'required|min:1|max:32',
                 ];
             }
             case 'GET':
