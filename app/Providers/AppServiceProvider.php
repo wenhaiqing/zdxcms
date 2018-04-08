@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
         );
 
         \App\Models\Wechat::observe(\App\Observers\WechatObserver::class);
+        \App\Models\WechatMenu::observe(\App\Observers\WechatMenuObserver::class);
     }
 
     /**

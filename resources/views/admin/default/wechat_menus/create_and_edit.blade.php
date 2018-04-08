@@ -1,23 +1,9 @@
-@extends('backend.layouts.app')
-
-@section('title', $title = $wechat_menu->id ? '编辑菜单' : '添加菜单' )
-
-@section('breadcrumb')
-    <a href="">站点设置</a>
-    <a href="">微信管理</a>
-    <a href="">微信菜单</a>
-    <a href="">{{$title}}</a>
-@endsection
+@extends(getThemeView('layouts.main'))
 
 @section('content')
 @php
     $type = $wechat_menu->type ?? request('type', '');
 @endphp
-<div class="layui-main">
-
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>{{ $title }}</legend>
-    </fieldset>
 
     <form class="layui-form layui-form-pane" method="POST" action="{{ $wechat_menu->id ? route('wechat_menus.update', [$wechat_menu->id, $wechat->id]) : route('wechat_menus.store', $wechat->id) }}">
             {{ csrf_field() }}
@@ -70,7 +56,7 @@
             </div>
 
             @if($type)
-                @include('backend.wechat_menus.template.'.$type,['wechat_menu' => $wechat_menu])
+                @include(getThemeView('wechat_menus.template.'.$type),['wechat_menu' => $wechat_menu])
             @endif
 
             {{--<div class="layui-form-item">--}}
@@ -86,11 +72,10 @@
             </div>
     </form>
 
-</div>
-
 @endsection
 
-@section('scripts')
+@section('js')
+    @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
     <script type="text/javascript">
         layui.form.on('select(wechat_menu_type)', function(data){
             var nUrl = window.jsUrlHelper.putUrlParam( window.location.href.toString(), 'type', data.value);

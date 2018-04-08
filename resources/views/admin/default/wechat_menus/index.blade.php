@@ -1,20 +1,7 @@
-@extends('backend.layouts.app')
+@extends(getThemeView('layouts.main'))
 
-@section('title', $title = $wechat->name.'菜单')
-
-@section('breadcrumb')
-    <a href="">站点设置</a>
-    <a href="">微信管理</a>
-    <a href="">微信菜单</a>
-    <a href="">{{$title}}</a>
-@endsection
 
 @section('content')
-
-<div class="layui-main">
-        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>{{$title}}</legend>
-        </fieldset>
 
         <a href="{{ route('wechat_menus.create', [$wechat->id, 0]) }}" class="layui-btn">添加</a>
         <button class="layui-btn layui-btn-danger" form="form-list">排序</button>
@@ -93,12 +80,12 @@
             @endif
 
         </div>
-    </div>
 @endsection
 
 
-@section('scripts')
-    @include('backend.layouts._paginate',[ 'count' => 0, ])
+@section('js')
+    @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
+    <script type="text/javascript" src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
     <script type="text/javascript">
         $(".form-sync").click(function(){
             layer.confirm('确认同步吗？', {
