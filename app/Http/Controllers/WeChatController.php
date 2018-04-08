@@ -66,6 +66,7 @@ class WeChatController extends Controller
 
     public function getkeyword($message)
     {
+        Log::info($message);
         switch ($message['MsgType']) {
             case 'text':
                 $wechat_response = WechatResponse::where('key',$message['Content'])->first();
@@ -88,5 +89,6 @@ class WeChatController extends Controller
         $text = $content->text ?? '小编不知道该怎么回你';
         return $text;
     }
+
 
 }
