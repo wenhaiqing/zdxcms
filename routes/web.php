@@ -20,7 +20,6 @@ Route::get('/home', function () {
 
 // 微信路由
 Route::any('wechat/{wechat}.html', 'WeChatController@serve')->name('wechat.api');
-Route::any('test', 'WeChatController@getkeyword');
 
 Route::group([ 'middleware' => 'language'], function ($router)
 {

@@ -66,8 +66,6 @@ class WeChatController extends Controller
 
     public function getkeyword($message)
     {
-        Log::info($message['Content'].'1');
-        Log::info($message['MsgType']);
         $wechat_response = WechatResponse::where('key',$message['Content'])->first();
         if (!$wechat_response){
             $wechat_response = WechatResponse::where('type',$message['MsgType'])->where('key','default')->first();
@@ -77,23 +75,7 @@ class WeChatController extends Controller
         }
         $content = is_json($wechat_response->content) ? json_decode($wechat_response->content) : new \stdClass();
         $text = $content->text ?? '小编不知道该怎么回你';
-        Log::info($text);
         return $text;
     }
 
-    public function getkeyword1()
-    {
-        //Log::info($message['Content'].'1');
-        $wechat_response = WechatResponse::where('key','test1')->first();
-        if (!$wechat_response){
-            $wechat_response = WechatResponse::where('type','text')->where('key','default1')->first();
-        }
-        if (!$wechat_response){
-            return '小编无语了';
-        }
-        $content = is_json($wechat_response->content) ? json_decode($wechat_response->content) : new \stdClass();
-        $text = $content->text ?? '小编不知道该怎么回你';
-        Log::info($text);
-        return $text;
-    }
 }

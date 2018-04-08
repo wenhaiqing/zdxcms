@@ -49,7 +49,7 @@
                                 <a href="{{ route('wechat_menus.index', $wechat->id) }}" class="layui-btn layui-btn-sm">菜单</a>
                                 <a href="{{ route('wechat_response.index', $wechat->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">关键字</a>
                                 <a href="{{ route('wechat_response.set_response.create', [$wechat->id, 'default']) }}" class="layui-btn layui-btn-sm layui-btn-normal">默认响应</a>
-                                <a href="{{ route('wechat_response.set_response.create', [$wechat->id, 'subscribe']) }}" class="layui-btn layui-btn-sm layui-btn-normal">订阅响应</a>
+                                {{--<a href="{{ route('wechat_response.set_response.create', [$wechat->id, 'subscribe']) }}" class="layui-btn layui-btn-sm layui-btn-normal">订阅响应</a>--}}
                                 <a href="{{ route('wechats.integrate', $wechat->id) }}" class="layui-btn layui-btn-sm layui-btn-warm">接入</a>
                                 {{--<a href="{{ route('wechats.edit', $wechat->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">二维码</a>--}}
                                 <a href="javascript:;" data-url="{{ route('wechats.destroy', $wechat->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">删除</a>
