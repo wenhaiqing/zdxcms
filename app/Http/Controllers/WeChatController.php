@@ -67,6 +67,7 @@ class WeChatController extends Controller
     public function getkeyword($message)
     {
         Log::info($message['Content'].'1');
+        Log::info($message['MsgType']);
         $wechat_response = WechatResponse::where('key',$message['Content'])->first();
         if (!$wechat_response){
             $wechat_response = WechatResponse::where('type',$message['MsgType'])->where('key','default')->first();
