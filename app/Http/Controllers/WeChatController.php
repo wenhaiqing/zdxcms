@@ -64,10 +64,10 @@ class WeChatController extends Controller
         return $app->server->serve();
     }
 
-    public function getkeyword($message)
+    public function getkeyword()
     {
-        Log::info($message['Content'].'1');
-        $wechat_response = WechatResponse::where('key',$message['Content'])->get();
+        //Log::info($message['Content'].'1');
+        $wechat_response = WechatResponse::where('key','test')->first();
         Log::info(json_decode($wechat_response->content).'2');
         $content = is_json($wechat_response->content) ? json_decode($wechat_response->content) : new \stdClass();
         $text = $content->text ?? '小编不知道该怎么回你';
