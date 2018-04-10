@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             getThemeView('layouts.app'), 'App\Http\ViewComposers\MenuComposer'
         );
+
+        \App\Models\Wechat::observe(\App\Observers\WechatObserver::class);
+        \App\Models\WechatMenu::observe(\App\Observers\WechatMenuObserver::class);
+        \App\Models\WechatResponse::observe(\App\Observers\WechatResponseObserver::class);
     }
 
     /**
