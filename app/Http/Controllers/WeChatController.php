@@ -89,6 +89,4 @@ class WeChatController extends Controller
         $text = $content->text ?? '小编不知道该怎么回你';
         return $text;
     }
-
-
 }
