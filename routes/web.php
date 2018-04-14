@@ -80,6 +80,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::get('wechat_response/set_response/{wechat}/{group}','WechatResponseController@setResponse')->name('wechat_response.set_response.create');
     Route::post('wechat_response/set_response/{wechat}/{group}','WechatResponseController@setResponseStore')->name('wechat_response.set_response.store');
 
+    Route::resource('notifies', 'NotifiesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 });
 
 //Auth::routes();

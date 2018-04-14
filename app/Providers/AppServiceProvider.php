@@ -12,7 +12,10 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+	{
+		\App\Models\User::observe(\App\Observers\UserObserver::class);
+		\App\Models\Notify::observe(\App\Observers\NotifyObserver::class);
+
         /**
          * 视图composer共享数据
          */

@@ -13,6 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+		 \App\Models\Notify::class => \App\Policies\NotifyPolicy::class,
         'App\Model' => 'App\Policies\ModelPolicy',
         \App\Models\User::class  => \App\Policies\UserPolicy::class,
         \App\Models\Wechat::class  => \App\Policies\WechatPolicy::class,
