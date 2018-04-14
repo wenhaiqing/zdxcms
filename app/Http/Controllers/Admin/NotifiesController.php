@@ -5,18 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Notify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NotifyRequest;
+use App\Http\Requests\Admin\NotifyRequest;
 
 class NotifiesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
 
-	public function index()
+	public function index(Notify $notify,Request $request)
 	{
-		$notifies = Notify::paginate(config('admin.global.paginate'));
+        // 关键字过滤
+        if($keyword = $request->keyword ?? ''){
+            $notify = $notify->where('title', 'like', "%{$keyword}%");
+        }
+		$notifies = $notify->paginate(config('admin.global.paginate'));
 		return view(getThemeView('notifies.index'), compact('notifies'));
 	}
 
@@ -33,7 +33,7 @@ class NotifiesController extends Controller
 	public function store(NotifyRequest $request)
 	{
 		$notify = Notify::create($request->all());
-		return redirect()->route('notifies.index', $notify->id)->with('message', 'Created successfully.');
+		return redirect()->route('notifies.index', $notify->id)->with('message', trans('global.stored'));
 	}
 
 	public function edit(Notify $notify)
@@ -47,7 +47,7 @@ class NotifiesController extends Controller
 		$this->authorize('update', $notify);
 		$notify->update($request->all());
 
-		return redirect()->route('notifies.show', $notify->id)->with('message', 'Updated successfully.');
+		return redirect()->route('notifies.index', $notify->id)->with('message', trans('global.updated'));
 	}
 
 	public function destroy(Notify $notify)
@@ -55,6 +55,6 @@ class NotifiesController extends Controller
 		$this->authorize('destroy', $notify);
 		$notify->delete();
 
-		return redirect()->route('notifies.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('notifies.index')->with('message', trans('global.destoried'));
 	}
 }

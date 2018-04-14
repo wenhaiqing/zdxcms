@@ -3,8 +3,8 @@
     $text = $data->text ?? '';
 @endphp
 <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">回复文本</label>
+    <label class="layui-form-label">{{trans('wechatmenu.text')}}</label>
     <div class="layui-input-block">
-        <textarea name="data[text]" lay-verify="required" placeholder="回复文本" class="layui-textarea">{{  old('data.text', $text) }}</textarea>
+        <textarea name="data[text]" lay-verify="required" placeholder="" class="layui-textarea">{{  old('data.text', $text) }}</textarea>
     </div>
 </div>

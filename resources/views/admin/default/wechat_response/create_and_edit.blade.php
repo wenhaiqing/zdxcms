@@ -3,11 +3,11 @@
 @php
     $group = isset($group) ? $group : 'keyword';
     if($group == 'keyword'){
-        $title = $wechat_response->id ? '编辑回复' : '添加回复';
+        $title = $wechat_response->id ? trans('global.edit') : trans('global.add');
     }else if($group == 'default'){
-        $title = '默认响应';
+        $title = trans('wechat.default_response');
     }else if($group == 'subscribe'){
-        $title = '订阅响应';
+        $title = trans('wechat.subscribe_response');
     }
 @endphp
 
@@ -40,21 +40,21 @@
             @endif
 
             <div class="layui-form-item">
-                <label class="layui-form-label">类型</label>
+                <label class="layui-form-label">{{trans('wechatmenu.type')}}</label>
                 <div class="layui-input-block">
                     @if($wechat_response->id && $group == 'keyword')
                         <input type="hidden" name="type" value="{{$type}}" />
                         <input type="text"  class="layui-input" disabled value="@switch($type)
-                        @case('text') 文本 @break
-                        @case('link') 链接 @break
-                        @case('news') 图文 @break
+                        @case('text') {{trans('wechatmenu.text')}} @break
+                        @case('link') {{trans('wechatmenu.url')}} @break
+                        @case('news') {{trans('wechatmenu.picture')}} @break
                         @endswitch">
                     @else
                         <select name="type" lay-filter="wechat_response_type">
                             <option value=""></option>
-                            <option @if($type == 'text') selected @endif value="text">文本</option>
-                            <option @if($type == 'link') selected @endif value="link">链接</option>
-                            <option @if($type == 'news') selected @endif value="news">图文</option>
+                            <option @if($type == 'text') selected @endif value="text">{{trans('wechatmenu.text')}}</option>
+                            <option @if($type == 'link') selected @endif value="link">{{trans('wechatmenu.url')}}</option>
+                            <option @if($type == 'news') selected @endif value="news">{{trans('wechatmenu.picture')}}</option>
                         </select>
                     @endif
                 </div>
@@ -62,9 +62,9 @@
 
            @if($group == 'keyword')
             <div class="layui-form-item">
-                <label class="layui-form-label" for="key-field">关键字</label>
+                <label class="layui-form-label" for="key-field">{{trans('global.keyword')}}</label>
                 <div class="layui-input-block">
-                    <input type="text" name="key" id="key-field" lay-verify="required" autocomplete="off" placeholder="请输入关键字" class="layui-input" value="{{ old('key',$wechat_response->key) }}" >
+                    <input type="text" name="key" id="key-field" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('key',$wechat_response->key) }}" >
                 </div>
             </div>
            @else
@@ -76,8 +76,8 @@
             @endif
 
             <div class="layui-form-item">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>
+                <button type="reset" class="layui-btn layui-btn-primary">{{trans('global.reset')}}</button>
             </div>
     </form>
 

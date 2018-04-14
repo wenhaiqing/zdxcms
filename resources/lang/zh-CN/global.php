@@ -12,5 +12,11 @@ return [
     'edit' => '编辑',
     'delete' => '删除',
     'operation' => '操作',
-    'permission-denied' => '权限不足，请联系管理员'
+    'permission-denied' => '权限不足，请联系管理员',
+    'leaveConfirm'=>'文件上传中，关闭此页面将取消上传。',
+    'search'=>'搜索',
+    'start_time'=>'开始时间',
+    'end_time' =>'结束时间',
+    'menu' =>'菜单',
+    'keyword'=>'关键字'
 ];

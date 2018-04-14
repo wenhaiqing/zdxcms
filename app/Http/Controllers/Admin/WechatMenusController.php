@@ -36,7 +36,7 @@ class WechatMenusController extends Controller
 	public function store(WechatMenuRequest $request, Wechat $wechat)
 	{
 		$wechat_menu = WechatMenu::create($request->all());
-		return redirect()->route('wechat_menus.index',$wechat_menu->group)->with('success', '添加成功.');
+		return redirect()->route('wechat_menus.index',$wechat_menu->group)->with('success',trans('global.stored'));
 	}
 
 	public function edit(WechatMenu $wechat_menu, Wechat $wechat)
@@ -50,25 +50,15 @@ class WechatMenusController extends Controller
 	{
 		//$this->authorize('update', $wechat_menu);
 		$wechat_menu->update($request->all());
-		return redirect()->route('wechat_menus.index',$wechat->id)->with('success', '更新成功.');
+		return redirect()->route('wechat_menus.index',$wechat->id)->with('success', trans('global.updated'));
 	}
 
 	public function destroy(WechatMenu $wechat_menu,Wechat $wechat)
 	{
 		//$this->authorize('destroy', $wechat_menu);
 		$wechat_menu->delete();
-		return redirect()->route('wechat_menus.index',$wechat->id)->with('success', '删除成功.');
+		return redirect()->route('wechat_menus.index',$wechat->id)->with('success', trans('global.destoried'));
 	}
-
-    public function order(WechatMenu $wechat_menu, $wechat){
-        $this->authorize('update', $wechat_menu);
-        $ids = request('id',[]);
-        $order = request('order',[]);
-        foreach($ids as $k => $id){
-            $wechat_menu->where('id',$id)->update(['order' => $order[$k] ?? 999 ]);
-        }
-        return redirect()->route('wechat_menus.index', $wechat)->with('success', '操作成功.');
-    }
 
     /**
      * 同步到微信服务器
@@ -77,6 +67,6 @@ class WechatMenusController extends Controller
         $buttons = $handler->withRecursionWeixinServer(WechatMenu::where('group',$wechat->id)->get());
         $app = Factory::officialAccount(['app_id'=>$wechat->app_id,'secret'=>$wechat->app_secret]);
         $app->menu->create($buttons);
-        return redirect()->route('wechat_menus.index',$wechat->id)->with('success', '成功同步到微信服务器.');
+        return redirect()->route('wechat_menus.index',$wechat->id)->with('success', trans('wechat.success_to_wechat_menu'));
     }
 }

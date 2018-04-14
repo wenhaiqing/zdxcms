@@ -15,14 +15,14 @@
             <div style="float: right;">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">开始时间</label>
+                    <label class="layui-form-label">{{trans('global.start_time')}}</label>
                     <div class="layui-input-inline">
                         <input type="text" id="begin_time" name="begin_time" autocomplete="off" class="layui-input" value="{{$begin_time}}">
                     </div>
                 </div>
 
                 <div class="layui-inline">
-                    <label class="layui-form-label">结束时间</label>
+                    <label class="layui-form-label">{{trans('global.end_time')}}</label>
                     <div class="layui-input-inline">
                         <input type="text" id="end_time" name="end_time" autocomplete="off" class="layui-input" value="{{$end_time}}">
                     </div>
@@ -35,7 +35,7 @@
                     </div>
                     {{--<input type="hidden" name="category" value="{{$category_id}}">--}}
                     <input type="hidden" name="page" value="{{request('page',1)}}">
-                    <button type="submit" class="layui-btn layui-btn-normal">搜索</button>
+                    <button type="submit" class="layui-btn layui-btn-normal">{{trans('global.search')}}</button>
                 </div>
             </div>
             </div>

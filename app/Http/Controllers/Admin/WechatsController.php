@@ -26,7 +26,7 @@ class WechatsController extends BaseController
     {
         $this->authorize('create',$wechat);
         $wechat = Wechat::create($request->all());
-        return redirect()->route('wechats.index')->with('success', '添加成功.');
+        return redirect()->route('wechats.index')->with('success', trans('global.stored'));
     }
 
     public function edit(Wechat $wechat)
@@ -40,7 +40,7 @@ class WechatsController extends BaseController
         $this->authorize('update', $wechat);
         $wechat->update($request->all());
 
-        return redirect()->route('wechats.index')->with('success', '更新成功.');
+        return redirect()->route('wechats.index')->with('success', trans('global.updated'));
     }
 
     public function destroy(Wechat $wechat)
@@ -48,7 +48,7 @@ class WechatsController extends BaseController
         $this->authorize('delete', $wechat);
         $wechat->delete();
 
-        return redirect()->route('wechats.index')->with('success', '删除成功.');
+        return redirect()->route('wechats.index')->with('success', trans('global.destoried.'));
     }
 
     // 接入

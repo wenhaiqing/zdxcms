@@ -1,11 +1,28 @@
 @extends(getThemeView('layouts.main'))
 
-
+@php
+    $keyword = request('keyword', '');
+@endphp
 @section('content')
     <blockquote class="layui-elem-quote news_search">
+        <form class="layui-form layui-form-pane" method="GET" action="">
         <div class="layui-inline">
             <a href="{{ route('notifies.create') }}" class="layui-btn">{{trans('global.add')}}</a>
         </div>
+        <div style="float: right;">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">{{trans('notifies.title')}}</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" lay-verify="text" autocomplete="off" value="{{$keyword}}" class="layui-input">
+                    </div>
+                    {{--<input type="hidden" name="category" value="{{$category_id}}">--}}
+                    <input type="hidden" name="page" value="{{request('page',1)}}">
+                    <button type="submit" class="layui-btn layui-btn-normal">{{trans('global.search')}}</button>
+                </div>
+            </div>
+        </div>
+        </form>
     </blockquote>
 
 
@@ -21,9 +38,9 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{trans('notifies.name')}}</th>
+                    <th>{{trans('notifies.title')}}</th>
                     <th>{{trans('notifies.create_at')}}</th>
-                    <th>{{trans('notifies.operation')}}</th>
+                    <th>{{trans('global.operation')}}</th>
                 </tr>
                 </thead>
                 <tbody>

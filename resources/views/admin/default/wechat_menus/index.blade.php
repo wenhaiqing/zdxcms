@@ -3,9 +3,9 @@
 
 @section('content')
 
-        <a href="{{ route('wechat_menus.create', [$wechat->id, 0]) }}" class="layui-btn">添加</a>
-        <button class="layui-btn layui-btn-danger" form="form-list">排序</button>
-        <button type="submit" class="layui-btn layui-btn-normal form-sync" _form="form-sync">同步到微信服务器</button>
+        <a href="{{ route('wechat_menus.create', [$wechat->id, 0]) }}" class="layui-btn">{{trans('global.add')}}</a>
+        {{--<button class="layui-btn layui-btn-danger" form="form-list">排序</button>--}}
+        <button type="submit" class="layui-btn layui-btn-normal form-sync" _form="form-sync">{{trans('wechatmenu.update_menu_to_wechat')}}</button>
 
         <div class="layui-form">
             <form name="form-sync" id="form-sync" method="POST" action="{{route('wechat_menus.sync', $wechat->id)}}">
@@ -27,11 +27,11 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>排序</th>
-                        <th>名称</th>
-                        <th>类型</th>
-                        <th>值</th>
-                        <th>操作</th>
+                        <th>{{trans('wechatmenu.order')}}</th>
+                        <th>{{trans('wechatmenu.name')}}</th>
+                        <th>{{trans('wechatmenu.type')}}</th>
+                        <th>{{trans('wechatmenu.val')}}</th>
+                        <th>{{trans('global.operation')}}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,25 +44,25 @@
                             </td>
                             <td>{{ str_repeat('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',$wechat_menu->lavel)}}@if($wechat_menu->lavel > 0)├─ @endif{{$wechat_menu->name}}</td>
                             <td>@switch($wechat_menu->type)
-                                    @case('text') 回复文本 @break
-                                    @case('event') 自定义事件 @break
-                                    @case('content') 响应内容 @break
-                                    @case('view') 跳转URL @break
-                                    @case('media_id') 下发消息 @break
-                                    @case('view_limited') 跳转图文 @break
+                                    @case('text') {{trans('wechatmenu.text')}} @break
+                                    @case('event') {{trans('wechatmenu.event')}} @break
+                                    @case('content') {{trans('wechatmenu.content')}} @break
+                                    @case('view') {{trans('wechatmenu.url')}} @break
+                                    @case('media_id') {{trans('wechatmenu.media_id')}} @break
+                                    @case('view_limited') {{trans('wechatmenu.picture')}} @break
                                 @endswitch</td>
                             <td>@switch($wechat_menu->type)
                                     @case('view') {{get_json_params($wechat_menu->data,'link')}} @break
                                     @case('text') {{get_json_params($wechat_menu->data,'text')}} @break
                                     @case('event') {{get_json_params($wechat_menu->data,'event')}} @break
-                                    @case('content') 文章：{{get_json_params($wechat_menu->data,'category_name')}} @break
+                                    @case('content') {{trans('wechatmenu.topic')}}：{{get_json_params($wechat_menu->data,'category_name')}} @break
                                     @case('media_id') {{get_json_params($wechat_menu->data,'media_id')}} @break
                                     @case('view_limited') {{get_json_params($wechat_menu->data,'media_id')}} @break
                                 @endswitch</td>
                             <td>
-                                <a href="{{ route('wechat_menus.edit', [$wechat_menu->id, $wechat_menu->group]) }}" class="layui-btn layui-btn-sm layui-btn-normal">编辑</a>
-                                <a href="javascript:;" data-url="{{ route('wechat_menus.destroy', [$wechat_menu->id, $wechat_menu->group]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">删除</a>
-                                @if($wechat_menu->parent == 0)<a href="{{ route('wechat_menus.create', [$wechat->id, $wechat_menu->id]) }}" class="layui-btn layui-btn-sm">添加</a>@endif
+                                <a href="{{ route('wechat_menus.edit', [$wechat_menu->id, $wechat_menu->group]) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                                <a href="javascript:;" data-url="{{ route('wechat_menus.destroy', [$wechat_menu->id, $wechat_menu->group]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                                @if($wechat_menu->parent == 0)<a href="{{ route('wechat_menus.create', [$wechat->id, $wechat_menu->id]) }}" class="layui-btn layui-btn-sm">{{trans('global.add')}}</a>@endif
                             </td>
                         </tr>
                     @endforeach
@@ -76,7 +76,7 @@
                 <div id="paginate-render" style="display: none;"></div>
             @else
                 <br />
-                <blockquote class="layui-elem-quote">暂无数据!</blockquote>
+                <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
             @endif
 
         </div>
@@ -88,8 +88,8 @@
     <script type="text/javascript" src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
     <script type="text/javascript">
         $(".form-sync").click(function(){
-            layer.confirm('确认同步吗？', {
-                btn: ['确认', '取消']
+            layer.confirm({{trans('wechatmenu.confirm')}}, {
+                btn: [{{trans('wechatmenu.yes')}},{{trans('wechatmenu.cancle')}}]
             }, function(index){
                 $("#form-sync").submit();
                 layer.close(index);

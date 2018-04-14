@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Requests;
-
-class NotifyRequest extends Request
+namespace App\Http\Requests\Admin;
+use Illuminate\Foundation\Http\FormRequest;
+class NotifyRequest extends FormRequest
 {
+    public function authorize()
+    {
+        return true;
+    }
     public function rules()
     {
         switch($this->method())

@@ -11,7 +11,7 @@ class NotifyObserver
 {
     public function creating(Notify $notify)
     {
-        //
+
     }
 
     public function updating(Notify $notify)
