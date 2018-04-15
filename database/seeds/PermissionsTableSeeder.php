@@ -264,6 +264,43 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+        $video = Permission::create([
+            'name' => "manage_videos",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos",
+            'remarks' => "视频管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_videos",
+            'pid' => $video->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos/create",
+            'remarks' => "添加视频",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_videos",
+            'pid' => $video->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos",
+            'remarks' => "编辑视频",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destory_videos",
+            'pid' => $video->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos",
+            'remarks' => "删除视频",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
 
     }
 }

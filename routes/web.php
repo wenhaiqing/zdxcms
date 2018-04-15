@@ -45,3 +45,4 @@ require_once 'admin.php';
 
 //Route::get('/home', 'HomeController@index')->name('home');
 
+

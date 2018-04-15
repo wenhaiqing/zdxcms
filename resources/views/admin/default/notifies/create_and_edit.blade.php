@@ -45,7 +45,7 @@
                 upload: {
                     url: '{{ route('upload_image') }}',
                     params: { _token: '{{ csrf_token() }}' },
-                    fileKey: 'upload_file',
+                    fileKey: 'file',
                     connectionCount: 3,
                     leaveConfirm: '{{trans('global.leaveConfirm')}}'
                 },

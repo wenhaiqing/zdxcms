@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
 	{
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
+		\App\Models\Video::observe(\App\Observers\VideoObserver::class);
 		\App\Models\ThemeDang::observe(\App\Observers\ThemeDangObserver::class);
 		\App\Models\Notify::observe(\App\Observers\NotifyObserver::class);
 
