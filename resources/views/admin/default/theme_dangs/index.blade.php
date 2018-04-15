@@ -7,12 +7,12 @@
     <blockquote class="layui-elem-quote news_search">
         <form class="layui-form layui-form-pane" method="GET" action="">
         <div class="layui-inline">
-            <a href="{{ route('notifies.create') }}" class="layui-btn">{{trans('global.add')}}</a>
+            <a href="{{ route('theme_dangs.create') }}" class="layui-btn">{{trans('global.add')}}</a>
         </div>
         <div style="float: right;">
             <div class="layui-form-item">
                 <div class="layui-inline">
-                    <label class="layui-form-label">{{trans('notifies.title')}}</label>
+                    <label class="layui-form-label">{{trans('theme_dang.title')}}</label>
                     <div class="layui-input-inline">
                         <input type="text" name="keyword" lay-verify="text" autocomplete="off" value="{{$keyword}}" class="layui-input">
                     </div>
@@ -27,10 +27,11 @@
 
 
     <div class="layui-form">
-        @if($notifies->count())
+        @if($theme_dangs->count())
             <table class="layui-table">
                 <colgroup>
                     <col width="50">
+                    <col>
                     <col>
                     <col>
                     <col>
@@ -39,22 +40,24 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>{{trans('notifies.title')}}</th>
-                    <th>{{trans('notifies.author')}}</th>
-                    <th>{{trans('notifies.create_at')}}</th>
+                    <th>{{trans('theme_dang.title')}}</th>
+                    <th>{{trans('theme_dang.descript')}}</th>
+                    <th>{{trans('theme_dang.author')}}</th>
+                    <th>{{trans('theme_dang.create_at')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($notifies as $index => $notify)
+                @foreach($theme_dangs as $index => $theme_dang)
                     <tr>
-                        <td>{{ $notify->id }}</td>
-                        <td>{{ $notify->title  }}</td>
-                        <td>{{ $notify->user->name  }}</td>
-                        <td>{{ $notify->created_at->diffForHumans() }}</td>
+                        <td>{{ $theme_dang->id }}</td>
+                        <td>{{ $theme_dang->title  }}</td>
+                        <td>{{ $theme_dang->descript  }}</td>
+                        <td>{{ $theme_dang->user->name  }}</td>
+                        <td>{{ $theme_dang->created_at->diffForHumans() }}</td>
                         <td>
-                            <a href="{{ route('notifies.edit', $notify->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
-                            <a href="javascript:;" data-url="{{ route('notifies.destroy', $notify->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                            <a href="{{ route('theme_dangs.edit', $theme_dang->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                            <a href="javascript:;" data-url="{{ route('theme_dangs.destroy', $theme_dang->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                         </td>
                     </tr>
                 @endforeach
@@ -76,6 +79,6 @@
 
 @section('js')
 
-    @include(getThemeView('layouts._paginate'),[ 'count' => $notifies->total(), ])
+    @include(getThemeView('layouts._paginate'),[ 'count' => $theme_dangs->total(), ])
 @endsection
 

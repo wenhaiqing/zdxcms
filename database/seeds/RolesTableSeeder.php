@@ -22,24 +22,6 @@ class RolesTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
 
-        $admin->givePermissionTo('manage_system');
-        $admin->givePermissionTo('manage_users');
-        $admin->givePermissionTo('manage_roles');
-        $admin->givePermissionTo('manage_permission');
-        $admin->givePermissionTo('create_users');
-        $admin->givePermissionTo('edit_users');
-        $admin->givePermissionTo('destory_users');
-        $admin->givePermissionTo('create_roles');
-        $admin->givePermissionTo('edit_roles');
-        $admin->givePermissionTo('destory_roles');
-        $admin->givePermissionTo('create_permission');
-        $admin->givePermissionTo('edit_permission');
-        $admin->givePermissionTo('destory_permission');
-        $admin->givePermissionTo('manage_wechats');
-        $admin->givePermissionTo('destory_wechats');
-        $admin->givePermissionTo('edit_wechats');
-        $admin->givePermissionTo('create_wechats');
-
         $member = Role::create([
             'name' => "member",
             'remarks' => "普通会员",

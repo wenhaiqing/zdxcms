@@ -43,4 +43,5 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
 
     Route::resource('notifies', 'NotifiesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::post('upload_image', 'UploadController@uploadImage')->name('upload_image');
+    Route::resource('theme_dangs', 'ThemeDangsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 });

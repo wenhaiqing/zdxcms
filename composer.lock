@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a01975964d924a6ffdba53b3ba7572f",
+    "content-hash": "310cb0c53f3f0d84efd16d79fcfa8beb",
     "packages": [
         {
             "name": "caouecs/laravel-lang",
@@ -2131,6 +2131,65 @@
                 "random"
             ],
             "time": "2018-04-04T21:24:14+00:00"
+        },
+        {
+            "name": "peinhu/aetherupload-laravel",
+            "version": "v1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/peinhu/AetherUpload-Laravel.git",
+                "reference": "5bd6a076d8c892b15984e04c36af718dc48d1873"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/peinhu/AetherUpload-Laravel/zipball/5bd6a076d8c892b15984e04c36af718dc48d1873",
+                "reference": "5bd6a076d8c892b15984e04c36af718dc48d1873",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "predis/predis": "Needed to support instant completion"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AetherUpload\\AetherUploadServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AetherUpload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Payne Hu",
+                    "email": "huyang110yahoo@gmail.com",
+                    "homepage": "http://www.2ndrenais.com",
+                    "role": "Manager"
+                }
+            ],
+            "description": "Upload large files for Laravel 上传 大文件 laravel包",
+            "keywords": [
+                "big",
+                "large",
+                "大文件"
+            ],
+            "time": "2017-12-14T08:05:03+00:00"
         },
         {
             "name": "pimple/pimple",

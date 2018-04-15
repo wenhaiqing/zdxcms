@@ -155,7 +155,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
         Permission::create([
             'name' => "create_wechats",
-            'pid' => $permissions->id,
+            'pid' => $wechat->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/wechats/create",
             'remarks' => "添加微信",
@@ -164,7 +164,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
         Permission::create([
             'name' => "edit_wechats",
-            'pid' => $permissions->id,
+            'pid' => $wechat->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/wechats",
             'remarks' => "修改微信",
@@ -173,10 +173,94 @@ class PermissionsTableSeeder extends Seeder
         ]);
         Permission::create([
             'name' => "destory_wechats",
-            'pid' => $permissions->id,
+            'pid' => $wechat->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/wechats",
             'remarks' => "删除微信",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $dang = Permission::create([
+            'name' => "manage_dang",
+            'pid' => 0,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/notifies",
+            'status' => 1,
+            'remarks' => "党建管理",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $notify = Permission::create([
+            'name' => "manage_notify",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/notifies",
+            'remarks' => "通知管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_notify",
+            'pid' => $notify->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/notifies/create",
+            'remarks' => "添加通知",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_notify",
+            'pid' => $notify->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/notifies",
+            'remarks' => "编辑通知",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destory_notify",
+            'pid' => $notify->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/notifies",
+            'remarks' => "删除通知",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $theme = Permission::create([
+            'name' => "manage_theme_dang",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs",
+            'remarks' => "主题党日",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_theme_dang",
+            'pid' => $theme->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs/create",
+            'remarks' => "添加主题党日",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_theme_dang",
+            'pid' => $theme->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs",
+            'remarks' => "编辑主题党日",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destory_theme_dang",
+            'pid' => $theme->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs",
+            'remarks' => "删除主题党日",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);

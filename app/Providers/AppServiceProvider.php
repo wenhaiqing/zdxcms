@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
 	{
 		\App\Models\User::observe(\App\Observers\UserObserver::class);
+		\App\Models\ThemeDang::observe(\App\Observers\ThemeDangObserver::class);
 		\App\Models\Notify::observe(\App\Observers\NotifyObserver::class);
 
         /**
@@ -26,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Wechat::observe(\App\Observers\WechatObserver::class);
         \App\Models\WechatMenu::observe(\App\Observers\WechatMenuObserver::class);
         \App\Models\WechatResponse::observe(\App\Observers\WechatResponseObserver::class);
+        \Spatie\Permission\Models\Permission::observe(\App\Observers\PermissionsObserver::class);
     }
 
     /**
