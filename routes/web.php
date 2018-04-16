@@ -41,8 +41,18 @@ Route::group([ 'middleware' => 'language'], function ($router)
 
 require_once 'admin.php';
 
-//Auth::routes();
+Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
+{
+    // Authentication Routes...
+    Route::get('login', 'LoginController@index')->name('wap.login');
+    Route::post('login', 'LoginController@login')->name('login.create');
+    Route::get('logout', 'LoginController@logout')->name('wap.logout');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('register', 'LoginController@registerForm')->name('wap.register');
+    Route::post('register', 'LoginController@register')->name('register.create');
+
+});
 
 
+
+Route::resource('members', 'MembersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

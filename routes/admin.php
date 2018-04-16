@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['auth', 'language']],function ($router)
+Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['auth:web', 'language']],function ($router)
 {
     $router->get('/','HomeController@index')->name('zdxadmin.home');
     $router->get('/main','HomeController@main')->name('zdxadmin.main');
