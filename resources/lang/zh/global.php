@@ -22,5 +22,7 @@ return [
     'upload_videos'=>'上传视频',
     'upload_success'=>'上传成功',
     'upload_error' => '上传失败',
-    'restart' => '重试'
+    'restart' => '重试',
+    'pass'=>'审核通过',
+    'pass_no'=>'未审核'
 ];

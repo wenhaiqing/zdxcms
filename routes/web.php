@@ -55,4 +55,3 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
 
 
 
-Route::resource('members', 'MembersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);

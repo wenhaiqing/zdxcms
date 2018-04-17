@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Wap;
+namespace App\Http\Requests\Admin;
 
 class MemberRequest extends Request
 {

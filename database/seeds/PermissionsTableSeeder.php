@@ -301,6 +301,43 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+        $members = Permission::create([
+            'name' => "manage_members",
+            'pid' => $system->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "党员管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members/create",
+            'remarks' => "添加党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "编辑党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destory_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "删除党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
 
     }
 }

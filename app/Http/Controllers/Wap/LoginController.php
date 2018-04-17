@@ -13,7 +13,16 @@ class LoginController extends Controller
 {
     public function index()
     {
+        $res = $this->is_weixin();
+        dump($res);
         return view('wap.login.index');
+    }
+
+    public function is_weixin(){
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+            return true;
+        }
+        return false;
     }
 
     public function login(Request $request)
