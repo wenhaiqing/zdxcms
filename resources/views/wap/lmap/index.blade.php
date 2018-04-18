@@ -13,9 +13,11 @@
 
     </div>
 <div id="outtext">
+    @if($list->count())
     @foreach($list as $index=>$v)
         <a href="{{route('wap.list_tree',['id'=>$v->id])}}" class="list-group-item">{{$v->name}}</a>
     @endforeach
+        @endif
 </div>
 
     @stop
