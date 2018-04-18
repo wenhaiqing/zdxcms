@@ -95,7 +95,7 @@
 
                             </select><span>日</span>
                         </label>
-                        <input type="hidden" name="birth" id="birth" value="2016/2/12">
+                        <input type="hidden" name="birthday" id="birth" value="2016/2/12">
                         <label class='checkbox-inline text-warning hidden' id="birth_error_info"><i class='fa fa-warning'>请输入完整生日</i></label>
 
                     <div class="input-group">
