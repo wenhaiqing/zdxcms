@@ -51,7 +51,7 @@ class LmapController extends Controller
             $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->get();
             return $list;
         }else{
-            return $pid;
+            return User::where('name',$title)->get();
         }
 
 
