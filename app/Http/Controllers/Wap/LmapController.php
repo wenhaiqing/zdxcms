@@ -47,7 +47,11 @@ class LmapController extends Controller
     public function getzhishu($title)
     {
         $pid = User::where('name',$title)->first();
-        $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->get();
+        $list = '';
+        if ($pid){
+            $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->get();
+        }
+
         return $list;
     }
 }
