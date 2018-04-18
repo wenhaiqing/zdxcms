@@ -20,8 +20,10 @@
         <input type="text" name="mobile" class="form-control" placeholder="手机号" required autofocus />
         <input type="password" name="password" class="form-control" placeholder="密码" required />
         <button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
+        {{--<a class="btn btn-lg btn-warning btn-block" href="{{route('wap.register')}}">立即注册</a>--}}
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> 记住我
+            <a class="btn btn-primary btn-sm" style="float: right" href="{{route('wap.lmap')}}">立即注册</a>
         </label>
     </form>
 </div>

@@ -56,6 +56,21 @@ function get_json_params($content,$key, $default = ''){
     return get_block_params(...func_get_args());
 }
 
+function tree($data ,$name, $lefthtml = '|— ' , $pid=0 , $lvl=0)
+{
+    $arr = [];
+    foreach ($data as $k => $v) {
+        if ($v['pid'] == $pid) {
+            $v[$name] = str_repeat($lefthtml, $lvl) . $v[$name];
+            $arr[] = $v;
+            unset($data[$k]);
+            $arr = array_merge($arr,tree($data, $name,$lefthtml, $v['id'], $lvl + 1));
+        }
+    }
+
+    return $arr;
+}
+
 /**
  * 获取 block 参数
  *

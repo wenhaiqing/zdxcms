@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+h3,p,a,span{ font-family:"微软雅黑"}
+img{ border:none}
+a{ text-decoration:none}
+.clear{ clear:both}
+
+body{ background:url(../images/lldj/mybg.jpg) bottom center no-repeat #f5f5f5; background-size:100% auto; min-height:1280px}
+.mytab{width:100%; cellpadding:0.2em; background:#fff}
+.mylogo{width:26%;vertical-align:middle; text-align:center}
+.mylogo img{ width:75%;-moz-border-radius: 30px; margin-top:1em /* Firefox */
+  -webkit-border-radius: 30px; /* Safari 和 Chrome */
+  border-radius: 30px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+
+  -moz-box-shadow: 5px 5px 10px #999; /* Firefox */
+  -webkit-box-shadow: 5px 5px 10px #999; /* Safari 和 Chrome */
+  box-shadow: 5px 5px 10px #999; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+
+  behavior: url(ie-css3.htc)}
+.mypsn{widows:63%; vertical-align:bottom}
+.myname{color:#000000; float:left; font-size:3em;padding:0.3em 0}
+.party{border-radius:1em; background:#FF0000; float:left; color:#FFFFFF; font-size:2.5em; margin-left:1em; padding:0.15em 0.5em}
+.gomore{width:11%; vertical-align:middle;font-size:3.2em; text-align:center}
+.zhibu{vertical-align:top;color:#999999; font-size:2.2em}
+.self{ width:100%; display:table; background:#fff; padding-bottom:0.8em}
+
+.myinfo{ width:100%; margin-top: 1em;vertical-align:middle;padding-bottom: 1.5em;}
+.myinfo a{ color:#666}
+.myjifen{ width:42.5%; color:#333333; border-right:5px solid #eee; font-size:2.2em;font-family:"微软雅黑"; padding-left:2em; float:left}
+.myjifen span{ color:#999999;padding-left:0.3em;color:#FF0000}
+
+.mymsg{ width:40%;  display:table-cell; color:#333333;font-size:2.2em;font-family:"微软雅黑"; padding-left:2em; float:left}
+.mymsg span{ color:#999999;padding-left:0.3em;color:#FF0000}
+
+.column2{ width:100%;  height:auto; margin:0 auto }
+.col2con{ width:97%; margin:0 auto;  height:auto;min-height:580px;  }
+.col2con_l{ width:48%; float:left;background: #fff; margin: 1em 0.45em 0 0.45em;padding: 1em 0;box-shadow: 0 1px 3px #bebebe;
+    -moz-box-shadow: 0 1px 3px #bebebe;
+    -webkit-box-shadow: 0 1px 3px #bebebe;}
+.col2con_con{width: 56%; padding:1em; float:left; text-align:center;margin: 1em 0}
+.col2con_con span{ font-size:2.5em;line-height: 1.7em;font-weight:bold}
+.col2con_con p{ font-size:2.2em; color:#999; line-height:0.1em}
+.col2icon{ width:35%;float:left; margin-top:1em}
+.col2icon img{ width:80%; padding:1em 0 1em 1.5em}
+.qiandao{ width:30%;display:block; text-align:center; margin:15em auto}
+.qiandao img{ width:100%; margin-top:3em}
+
+.tongzhi{ width:94%; margin: 5% auto; background:#FFFFFF;color:#FF3300;border-left:5px solid #FF3300}
+.tongzhi span{ margin-left:1em; font-size:2.5em;line-height: 2.3em; font-weight: bold;}

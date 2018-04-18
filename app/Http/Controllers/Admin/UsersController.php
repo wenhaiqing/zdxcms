@@ -25,21 +25,8 @@ class UsersController extends BaseController
     public function index(Request $request,User $user)
     {
         $this->authorize('view',$this->user);
-        // 关键字过滤
-        if($keyword = $request->keyword ?? ''){
-            $user = $user->where('name', 'like', "%{$keyword}%");
-        }
-
-        // 开始时间过滤
-        if($begin_time = $request->begin_time ?? ''){
-            $user = $user->where('created_at','>',$begin_time);
-        }
-
-        // 结束时间过滤
-        if($end_time = $request->end_time ?? ''){
-            $user = $user->where('created_at','<',$end_time);
-        }
-        $users = $user->paginate(config('admin.global.paginate'));
+        $users = $this->user->get()->toArray();
+        $users = tree($users,'name');
         return view(getThemeView('users.index'),compact('users'));
 
     }
@@ -55,7 +42,9 @@ class UsersController extends BaseController
         $this->authorize('create',$user);
         $roles = Role::get()->pluck('name', 'remarks')->toArray();
         $userRoles = [];
-        return view(getThemeView('users.create_and_edit'), compact('user','roles', 'userRoles'));
+        $users = $this->user->get()->toArray();
+        $users = tree($users,'name');
+        return view(getThemeView('users.create_and_edit'), compact('user','roles', 'userRoles','users'));
     }
 
     /**
@@ -67,7 +56,7 @@ class UsersController extends BaseController
     public function store(Request $request)
     {
         $this->authorize('create',$this->user);
-        $data = $request->only(['name','email','password','introduction','status']);
+        $data = $request->only(['name','email','password','introduction','status','pid','if_zhi']);
         $user = $this->user->create($data);
         $roles = $request->input('roles') ? $request->input('roles') : [];
         $user->assignRole($roles);
@@ -97,7 +86,9 @@ class UsersController extends BaseController
         $this->authorize('update',$user);
         $roles = Role::get()->pluck('name', 'remarks')->toArray();
         $userRoles = $user->roles()->pluck('name', 'name')->toArray();
-        return view(getThemeView('users.create_and_edit'), compact('user','roles', 'userRoles'));
+        $users = $this->user->get()->toArray();
+        $users = tree($users,'name');
+        return view(getThemeView('users.create_and_edit'), compact('user','roles', 'userRoles','users'));
     }
 
     /**

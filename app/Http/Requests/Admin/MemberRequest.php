@@ -1,11 +1,18 @@
 <?php
 
 namespace App\Http\Requests\Admin;
-
-class MemberRequest extends Request
+use Illuminate\Foundation\Http\FormRequest;
+class MemberRequest extends FormRequest
 {
+
+    public function authorize()
+    {
+        // Using policy for Authorization
+        return true;
+    }
     public function rules()
     {
+
         switch($this->method())
         {
             // CREATE
@@ -17,8 +24,8 @@ class MemberRequest extends Request
                     'age'=>'required|numeric:age',
                     'password' => 'required|string|min:6',
                     'cardnum'=>'required|identitycards',
-                    'record'=>'require|string',
-                    'nation'=>'require|string'
+                    'record'=>'required|string',
+                    'nation'=>'required|string'
                 ];
             }
             // UPDATE
@@ -30,8 +37,8 @@ class MemberRequest extends Request
                     'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
                     'age'=>'required|numeric',
                     'cardnum'=>'required|identitycards',
-                    'record'=>'require|string',
-                    'nation'=>'require|string'
+                    'record'=>'required|string',
+                    'nation'=>'required|string'
                 ];
             }
             case 'GET':

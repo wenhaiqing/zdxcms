@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBirthdayToMembersTable extends Migration
+class AddIfzhiToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddBirthdayToMembersTable extends Migration
      */
     public function up()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->string('birthday')->nullable()->comment('出生日期');
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('if_zhi')->default(0)->comment('是否直属0否1是');
         });
     }
 
@@ -25,8 +25,8 @@ class AddBirthdayToMembersTable extends Migration
      */
     public function down()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->dropColumn('birthday');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('if_zhi');
         });
     }
 }

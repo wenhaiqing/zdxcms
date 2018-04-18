@@ -11,7 +11,7 @@
         <div class="col-md-6 col-md-offset-3">
             <form action="{{route('register.create')}}" class="" method="POST">
                 {{ csrf_field() }}
-                <input type="hidden" name="user_id" value="1">
+                <input type="hidden" name="user_id" value="{{$user_id}}">
                 <div class="form-group has-feedback">
                     <label class="col-sm-2 control-label">用户名</label>
                     <div class="input-group">

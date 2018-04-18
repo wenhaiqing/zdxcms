@@ -13,6 +13,17 @@
                     <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('name',$user->name) }}" >
                 </div>
             </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">{{trans('users.pid')}}</label>
+                <div class="layui-input-block">
+                    <select name="pid" lay-verify="" lay-search="">
+                        <option value="0" @if(0 == $user->id) selected @endif>{{trans('permissions.select')}}</option>
+                        @foreach($users as $key => $val)
+                            <option value="{{$val['id']}}" @if($val['id'] == $user->pid) selected @endif>{{$val['name']}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('users.email')}}</label>
                 <div class="layui-input-block">
@@ -44,7 +55,13 @@
                     <textarea placeholder="" name="introduction" lay-verify="required" class="layui-textarea">{{ old('introduction',$user->introduction) }}</textarea>
                 </div>
             </div>
-
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">{{trans('users.if_zhi')}}</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="if_zhi" value="0" @if(old('if_zhi',$user->if_zhi) == 0) checked="" @endif title="{{trans('users.if_zhi_0')}}" lay-verify="required">
+                    <input type="radio" name="if_zhi" value="1" @if(old('if_zhi',$user->if_zhi) == 1) checked="" @endif title="{{trans('users.if_zhi_1')}}" lay-verify="required">
+                </div>
+            </div>
             <div class="layui-form-item" pane="">
                 <label class="layui-form-label">{{trans('users.status')}}</label>
                 <div class="layui-input-block">
