@@ -9,7 +9,21 @@ if (!function_exists('getThemeView')) {
         return 'admin.' . getTheme() . '.' . $view;
     }
 }
+/*
+ * 获取下属党组织
+ */
+function get_mobileson($id,$arr = array())
+{
 
+    $res = \App\Models\User::whereIn('pid',$id)->pluck('id')->toArray();
+
+    if (!$res){
+        return $arr;
+    }
+    $arr = array_merge($arr,$res);
+
+    return get_mobileson($res,$arr);
+}
 /**
  * 获取主题
  */

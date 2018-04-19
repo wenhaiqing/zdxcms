@@ -15,5 +15,6 @@
 @stop
 @section('js')
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
-@stop
     @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
+@stop
+

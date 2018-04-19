@@ -65,6 +65,10 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => 'auth:wap']
 
     Route::get('notice', 'MobileController@notice')->name('wap.notice');
 
+    Route::get('noticelist', 'MobileController@noticelist')->name('wap.noticelist');
+
+    Route::get('noticedetail', 'MobileController@noticedetail')->name('wap.noticedetail');
+
 
 
 });
