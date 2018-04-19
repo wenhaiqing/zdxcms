@@ -46,7 +46,9 @@ class MemberRequest extends Request
     public function messages()
     {
         return [
-            // Validation messages
+            'cardnum.required'=>'身份证号不能为空',
+            'record.required'=>'学历不能为空',
+            'nation.required'=>'民族不能为空',
         ];
     }
 }

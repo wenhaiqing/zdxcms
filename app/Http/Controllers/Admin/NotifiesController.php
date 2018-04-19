@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\NotifyRequest;
 
-class NotifiesController extends Controller
+class NotifiesController extends BaseController
 {
 
 	public function index(Notify $notify,Request $request)
@@ -16,7 +16,9 @@ class NotifiesController extends Controller
         if($keyword = $request->keyword ?? ''){
             $notify = $notify->where('title', 'like', "%{$keyword}%");
         }
-		$notifies = $notify->paginate(config('admin.global.paginate'));
+        $ids = $this->get_adminson([\Auth::id()]);
+        $ids[] = \Auth::id();
+		$notifies = $notify->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
 		return view(getThemeView('notifies.index'), compact('notifies'));
 	}
 

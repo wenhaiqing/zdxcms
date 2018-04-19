@@ -69,7 +69,7 @@ class LoginController extends Controller
         $res['password'] = Hash::make($memberRequest->password);
         $member = Member::create($res);
         Auth::guard('wap')->login($member, true);
-        return redirect()->route('wap.login');
+        return redirect()->route('wap.index');
     }
 
     /**

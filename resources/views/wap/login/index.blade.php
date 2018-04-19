@@ -1,33 +1,46 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>登录页面</title>
+@extends('wap.layouts._header')
 
-    <link href="{{asset('wap/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('wap/bootstrap/css/signin.css')}}" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div class="signin">
-    <div class="signin-head"><img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" style="height: 120px;" alt="" class="img-circle"></div>
+@section('content')
+<header class="aui-bar aui-bar-nav" id="header">
+    <a class="aui-btn aui-pull-left" tapmode onclick="window.history.go(-1);">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <div class="aui-title">登录</div>
+</header>
+<section class="aui-content aui-margin-t-15">
     <form class="form-signin" action="{{route('login.create')}}" method="POST" role="form">
         {{ csrf_field() }}
-        <input type="text" name="mobile" class="form-control" placeholder="手机号" required autofocus />
-        <input type="password" name="password" class="form-control" placeholder="密码" required />
-        <button class="btn btn-lg btn-warning btn-block" type="submit">登录</button>
-        {{--<a class="btn btn-lg btn-warning btn-block" href="{{route('wap.register')}}">立即注册</a>--}}
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me"> 记住我
-            <a class="btn btn-primary btn-sm" style="float: right" href="{{route('wap.lmap')}}">立即注册</a>
-        </label>
+    <ul class="aui-list aui-form-list">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label aui-border-r color-orange" style="font-size:14px;">
+                    手机号 <small class="aui-margin-l-5 aui-text-warning">+86</small>
+                </div>
+                <div class="aui-list-item-input aui-padded-l-10">
+                    <input type="number"  style="font-size:14px;" pattern="[0-9]*" placeholder="输入手机号" name="mobile" id="mobile" value="{{old('mobile')}}" >
+                </div>
+            </div>
+        </li>
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                    密码 <small class="aui-margin-l-5 aui-text-warning"></small>
+                </div>
+                <div class="aui-list-item-input aui-padded-l-10">
+                    <input type="password"  style="font-size:14px;" placeholder="请输入密码" name="password" id="password" >
+                </div>
+            </div>
+        </li>
+    </ul>
+        <section class="aui-content-padded">
+            <button class="aui-btn aui-btn-block aui-btn-sm "   style="background-color: #76BE0E" tapmode type="submit" >登录</button>
+            <a class="aui-btn aui-btn-block aui-btn-sm" style="background-color: #FE6367;margin-top:10px;color:#FFF;" href="{{route('wap.register')}}">立即注册</a>
+        </section>
     </form>
-</div>
+</section>
+
+@stop
+@section('js')
 <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
 @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
-</body>
-</html>
+@stop

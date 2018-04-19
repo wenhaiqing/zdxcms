@@ -1,143 +1,168 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <link href="{{asset('wap/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{asset('wap/bootstrap/css/signin.css')}}" rel="stylesheet">
-    <link href=" https://cdn.bootcss.com/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet">
-</head>
-<body>
-    <div class="signin-head"><img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" style="height: 120px;" alt="" class="img-circle"></div>
-    <div class="container">
-        <div class="col-md-6 col-md-offset-3">
-            <form action="{{route('register.create')}}" class="" method="POST">
-                {{ csrf_field() }}
-                <input type="hidden" name="user_id" value="{{$user_id}}">
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">用户名</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                        <input id="name" name="name" value="{{ old('name') }}" class="form-control" placeholder="请输入用户名" maxlength="20" type="text">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">密码</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                        <input id="password" name="password" value="{{ old('password') }}" class="form-control" placeholder="请输入密码" maxlength="20" type="password">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">手机号码</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                        <input id="phoneNum" name="mobile" value="{{ old('mobile') }}" class="form-control" placeholder="请输入手机号码" maxlength="11" type="number">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">民族</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                        <input id="nation" name="nation" value="{{ old('nation') }}" class="form-control" placeholder="请输入民族"  type="text">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">性别</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="sex" id="optionsRadios1" value="0" checked>男
-                        </label>
-                        <label>
-                            <input type="radio" name="sex" id="optionsRadios1" value="1">女
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">身份证号</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-certificate"></span></span>
-                        <input id="cardnum" name="cardnum" value="{{ old('cardnum') }}" class="form-control" placeholder="请输入身份证号"  type="text">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">学历</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                        <input id="record" name="record" value="{{ old('record') }}" class="form-control" placeholder="请输入学历"  type="text">
-                    </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">年龄</label>
-                    <div class="input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                        <input id="age" name="age" value="{{ old('age') }}" class="form-control" placeholder="请输入年龄"  type="number">
-                    </div>
-                </div>
+@extends('wap.layouts._header')
 
-                <div class="form-group has-feedback">
-
-                    <label class="col-sm-2 control-label">出生日期</label>
-
-                        <label class="checkbox-inline">
-                            <select node-type="birthday_year" name="birthday_y" id="birthday_y">
-                                <option value=""></option>
-
-                            </select><span>年</span>
-                        </label>
-                        <label class="checkbox-inline">
-                            <select node-type="birthday_month" name="birthday_m" id="birthday_m">
-                                <option value=""></option>
-
-                            </select><span>月</span>
-                        </label>
-                        <label class="checkbox-inline">
-                            <select node-type="birthday_month" name="birthday_d" id="birthday_d">
-                                <option value=""></option>
-
-                            </select><span>日</span>
-                        </label>
-                        <input type="hidden" name="birthday" id="birth" value="2016/2/12">
-                        <label class='checkbox-inline text-warning hidden' id="birth_error_info"><i class='fa fa-warning'>请输入完整生日</i></label>
-
-                    <div class="input-group">
+@section('content')
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" tapmode onclick="window.history.go(-1);">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <div class="aui-title">注册</div>
+    </header>
+    <section class="aui-content aui-margin-t-15">
+        <form class="form-signin" action="{{route('register.create')}}" method="POST" role="form">
+            {{ csrf_field() }}
+            <input type="hidden" name="user_id" value="{{$user_id}}">
+            <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange" style="font-size:14px;">
+                            用户名 <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
-                </div>
-
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">是否流动党员</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="if_movedang" id="" value="0">否
-                        </label>
-                        <label>
-                            <input type="radio" name="if_movedang" id="" value="1" checked>是
-                        </label>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input id="name" name="name" value="{{ old('name') }}" class="form-control" placeholder="请输入用户名" maxlength="20" type="text">
+                        </div>
                     </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-2 control-label">是否正式党员</label>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="if_dang" id="" value="0" checked>正式党员
-                        </label>
-                        <label>
-                            <input type="radio" name="if_dang" id="" value="1">预备党员
-                        </label>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange" style="font-size:14px;">
+                            手机号 <small class="aui-margin-l-5 aui-text-warning">+86</small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input type="number"  style="font-size:14px;" pattern="[0-9]*" placeholder="输入手机号" name="mobile" id="mobile" value="{{old('mobile')}}" >
+                        </div>
                     </div>
-                </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                            密码 <small class="aui-margin-l-5 aui-text-warning"></small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input type="password"  style="font-size:14px;" placeholder="请输入密码" name="password" id="password" >
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                            民族 <small class="aui-margin-l-5 aui-text-warning"></small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input type="text" value="{{ old('nation') }}"  style="font-size:14px;" placeholder="请输入民族" name="nation" id="nation" >
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                            身份证号 <small class="aui-margin-l-5 aui-text-warning"></small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input id="cardnum" name="cardnum" value="{{ old('cardnum') }}" class="form-control" placeholder="请输入身份证号"  type="text">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                            学历 <small class="aui-margin-l-5 aui-text-warning"></small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input id="record" name="record" value="{{ old('record') }}" class="form-control" placeholder="请输入学历"  type="text">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label aui-border-r color-orange"  style="font-size:14px;">
+                            年龄 <small class="aui-margin-l-5 aui-text-warning"></small>
+                        </div>
+                        <div class="aui-list-item-input aui-padded-l-10">
+                            <input id="age" name="age" value="{{ old('age') }}" class="form-control" placeholder="请输入年龄"  type="number">
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            性别
+                        </div>
+                        <div class="aui-list-item-input">
+                            <label><input type="radio" name="sex" class="aui-radio" value="0" checked>男</label>
+                            <label><input type="radio" name="sex" class="aui-radio" value="1">女</label>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            流动党员
+                        </div>
+                        <div class="aui-list-item-input">
+                            <label><input type="radio" name="if_movedang" class="aui-radio" value="0" checked>否</label>
+                            <label><input type="radio" name="if_movedang" class="aui-radio" value="1" >是</label>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            正式党员
+                        </div>
+                        <div class="aui-list-item-input">
+                            <label><input type="radio" name="if_dang" class="aui-radio" value="0" checked>正式党员</label>
+                            <label><input type="radio" name="if_dang" class="aui-radio" value="1">预备党员</label>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            出生日期
+                        </div>
+                        <div class="aui-list-item-input">
+                            <label class="checkbox-inline">
+                                <select node-type="birthday_year" name="birthday_y" id="birthday_y">
+                                    <option value=""></option>
 
-                <div class="form-group">
-                    <input class="form-control btn btn-primary" id="submit" value="立&nbsp;&nbsp;即&nbsp;&nbsp;注&nbsp;&nbsp;册" type="submit">
-                </div>
-                <div class="form-group">
-                    <input value="重置" id="reset" class="form-control btn btn-danger" type="reset">
-                </div>
-            </form>
-        </div>
-    </div>
+                                </select><span>年</span>
+                            </label>
+                            <label class="checkbox-inline">
+                                <select node-type="birthday_month" name="birthday_m" id="birthday_m">
+                                    <option value=""></option>
+
+                                </select><span>月</span>
+                            </label>
+                            <label class="checkbox-inline">
+                                <select node-type="birthday_month" name="birthday_d" id="birthday_d">
+                                    <option value=""></option>
+
+                                </select><span>日</span>
+                            </label>
+                            <input type="hidden" name="birthday" id="birth" value="2016/2/12">
+                            <label class='checkbox-inline text-warning hidden' id="birth_error_info"><i class='fa fa-warning'>请输入完整生日</i></label>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+            <section class="aui-content-padded">
+                <button class="aui-btn aui-btn-block aui-btn-sm "   style="background-color: #76BE0E" tapmode type="submit" >登录</button>
+                <a class="aui-btn aui-btn-block aui-btn-sm" style="background-color: #FE6367;margin-top:10px;color:#FFF;" href="{{route('wap.register')}}">立即注册</a>
+            </section>
+        </form>
+    </section>
+    @stop
+
+
+
+
+
+
+@section('js')
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
     <script type="text/javascript" src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
     <script>
         var date=new Date();
         var year=date.getFullYear();
@@ -313,5 +338,4 @@
         }
 
     </script>
-</body>
-</html>
+@stop

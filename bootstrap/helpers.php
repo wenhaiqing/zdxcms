@@ -9,6 +9,7 @@ if (!function_exists('getThemeView')) {
         return 'admin.' . getTheme() . '.' . $view;
     }
 }
+
 /**
  * 获取主题
  */
