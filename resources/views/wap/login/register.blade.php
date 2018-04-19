@@ -147,17 +147,11 @@
                 </li>
             </ul>
             <section class="aui-content-padded">
-                <button class="aui-btn aui-btn-block aui-btn-sm "   style="background-color: #76BE0E" tapmode type="submit" >登录</button>
-                <a class="aui-btn aui-btn-block aui-btn-sm" style="background-color: #FE6367;margin-top:10px;color:#FFF;" href="{{route('wap.register')}}">立即注册</a>
+                <button class="aui-btn aui-btn-block aui-btn-sm "   style="background-color: #76BE0E" tapmode type="submit" >立即注册</button>
             </section>
         </form>
     </section>
     @stop
-
-
-
-
-
 
 @section('js')
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
