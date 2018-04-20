@@ -15,6 +15,8 @@ trait EveryAction
     public function RecordEveryAction($action)
     {
         Log::info($action);
+        Log::info(config('web.global.'.$action));
+        $action = config('web.global.'.$action);
         // 获取今天的日期
         $date = Carbon::now()->toDateString();
         Log::info($date);
@@ -28,7 +30,7 @@ trait EveryAction
         $now = Carbon::now()->toDateTimeString();
         Log::info($now);
         // 数据写入 Redis ，字段已存在会被更新
-        Redis::hSet($hash, $field, $now);
+        Redis::hSet($hash, $field, $now.$action);
     }
 
 }

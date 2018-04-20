@@ -63,13 +63,11 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 {
     Route::get('index', 'MobileController@index')->name('wap.index');
 
-    Route::get('notice', ['middleware'=>'everyaction:notice','uses'=>'MobileController@notice'])->name('wap.notice');
+    Route::get('notice', ['uses'=>'MobileController@notice'])->name('wap.notice');
 
-    Route::get('noticelist', ['middleware'=>'everyaction','uses'=>'MobileController@noticelist'])->name('wap.noticelist');
+    Route::get('noticelist', ['uses'=>'MobileController@noticelist'])->name('wap.noticelist');
 
-    Route::get('noticedetail', 'MobileController@noticedetail')->name('wap.noticedetail');
-
-
+    Route::get('noticedetail', ['middleware'=>'everyaction:notice','uses'=>'MobileController@noticedetail'])->name('wap.noticedetail');
 
 });
 
