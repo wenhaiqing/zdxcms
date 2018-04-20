@@ -10,6 +10,7 @@ use Auth;
 
 class MobileController extends Controller
 {
+
     public function index()
     {
         $member = Auth::guard('wap')->user();

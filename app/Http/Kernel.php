@@ -58,5 +58,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'language' => \App\Http\Middleware\LanguageMiddleware::class,
+        // 记录用户每一次的行为足迹
+        'everyaction' => \App\Http\Middleware\RecordEveryActionTime::class,
     ];
 }
