@@ -1,0 +1,159 @@
+@extends('wap.layouts._header')
+
+@section('css')
+    <link rel="stylesheet" href="{{asset('wap/bootstrap/video/css/reset.min.css')}}">
+    <link rel="stylesheet" href="{{asset('wap/bootstrap/video/css/style.css')}}">
+    @stop
+
+@section('content')
+    <div id="site">
+        <div id="videoBox" class="box">
+            <video width="400" controls>
+                <source src="{{$video->url}}" type="video/mp4">
+                Your browser does not support HTML5 video. </video>
+        </div>
+        {{--<div id="bloc">--}}
+            {{--<div id="commentsBox" class="box">--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span><span></span><span></span><span></span></p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div id="suggBox" class="box">--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<p><span></span></p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    </div>
+    @stop
+
+@section('js')
+    <script src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
+    <script src="{{asset('wap/bootstrap/video/js/index.js')}}"></script>
+    @stop

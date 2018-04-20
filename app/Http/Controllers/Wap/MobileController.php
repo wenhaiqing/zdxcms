@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Wap;
 
 use App\Models\Notify;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -38,5 +39,18 @@ class MobileController extends Controller
         $id = $request->id;
         $notices = Notify::where('id',$id)->get();
         return view('wap.dang.noticedetail',compact('notices'));
+    }
+
+    public function videos(Request $request)
+    {
+        $lists = Video::all();
+        return view('wap.dang.videolist',compact('lists'));
+    }
+
+    public function videodetail(Request $request)
+    {
+        $id = $request->id;
+        $video = Video::where('id',$id)->first();
+        return view('wap.dang.videodetail',compact('video'));
     }
 }

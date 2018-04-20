@@ -12,15 +12,25 @@ class VideoObserver
     public function creating(Video $video)
     {
         $url = $video->url;
-        $url = str_replace("\\","/",$url);
-        $video->url = 'http://'.$_SERVER['HTTP_HOST'].'/uploads/videos/'.$url;
+        if (stripos($url,"http://")!== false){
+
+        }else{
+            $url = str_replace("\\","/",$url);
+            $video->url = 'http://'.$_SERVER['HTTP_HOST'].'/uploads/videos/'.$url;
+        }
+
     }
 
     public function updating(Video $video)
     {
         $url = $video->url;
-        $url = str_replace("\\","/",$url);
-        $video->url = 'http://'.$_SERVER['HTTP_HOST'].'/uploads/videos/'.$url;
+        if (stripos($url,"http://")!== false){
+
+        }else{
+            $url = str_replace("\\","/",$url);
+            $video->url = 'http://'.$_SERVER['HTTP_HOST'].'/uploads/videos/'.$url;
+        }
+
     }
 
     public function deleted(Video $video)

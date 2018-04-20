@@ -63,11 +63,16 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 {
     Route::get('index', 'MobileController@index')->name('wap.index');
 
+    //手机端通知公告
     Route::get('notice', ['uses'=>'MobileController@notice'])->name('wap.notice');
 
     Route::get('noticelist', ['uses'=>'MobileController@noticelist'])->name('wap.noticelist');
 
     Route::get('noticedetail', ['middleware'=>'everyaction:notice','uses'=>'MobileController@noticedetail'])->name('wap.noticedetail');
+
+    //手机端在线学习
+    Route::get('videos', ['uses'=>'MobileController@videos'])->name('wap.videos');
+    Route::get('videodetail', ['uses'=>'MobileController@videodetail'])->name('wap.videodetail');
 
 });
 
