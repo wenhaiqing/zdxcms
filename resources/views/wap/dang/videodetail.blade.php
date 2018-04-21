@@ -8,7 +8,7 @@
 @section('content')
     <div id="site">
         <div id="videoBox" class="box">
-            <video width="400" controls>
+            <video width="100%" controls>
                 <source src="{{$video->url}}" type="video/mp4">
                 Your browser does not support HTML5 video. </video>
         </div>

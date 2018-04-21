@@ -15,6 +15,6 @@ class ThemeDangPolicy extends Policy
 
     public function destroy(User $user, ThemeDang $theme_dang)
     {
-        return true;
+        return $theme_dang->user_id == $user->id;
     }
 }

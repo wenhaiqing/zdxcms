@@ -7,12 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\VideoRequest;
 
-class VideosController extends Controller
+class VideosController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
 
 	public function index(Video $video,Request $request)
 	{
@@ -20,14 +16,13 @@ class VideosController extends Controller
         if($keyword = $request->keyword ?? ''){
             $video = $video->where('title', 'like', "%{$keyword}%");
         }
-		$videos = $video->paginate(config('admin.global.paginate'));
+        $id = \Auth::id();
+        $ids = $this->get_adminson([$id],[$id]);
+		$videos = $video->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
 		return view(getThemeView('videos.index'), compact('videos'));
 	}
 
-    public function show(Video $video)
-    {
-        return view('videos.show', compact('video'));
-    }
+
 
 	public function create(Video $video)
 	{

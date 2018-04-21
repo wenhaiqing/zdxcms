@@ -16,8 +16,8 @@ class NotifiesController extends BaseController
         if($keyword = $request->keyword ?? ''){
             $notify = $notify->where('title', 'like', "%{$keyword}%");
         }
-        $ids = $this->get_adminson([\Auth::id()]);
-        $ids[] = \Auth::id();
+        $id = \Auth::id();
+        $ids = $this->get_adminson([$id],[$id]);
 		$notifies = $notify->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
 		return view(getThemeView('notifies.index'), compact('notifies'));
 	}

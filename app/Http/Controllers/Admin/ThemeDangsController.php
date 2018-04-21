@@ -7,12 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ThemeDangRequest;
 
-class ThemeDangsController extends Controller
+class ThemeDangsController extends BaseController
 {
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
 
 	public function index(ThemeDang $themeDang,Request $request)
 	{
@@ -20,14 +16,12 @@ class ThemeDangsController extends Controller
         if($keyword = $request->keyword ?? ''){
             $themeDang = $themeDang->where('title', 'like', "%{$keyword}%");
         }
-		$theme_dangs = $themeDang->paginate(config('admin.global.paginate'));
+        $id = \Auth::id();
+        $ids = $this->get_adminson([$id],[$id]);
+		$theme_dangs = $themeDang->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
 		return view(getThemeView('theme_dangs.index'), compact('theme_dangs'));
 	}
 
-    public function show(ThemeDang $theme_dang)
-    {
-        return view('theme_dangs.show', compact('theme_dang'));
-    }
 
 	public function create(ThemeDang $theme_dang)
 	{
