@@ -7,7 +7,7 @@ return [
     "UPLOAD_PATH"         => public_path() . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR . "videos", # 上传目录的本地物理路径
     "HEAD_DIR"            => "_head", # 指针头文件目录的名称，建议保持默认
     "FILE_SUB_DIR"        => @date("Ym", time()), #资源文件目录的子目录生成规则，变量或常量均可
-    "REDIS_KEY"           => "aetherupload_file_hashes", #redis中hashes的key名称
+    "REDIS_KEY"           => "", #redis中hashes的key名称
     "GROUPS"              => [ # 分组，可设置多个不同分组，各自拥有独立配置
         "file" => [ # 新增分组请尽量使用video、audio等有意义的分组名
             "FILE_MAXSIZE"                 => 0, # 被允许的资源文件大小（MB），0为不限制
