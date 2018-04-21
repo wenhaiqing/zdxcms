@@ -17,7 +17,7 @@
         <div class="TabbedPanelsContent" style="height:auto; min-height:900px;">
             <ul class="splist">
                 @foreach($lists as $index=>$list)
-                    <a href="{{route('wap.videodetail',['id'=>$list->id])}}">
+                    <a href="{{route('wap.videodetail',['id'=>$list->id,'title'=>$list->title])}}">
                         <li>
                             <img src="{{$list->cover}}"/>
                             <p>{{$list->title}}</p>

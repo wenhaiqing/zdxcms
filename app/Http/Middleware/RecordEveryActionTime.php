@@ -19,10 +19,11 @@ class RecordEveryActionTime
     {
         $response = $next($request);
         if (Auth::guard('wap')->check()){
-            \Log::info($request->id);
+            $modelid = $request->id;
+            $modeltitle = $request->title;
             // 推送任务到队列
             $member = Auth::guard('wap')->user();
-            dispatch(new EveryAction($action,$member));
+            dispatch(new EveryAction($action,$member,$modelid,$modeltitle));
         }
         return $response;
     }
