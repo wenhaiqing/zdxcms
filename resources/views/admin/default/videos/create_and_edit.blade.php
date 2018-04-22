@@ -43,6 +43,14 @@
                 <input type="hidden" name="url" id="savedpath" value="{{$video->url}}"><!--需要有一个名为savedpath的id，用以标识文件保存路径的表单字段，还需要一个任意名称的name-->
             </div>
         </div>
+        @can('jifen_videos')
+            <div class="layui-form-item">
+                <label class="layui-form-label">{{trans('video.jifen')}}</label>
+                <div class="layui-input-block">
+                    <input type="number" name="jifen" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="0" >
+                </div>
+            </div>
+        @endcan
         <div class="layui-form-item">
             {{--<div class="layui-input-block">--}}
             <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>

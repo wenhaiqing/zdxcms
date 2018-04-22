@@ -16,6 +16,9 @@ class ThemeDangsController extends BaseController
         if($keyword = $request->keyword ?? ''){
             $themeDang = $themeDang->where('title', 'like', "%{$keyword}%");
         }
+        if($if_cream = $request->if_cream ?? ''){
+            $themeDang = $themeDang->where('if_cream', $if_cream);
+        }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
 		$theme_dangs = $themeDang->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
@@ -54,4 +57,11 @@ class ThemeDangsController extends BaseController
 
 		return redirect()->route('theme_dangs.index')->with('message', trans('global.destoried'));
 	}
+
+    public function jinghua(Request $request,ThemeDang $themeDang)
+    {
+        $id = $request->id;
+        $themeDang->where('id',$id)->update(['if_cream'=>1]);
+        return redirect()->route('theme_dangs.index', $themeDang->id)->with('message', trans('global.updated'));
+    }
 }

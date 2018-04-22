@@ -7,13 +7,13 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('permissions.name')}}</label>
                 <div class="layui-input-block">
-                    <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('name',$permission->name) }}" >
+                    <input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="建议填写英文例如manage_system" class="layui-input" value="{{ old('name',$permission->name) }}" >
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('permissions.remarks')}}</label>
                 <div class="layui-input-block">
-                    <input type="text" name="remarks" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('remarks',$permission->remarks) }}" >
+                    <input type="text" name="remarks" lay-verify="required" autocomplete="off" placeholder="填写中文会在角色选择权限的时候展示" class="layui-input" value="{{ old('remarks',$permission->remarks) }}" >
                 </div>
             </div>
             <div class="layui-form-item" pane="">
@@ -30,13 +30,13 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('permissions.url')}}</label>
                 <div class="layui-input-block">
-                    <input type="text" name="url" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('url',$permission->url) }}" >
+                    <input type="text" name="url" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="zdxadmin/" >
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('permissions.sort')}}</label>
                 <div class="layui-input-block">
-                    <input type="number" name="sort" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('sort',$permission->sort) }}" >
+                    <input type="number" name="sort" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="0" >
                 </div>
             </div>
             <div class="layui-form-item">

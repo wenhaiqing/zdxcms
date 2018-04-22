@@ -16,6 +16,9 @@ class VideosController extends BaseController
         if($keyword = $request->keyword ?? ''){
             $video = $video->where('title', 'like', "%{$keyword}%");
         }
+        if($if_cream = $request->if_cream ?? ''){
+            $video = $video->where('if_cream', $if_cream);
+        }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
 		$videos = $video->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
@@ -55,5 +58,12 @@ class VideosController extends BaseController
 		$video->delete();
 
 		return redirect()->route('videos.index')->with('message', trans('global.destoried'));
+	}
+
+    public function jinghua(Request $request,Video $video)
+    {
+        $id = $request->id;
+        $video->where('id',$id)->update(['if_cream'=>1]);
+        return redirect()->route('videos.index', $video->id)->with('message', trans('global.updated'));
 	}
 }

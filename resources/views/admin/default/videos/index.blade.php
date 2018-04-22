@@ -6,9 +6,12 @@
 @section('content')
     <blockquote class="layui-elem-quote news_search">
         <form class="layui-form layui-form-pane" method="GET" action="">
-        <div class="layui-inline">
-            <a href="{{ route('videos.create') }}" class="layui-btn">{{trans('global.add')}}</a>
-        </div>
+            <div class="layui-inline">
+                <a href="{{ route('videos.create') }}" class="layui-btn">{{trans('global.add')}}</a>
+            </div>
+            <div class="layui-inline">
+                <a href="{{ route('videos.index',['if_cream'=>1]) }}" class="layui-btn">{{trans('video.select_jinghua')}}</a>
+            </div>
         <div style="float: right;">
             <div class="layui-form-item">
                 <div class="layui-inline">
@@ -35,6 +38,7 @@
                     <col>
                     <col>
                     <col>
+                    <col>
                     <col width="300">
                 </colgroup>
                 <thead>
@@ -44,6 +48,7 @@
                     <th>{{trans('video.description')}}</th>
                     <th>{{trans('video.author')}}</th>
                     <th>{{trans('video.create_at')}}</th>
+                    <th>{{trans('wechatmenu.type')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
                 </thead>
@@ -55,7 +60,13 @@
                         <td>{{ $video->description  }}</td>
                         <td>{{ $video->user->name  }}</td>
                         <td>{{ $video->created_at->diffForHumans() }}</td>
+                        <td>@if($video->if_cream==0){{ trans('global.if_cream_0') }}@else{{trans('global.if_cream_1')}}@endif</td>
                         <td>
+                            @can('jinghua_videos')
+                            @if($video->if_cream == 0)
+                                <a href="javascript:;" data-url="{{ route('videos.jinghua', ['id'=>$video->id]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-jinghua">{{trans('global.jinghua')}}</a>
+                            @endif
+                            @endcan
                             <a href="{{ route('videos.edit', $video->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
                             <a href="javascript:;" data-url="{{ route('videos.destroy', $video->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                         </td>
@@ -65,6 +76,10 @@
             </table>
             <form id="delete-form" action="" method="POST" style="display:none;">
                 <input type="hidden" name="_method" value="DELETE">
+                {{ csrf_field() }}
+            </form>
+            <form id="jinghua-form" action="" method="POST" style="display:none;">
+                <input type="hidden" name="_method" value="POST">
                 {{ csrf_field() }}
             </form>
             <div id="paginate-render"></div>

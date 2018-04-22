@@ -9,4 +9,6 @@ return [
     'permission' => '权限',
     'cover'=>'视频封面',
     'url'=>'视频url',
+    'select_jinghua'=>'查看精华视频',
+    'jifen' => '积分'
 ];

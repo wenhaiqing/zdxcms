@@ -264,6 +264,24 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+        Permission::create([
+            'name' => "jinghua_theme_dang",
+            'pid' => $theme->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs",
+            'remarks' => "设置主题党日为精华",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "jifen_theme_dang",
+            'pid' => $theme->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/theme_dangs",
+            'remarks' => "设置主题党日积分数",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
         $video = Permission::create([
             'name' => "manage_videos",
             'pid' => $dang->id,
@@ -298,6 +316,24 @@ class PermissionsTableSeeder extends Seeder
             'icon' => "fa fa-users",
             'url' => "zdxadmin/videos",
             'remarks' => "删除视频",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "jinghua_videos",
+            'pid' => $video->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos",
+            'remarks' => "设置视频为精华",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "jifen_videos",
+            'pid' => $video->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/videos",
+            'remarks' => "设置视频的积分数",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);

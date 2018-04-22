@@ -27,7 +27,14 @@
                 <input type="text" id="editor" name="content" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('content',$theme_dang->content) }}" >
             </div>
         </div>
-
+        @can('jifen_theme_dang')
+        <div class="layui-form-item">
+            <label class="layui-form-label">{{trans('theme_dang.jifen')}}</label>
+            <div class="layui-input-block">
+                <input type="number" name="jifen" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="0" >
+            </div>
+        </div>
+        @endcan
 
         <div class="layui-form-item">
             {{--<div class="layui-input-block">--}}

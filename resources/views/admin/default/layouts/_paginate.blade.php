@@ -133,5 +133,23 @@
 
             return false;
         });
+        $(".form-jinghua").click(function(){
+
+            var tUrl = $(this).attr('data-url');
+
+            layer.confirm('确认设置为精华吗？', {
+                btn: ['确认', '取消']
+            }, function(index){
+                $("#jinghua-form").attr("action",tUrl).submit();
+                console.log(tUrl);
+                layer.close(index);
+                return false;
+            }, function(index){
+                layer.close(index);
+                return true;
+            });
+
+            return false;
+        });
     });
 </script>

@@ -46,4 +46,9 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::resource('theme_dangs', 'ThemeDangsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('videos', 'VideosController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('members', 'MembersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    //设置视频为推荐视频
+    Route::post('videos/jinghua','VideosController@jinghua')->name('videos.jinghua');
+    //设置主题党日为精华
+    Route::post('theme_dangs/jinghua','ThemeDangsController@jinghua')->name('theme_dangs.jinghua');
+
 });
