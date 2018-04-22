@@ -1,8 +1,7 @@
 @extends('wap.layouts._header')
 
 @section('css')
-    <link href="{{asset('wap/bootstrap/css/SpryTabbedPanels.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('wap/bootstrap/css/spkc.css')}}" rel="stylesheet" type="text/css" />
+
 @stop
 
 @section('content')
@@ -13,29 +12,30 @@
         <div class="aui-title">视频课程</div>
     </header>
     <div class="sptop"><img src="{{asset('wap/bootstrap/images/lldj/splunbo.jpg')}}"/></div>
-    <div class="TabbedPanelsContentGroup">
+    <section class="aui-content">
         @if($lists->count())
-        <div class="TabbedPanelsContent" style="height:auto; min-height:900px;">
-            <ul class="splist">
-                @foreach($lists as $index=>$list)
-                    <a href="{{route('wap.videodetail',['id'=>$list->id,'title'=>$list->title])}}">
-                        <li>
-                            <img src="{{$list->cover}}"/>
-                            <p>{{$list->title}}</p>
-                            <div class="spteacher">&nbsp;&nbsp;<span
-                                        class="sptime">&nbsp;&nbsp;{{$list->description}}</span>
-                            </div>
-                        </li>
-                    </a>
-                @endforeach
-            </ul>
+            @foreach($lists as $index=>$list)
+        <div class="aui-card-list" >
+            <a href="{{route('wap.videodetail',['id'=>$list->id,'title'=>$list->title])}}">
+            <div class="aui-card-list-header">
+                {{$list->title}}
+            </div>
+            <div class="aui-card-list-content">
+                <img src="{{$list->cover}}" />
+            </div>
+            <div class="aui-card-list-footer">
+                {{$list->created_at}}
+            </div>
+            </a>
         </div>
-            <div id="paginate-render"></div>
+            @endforeach
+                <div id="paginate-render"></div>
         @else
             <br />
             <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
         @endif
-    </div>
+    </section>
+
 @stop
 
 @section('js')
