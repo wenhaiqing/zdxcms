@@ -27,8 +27,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         // 每日零时执行一次
-        //$schedule->command('zdxcms:sync-user-everyaction')->dailyAt('00:00');
-        $schedule->command('zdxcms:sync-user-everyaction')->everyFiveMinutes();
+        $schedule->command('zdxcms:sync-user-everyaction')->dailyAt('00:00');
     }
 
     /**
