@@ -43,11 +43,14 @@ class MobileController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function noticelist(Request $request)
+    public function noticelist(Request $request,Notify $notify)
     {
+        if($keyword = $request->keyword ?? ''){
+            $notify = $notify->where('title', 'like', "%{$keyword}%");
+        }
         $user_id = $request->id;
-        $notices = Notify::where('user_id',$user_id)->paginate(config('wap.global.paginate'));
-        return view('wap.dang.noticelist',compact('notices'));
+        $notices = $notify->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        return view('wap.dang.noticelist',compact('notices','user_id'));
     }
 
     /**
@@ -85,19 +88,25 @@ class MobileController extends Controller
         return view('wap.dang.videodetail',compact('video'));
     }
 
-    public function themed()
+    public function themed(User $user,Request $request)
     {
+        if($keyword = $request->keyword ?? ''){
+            $user = $user->where('name', 'like', "%{$keyword}%");
+        }
         $id = Auth::guard('wap')->user()->user_id;
         $ids = get_mobileson([$id],[$id]);
-        $themeds = User::whereIn('id',$ids)->paginate(config('wap.global.paginate'));
+        $themeds = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.themed',compact('themeds'));
     }
 
-    public function themedlist(Request $request)
+    public function themedlist(Request $request,ThemeDang $themeDang)
     {
+        if($keyword = $request->keyword ?? ''){
+            $themeDang = $themeDang->where('title', 'like', "%{$keyword}%");
+        }
         $user_id = $request->id;
-        $themeds = ThemeDang::where('user_id',$user_id)->paginate(config('wap.global.paginate'));
-        return view('wap.dang.themedlist',compact('themeds'));
+        $themeds = $themeDang->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        return view('wap.dang.themedlist',compact('themeds','user_id'));
     }
 
     public function themeddetail(Request $request)

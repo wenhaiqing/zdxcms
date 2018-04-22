@@ -6,8 +6,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * Class LmapController
+ *
+ * @package App\Http\Controllers\Wap
+ */
 class LmapController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function lvliang()
     {
         $title='吕梁市';
@@ -16,13 +24,24 @@ class LmapController extends Controller
         return view('wap.lmap.index',compact('list'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getxian(Request $request)
     {
         $name = $request->name;
         return view('wap.lmap.'.$name);
     }
 
-    public function toxian($name,$title)
+    /**
+     * @param $name
+     * @param $title
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function toxian($name, $title)
     {
         $this->name = $name;
         $this->title = $title;
@@ -31,12 +50,22 @@ class LmapController extends Controller
         return view('wap.lmap.sun',compact('name','title','list'));
     }
 
+    /**
+     * @param $title
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function danglist($title)
     {
         $list = User::where('name',$title)->paginate(config('wap.global.paginate'));
         return view('wap.dang.list',compact('list'));
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function list_tree(Request $request)
     {
         $id = $request->id;
@@ -47,15 +76,23 @@ class LmapController extends Controller
         return view('wap.dang.list',compact('list'));
     }
 
-    public function getzhishu($title)
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function searchdang(Request $request, User $user)
     {
-        $pid = User::where('name',$title)->first();
-        if ($pid){
-            $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->paginate(config('wap.global.paginate'));
-            return $list;
-        }else{
-            return User::where('name',$title)->paginate(config('wap.global.paginate'));
+        $this->validate($request, [
+            'keyword' => 'required',
+        ],[],[
+            'keyword' => '搜索关键字'
+        ]);
+        if($keyword = $request->keyword ?? ''){
+            $list = $user->where('name', 'like', "%{$keyword}%")->paginate(config('wap.global.paginate'));
         }
+        return view('wap.dang.list',compact('list'));
 
 
     }

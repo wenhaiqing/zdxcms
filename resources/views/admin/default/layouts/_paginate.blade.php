@@ -123,7 +123,7 @@
                 btn: ['确认', '取消']
             }, function(index){
                 $("#delete-form").attr("action",tUrl).submit();
-                console.log(tUrl);
+//                console.log(tUrl);
                 layer.close(index);
                 return false;
             }, function(index){
@@ -141,7 +141,7 @@
                 btn: ['确认', '取消']
             }, function(index){
                 $("#jinghua-form").attr("action",tUrl).submit();
-                console.log(tUrl);
+//                console.log(tUrl);
                 layer.close(index);
                 return false;
             }, function(index){
@@ -150,6 +150,12 @@
             });
 
             return false;
+        });
+        $(".search-button").click(function(){
+
+            var tUrl = $(this).attr('data-url');
+                $("#search-form").attr("action",tUrl).submit();
+
         });
     });
 </script>

@@ -2,9 +2,6 @@
 
 @section('content')
 <header class="aui-bar aui-bar-nav" id="header">
-    <a class="aui-btn aui-pull-left" tapmode onclick="window.history.go(-1);">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
     <div class="aui-title">登录</div>
 </header>
 <section class="aui-content aui-margin-t-15">

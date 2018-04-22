@@ -9,13 +9,26 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'zdxcms') }}</title>
-    <link href="{{asset('wap/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    {{--<link href="{{asset('wap/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">--}}
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
     <link href="{{asset('wap/bootstrap/css/aui.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
+
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     <!-- Styles -->
+    <style>
+        .aui-searchbar {
+            background: transparent;
+        }
 
+        .aui-bar-nav .aui-searchbar-input {
+            background-color: #ffffff;
+        }
+
+        .aui-bar-light .aui-searchbar-input {
+            background-color: #f5f5f5;
+        }
+    </style>
     @yield('css')
 </head>
 <body>
