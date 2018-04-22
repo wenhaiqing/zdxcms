@@ -10,6 +10,7 @@
         <div class="aui-title">主题党日</div>
     </header>
     <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>
+    <section class="aui-content-padded">
     @if($themeds->count())
     @foreach($themeds as $index=>$themed)
         <a href="{{route('wap.themedlist',['id'=>$themed->id])}}" class="list-group-item">{{$themed->name}}</a>
@@ -19,6 +20,7 @@
         <br />
         <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
     @endif
+    </section>
     <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}"  width="100%"/></div>
     @stop
 
