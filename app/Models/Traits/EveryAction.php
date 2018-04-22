@@ -39,11 +39,11 @@ trait EveryAction
     public function SyncUserEveryAction()
     {
         // 获取昨天的日期，格式如：20xx-xx-xx
-        $yesterday_date = Carbon::yesterday()->toDateString();
-       // $date = Carbon::now()->toDateString();
+        //$yesterday_date = Carbon::yesterday()->toDateString();
+        $date = Carbon::now()->toDateString();
 
         // Redis 哈希表的命名，如：larabbs_last_actived_at_2017-10-21
-        $hash = $this->hash_prefix . $yesterday_date;
+        $hash = $this->hash_prefix . $date;
 
         // 从 Redis 中获取所有哈希表里的数据
         $dates = Redis::hGetAll($hash);
