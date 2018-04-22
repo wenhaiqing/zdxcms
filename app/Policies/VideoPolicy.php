@@ -9,12 +9,12 @@ class VideoPolicy extends Policy
 {
     public function update(User $user, Video $video)
     {
-         return $video->user_id == $user->id;
+         return $user->can("edit_videos");
         //return true;
     }
 
     public function destroy(User $user, Video $video)
     {
-        return $video->user_id == $user->id;
+        return $user->can("destory_videos");
     }
 }

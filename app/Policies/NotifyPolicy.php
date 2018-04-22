@@ -9,12 +9,12 @@ class NotifyPolicy extends Policy
 {
     public function update(User $user, Notify $notify)
     {
-         return $notify->user_id == $user->id;
+        return $user->can("edit_notify");
         //return true;
     }
 
     public function destroy(User $user, Notify $notify)
     {
-        return $notify->user_id == $user->id;
+        return $user->can("destory_notify");
     }
 }

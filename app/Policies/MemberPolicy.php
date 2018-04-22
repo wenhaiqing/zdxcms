@@ -10,11 +10,11 @@ class MemberPolicy extends Policy
     public function update(User $user, Member $member)
     {
         // return $member->user_id == $user->id;
-        return true;
+        return $user->can("edit_members");
     }
 
     public function destroy(User $user, Member $member)
     {
-        return true;
+        return $user->can("destory_members");
     }
 }

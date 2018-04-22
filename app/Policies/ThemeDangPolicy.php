@@ -9,12 +9,12 @@ class ThemeDangPolicy extends Policy
 {
     public function update(User $user, ThemeDang $theme_dang)
     {
-         return $theme_dang->user_id == $user->id;
+         return $user->can("edit_theme_dang");
         //return true;
     }
 
     public function destroy(User $user, ThemeDang $theme_dang)
     {
-        return $theme_dang->user_id == $user->id;
+        return $user->can("destory_theme_dang");
     }
 }
