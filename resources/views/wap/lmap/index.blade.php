@@ -9,7 +9,7 @@
         </a>
         <div class="aui-title">党组织选择</div>
     </header>
-    <div id="svgContent" style="overflow: hidden;">
+    <div id="svgContent" style="">
 
     </div>
 <div id="outtext">
@@ -17,12 +17,17 @@
     @foreach($list as $index=>$v)
         <a href="{{route('wap.list_tree',['id'=>$v->id])}}" class="list-group-item">{{$v->name}}</a>
     @endforeach
-        @endif
+        <div id="paginate-render"></div>
+    @else
+        <br />
+        <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
+    @endif
 </div>
 
     @stop
 
 @section('js')
+    @include(getThemeView('layouts._paginate'),[ 'count' => $list->total(), ])
 <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('wap/llmap/js/sq.js')}}"></script>
 <script>

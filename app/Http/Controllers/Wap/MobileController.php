@@ -33,7 +33,7 @@ class MobileController extends Controller
     {
         $id = Auth::guard('wap')->user()->user_id;
         $ids = get_mobileson([$id],[$id]);
-        $notices = User::whereIn('id',$ids)->get();
+        $notices = User::whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.notice',compact('notices'));
 
     }
@@ -46,7 +46,7 @@ class MobileController extends Controller
     public function noticelist(Request $request)
     {
         $user_id = $request->id;
-        $notices = Notify::where('user_id',$user_id)->get();
+        $notices = Notify::where('user_id',$user_id)->paginate(config('wap.global.paginate'));
         return view('wap.dang.noticelist',compact('notices'));
     }
 
@@ -69,7 +69,7 @@ class MobileController extends Controller
      */
     public function videos(Request $request)
     {
-        $lists = Video::all();
+        $lists = Video::paginate(config('wap.global.paginate'));
         return view('wap.dang.videolist',compact('lists'));
     }
 
@@ -89,14 +89,14 @@ class MobileController extends Controller
     {
         $id = Auth::guard('wap')->user()->user_id;
         $ids = get_mobileson([$id],[$id]);
-        $themeds = User::whereIn('id',$ids)->get();
+        $themeds = User::whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.themed',compact('themeds'));
     }
 
     public function themedlist(Request $request)
     {
         $user_id = $request->id;
-        $themeds = ThemeDang::where('user_id',$user_id)->get();
+        $themeds = ThemeDang::where('user_id',$user_id)->paginate(config('wap.global.paginate'));
         return view('wap.dang.themedlist',compact('themeds'));
     }
 

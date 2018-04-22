@@ -14,6 +14,7 @@
     </header>
     <div class="sptop"><img src="{{asset('wap/bootstrap/images/lldj/splunbo.jpg')}}"/></div>
     <div class="TabbedPanelsContentGroup">
+        @if($lists->count())
         <div class="TabbedPanelsContent" style="height:auto; min-height:900px;">
             <ul class="splist">
                 @foreach($lists as $index=>$list)
@@ -29,5 +30,14 @@
                 @endforeach
             </ul>
         </div>
+            <div id="paginate-render"></div>
+        @else
+            <br />
+            <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
+        @endif
     </div>
+@stop
+
+@section('js')
+    @include(getThemeView('layouts._paginate'),[ 'count' => $lists->total(), ])
 @stop

@@ -10,7 +10,9 @@ class LmapController extends Controller
 {
     public function lvliang()
     {
-        $list = $this->getzhishu('吕梁市');
+        $title='吕梁市';
+        $pid = User::where('name',$title)->first();
+        $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->paginate(config('wap.global.paginate'));
         return view('wap.lmap.index',compact('list'));
     }
 
@@ -24,13 +26,14 @@ class LmapController extends Controller
     {
         $this->name = $name;
         $this->title = $title;
-        $list = $this->getzhishu($title);
+        $pid = User::where('name',$title)->first();
+        $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->paginate(config('wap.global.paginate'));
         return view('wap.lmap.sun',compact('name','title','list'));
     }
 
     public function danglist($title)
     {
-        $list = User::where('name',$title)->get();
+        $list = User::where('name',$title)->paginate(config('wap.global.paginate'));
         return view('wap.dang.list',compact('list'));
     }
 
@@ -48,10 +51,10 @@ class LmapController extends Controller
     {
         $pid = User::where('name',$title)->first();
         if ($pid){
-            $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->get();
+            $list = User::where(['pid'=>$pid->id,'if_zhi'=>1])->paginate(config('wap.global.paginate'));
             return $list;
         }else{
-            return User::where('name',$title)->get();
+            return User::where('name',$title)->paginate(config('wap.global.paginate'));
         }
 
 
