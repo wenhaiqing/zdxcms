@@ -17,4 +17,4 @@
 
 - corn会在每分钟调度一次laravel命令调度器* * * * * php /home/vagrant/Code/xxx/artisan schedule:run >> /dev/null 2>&1
 
-- 管理队列php artisan horizon
+- supervisord -c /etc/supervisord.conf或者supervisorctl reload重启进程管理
