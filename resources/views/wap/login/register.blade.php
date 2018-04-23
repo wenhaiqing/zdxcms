@@ -5,9 +5,9 @@
 @stop
 @section('content')
     <header class="aui-bar aui-bar-nav" id="header">
-        <a class="aui-btn aui-pull-left" tapmode onclick="window.history.go(-1);">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </div>
         <div class="aui-title">注册</div>
     </header>
     <section class="aui-content aui-margin-t-15">

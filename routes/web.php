@@ -77,6 +77,10 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('themedlist', ['uses'=>'MobileController@themedlist'])->name('wap.themedlist');
     Route::get('themeddetail', ['middleware'=>'everyaction:theme_dangs','uses'=>'MobileController@themeddetail'])->name('wap.themeddetail');
 
+    //个人中心
+    Route::get('center', ['uses'=>'MemberController@center'])->name('wap.center');
+    //互助中心
+    Route::get('huzhu', ['uses'=>'MemberController@huzhu'])->name('wap.huzhu');
 
 });
 
