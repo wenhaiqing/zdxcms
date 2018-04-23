@@ -74,7 +74,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('videodetail', ['middleware'=>'everyaction:videos','uses'=>'MobileController@videodetail'])->name('wap.videodetail');
     //手机端主题党日
     Route::get('themed', ['uses'=>'MobileController@themed'])->name('wap.themed');
-    Route::get('themedlist/{title?}', ['uses'=>'MobileController@themedlist'])->name('wap.themedlist');
+    Route::get('themedlist', ['uses'=>'MobileController@themedlist'])->name('wap.themedlist');
     Route::get('themeddetail', ['middleware'=>'everyaction:theme_dangs','uses'=>'MobileController@themeddetail'])->name('wap.themeddetail');
 
 

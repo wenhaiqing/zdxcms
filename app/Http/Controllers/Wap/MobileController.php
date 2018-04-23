@@ -29,11 +29,14 @@ class MobileController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function notice()
+    public function notice(Request $request,User $user)
     {
+        if($keyword = $request->keyword ?? ''){
+            $user = $user->where('name', 'like', "%{$keyword}%");
+        }
         $id = Auth::guard('wap')->user()->user_id;
         $ids = get_mobileson([$id],[$id]);
-        $notices = User::whereIn('id',$ids)->paginate(config('wap.global.paginate'));
+        $notices = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.notice',compact('notices'));
 
     }
@@ -70,9 +73,12 @@ class MobileController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function videos(Request $request)
+    public function videos(Request $request,Video $video)
     {
-        $lists = Video::paginate(config('wap.global.paginate'));
+        if($keyword = $request->keyword ?? ''){
+            $video = $video->where('title', 'like', "%{$keyword}%");
+        }
+        $lists = $video->paginate(config('wap.global.paginate'));
         return view('wap.dang.videolist',compact('lists'));
     }
 

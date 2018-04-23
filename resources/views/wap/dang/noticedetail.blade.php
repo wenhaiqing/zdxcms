@@ -4,9 +4,9 @@
 @section('content')
 
     <header class="aui-bar aui-bar-nav" id="header">
-        <a class="aui-btn aui-pull-left" tapmode onclick="window.history.go(-1);">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </div>
         <div class="aui-title">通知公告</div>
     </header>
     <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/tzgglist.jpg')}}" width="100%"/></div>

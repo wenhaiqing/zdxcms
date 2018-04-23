@@ -33,7 +33,6 @@
         @if($themeds->count())
             <div class="aui-content aui-margin-b-15">
                 <ul class="aui-list aui-list-in">
-
                     @foreach($themeds as $index=>$themed)
                         <a href="{{route('wap.themedlist',['id'=>$themed->id])}}">
                             <li class="aui-list-item">
@@ -42,7 +41,6 @@
                                 </div>
                             </li>
                         </a>
-
                     @endforeach
                 </ul>
             </div>
@@ -51,11 +49,9 @@
             <br/>
             <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
         @endif
-
     </section>
     <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}"  width="100%"/></div>
     @stop
-
 @section('js')
     @include(getThemeView('layouts._paginate'),[ 'count' => $themeds->total(), ])
 @stop
