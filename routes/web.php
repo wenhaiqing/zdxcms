@@ -80,7 +80,10 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     //个人中心
     Route::get('center', ['uses'=>'MemberController@center'])->name('wap.center');
     //互助中心
-    Route::get('huzhu', ['uses'=>'MemberController@huzhu'])->name('wap.huzhu');
+    Route::get('topic/create', ['uses'=>'TopicController@create'])->name('wap.topic_create');
+    Route::post('topic/store', ['uses'=>'TopicController@store'])->name('wap.topic_store');
+
+    Route::post('upload_image', 'UploadController@uploadImage')->name('wap.upload_image');
 
 });
 

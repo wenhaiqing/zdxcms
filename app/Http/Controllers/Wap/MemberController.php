@@ -14,8 +14,5 @@ class MemberController extends Controller
         return view('wap.member.center',compact('member'));
     }
 
-    public function huzhu()
-    {
-        return view('wap.member.huzhu');
-    }
+
 }

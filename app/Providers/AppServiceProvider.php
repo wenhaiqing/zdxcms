@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Wechat::observe(\App\Observers\WechatObserver::class);
         \App\Models\WechatMenu::observe(\App\Observers\WechatMenuObserver::class);
         \App\Models\WechatResponse::observe(\App\Observers\WechatResponseObserver::class);
+        \App\Models\Topic::observe(\App\Observers\TopicObserver::class);
         \Spatie\Permission\Models\Permission::observe(\App\Observers\PermissionsObserver::class);
 
         Validator::extend('identitycards', function($attribute, $value, $parameters) {

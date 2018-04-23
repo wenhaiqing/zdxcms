@@ -9,6 +9,12 @@ if (!function_exists('getThemeView')) {
         return 'admin.' . getTheme() . '.' . $view;
     }
 }
+
+function make_excerpt($value, $length = 15)
+{
+    $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
+    return str_limit($excerpt, $length);
+}
 /*
  * 获取下属党组织
  */
