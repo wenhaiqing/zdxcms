@@ -153,9 +153,11 @@
                         @endforeach
                 </ul>
             </div>
+            <a href="{{route('wap.topic_index')}}">
             <div class="aui-card-list-footer aui-text-center">
                 查看更多
             </div>
+            </a>
         </div>
     </section>
 @stop

@@ -108,7 +108,7 @@
         </a>
         <a href="">
             <div class="col2con_l">
-                <a href="{{route('wap.huzhu')}}" target="_self">
+                <a href="{{route('wap.topic_create')}}" target="_self">
                     <div class="col2icon">
                         <img src="{{asset('wap/bootstrap/images/lldj/bfhz.png')}}"/>
                     </div>

@@ -80,6 +80,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     //个人中心
     Route::get('center', ['uses'=>'MemberController@center'])->name('wap.center');
     //互助中心
+    Route::get('topic/index', ['uses'=>'TopicController@index'])->name('wap.topic_index');
     Route::get('topic/create', ['uses'=>'TopicController@create'])->name('wap.topic_create');
     Route::post('topic/store', ['uses'=>'TopicController@store'])->name('wap.topic_store');
 

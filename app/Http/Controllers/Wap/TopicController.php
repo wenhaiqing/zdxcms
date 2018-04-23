@@ -9,14 +9,19 @@ use App\Http\Controllers\Controller;
 class TopicController extends Controller
 {
 
-    public function index()
+    public function index(Request $request,Topic $topic)
     {
+        if($keyword = $request->keyword ?? ''){
+            $topic = $topic->where('title', 'like', "%{$keyword}%");
+        }
+        $topics = $topic->orderBy('id','desc')->paginate(config('wap.global.paginate'));
+        return view('wap.topic.index',compact('topics'));
 
     }
     public function create()
     {
         $member_id = \Auth::guard('wap')->id();
-        $topics = Topic::where('member_id',$member_id)->orderBy('id','desc')->get();
+        $topics = Topic::where('member_id',$member_id)->orderBy('id','desc')->paginate(config('wap.global.paginate'));
         return view('wap.topic.huzhu',compact('topics'));
     }
 
@@ -25,4 +30,6 @@ class TopicController extends Controller
         $topics = Topic::create($request->all());
         return redirect()->route('wap.topic_create')->with('success', trans('global.stored'));
     }
+
+
 }
