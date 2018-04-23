@@ -78,38 +78,39 @@
     <p class="aui-text-center aui-margin-t-15">内容发布</p>
     <form action="{{route('wap.topic_store')}}" method="POST">
         {{ csrf_field() }}
-    <section class="aui-content-padded">
-        <ul class="aui-list aui-form-list">
-            <li class="aui-list-item">
-                <div class="aui-list-item-inner">
-                    <div class="aui-list-item-input">
-                        <input type="text" required name="title" placeholder="标题" data-form-un="1524466128658.5515">
+        <section class="aui-content-padded">
+            <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-input">
+                            <input type="text" required name="title" placeholder="标题" data-form-un="1524466128658.5515">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="aui-content-padded">
+            <textarea name="content" required placeholder="在这里输入内容..."></textarea>
+        </section>
+        <p class="aui-text-center aui-margin-t-15">美图更真实</p>
+        <section class="aui-content-padded">
+            <div class="aui-row aui-row-padded" id="demo2">
+                {{--<div class="aui-col-xs-4 image-item">--}}
+                {{--<input type="hidden" >--}}
+                {{--<img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="notes-image">--}}
+                {{--<div class="delete-btn">--}}
+                {{--<i class="aui-iconfont aui-icon-trash"></i>--}}
+                {{--</div>--}}
+                {{--</div>--}}
+                <div class="aui-col-xs-4 add-photos" id="test2">
+                    <div class="aui-border aui-text-center">
+                        <i class="aui-iconfont aui-icon-plus"></i>
                     </div>
                 </div>
-            </li>
-        </ul>
-    </section>
-    <section class="aui-content-padded">
-        <textarea name="content" required placeholder="在这里输入内容..."></textarea>
-    </section>
-    <p class="aui-text-center aui-margin-t-15">美图更真实</p>
-    <section class="aui-content-padded">
-        <div class="aui-row aui-row-padded" id="demo2">
-            {{--<div class="aui-col-xs-4 image-item">--}}
-            {{--<input type="hidden" >--}}
-            {{--<img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="notes-image">--}}
-            {{--<div class="delete-btn">--}}
-            {{--<i class="aui-iconfont aui-icon-trash"></i>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            <div class="aui-col-xs-4 add-photos" id="test2">
-                <div class="aui-border aui-text-center">
-                    <i class="aui-iconfont aui-icon-plus"></i>
-                </div>
             </div>
-        </div>
-    </section>
-    <button type="submit" class="aui-btn aui-btn-block aui-btn-sm " style="background-color: #03a9f4"><span style="color: #ffffff">点击提交</span></button>
+        </section>
+        <button type="submit" class="aui-btn aui-btn-block aui-btn-sm " style="background-color: #03a9f4"><span
+                    style="color: #ffffff">点击提交</span></button>
     </form>
 
     <section class="aui-content">
@@ -121,42 +122,46 @@
             <div class="aui-card-list-content">
                 <ul class="aui-list aui-media-list">
                     @foreach($topics as $index=>$topic)
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                @if($topic->member->avatar)
-                                <img src="{{$topic->member->avatar}}" class="aui-img-round" >
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
-                                @endif
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
+                        <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
+                            <li class="aui-list-item">
+                                <div class="aui-media-list-item-inner">
+                                    <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
+                                        @if($topic->member->avatar)
+                                            <img src="{{$topic->member->avatar}}" class="aui-img-round">
+                                        @else
+                                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"
+                                                 class="aui-img-round">
+                                        @endif
+                                    </div>
+                                    <div class="aui-list-item-inner">
+                                        <div class="aui-list-item-text">
+                                            <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
+                                        </div>
+                                        <div class="aui-list-item-text aui-font-size-14"
+                                             style="color:#333;padding-top: 0.4rem;">
+                                            {{ $topic->excerpt }}
+                                        </div>
+                                        <div class="aui-list-item-text aui-font-size-12 text-light">
+                                            共{{$topic->reply_count}}条回答
+                                        </div>
+                                    </div>
+                                    <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
+                                        @if(get_json_params($topic->image,'0'))
+                                            <img src="{{get_json_params($topic->image,'0')}}"/>
+                                        @else
+                                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"/>
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">
-                                    {{ $topic->excerpt }}
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-12 text-light">
-                                    共{{$topic->reply_count}}条回答
-                                </div>
-                            </div>
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                @if(get_json_params($topic->image,'0'))
-                                <img src="{{get_json_params($topic->image,'0')}}" />
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" />
-                                @endif
-                            </div>
-                        </div>
-                    </li>
-                        @endforeach
+                            </li>
+                        </a>
+                    @endforeach
                 </ul>
             </div>
             <a href="{{route('wap.topic_index')}}">
-            <div class="aui-card-list-footer aui-text-center">
-                查看更多
-            </div>
+                <div class="aui-card-list-footer aui-text-center">
+                    查看更多
+                </div>
             </a>
         </div>
     </section>
@@ -171,7 +176,7 @@
             upload.render({
                 elem: '#test2'
                 , url: '{{ route('wap.upload_image') }}'
-                ,data: { _token: '{{ csrf_token() }}'}
+                , data: {_token: '{{ csrf_token() }}'}
                 , multiple: true
                 , before: function (obj) {
                     //预读本地文件示例，不支持ie8
@@ -185,7 +190,7 @@
                 }
                 , done: function (res) {
                     console.log(res.file_path);
-                    $('#demo2').append('<input value="'+res.file_path+'" type="hidden" name="image[]">');
+                    $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
                     //上传完毕
                 }
             });

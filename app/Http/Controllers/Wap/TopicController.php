@@ -31,5 +31,11 @@ class TopicController extends Controller
         return redirect()->route('wap.topic_create')->with('success', trans('global.stored'));
     }
 
+    public function show(Request $request,Topic $topic)
+    {
+        $topics = Topic::where('id',$request->id)->first();
+        return view('wap.topic.show',compact('topics'));
+    }
+
 
 }

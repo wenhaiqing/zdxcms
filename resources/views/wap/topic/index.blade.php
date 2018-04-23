@@ -1,5 +1,70 @@
 @extends('wap.layouts._header')
 
+@section('css')
+    <style type="text/css">
+        .aui-list .aui-list-item-media {
+            width: 3rem;
+        }
+
+        .notes-add {
+            position: fixed;
+            left: 0.5rem;
+            bottom: 0.5rem;
+            width: 3rem;
+            z-index: 99;
+        }
+
+        textarea {
+            height: 8rem;
+            background-color: #ffffff;
+            padding: 0.5rem;
+        }
+
+        .photos img {
+            display: block;
+            width: 100%;
+        }
+
+        .add-photos > div {
+            width: 100%;
+            height: 5.15rem;
+            line-height: 5.15rem;
+        }
+
+        .add-photos > div .aui-iconfont {
+            font-size: 2rem;
+            color: #ccc;
+        }
+
+        .image-item {
+            position: relative;
+            height: 5.3rem;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .image-item img {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: 100%;
+        }
+
+        .image-item .delete-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 28px;
+            height: 28px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-left: -14px;
+            margin-top: -14px;
+            color: #ffffff;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+@stop
 @php
     $keyword = request('keyword', '');
 @endphp
@@ -35,6 +100,7 @@
             <div class="aui-card-list-content">
                 <ul class="aui-list aui-media-list">
                     @foreach($topics as $index=>$topic)
+                        <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
                     <li class="aui-list-item">
                         <div class="aui-media-list-item-inner">
                             <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
@@ -64,6 +130,7 @@
                             </div>
                         </div>
                     </li>
+                        </a>
                         @endforeach
                 </ul>
             </div>
