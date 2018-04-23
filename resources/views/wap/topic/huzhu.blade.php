@@ -74,8 +74,6 @@
         </div>
         <div class="aui-title">互助中心</div>
     </header>
-
-    <p class="aui-text-center aui-margin-t-15">内容发布</p>
     <form action="{{route('wap.topic_store')}}" method="POST">
         {{ csrf_field() }}
         <section class="aui-content-padded">
@@ -115,10 +113,6 @@
 
     <section class="aui-content">
         <div class="aui-card-list">
-            <div class="aui-card-list-header">
-                <div class="aui-font-size-14">互助中心</div>
-                <i class="aui-iconfont aui-icon-close"></i>
-            </div>
             <div class="aui-card-list-content">
                 <ul class="aui-list aui-media-list">
                     @foreach($topics as $index=>$topic)
