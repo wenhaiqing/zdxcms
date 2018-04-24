@@ -64,7 +64,7 @@
 
     @stop
 @section('js')
-    @include(getThemeView('layouts._paginate'),[ 'count' => $list->total(), ])
+    @include('wap.layouts._paginate',[ 'count' => $list->total(), ])
 <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('wap/llmap/js/sq.js')}}"></script>
 <script>

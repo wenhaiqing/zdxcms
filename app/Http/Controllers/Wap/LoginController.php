@@ -45,7 +45,8 @@ class LoginController extends Controller
 
             return redirect()->route('wap.index');
         };
-        return redirect()->route('wap.login')->with('message','账号或者密码错误');
+        flash('账号或者密码错误');
+        return redirect()->route('wap.login');
     }
 
 

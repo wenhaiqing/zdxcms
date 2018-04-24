@@ -28,7 +28,8 @@ class TopicController extends Controller
     public function store(Request $request,Topic $topic)
     {
         $topics = Topic::create($request->all());
-        return redirect()->route('wap.topic_create')->with('success', trans('global.stored'));
+        flash(trans('global.stored'));
+        return redirect()->route('wap.topic_create');
     }
 
     public function show(Request $request,Topic $topic)

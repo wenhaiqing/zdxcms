@@ -54,5 +54,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::resource('topics', 'TopicController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
+    Route::resource('qianyis', 'QianyisController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
 
 });

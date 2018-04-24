@@ -6,7 +6,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
 
-class UsersTableSeeder extends Seeder
+class UsersTableSeeder1 extends Seeder
 {
     /**
      * Run the database seeds.

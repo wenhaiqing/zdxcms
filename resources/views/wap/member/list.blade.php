@@ -3,6 +3,7 @@
 @php
     $keyword = request('keyword', '');
 @endphp
+
 @section('content')
     <header class="aui-bar aui-bar-nav">
         <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
@@ -26,13 +27,14 @@
             <span class="aui-iconfont aui-icon-search"></span>
         </div>
     </header>
-    @include('flash::message')
     <section class="aui-content-padded">
-        @if($list->count())
+        @include('flash::message')
+
+    @if($list->count())
             <div class="aui-content aui-margin-b-15">
                 <ul class="aui-list aui-list-in">
                     @foreach($list as $index=>$v)
-                        <a href="{{route('wap.list_tree',['id'=>$v->id])}}">
+                        <a href="{{route('wap.qianyi',['id'=>$v->id,'name'=>$v->name])}}">
                             <li class="aui-list-item">
                                 <div class="aui-list-item-inner">
                                     <div class="aui-list-item-title">{{$v->name}}</div>

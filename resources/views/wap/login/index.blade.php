@@ -4,6 +4,7 @@
 <header class="aui-bar aui-bar-nav" id="header">
     <div class="aui-title">登录</div>
 </header>
+@include('flash::message')
 <section class="aui-content aui-margin-t-15">
     <form class="form-signin" action="{{route('login.create')}}" method="POST" role="form">
         {{ csrf_field() }}
@@ -39,5 +40,5 @@
 @stop
 @section('js')
 <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
-@include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
+@include('wap.layouts._paginate',[ 'count' => 0, ])
 @stop
