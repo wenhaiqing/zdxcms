@@ -101,7 +101,29 @@
                 </div>
                 <div class="aui-col-xs-3">
                     <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
-                    <div class="aui-grid-label aui-font-size-12">客户服务</div>
+                    <div class="aui-grid-label aui-font-size-12">申请迁党</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="aui-content bg-white aui-margin-b-15">
+        <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
+            <div class="aui-row">
+                <div class="aui-col-xs-3">
+                    <big class="label-cont aui-font-size-16 aui-text-danger">23</big>
+                    <div class="aui-grid-label aui-font-size-12">我的话题</div>
+                </div>
+                <div class="aui-col-xs-3">
+                    <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
+                    <div class="aui-grid-label aui-font-size-12">我的回复</div>
+                </div>
+                <div class="aui-col-xs-3">
+                    <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
+                    <div class="aui-grid-label aui-font-size-12">浏览记录</div>
+                </div>
+                <div class="aui-col-xs-3">
+                    <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
+                    <div class="aui-grid-label aui-font-size-12">活跃党员</div>
                 </div>
             </div>
         </div>

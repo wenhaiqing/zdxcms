@@ -37,14 +37,14 @@
             </blockquote>
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">{{trans('topics.view_count')}}</label>
-            <div class="layui-input-block">
-                <input type="number" id="view_count" name="view_count" lay-verify="required" autocomplete="off"
-                       placeholder=""
-                       class="layui-input" value="{{ old('view_count',$topic->view_count) }}">
-            </div>
-        </div>
+        {{--<div class="layui-form-item">--}}
+            {{--<label class="layui-form-label">{{trans('topics.view_count')}}</label>--}}
+            {{--<div class="layui-input-block">--}}
+                {{--<input type="number" id="view_count" name="view_count" lay-verify="required" autocomplete="off"--}}
+                       {{--placeholder=""--}}
+                       {{--class="layui-input" value="{{ old('view_count',$topic->view_count) }}">--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('topics.reply_count')}}</label>
             <div class="layui-input-block">

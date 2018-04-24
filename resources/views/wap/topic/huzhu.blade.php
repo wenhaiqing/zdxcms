@@ -113,6 +113,7 @@
 
     <section class="aui-content">
         <div class="aui-card-list">
+            @if($topics->count())
             <div class="aui-card-list-content">
                 <ul class="aui-list aui-media-list">
                     @foreach($topics as $index=>$topic)
@@ -152,13 +153,15 @@
                     @endforeach
                 </ul>
             </div>
-            <a href="{{route('wap.topic_index')}}">
-                <div class="aui-card-list-footer aui-text-center">
-                    查看更多
-                </div>
-            </a>
+                <a href="{{route('wap.topic_index')}}">
+                    <div class="aui-card-list-footer aui-text-center">
+                        查看更多
+                    </div>
+                </a>
+            @endif
         </div>
     </section>
+
 @stop
 
 @section('js')
