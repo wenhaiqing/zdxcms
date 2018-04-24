@@ -10,11 +10,11 @@ class ReplyPolicy extends Policy
     public function update(User $user, Reply $reply)
     {
         // return $reply->user_id == $user->id;
-        return true;
+        return $user->can("edit_replies");
     }
 
     public function destroy(User $user, Reply $reply)
     {
-        return true;
+        return $user->can("destroy_replies");
     }
 }

@@ -51,4 +51,8 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     //设置主题党日为精华
     Route::post('theme_dangs/jinghua','ThemeDangsController@jinghua')->name('theme_dangs.jinghua');
 
+    Route::resource('topics', 'TopicController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+
 });

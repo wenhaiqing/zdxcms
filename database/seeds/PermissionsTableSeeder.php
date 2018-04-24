@@ -60,7 +60,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_users",
+            'name' => "destroy_users",
             'pid' => $users->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/users",
@@ -97,7 +97,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_roles",
+            'name' => "destroy_roles",
             'pid' => $roles->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/roles/create",
@@ -134,7 +134,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_permission",
+            'name' => "destroy_permission",
             'pid' => $permissions->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/permissions",
@@ -172,7 +172,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_wechats",
+            'name' => "destroy_wechats",
             'pid' => $wechat->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/wechats",
@@ -219,7 +219,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_notify",
+            'name' => "destroy_notify",
             'pid' => $notify->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/notifies",
@@ -256,7 +256,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_theme_dang",
+            'name' => "destroy_theme_dang",
             'pid' => $theme->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/theme_dangs",
@@ -311,7 +311,7 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_videos",
+            'name' => "destroy_videos",
             'pid' => $video->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/videos",
@@ -366,11 +366,85 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         Permission::create([
-            'name' => "destory_members",
+            'name' => "destroy_members",
             'pid' => $members->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/members",
             'remarks' => "删除党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $topics = Permission::create([
+            'name' => "manage_topics",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/topics",
+            'remarks' => "话题管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_topics",
+            'pid' => $topics->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/topics/create",
+            'remarks' => "添加话题",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_topics",
+            'pid' => $topics->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/topics",
+            'remarks' => "编辑话题",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destroy_topics",
+            'pid' => $topics->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/topics",
+            'remarks' => "删除话题",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $replies = Permission::create([
+            'name' => "manage_replies",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/replies",
+            'remarks' => "回复管理",
+            'status'=>2,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_replies",
+            'pid' => $replies->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/replies/create",
+            'remarks' => "添加回复",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_replies",
+            'pid' => $replies->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/replies",
+            'remarks' => "编辑回复",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destroy_replies",
+            'pid' => $replies->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/replies",
+            'remarks' => "删除回复",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);

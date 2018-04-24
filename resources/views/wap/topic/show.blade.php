@@ -106,7 +106,7 @@
     </section>
 
         <section class="aui-content-padded">
-            <form action="{{route('replies.store')}}" method="POST" accept-charset="UTF-8">
+            <form action="{{route('wap.reply_store')}}" method="POST" accept-charset="UTF-8">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="topic_id" value="{{ $topics->id }}">
             <textarea name="content" required placeholder="在这里输入内容..."></textarea></br>
@@ -114,13 +114,13 @@
                         style="color: #ffffff">回复</span></button>
             </form>
         </section>
-    @if ($topics->replies)
+    @if ($topics->replies->count())
         <section class="aui-content-padded" style="margin-top: 33px;">
             <div class="aui-card-list">
                 <div class="aui-card-list-content">
                     <ul class="aui-list aui-media-list">
                         @foreach($topics->replies as $index=>$reply)
-                            <a href="{{route('wap.topic_show',['id'=>$reply->id])}}">
+
                                 <li class="aui-list-item">
                                     <div class="aui-media-list-item-inner">
                                         <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
@@ -131,7 +131,9 @@
                                                      class="aui-img-round">
                                             @endif
                                         </div>
+
                                         <div class="aui-list-item-inner">
+                                            <a href="{{route('wap.topic_show',['id'=>$reply->id])}}">
                                             <div class="aui-list-item-text">
                                                 <div class="aui-list-item-title aui-font-size-12 text-light">{{$reply->member->name}}</div>
                                             </div>
@@ -139,21 +141,25 @@
                                                  style="color:#333;padding-top: 0.4rem;">
                                                 {!! $reply->content !!}
                                             </div>
+                                            </a>
                                         </div>
-                                        <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                            <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
+                                        @if(\Auth::guard('wap')->id() == $reply->member_id)
+                                        <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;float: right">
+                                            <form action="{{ route('wap.reply_destroy', ['id'=>$reply->id,'member_id'=>$reply->member_id]) }}" method="post">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="btn btn-default btn-xs pull-left">
+                                                    <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
+                                                </button>
+                                            </form>
                                         </div>
+                                            @endif
                                     </div>
                                 </li>
-                            </a>
+
                         @endforeach
                     </ul>
                 </div>
-                <a href="{{route('wap.topic_index')}}">
-                    <div class="aui-card-list-footer aui-text-center">
-                        查看更多
-                    </div>
-                </a>
             </div>
         </section>
     @endif

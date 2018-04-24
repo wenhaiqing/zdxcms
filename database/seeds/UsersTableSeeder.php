@@ -116,6 +116,17 @@ class UsersTableSeeder extends Seeder
             'updated_at' => $now,
         ]);
         $xiaoyi->assignRole('member');
+        $daxiaobao = User::create([
+            'name' => '大孝堡乡',
+            'email' => 'xy_dxbx@lls.com',
+            'pid' => $xiaoyi->id,
+            'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+            'remember_token' => str_random(10),
+            'introduction' => '吕梁智慧党建云平台',//随机生成小段落文本
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
+        $daxiaobao->assignRole('member');
         $fenyang = User::create([
             'name' => '汾阳市',
             'email' => 'fys@lls.com',

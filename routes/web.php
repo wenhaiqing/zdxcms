@@ -84,7 +84,9 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('topic/show', ['uses'=>'TopicController@show'])->name('wap.topic_show');
     Route::get('topic/create', ['uses'=>'TopicController@create'])->name('wap.topic_create');
     Route::post('topic/store', ['uses'=>'TopicController@store'])->name('wap.topic_store');
-    Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+    Route::post('reply/store', ['uses'=>'RepliesController@store'])->name('wap.reply_store');
+    Route::delete('reply/destroy', ['uses'=>'RepliesController@destroy'])->name('wap.reply_destroy');
 
     Route::post('upload_image', 'UploadController@uploadImage')->name('wap.upload_image');
 
