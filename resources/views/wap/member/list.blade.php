@@ -2,6 +2,7 @@
 
 @php
     $keyword = request('keyword', '');
+    $user_id = request('id','');
 @endphp
 
 @section('content')
@@ -13,8 +14,9 @@
             <div class="aui-searchbar" id="search">
                 <div class="aui-searchbar-input aui-border-radius">
                     <i class="aui-iconfont aui-icon-search"></i>
-                    <form class="layui-form layui-form-pane" id="search-form" method="GET" action="{{route('wap.searchdang')}}">
+                    <form class="layui-form layui-form-pane" id="search-form" method="GET" action="{{route('wap.searchqianyi')}}">
                         <input name="keyword" type="search" placeholder="请输入搜索内容" id="zdx-search" value="{{$keyword}}">
+                        <input type="hidden" name="id" value="{{$user_id}}">
                     </form>
                     <div class="aui-searchbar-clear-btn">
                         <i class="aui-iconfont aui-icon-close"></i>

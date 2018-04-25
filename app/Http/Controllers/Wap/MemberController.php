@@ -19,7 +19,7 @@ class MemberController extends Controller
     public function qianyi(Request $request,User $user)
     {
         $id = $request->id;
-        $list = User::where(['pid'=>$id,'status'=>1])->paginate(config('wap.global.paginate'));
+        $list = $user->where(['pid'=>$id,'status'=>1])->paginate(config('wap.global.paginate'));
         if (!$list->count()){
             $member = \Auth::guard('wap')->user();
             $qianyi = Qianyi::where('member_id',$member->id)->where('status','<>',2)->first();
@@ -38,6 +38,20 @@ class MemberController extends Controller
             return back();
         }
         return view('wap.member.list',compact('list'));
+    }
+
+    public function searchqianyi(Request $request,User $user)
+    {
+        $this->validate($request, [
+            'keyword' => 'required',
+        ],[],[
+            'keyword' => '搜索关键字'
+        ]);
+        if($keyword = $request->keyword ?? ''){
+            $list = $user->where('name', 'like', "%{$keyword}%")->paginate(config('wap.global.paginate'));
+        }
+        return view('wap.member.list',compact('list'));
+
     }
 
 
