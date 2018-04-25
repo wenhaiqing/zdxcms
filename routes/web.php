@@ -18,6 +18,7 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
+Route::get('wap/home', 'HomeController@test')->name('wap.test');
 // 微信路由
 Route::any('wechat/{wechat}.html', 'WeChatController@serve')->name('wechat.api');
 
@@ -92,6 +93,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 
     Route::get('qianyi', ['uses'=>'MemberController@qianyi'])->name('wap.qianyi');
     Route::get('searchqianyi', ['uses'=>'MemberController@searchqianyi'])->name('wap.searchqianyi');
+
 
 });
 
