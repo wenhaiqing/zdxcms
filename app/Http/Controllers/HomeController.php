@@ -30,7 +30,7 @@ class HomeController extends Controller
 
     public function test()
     {
-        $qianyi = Qianyi::find(2);
+        $qianyi = Qianyi::find(1);
         $qianyi->user->notify(new MemberQianyi($qianyi));
     }
 }
