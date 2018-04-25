@@ -56,6 +56,9 @@
         </div>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
+                <a class="zdx-tab-add" zdx-href="{{ route('notifications.index') }}">通知<span class="layui-badge">{{ Auth::user()->notification_count }}</span></a>
+            </li>
+            <li class="layui-nav-item">
                 <a class="name" href="javascript:;"><i class="layui-icon"></i>主题<span class="layui-nav-more"></span></a>
                 <dl class="layui-nav-child layui-anim layui-anim-upbit">
                     <dd>

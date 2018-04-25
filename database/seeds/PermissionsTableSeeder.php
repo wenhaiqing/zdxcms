@@ -448,6 +448,43 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+        $qianyi = Permission::create([
+            'name' => "manage_qianyis",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/qianyis",
+            'remarks' => "迁党管理",
+            'status'=>2,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_qianyis",
+            'pid' => $qianyis->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/qianyis/create",
+            'remarks' => "添加迁党",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "up_qianyis",
+            'pid' => $qianyis->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/up_qianyis",
+            'remarks' => "基层党组织向上级申请",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destroy_qianyis",
+            'pid' => $qianyis->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/qianyis",
+            'remarks' => "删除迁党",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
 
     }
 }

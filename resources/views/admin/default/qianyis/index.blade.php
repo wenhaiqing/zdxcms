@@ -62,8 +62,15 @@
 {{--                        <td>{{ $qianyi->view_count  }}</td>--}}
                         <td>{{ $qianyi->created_at->diffForHumans() }}</td>
                         <td>
-                            <a href="{{ route('qianyis.edit', $qianyi->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                            @if($qianyi->status == 0)
+                            <a href="{{ route('zdxadmin.up_qianyis', ['id'=>$qianyi->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('qianyis.upqianyi')}}</a>
+                            @endif
+                            @if($qianyi->status == 1)
+                            <a href="javascript:;" data-url="{{ route('qianyis.end', ['id'=>$qianyi->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal qianyi-form">{{trans('qianyis.end')}}</a>
+                                @endif
+                                @if($qianyi->status !=2)
                             <a href="javascript:;" data-url="{{ route('qianyis.destroy', $qianyi->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                                    @endif
                         </td>
                     </tr>
                 @endforeach
@@ -71,6 +78,10 @@
             </table>
             <form id="delete-form" action="" method="POST" style="display:none;">
                 <input type="hidden" name="_method" value="DELETE">
+                {{ csrf_field() }}
+            </form>
+            <form id="qianyi-form" action="" method="POST" style="display:none;">
+                <input type="hidden" name="_method" value="POST">
                 {{ csrf_field() }}
             </form>
             <div id="paginate-render"></div>
@@ -86,5 +97,33 @@
 @section('js')
 
     @include(getThemeView('layouts._paginate'),[ 'count' => $qianyis->total(), ])
+
+    <script>
+        layui.use(['laypage', 'layer'], function(){
+            var $ = layui.jquery;
+
+            $(".qianyi-form").click(function(){
+
+                var tUrl = $(this).attr('data-url');
+
+                layer.confirm('确认已经迁移完成了？该操作后党员会被直接迁移不可更改', {
+                    btn: ['确认', '取消']
+                }, function(index){
+                    $("#qianyi-form").attr("action",tUrl).submit();
+//                console.log(tUrl);
+                    layer.close(index);
+                    return false;
+                }, function(index){
+                    layer.close(index);
+                    return true;
+                });
+
+                return false;
+            });
+
+
+        });
+
+    </script>
 @endsection
 

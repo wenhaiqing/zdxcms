@@ -9,8 +9,9 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use HasRoles;
-    use Notifiable;
-
+    use Notifiable {
+        notify as protected laravelNotify;
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +20,19 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password','avatar','introduction','status','phone','wechat_openid','wechat_unionid','pid','if_zhi'
     ];
+
+    public function notify($instance)
+    {
+        $this->increment('notification_count');
+        $this->laravelNotify($instance);
+    }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
 
     /**
      * The attributes that should be hidden for arrays.

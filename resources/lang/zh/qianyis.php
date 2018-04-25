@@ -16,5 +16,8 @@ return [
     'status'=>'状态',
     'status_1'=>'处理中',
     'status_0'=>'已申请',
-    'status_2'=>'已迁移'
+    'status_2'=>'已迁移',
+    'upqianyi' => '向上级党组织申请',
+    'upqianyi_success'=>'申请成功,请耐心等待',
+    'end'=>'完成迁移'
 ];

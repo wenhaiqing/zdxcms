@@ -27,5 +27,5 @@ return [
     'pass_no'=>'未审核',
     'jinghua'=>'设为精华',
     'if_cream_0'=>'普通',
-    'if_cream_1'=>'精华'
+    'if_cream_1'=>'精华',
 ];

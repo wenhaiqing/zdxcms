@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Member;
 use App\Models\Qianyi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QianyiRequest;
+use App\Notifications\MemberQianyi;
 
 class QianyisController extends Controller
 {
@@ -55,6 +57,27 @@ class QianyisController extends Controller
 		$this->authorize('destroy', $qianyi);
 		$qianyi->delete();
 
-		return redirect()->route('qianyis.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('qianyis.index')->with('message', trans('global.destoried'));
+	}
+
+    public function up_qianyi(Request $request)
+    {
+        $id = $request->id;
+        $qianyi = Qianyi::find($id);
+        $qianyi->touser->notify(new MemberQianyi($qianyi));
+        $qianyi->status=1;
+        $qianyi->save();
+        return redirect()->route('qianyis.index')->with('message', trans('qianyis.upqianyi_success'));
+        
+	}
+
+    public function end_qianyi(Request $request)
+    {
+        $id = $request->id;
+        $qianyi =  Qianyi::find($id);
+        $qianyi ->status = 2;
+        $qianyi->save();
+        Member::where('id',$qianyi->member_id)->update(['user_id'=>$qianyi->to_user_id]);
+        return back()->with('message',trans('qianyis.end'));
 	}
 }
