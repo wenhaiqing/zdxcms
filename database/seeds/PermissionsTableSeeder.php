@@ -448,13 +448,13 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
-        $qianyi = Permission::create([
+        $qianyis = Permission::create([
             'name' => "manage_qianyis",
             'pid' => $dang->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/qianyis",
             'remarks' => "迁党管理",
-            'status'=>2,
+            'status'=>1,
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
