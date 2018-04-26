@@ -59,9 +59,9 @@
 
 @section('content')
     <header class="aui-bar aui-bar-nav" id="aui-header">
-        <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
             <span class="aui-iconfont aui-icon-left"></span>
-        </a>
+        </div>
         <div class="aui-title">个人中心</div>
     </header>
 
