@@ -104,7 +104,7 @@
                     <div class="aui-grid-label aui-font-size-12">积分</div>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.qianyi',['id'=>1])}}">
+                    <a href="{{route('wap.myqianyi')}}">
                         <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
                         <div class="aui-grid-label aui-font-size-12">申请迁党</div>
                     </a>

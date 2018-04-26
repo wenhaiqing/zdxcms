@@ -46,6 +46,13 @@ class MemberController extends Controller
         return view('wap.member.list',compact('list'));
     }
 
+    public function myqianyi()
+    {
+        $member_id = Auth::guard('wap')->id();
+        $qianyi = Qianyi::where('member_id',$member_id)->paginate(config('wap.global.paginate'));
+        return view('wap.member.myqianyi',compact('qianyi'));
+    }
+
     public function searchqianyi(Request $request,User $user)
     {
         $this->validate($request, [

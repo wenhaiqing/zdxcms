@@ -99,6 +99,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('mytopic', ['uses'=>'MemberController@mytopic'])->name('wap.mytopic');
     Route::get('myreply', ['uses'=>'MemberController@myreply'])->name('wap.myreply');
     Route::get('myhistory', ['uses'=>'MemberController@myhistory'])->name('wap.myhistory');
+    Route::get('myqianyi', ['uses'=>'MemberController@myqianyi'])->name('wap.myqianyi');
 
 
 });
