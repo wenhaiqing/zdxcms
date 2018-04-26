@@ -94,6 +94,12 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('qianyi', ['uses'=>'MemberController@qianyi'])->name('wap.qianyi');
     Route::get('searchqianyi', ['uses'=>'MemberController@searchqianyi'])->name('wap.searchqianyi');
 
+    Route::get('myvideo', ['uses'=>'MemberController@myvideo'])->name('wap.myvideo');
+    Route::get('mythemed', ['uses'=>'MemberController@mythemed'])->name('wap.mythemed');
+    Route::get('mytopic', ['uses'=>'MemberController@mytopic'])->name('wap.mytopic');
+    Route::get('myreply', ['uses'=>'MemberController@myreply'])->name('wap.myreply');
+    Route::get('myhistory', ['uses'=>'MemberController@myhistory'])->name('wap.myhistory');
+
 
 });
 

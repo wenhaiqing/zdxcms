@@ -13,23 +13,23 @@ trait EveryAction
     protected $hash_prefix = 'zdx:zdx_every_action_is_';
     protected $field_prefix = 'member_';
 
-    public function RecordEveryAction($action, $modelid = null, $modeltitle = null)
+    public function RecordEveryAction($model, $modelid = null, $modeltitle = null,$action='查看了')
     {
         // 获取今天的日期
         $date = Carbon::now()->toDateString();
         // Redis 哈希表的命名，如：zdx:zdx_every_action_is_20xx-xx-xx
         $hash = $this->hash_prefix . $date;
         // 字段名称，如：member_id_model_modelid
-        $field = $this->field_prefix . $this->id . '_' . $action . '_' . $modelid;
+        $field = $this->field_prefix . $this->id . '_' . $model . '_' . $modelid;
         // 当前时间，如：20xx-xx-xx 08:35:15
         $now = Carbon::now()->toDateTimeString();
         $res = [
             'member_id' => $this->id,
             'member_name' => $this->name,
-            'model_name' =>$action,
+            'model_name' =>$model,
             'model_id'=>$modelid,
             'model_title' => $modeltitle,
-            'log'=>$this->name.' 查看了 '.$modeltitle.' '.$now,
+            'log'=>$this->name.' '.$action.' '.$modeltitle.' '.$now,
             'created_at' => $now
         ];
         // 数据写入 Redis ，字段已存在会被更新

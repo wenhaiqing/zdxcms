@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Topic;
-
+use App\Jobs\EveryAction;
 // creating, created, updating, updated, saving,
 // saved,  deleting, deleted, restoring, restored
 
@@ -19,6 +19,16 @@ class TopicObserver
         }
         $topic->content = clean($topic->content, 'user_topic_body');
         $topic->excerpt = make_excerpt($topic->content);
+    }
+
+    public function created(Topic $topic)
+    {
+        $member = \Auth::guard('wap')->user();
+        $model = 'topic';
+        $modelid = $topic->id;
+        $modeltitle = $topic->title;
+        dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'发布了'));
+
     }
 
     public function deleted(Topic $topic)

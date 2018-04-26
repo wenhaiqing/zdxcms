@@ -34,7 +34,7 @@
             <div class="aui-content aui-margin-b-15">
                 <ul class="aui-list aui-list-in">
                     @foreach($notices as $index=>$notice)
-                        <a href="{{route('wap.noticedetail',['id'=>$notice->id])}}">
+                        <a href="{{route('wap.noticedetail',['id'=>$notice->id,'title'=>$notice->title])}}">
                             <li class="aui-list-item">
                                 <div class="aui-list-item-inner">
                                     <div class="aui-list-item-title">{{$notice->title}}</div>

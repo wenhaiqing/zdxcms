@@ -88,12 +88,16 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myvideo')}}">
                     <big class="label-cont aui-font-size-16 aui-text-danger">23</big>
                     <div class="aui-grid-label aui-font-size-12">视频学习</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.mythemed')}}">
                     <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
                     <div class="aui-grid-label aui-font-size-12">主题学习</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
@@ -113,78 +117,49 @@
             <div class="aui-row">
                 <div class="aui-col-xs-3">
                     <big class="label-cont aui-font-size-16 aui-text-danger">23</big>
-                    <div class="aui-grid-label aui-font-size-12">我的话题</div>
+                    <div class="aui-grid-label aui-font-size-12">三会一课</div>
                 </div>
                 <div class="aui-col-xs-3">
                     <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
-                    <div class="aui-grid-label aui-font-size-12">我的回复</div>
+                    <div class="aui-grid-label aui-font-size-12">签到</div>
                 </div>
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myhistory')}}">
                     <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
-                    <div class="aui-grid-label aui-font-size-12">浏览记录</div>
+                    <div class="aui-grid-label aui-font-size-12">足迹</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
+                    <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-laud"></i></div>
                     <div class="aui-grid-label aui-font-size-12">活跃党员</div>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="aui-content">
-        <div class="aui-card-list">
-            <div class="aui-card-list-header">
-                <div class="aui-font-size-14">问答动态</div>
-                <i class="aui-iconfont aui-icon-close"></i>
-            </div>
-            <div class="aui-card-list-content">
-                <ul class="aui-list aui-media-list">
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                <img src="../image/demo5.png" class="aui-img-round" >
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title aui-font-size-12 text-light">有人向您提问</div>
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">
-                                    手机屏幕发黄，特别黄，怎么回事
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-12 text-light">
-                                    共9条回答
-                                </div>
-                            </div>
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                <img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg" />
-                            </div>
-                        </div>
-                    </li>
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                <img src="../image/demo5.png" class="aui-img-round" >
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title aui-font-size-12 text-light">有人向您提问</div>
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">
-                                    大家对中国红有什么看法呢
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-12 text-light">
-                                    共9条回答
-                                </div>
-                            </div>
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                <img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg" />
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="aui-card-list-footer aui-text-center">
-                查看更多
+        <div class=" aui-grid aui-padded-b-15 aui-padded-t-15 aui-border-t">
+            <div class="aui-row">
+                <div class="aui-col-xs-3">
+                    <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-my"></i></div>
+                    <div class="aui-grid-label aui-font-size-12">绑定管理员</div>
+                </div>
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.mytopic')}}">
+                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-calendar"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">我的话题</div>
+                    </a>
+                </div>
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myreply')}}">
+                    <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
+                    <div class="aui-grid-label aui-font-size-12">我的回复</div>
+                    </a>
+                </div>
+
+                <div class="aui-col-xs-3">
+                    <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-star"></i></div>
+                    <div class="aui-grid-label aui-font-size-12">活跃支部</div>
+                </div>
             </div>
         </div>
     </section>
+
     @stop

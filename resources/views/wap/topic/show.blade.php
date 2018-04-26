@@ -133,7 +133,7 @@
                                         </div>
 
                                         <div class="aui-list-item-inner">
-                                            <a href="{{route('wap.topic_show',['id'=>$reply->id])}}">
+                                            <a href="{{route('wap.topic_show',['id'=>$reply->topic_id])}}">
                                             <div class="aui-list-item-text">
                                                 <div class="aui-list-item-title aui-font-size-12 text-light">{{$reply->member->name}}</div>
                                             </div>

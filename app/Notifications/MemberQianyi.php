@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Qianyi;
+use Mail;
 
 class MemberQianyi extends Notification implements ShouldQueue
 {
@@ -63,6 +64,7 @@ class MemberQianyi extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         $title = $this->qianyi->name.'提出了迁党申请,请前往迁党管理中处理';
+
         return (new MailMessage)
                     ->subject('吕梁共产党员')
                     ->line($title);

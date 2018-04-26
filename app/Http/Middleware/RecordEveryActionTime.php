@@ -15,7 +15,7 @@ class RecordEveryActionTime
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next,$action=null)
+    public function handle($request, Closure $next,$model=null)
     {
         $response = $next($request);
         if (Auth::guard('wap')->check()){
@@ -23,7 +23,7 @@ class RecordEveryActionTime
             $modeltitle = $request->title;
             // 推送任务到队列
             $member = Auth::guard('wap')->user();
-            dispatch(new EveryAction($action,$member,$modelid,$modeltitle));
+            dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'查看了'));
         }
         return $response;
     }

@@ -23,12 +23,14 @@ class EveryAction implements ShouldQueue
     protected $member;
     protected $modelid;
     protected $modeltitle;
-    public function __construct($action=null,Member $member,$modelid=null,$modeltitle=null)
+    protected $model;
+    public function __construct($model,Member $member,$modelid=null,$modeltitle=null,$action=null)
     {
         $this->action = $action;
         $this->member = $member;
         $this->modelid = $modelid;
         $this->modeltitle = $modeltitle;
+        $this->model = $model;
     }
 
     /**
@@ -38,6 +40,6 @@ class EveryAction implements ShouldQueue
      */
     public function handle()
     {
-        $this->member->RecordEveryAction($this->action,$this->modelid,$this->modeltitle);
+        $this->member->RecordEveryAction($this->model,$this->modelid,$this->modeltitle,$this->action);
     }
 }
