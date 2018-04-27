@@ -126,20 +126,21 @@ class MemberController extends Controller
     public function myqiandao()
     {
         $member_id = Auth::guard('wap')->id();
+        $if_sign = 0;
         $preve = Sign::where('member_id',$member_id)->orderBy('id','desc')->first();
-        if ($preve->sign_time == Carbon::now()->toDateString()){
-            $if_sign = 1;
-            //签到天数，如果今天已签到就直接取，如果今天没签到就看上一次签到是不是昨天，如果是就加一如果不是就为0
-            $sign_contiday = $preve->sign_contiday;
-        }else{
-            $if_sign = 0;
-            if ($preve->sign_time == Carbon::yesterday()->toDateString()){
-                $sign_contiday = $preve->sign_contiday+1;
+        if ($preve){
+            if ($preve->sign_time == Carbon::now()->toDateString()){
+                $if_sign = 1;
+                //签到天数，如果今天已签到就直接取，如果今天没签到就看上一次签到是不是昨天，如果是就加一如果不是就为0
+                $sign_contiday = $preve->sign_contiday;
             }else{
-                $sign_contiday = 0;
+                if ($preve->sign_time == Carbon::yesterday()->toDateString()){
+                    $sign_contiday = $preve->sign_contiday+1;
+                }else{
+                    $sign_contiday = 0;
+                }
             }
         }
-
         return view('wap.member.myqiandao',compact('if_sign'));
 
     }
