@@ -120,8 +120,10 @@
                     <div class="aui-grid-label aui-font-size-12">三会一课</div>
                 </div>
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myqiandao')}}">
                     <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
                     <div class="aui-grid-label aui-font-size-12">签到</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myhistory')}}">

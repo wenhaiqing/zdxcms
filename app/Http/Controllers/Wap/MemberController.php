@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Wap;
 use App\Models\Browselog;
 use App\Models\Qianyi;
 use App\Models\Reply;
+use App\Models\Sign;
 use App\Models\ThemeDang;
 use App\Models\Topic;
 use App\Models\User;
 use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
@@ -118,6 +120,61 @@ class MemberController extends Controller
         $member_id = Auth::guard('wap')->id();
         $lists = Browselog::where('member_id',$member_id)->get();
         return view('wap.member.myhistory',compact('lists'));
+
+    }
+
+    public function myqiandao()
+    {
+        $member_id = Auth::guard('wap')->id();
+        $preve = Sign::where('member_id',$member_id)->orderBy('id','desc')->first();
+        if ($preve->sign_time == Carbon::now()->toDateString()){
+            $if_sign = 1;
+            //签到天数，如果今天已签到就直接取，如果今天没签到就看上一次签到是不是昨天，如果是就加一如果不是就为0
+            $sign_contiday = $preve->sign_contiday;
+        }else{
+            $if_sign = 0;
+            if ($preve->sign_time == Carbon::yesterday()->toDateString()){
+                $sign_contiday = $preve->sign_contiday+1;
+            }else{
+                $sign_contiday = 0;
+            }
+        }
+
+        return view('wap.member.myqiandao',compact('if_sign'));
+
+    }
+
+    public function qiandao(Request $request)
+    {
+        $member_id = Auth::guard('wap')->id();
+        $year = date('Y');
+        $month = date('m');
+        $res = [];
+        $list = Sign::where(['member_id'=>$member_id,'sign_year'=>$year,'sign_month'=>$month])->pluck('sign_day')->toArray();
+        foreach ($list as $k=>$v){
+            $res[]['signDay']=$v;
+        }
+        return json_encode($res);
+    }
+
+    public function getsign(Request $request)
+    {
+        $member_id = Auth::guard('wap')->id();
+        $year = $request->year;
+        $month = $request->month;
+        $res = [];
+        $list = Sign::where(['member_id'=>$member_id,'sign_year'=>$year,'sign_month'=>$month])->pluck('sign_day')->toArray();
+        foreach ($list as $k=>$v){
+            $res[]['signDay']=$v;
+        }
+        return json_encode($res);
+
+    }
+
+    public function qiandao_create(Sign $sign)
+    {
+        $res = $sign->sign_create();
+        return $res;
 
     }
 

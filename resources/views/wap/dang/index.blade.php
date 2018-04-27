@@ -147,6 +147,6 @@
         </a>
     </div>
 </div>
-<div class="qiandao clear"><a href=""><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></div>
+<div class="qiandao clear"><a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></div>
 </body>
 </html>

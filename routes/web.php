@@ -100,6 +100,10 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('myreply', ['uses'=>'MemberController@myreply'])->name('wap.myreply');
     Route::get('myhistory', ['uses'=>'MemberController@myhistory'])->name('wap.myhistory');
     Route::get('myqianyi', ['uses'=>'MemberController@myqianyi'])->name('wap.myqianyi');
+    Route::get('myqiandao', ['uses'=>'MemberController@myqiandao'])->name('wap.myqiandao');
+    Route::post('qiandao', ['uses'=>'MemberController@qiandao'])->name('wap.qiandao');
+    Route::post('qiandao_create', ['uses'=>'MemberController@qiandao_create'])->name('wap.qiandao_create');
+    Route::post('getsign', ['uses'=>'MemberController@getsign'])->name('wap.getsign');
 
 
 });
@@ -108,3 +112,5 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 
 
 
+
+Route::resource('signs', 'SignsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
