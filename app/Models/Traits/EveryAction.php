@@ -29,7 +29,8 @@ trait EveryAction
             'model_name' =>$model,
             'model_id'=>$modelid,
             'model_title' => $modeltitle,
-            'log'=>$this->name.' '.$action.' '.$modeltitle.' '.$now,
+            'log'=>$this->name.' '.$action.' '.$modeltitle,
+            'jifen'=>config('wap.global.'.$model),
             'created_at' => $now
         ];
         // 数据写入 Redis ，字段已存在会被更新
@@ -47,6 +48,7 @@ trait EveryAction
 
         // 从 Redis 中获取所有哈希表里的数据
         $dates = Redis::hGetAll($hash);
+        \Log::info($dates);
 
         // 遍历，并同步到数据库中
         foreach ($dates as $user_id => $action) {
@@ -60,6 +62,7 @@ trait EveryAction
                 'model_id'=>$action->model_id,
                 'model_title' => $action->model_title,
                 'log'=>$action->log,
+                'jifen'=>0,
                 'action_time' => $action->created_at
             ]);
         }

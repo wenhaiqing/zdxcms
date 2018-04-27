@@ -25,7 +25,7 @@ class Sign extends Model
             'sign_year_month'=>date('Y-m'),
             'sign_time'=>date('Y-m-d'),
             'sign_contiday'=>$sign_contiday,
-            'jifen'=>config('wap.global.sign_jifen'),
+            'jifen'=>config('wap.global.signs'),
         ];
         $arr = Sign::create($res);
         if ($arr){

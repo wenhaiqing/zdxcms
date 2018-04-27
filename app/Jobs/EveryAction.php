@@ -40,6 +40,7 @@ class EveryAction implements ShouldQueue
      */
     public function handle()
     {
+        $this->member->increment('jifen',config('wap.global.'.$this->model));
         $this->member->RecordEveryAction($this->model,$this->modelid,$this->modeltitle,$this->action);
     }
 }

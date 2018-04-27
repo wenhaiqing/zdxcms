@@ -116,18 +116,18 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
-                    <big class="label-cont aui-font-size-16 aui-text-danger">23</big>
+                    <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-pencil"></i></div>
                     <div class="aui-grid-label aui-font-size-12">三会一课</div>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myqiandao')}}">
-                    <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
+                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-calendar"></i></div>
                     <div class="aui-grid-label aui-font-size-12">签到</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myhistory')}}">
-                    <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
+                        <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-paper"></i></div>
                     <div class="aui-grid-label aui-font-size-12">足迹</div>
                     </a>
                 </div>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.mytopic')}}">
-                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-calendar"></i></div>
+                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
                         <div class="aui-grid-label aui-font-size-12">我的话题</div>
                     </a>
                 </div>
@@ -162,6 +162,7 @@
                 </div>
             </div>
         </div>
+
     </section>
 
     @stop
