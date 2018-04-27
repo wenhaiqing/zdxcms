@@ -11,10 +11,11 @@ class Sign extends Model
     {
         $member_id = \Auth::guard('wap')->id();
         $preve = Sign::where('member_id',$member_id)->orderBy('id','desc')->first();
-        if ($preve->sign_time == Carbon::yesterday()->toDateString()){
-            $sign_contiday = $preve->sign_contiday+1;
-        }else{
-            $sign_contiday = 0;
+        $sign_contiday = 0;
+        if ($preve){
+            if ($preve->sign_time == Carbon::yesterday()->toDateString()){
+                $sign_contiday = $preve->sign_contiday+1;
+            }
         }
         $res = [
             'member_id'=>$member_id,
@@ -24,7 +25,7 @@ class Sign extends Model
             'sign_year_month'=>date('Y-m'),
             'sign_time'=>date('Y-m-d'),
             'sign_contiday'=>$sign_contiday,
-            'jifen'=>1
+            'jifen'=>config('wap.global.sign_jifen'),
         ];
         $arr = Sign::create($res);
         if ($arr){
