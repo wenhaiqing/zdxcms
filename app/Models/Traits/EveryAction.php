@@ -61,7 +61,7 @@ trait EveryAction
                 'model_id'=>$action->model_id,
                 'model_title' => $action->model_title,
                 'log'=>$action->log,
-                'jifen'=>0,
+                'jifen'=>$action->jifen,
                 'action_time' => $action->created_at
             ]);
         }

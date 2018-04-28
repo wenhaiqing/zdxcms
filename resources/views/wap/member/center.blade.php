@@ -100,8 +100,10 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myjifen')}}">
                     <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
-                    <div class="aui-grid-label aui-font-size-12">积分</div>
+                    <div class="aui-grid-label aui-font-size-12">我的积分</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myqianyi')}}">

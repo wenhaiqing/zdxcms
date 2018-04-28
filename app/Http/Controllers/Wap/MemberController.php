@@ -179,5 +179,12 @@ class MemberController extends Controller
 
     }
 
+    public function myjifen()
+    {
+        $member_id = Auth::guard('wap')->id();
+        $lists = Browselog::where('member_id',$member_id)->orderBy('id','desc')->paginate(config('wap.global.paginate'));
+        return view('wap.member.myjifen',compact('lists'));
+    }
+
 
 }

@@ -104,6 +104,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::post('qiandao', ['uses'=>'MemberController@qiandao'])->name('wap.qiandao');
     Route::post('qiandao_create', ['uses'=>'MemberController@qiandao_create'])->name('wap.qiandao_create');
     Route::post('getsign', ['uses'=>'MemberController@getsign'])->name('wap.getsign');
+    Route::get('myjifen', ['uses'=>'MemberController@myjifen'])->name('wap.myjifen');
 
 
 });
@@ -113,4 +114,3 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 
 
 
-Route::resource('signs', 'SignsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
