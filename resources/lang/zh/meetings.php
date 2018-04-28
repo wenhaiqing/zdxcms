@@ -10,5 +10,6 @@ return [
     'meeting_picture'=>'会议现场时间',
     'meeting_record'=>'会议记录上传',
     'author'=>'会议发起人',
-    'upload_file'=>'上传文件'
+    'upload_file'=>'上传文件',
+    'meeting_sign_qrcode'=>'生成签到二维码'
 ];

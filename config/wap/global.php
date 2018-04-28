@@ -8,5 +8,6 @@ return [
     'theme_dangs'=>2,
     'topic'=>2,
     'replies'=>2,
-    'videos'=>2
+    'videos'=>2,
+    'meeting_sign'=>2
 ];

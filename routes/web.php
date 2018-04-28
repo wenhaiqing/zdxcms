@@ -105,6 +105,9 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::post('qiandao_create', ['uses'=>'MemberController@qiandao_create'])->name('wap.qiandao_create');
     Route::post('getsign', ['uses'=>'MemberController@getsign'])->name('wap.getsign');
     Route::get('myjifen', ['uses'=>'MemberController@myjifen'])->name('wap.myjifen');
+    //会议签到
+    Route::get('meeting_sign', ['uses'=>'MemberController@meeting_sign'])->name('wap.meeting_sign');
+    Route::post('meeting_sign_create', ['uses'=>'MemberController@meeting_sign_create'])->name('wap.meeting_sign_create');
 
 
 });

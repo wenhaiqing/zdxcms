@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wap;
 
 use App\Models\Browselog;
+use App\Models\MeetingSign;
 use App\Models\Qianyi;
 use App\Models\Reply;
 use App\Models\Sign;
@@ -184,6 +185,20 @@ class MemberController extends Controller
         $member_id = Auth::guard('wap')->id();
         $lists = Browselog::where('member_id',$member_id)->orderBy('id','desc')->paginate(config('wap.global.paginate'));
         return view('wap.member.myjifen',compact('lists'));
+    }
+
+    public function meeting_sign(Request $request)
+    {
+        $meeting_id = $request->meeting_id;
+        return view('wap.member.meetingsign',compact('meeting_id'));
+    }
+
+    public function meeting_sign_create(Request $request)
+    {
+
+        $meetingsign = MeetingSign::create($request->all());
+        flash(trans('会议签到成功'));
+        return back();
     }
 
 
