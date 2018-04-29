@@ -60,7 +60,7 @@
                 <label class="layui-form-label">{{trans('members.status')}}</label>
                 <div class="layui-input-block">
                     <input type="radio" name="status" value="0" @if(old('status',$member->status) == 0) checked="" @endif title="{{trans('global.pass_no')}}" lay-verify="required">
-                    <input type="radio" name="status" value="1" @if(old('status',$member->status) == 1) checked="" @endif title="{{trans('global.pass')}}" checked lay-verify="required">
+                    <input type="radio" name="status" value="1" @if(old('status',$member->status) == 1) checked="" @endif title="{{trans('global.pass')}}" lay-verify="required">
                 </div>
             </div>
             <div class="layui-form-item" pane="">

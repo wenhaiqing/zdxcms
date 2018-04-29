@@ -190,6 +190,43 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
+        $members = Permission::create([
+            'name' => "manage_members",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "党员管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members/create",
+            'remarks' => "添加党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "编辑党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destroy_members",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/members",
+            'remarks' => "删除党员",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
         $notify = Permission::create([
             'name' => "manage_notify",
             'pid' => $dang->id,
@@ -337,43 +374,7 @@ class PermissionsTableSeeder extends Seeder
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
-        $members = Permission::create([
-            'name' => "manage_members",
-            'pid' => $system->id,
-            'icon' => "fa fa-users",
-            'url' => "zdxadmin/members",
-            'remarks' => "党员管理",
-            'status'=>1,
-            'created_at'=>Carbon::now()->toDateTimeString(),
-            'updated_at'=>Carbon::now()->toDateTimeString()
-        ]);
-        Permission::create([
-            'name' => "create_members",
-            'pid' => $members->id,
-            'icon' => "fa fa-users",
-            'url' => "zdxadmin/members/create",
-            'remarks' => "添加党员",
-            'created_at'=>Carbon::now()->toDateTimeString(),
-            'updated_at'=>Carbon::now()->toDateTimeString()
-        ]);
-        Permission::create([
-            'name' => "edit_members",
-            'pid' => $members->id,
-            'icon' => "fa fa-users",
-            'url' => "zdxadmin/members",
-            'remarks' => "编辑党员",
-            'created_at'=>Carbon::now()->toDateTimeString(),
-            'updated_at'=>Carbon::now()->toDateTimeString()
-        ]);
-        Permission::create([
-            'name' => "destroy_members",
-            'pid' => $members->id,
-            'icon' => "fa fa-users",
-            'url' => "zdxadmin/members",
-            'remarks' => "删除党员",
-            'created_at'=>Carbon::now()->toDateTimeString(),
-            'updated_at'=>Carbon::now()->toDateTimeString()
-        ]);
+
         $topics = Permission::create([
             'name' => "manage_topics",
             'pid' => $dang->id,
@@ -482,6 +483,52 @@ class PermissionsTableSeeder extends Seeder
             'icon' => "fa fa-users",
             'url' => "zdxadmin/qianyis",
             'remarks' => "删除迁党",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $meetings = Permission::create([
+            'name' => "manage_meetings",
+            'pid' => $dang->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/meetings",
+            'remarks' => "会议/活动管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "create_meetings",
+            'pid' => $meetings->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/meetings/create",
+            'remarks' => "添加会议/活动",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "edit_meetings",
+            'pid' => $meetings->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/meetings",
+            'remarks' => "编辑会议/活动",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "destroy_meetings",
+            'pid' => $meetings->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/meetings",
+            'remarks' => "删除会议/活动",
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        $signs = Permission::create([
+            'name' => "select_signs",
+            'pid' => $members->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/signs",
+            'remarks' => "查看签到情况",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);

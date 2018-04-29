@@ -12,13 +12,11 @@ class MemberRequest extends Request
             case 'POST':
             {
                 return [
-                    'name' => 'required',
                     'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
                     'age'=>'required|numeric:age',
                     'password' => 'required|string|min:6',
                     'cardnum'=>'required|identitycards',
-                    'record'=>'required|string',
-                    'nation'=>'required|string'
+
                 ];
             }
             // UPDATE
@@ -27,11 +25,10 @@ class MemberRequest extends Request
             {
                 return [
                     'name' => 'required',
-                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
+                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members,mobile,'.$this->member->id,
                     'age'=>'required|numeric',
                     'cardnum'=>'required|identitycards',
-                    'record'=>'required|string',
-                    'nation'=>'required|string'
+
                 ];
             }
             case 'GET':

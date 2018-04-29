@@ -14,6 +14,8 @@
         <form class="form-signin" action="{{route('register.create')}}" method="POST" role="form">
             {{ csrf_field() }}
             <input type="hidden" name="user_id" value="{{$user_id}}">
+            <input type="hidden" name="status" value="0">
+            <input type="hidden" name="jifen" value="0">
             <ul class="aui-list aui-form-list">
                 <li class="aui-list-item">
                     <div class="aui-list-item-inner">
@@ -22,7 +24,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input id="name" name="name" value="{{ old('name') }}" class="form-control"
+                            <input id="name" name="name" required value="{{ old('name') }}" class="form-control"
                                    placeholder="请输入用户名" maxlength="20" type="text">
                         </div>
                     </div>
@@ -34,7 +36,7 @@
                             <small class="aui-margin-l-5 aui-text-warning">+86</small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input type="number" style="font-size:14px;" pattern="[0-9]*" placeholder="输入手机号"
+                            <input type="number" required style="font-size:14px;" pattern="[0-9]*" placeholder="输入手机号"
                                    name="mobile" id="mobile" value="{{old('mobile')}}">
                         </div>
                     </div>
@@ -46,7 +48,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input type="password" style="font-size:14px;" placeholder="请输入密码" name="password"
+                            <input type="password" required style="font-size:14px;" placeholder="请输入密码" name="password"
                                    id="password">
                         </div>
                     </div>
@@ -58,7 +60,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input type="text" value="{{ old('nation') }}" style="font-size:14px;" placeholder="请输入民族"
+                            <input type="text" required value="{{ old('nation') }}" style="font-size:14px;" placeholder="请输入民族"
                                    name="nation" id="nation">
                         </div>
                     </div>
@@ -70,7 +72,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input id="cardnum" name="cardnum" value="{{ old('cardnum') }}" class="form-control"
+                            <input id="cardnum" required name="cardnum" value="{{ old('cardnum') }}" class="form-control"
                                    placeholder="请输入身份证号" type="text">
                         </div>
                     </div>
@@ -82,7 +84,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input id="record" name="record" value="{{ old('record') }}" class="form-control"
+                            <input id="record" required name="record" value="{{ old('record') }}" class="form-control"
                                    placeholder="请输入学历" type="text">
                         </div>
                     </div>
@@ -94,7 +96,7 @@
                             <small class="aui-margin-l-5 aui-text-warning"></small>
                         </div>
                         <div class="aui-list-item-input aui-padded-l-10">
-                            <input id="age" name="age" value="{{ old('age') }}" class="form-control" placeholder="请输入年龄"
+                            <input id="age" name="age" required value="{{ old('age') }}" class="form-control" placeholder="请输入年龄"
                                    type="number">
                         </div>
                     </div>
@@ -137,18 +139,7 @@
                         <div class="aui-list-item-label">
                             出生日期
                         </div>
-                        <div style="width:100%">
-                            <select style="width: 20%;" node-type="birthday_year" name="birthday_y" id="birthday_y">
-                                <option value=""></option>
-                            </select>
-                            <select style="width: 20%;margin-left: 40%;margin-top: -17%;" node-type="birthday_month" name="birthday_m" id="birthday_m">
-                                <option value=""></option>
-                            </select>
-                            <select style="width: 20%;float: right;margin-top: -17%;" node-type="birthday_month" name="birthday_d" id="birthday_d">
-                                <option value=""></option>
-                            </select>
-                            <input type="hidden" name="birthday" id="birth" value="2016/2/12">
-                        </div>
+                        <input type="text" name="birthday" value="{{ old('birthday') }}" required class="layui-input" id="test1" placeholder="yyyy-MM-dd">
                     </div>
 
                 </li>
@@ -165,208 +156,10 @@
 @section('js')
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
-    <script type="text/javascript" src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
     <script>
-        var date = new Date();
-        var year = date.getFullYear();
-        for (var i = year; i >= 1900; i--) {
-            $("#birthday_y").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-        }
-
-
-        $('#birthday_y').change(function () {
-            var birth_year = $('#birthday_y').val();
-            if (birth_year != "") {
-                var birth_month = $('#birthday_m').val();
-                if (birth_month != "") {
-                    if (birth_month == "2") {
-                        if ((birth_year % 4 == 0 && birth_year % 100 != 0) || (birth_year % 400 == 0)) {
-                            $("#birthday_d").append("<option value=" + 29 + " label=" + 29 + ">" + 29 + "</option>");
-                        } else {
-                            $("#birthday_d option[value='29']").remove();
-                        }
-                    }
-                } else {
-                    for (var i = 1; i <= 12; i++) {
-                        $("#birthday_m").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                    }
-                }
-            } else {
-                $("#birthday_m").html("<option value=''></option>");
-                $("#birthday_d").html("<option value=''></option>");
-            }
-            checkBirthday();
+        layui.laydate.render({
+            elem: '#test1'
         });
-        $('#birthday_m').change(function () {
-            var birth_year = $('#birthday_y').val();
-            var birth_month = this.value;
-            var birth_day = $('#birthday_d').val();
-            if (birth_month != "") {
-                switch (birth_month) {
-                    case "1":
-                    case "3":
-                    case "5":
-                    case "7":
-                    case "8":
-                    case "10":
-                    case "12":
-                        if (birth_day == "") {
-                            $("#birthday_d").empty();
-                            $("#birthday_d").append("<option value='' ></option>");
-                            for (var i = 1; i <= 31; i++) {
-                                $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                            }
-                        } else {
-                            switch ($("#birthday_d option:last").attr("value")) {
-                                case "28":
-                                    $("#birthday_d").append("<option value=" + 29 + " >" + 29 + "</option>");
-                                case "29":
-                                    $("#birthday_d").append("<option value=" + 30 + " >" + 30 + "</option>");
-                                    $("#birthday_d").append("<option value=" + 31 + " >" + 31 + "</option>");
-                                    break;
-                                case "30":
-                                    $("#birthday_d").append("<option value=" + 31 + " >" + 31 + "</option>");
-                                    break;
-                                default :
-                                    break;
-
-                            }
-                        }
-                        break;
-                    case "4":
-                    case "6":
-                    case "9":
-                    case "11":
-                        if (birth_day == "") {
-                            $("#birthday_d").empty();
-                            $("#birthday_d").append("<option value='' ></option>");
-                            for (var i = 1; i <= 30; i++) {
-                                $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                            }
-                        } else {
-                            switch ($("#birthday_d option:last").attr("value")) {
-                                case "28":
-                                    $("#birthday_d").append("<option value=" + 29 + " >" + 29 + "</option>");
-                                case "29":
-                                    $("#birthday_d").append("<option value=" + 30 + " >" + 30 + "</option>");
-                                case "31":
-                                    $("#birthday_d option[value='31']").remove();
-                                    break;
-                                default :
-                                    break;
-
-                            }
-                        }
-                        break;
-                    case "2":
-                        if (birth_day == "") {
-                            if ((birth_year % 4 == 0 && birth_year % 100 != 0) || (birth_year % 400 == 0)) {
-                                for (var i = 1; i <= 29; i++) {
-                                    $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                                }
-                            } else {
-                                for (var i = 1; i <= 28; i++) {
-                                    $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                                }
-                            }
-                        } else {
-                            $("#birthday_d option[value='31']").remove();
-                            $("#birthday_d option[value='30']").remove();
-                            if ((birth_year % 4 == 0 && birth_year % 100 != 0) || (birth_year % 400 == 0)) {
-
-                            } else {
-                                $("#birthday_d option[value='29']").remove();
-                            }
-                        }
-                        break;
-                    default :
-                        break;
-                }
-
-
-            }
-            checkBirthday();
-        });
-
-        $('#birthday_d').change(function () {
-                checkBirthday();
-            }
-        );
-        $('#birthday_d').focus(
-            function () {
-                if ($('#birthday_m').val() == "") {
-                    $("#birthday_d").empty();
-                    $("#birthday_d").append("<option value='' ></option>");
-                }
-            }
-        );
-
-        //根据后台提供的数据，填充用户的值
-        var birth_value = $('#birth').val();
-        if (birth_value != "") {
-            var date1 = new Date(birth_value);
-            var b_year = date1.getFullYear();
-            var b_month = date1.getMonth() + 1;
-            var b_day = date1.getDate();
-            $("#birthday_y").find("option[value='" + b_year + "']").attr("selected", "selected");
-            if ($('#birthday_y').val() != "") {
-                for (var i = 1; i <= 12; i++) {
-                    $("#birthday_m").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                }
-            }
-            $("#birthday_m").find("option[value='" + b_month + "']").attr("selected", "selected");
-            switch (b_month) {
-                case 1:
-                case 3:
-                case 5:
-                case 7:
-                case 8:
-                case 10:
-                case 12:
-                    for (var i = 1; i <= 31; i++) {
-                        $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                    }
-                    break;
-                case 4:
-                case 6:
-                case 9:
-                case 11:
-
-                    $("#birthday_d").append("<option value='' ></option>");
-                    for (var i = 1; i <= 30; i++) {
-                        $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                    }
-                    break;
-                case 2:
-                    if ((b_year % 4 == 0 && b_year % 100 != 0) || (b_year % 400 == 0)) {
-                        for (var i = 1; i <= 29; i++) {
-                            $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                        }
-                    } else {
-                        for (var i = 1; i <= 28; i++) {
-                            $("#birthday_d").append("<option value=" + i + " label=" + i + ">" + i + "</option>");
-                        }
-                    }
-                    break;
-                default :
-                    break;
-            }
-            $("#birthday_d").find("option[value='" + b_day + "']").attr("selected", "selected");
-        }
-
-        //验证生日是否输入完整
-        function checkBirthday() {
-            var b_year = $('#birthday_y').val();
-            var b_month = $('#birthday_m').val();
-            var b_day = $('#birthday_d').val();
-            if (b_year != "" && b_month != "" && b_day != "") {
-                $('#birth').val(b_year + "-" + b_month + "-" + b_day);
-                $('#birth_error_info').addClass("hidden");
-            } else {
-                $('#birth').val("");
-                $('#birth_error_info').removeClass("hidden");
-            }
-        }
-
     </script>
+
 @stop

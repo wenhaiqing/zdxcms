@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MemberRequest;
 use Hash;
 
-class MembersController extends Controller
+class MembersController extends BaseController
 {
     public function __construct()
     {
@@ -21,7 +21,9 @@ class MembersController extends Controller
         if($keyword = $memberRequest->keyword ?? ''){
             $member = $member->where('name', 'like', "%{$keyword}%");
         }
-		$members = $member->paginate(config('admin.global.paginate'));
+        $id = \Auth::id();
+        $ids = $this->get_adminson([$id],[$id]);
+		$members = $member->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
 		return view(getThemeView('members.index'), compact('members'));
 	}
 

@@ -45,7 +45,7 @@ class LoginController extends Controller
 
             return redirect()->route('wap.index');
         };
-        flash('账号或者密码错误');
+        flash('账号密码错误或者还未通过审核');
         return redirect()->route('wap.login');
     }
 
@@ -69,8 +69,11 @@ class LoginController extends Controller
         $res = $memberRequest->all();
         $res['password'] = Hash::make($memberRequest->password);
         $member = Member::create($res);
-        Auth::guard('wap')->login($member, true);
-        return redirect()->route('wap.index');
+        flash('您已注册成功，请等待上级支部管理员审核');
+        //因为注册之后要通过审核所以这里不直接登录
+       // Auth::guard('wap')->login($member, true);
+        //return redirect()->route('wap.index');
+        return redirect()->route('wap.login');
     }
 
     /**

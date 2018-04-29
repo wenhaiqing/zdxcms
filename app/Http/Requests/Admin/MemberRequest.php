@@ -34,7 +34,7 @@ class MemberRequest extends FormRequest
             {
                 return [
                     'name' => 'required',
-                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
+                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members,mobile,'.$this->member->id,
                     'age'=>'required|numeric',
                     'cardnum'=>'required|identitycards',
                     'record'=>'required|string',
