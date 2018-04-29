@@ -88,20 +88,20 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myvideo')}}">
-                    <big class="label-cont aui-font-size-16 aui-text-danger">23</big>
-                    <div class="aui-grid-label aui-font-size-12">视频学习</div>
+                    <a href="{{route('wap.mytopic')}}">
+                    <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->topic->count()}}</big>
+                    <div class="aui-grid-label aui-font-size-12">我的话题</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.mythemed')}}">
-                    <big class="label-cont aui-font-size-16 aui-text-danger">1</big>
-                    <div class="aui-grid-label aui-font-size-12">主题学习</div>
+                    <a href="{{route('wap.myreply')}}">
+                    <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->replies->count()}}</big>
+                    <div class="aui-grid-label aui-font-size-12">我的回复</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myjifen')}}">
-                    <big class="label-cont aui-font-size-14 aui-text-danger">100</big>
+                    <big class="label-cont aui-font-size-14 aui-text-danger">{{$member->jifen}}</big>
                     <div class="aui-grid-label aui-font-size-12">我的积分</div>
                     </a>
                 </div>
@@ -118,13 +118,15 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.mymeeting')}}">
                     <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-pencil"></i></div>
                     <div class="aui-grid-label aui-font-size-12">三会一课</div>
+                    </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myqiandao')}}">
                         <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-calendar"></i></div>
-                    <div class="aui-grid-label aui-font-size-12">签到</div>
+                    <div class="aui-grid-label aui-font-size-12">每日签到</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
@@ -134,8 +136,10 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.member_active')}}">
                     <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-laud"></i></div>
                     <div class="aui-grid-label aui-font-size-12">活跃党员</div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -146,21 +150,24 @@
                     <div class="aui-grid-label aui-font-size-12">绑定管理员</div>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.mytopic')}}">
+                        <a href="{{route('wap.myvideo')}}">
                         <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">我的话题</div>
+                        <div class="aui-grid-label aui-font-size-12">视频学习</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myreply')}}">
+
+                        <a href="{{route('wap.mythemed')}}">
                     <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
-                    <div class="aui-grid-label aui-font-size-12">我的回复</div>
+                    <div class="aui-grid-label aui-font-size-12">主题学习</div>
                     </a>
                 </div>
 
                 <div class="aui-col-xs-3">
+                    <a href="{{route('wap.user_active')}}">
                     <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-star"></i></div>
                     <div class="aui-grid-label aui-font-size-12">活跃支部</div>
+                    </a>
                 </div>
             </div>
         </div>

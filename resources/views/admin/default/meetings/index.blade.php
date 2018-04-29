@@ -88,7 +88,7 @@
 
     @include(getThemeView('layouts._paginate'),[ 'count' => $meetings->total(), ])
     <script src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
-    <script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="{{asset('layui/lib/jquery/jquery.qrcode.min.js')}}"></script>
     <script>
         layui.use('layer', function(){ //独立版的layer无需执行这一句
             var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句

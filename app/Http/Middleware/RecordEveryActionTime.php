@@ -23,7 +23,8 @@ class RecordEveryActionTime
             $modeltitle = $request->title;
             // 推送任务到队列
             $member = Auth::guard('wap')->user();
-            dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'查看了'));
+            $jifen = config('wap.global.'.$model);
+            dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'查看了',$jifen));
         }
         return $response;
     }

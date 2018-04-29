@@ -24,13 +24,15 @@ class EveryAction implements ShouldQueue
     protected $modelid;
     protected $modeltitle;
     protected $model;
-    public function __construct($model,Member $member,$modelid=null,$modeltitle=null,$action=null)
+    protected $jifen;
+    public function __construct($model,Member $member,$modelid=null,$modeltitle=null,$action=null,$jifen=0)
     {
         $this->action = $action;
         $this->member = $member;
         $this->modelid = $modelid;
         $this->modeltitle = $modeltitle;
         $this->model = $model;
+        $this->jifen = $jifen;
     }
 
     /**
@@ -40,7 +42,7 @@ class EveryAction implements ShouldQueue
      */
     public function handle()
     {
-        $this->member->increment('jifen',config('wap.global.'.$this->model));
-        $this->member->RecordEveryAction($this->model,$this->modelid,$this->modeltitle,$this->action);
+
+        $this->member->RecordEveryAction($this->model,$this->modelid,$this->modeltitle,$this->action,$this->jifen);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Wap;
 
+use App\Models\Meeting;
 use App\Models\Notify;
 use App\Models\ThemeDang;
 use App\Models\User;
@@ -120,5 +121,33 @@ class MobileController extends Controller
         $id = $request->id;
         $themeds = ThemeDang::where('id',$id)->get();
         return view('wap.dang.themeddetail',compact('themeds'));
+    }
+
+    public function meetings(User $user,Request $request)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $user = $user->where('name', 'like', "%{$keyword}%");
+        }
+        $id = Auth::guard('wap')->user()->user_id;
+        $ids = get_mobileson([$id],[$id]);
+        $meetings = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
+        return view('wap.dang.meetings',compact('meetings'));
+    }
+
+    public function meetingslist(Meeting $meeting,Request $request)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $meeting = $meeting->where('meeting_title', 'like', "%{$keyword}%");
+        }
+        $user_id = $request->id;
+        $meetings = $meeting->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        return view('wap.dang.meetingslist',compact('meetings','user_id'));
+    }
+
+    public function meetingsdetail(Request $request)
+    {
+        $id = $request->id;
+        $meetings = Meeting::where('id',$id)->get();
+        return view('wap.dang.meetingsdetail',compact('meetings','id'));
     }
 }

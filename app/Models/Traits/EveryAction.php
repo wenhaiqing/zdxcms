@@ -13,7 +13,7 @@ trait EveryAction
     protected $hash_prefix = 'zdx:zdx_every_action_is_';
     protected $field_prefix = 'member_';
 
-    public function RecordEveryAction($model, $modelid = null, $modeltitle = null,$action='查看了')
+    public function RecordEveryAction($model, $modelid = null, $modeltitle = null,$action='查看了',$jifen=0)
     {
         // 获取今天的日期
         $date = Carbon::now()->toDateString();
@@ -22,6 +22,12 @@ trait EveryAction
         // 字段名称，如：member_id_model_modelid
         $field = $this->field_prefix . $this->id . '_' . $model . '_' . $modelid;
         // 当前时间，如：20xx-xx-xx 08:35:15
+        $res = Redis::hGet($hash,$field);
+        if (!$res){
+            $this->increment('jifen',$jifen);
+        }else{
+            $jifen = 0;
+        }
         $now = Carbon::now()->toDateTimeString();
         $res = [
             'member_id' => $this->id,
@@ -30,7 +36,7 @@ trait EveryAction
             'model_id'=>$modelid,
             'model_title' => $modeltitle,
             'log'=>$this->name.' '.$action.' '.$modeltitle,
-            'jifen'=>config('wap.global.'.$model),
+            'jifen'=>$jifen,
             'created_at' => $now
         ];
         // 数据写入 Redis ，字段已存在会被更新

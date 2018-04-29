@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wap;
 
 use App\Models\Browselog;
+use App\Models\Meeting;
 use App\Models\MeetingSign;
 use App\Models\Qianyi;
 use App\Models\Reply;
@@ -15,6 +16,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Member;
+use Redis;
 use Auth;
 
 class MemberController extends Controller
@@ -183,7 +185,7 @@ class MemberController extends Controller
     public function myjifen()
     {
         $member_id = Auth::guard('wap')->id();
-        $lists = Browselog::where('member_id',$member_id)->orderBy('id','desc')->paginate(config('wap.global.paginate'));
+        $lists = Browselog::where('member_id',$member_id)->where('jifen','>','0')->orderBy('id','desc')->paginate(config('wap.global.paginate'));
         return view('wap.member.myjifen',compact('lists'));
     }
 
@@ -193,12 +195,52 @@ class MemberController extends Controller
         return view('wap.member.meetingsign',compact('meeting_id'));
     }
 
+    public function meeting_signlist(Request $request,MeetingSign $meetingsign)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $meetingsign = $meetingsign->where('sign_title', 'like', "%{$keyword}%");
+        }
+        $meeting_id = $request->meeting_id;
+        $member_id = Auth::guard('wap')->id();
+        $meeting_signs = $meetingsign->where(['member_id'=>$member_id,'meeting_id'=>$meeting_id])->paginate(config('wap.global.paginate'));
+        return view('wap.member.meetingsignlist',compact('meeting_signs','meeting_id'));
+    }
+
+    public function meeting_signsdetail(Request $request)
+    {
+        $id = $request->id;
+        $lists = MeetingSign::where('id',$id)->first();
+        return view('wap.member.meetingsignsdetail',compact('lists'));
+
+    }
+
     public function meeting_sign_create(Request $request)
     {
-
         $meetingsign = MeetingSign::create($request->all());
         flash(trans('会议签到成功'));
         return back();
+    }
+
+    public function mymeeting(Request $request,Meeting $meeting)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $meeting = $meeting->where('meeting_title', 'like', "%{$keyword}%");
+        }
+        $member_id = Auth::guard('wap')->id();
+        $res = MeetingSign::where(['member_id'=>$member_id])->pluck('meeting_id')->toArray();
+        $meetings = $meeting->whereIn('id',$res)->paginate(config('wap.global.paginate'));
+        return view('wap.member.mymeeting',compact('meetings'));
+    }
+
+    public function member_active()
+    {
+        $members = Member::orderBy('jifen','desc')->paginate(config('wap.global.paginate'));
+        return view('wap.member.memberactive',compact('members'));
+    }
+
+    public function user_active()
+    {
+        
     }
 
 

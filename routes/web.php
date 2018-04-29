@@ -105,9 +105,20 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::post('qiandao_create', ['uses'=>'MemberController@qiandao_create'])->name('wap.qiandao_create');
     Route::post('getsign', ['uses'=>'MemberController@getsign'])->name('wap.getsign');
     Route::get('myjifen', ['uses'=>'MemberController@myjifen'])->name('wap.myjifen');
+    Route::get('mymeeting', ['uses'=>'MemberController@mymeeting'])->name('wap.mymeeting');
     //会议签到
     Route::get('meeting_sign', ['uses'=>'MemberController@meeting_sign'])->name('wap.meeting_sign');
+    Route::get('meeting_signlist', ['uses'=>'MemberController@meeting_signlist'])->name('wap.meeting_signlist');
+    Route::get('meeting_signsdetail', ['uses'=>'MemberController@meeting_signsdetail'])->name('wap.meeting_signsdetail');
     Route::post('meeting_sign_create', ['uses'=>'MemberController@meeting_sign_create'])->name('wap.meeting_sign_create');
+    //三会一课
+    Route::get('meetings', ['uses'=>'MobileController@meetings'])->name('wap.meetings');
+    Route::get('meetingslist', ['uses'=>'MobileController@meetingslist'])->name('wap.meetingslist');
+    Route::get('meetingsdetail', ['uses'=>'MobileController@meetingsdetail'])->name('wap.meetingsdetail');
+
+    Route::get('member_active', ['uses'=>'MemberController@member_active'])->name('wap.member_active');
+    Route::get('user_active', ['uses'=>'MemberController@user_active'])->name('wap.user_active');
+
 
 
 });

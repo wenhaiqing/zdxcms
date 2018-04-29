@@ -10,16 +10,23 @@
     </header>
     <section class="aui-content-padded">
         @if($lists->count())
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-list-in">
+                    @foreach($lists as $index=>$value)
+                            <li class="aui-list-item">
+                                <div class="aui-list-item-inner">
+                                    <div class="aui-list-item-title">{{$value->log}}</div>
 
-            @foreach($lists as $index=>$value)
-                <div class="aui-info aui-margin-t-10 aui-padded-l-10 aui-padded-r-10">
-                    <div class="aui-info-item">
-                        <span class="aui-margin-l-5">{{$value->log}}</span>
-                    </div>
-                    <div class="aui-info-item">+{{$value->jifen}}</div>
-                </div>
-            
-            @endforeach
+                                        <div class="aui-list-item-right">
+                                            <div class="aui-label aui-label-info">+{{$value->jifen}}</div>
+                                        </div>
+
+                                </div>
+                            </li>
+
+                    @endforeach
+                </ul>
+            </div>
             <div id="paginate-render"></div>
         @else
             <br/>
