@@ -60,7 +60,9 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
 
     Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 
-    Route::resource('signs', 'SignsController', ['only' => ['index', 'show', 'destroy']]);
+    Route::resource('signs', 'SignsController', ['only' => [ 'store']]);
+    Route::post('signs/getsign', 'SignsController@getsign')->name('signs.getsign');
+    Route::get('signs/signshow', 'SignsController@signshow')->name('signs.signshow');
     Route::resource('meetings', 'MeetingsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 

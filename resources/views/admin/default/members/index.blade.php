@@ -66,6 +66,7 @@
                             <td>{{ $member->age  }}</td>
                             <td>
                                 <a href="{{ route('members.edit', $member->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                                <a href="{{ route('signs.signshow', ['id'=>$member->id,'member_id'=>$member->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('members.sign')}}</a>
                                 <a href="javascript:;" data-url="{{ route('members.destroy', $member->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                             </td>
                         </tr>

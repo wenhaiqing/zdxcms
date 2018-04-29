@@ -524,11 +524,21 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
         $signs = Permission::create([
-            'name' => "select_signs",
-            'pid' => $members->id,
+            'name' => "manage_signs",
+            'pid' => $dang->id,
             'icon' => "fa fa-users",
             'url' => "zdxadmin/signs",
-            'remarks' => "查看签到情况",
+            'remarks' => "签到管理",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+         Permission::create([
+            'name' => "edit_signs",
+            'pid' => $signs->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/signs",
+            'remarks' => "查看签到",
             'created_at'=>Carbon::now()->toDateTimeString(),
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);

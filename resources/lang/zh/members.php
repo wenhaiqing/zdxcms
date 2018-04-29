@@ -18,5 +18,6 @@ return [
     'if_movedang_on'=>'是',
     'if_movedang_off'=>'否',
     'sex_0'=>'男',
-    'sex_1'=>'女'
+    'sex_1'=>'女',
+    'sign'=>'查看签到情况'
 ];

@@ -37,4 +37,10 @@ class Sign extends Model
         }
         return $data;
     }
+
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+
+    }
 }
