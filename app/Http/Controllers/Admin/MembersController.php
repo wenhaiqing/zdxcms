@@ -23,7 +23,7 @@ class MembersController extends BaseController
         }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
-		$members = $member->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+		$members = $member->whereIn('user_id',$ids)->orderBy('id','desc')->paginate(config('admin.global.paginate'));
 		return view(getThemeView('members.index'), compact('members'));
 	}
 

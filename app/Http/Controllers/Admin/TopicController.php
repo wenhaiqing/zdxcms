@@ -26,7 +26,7 @@ class TopicController extends BaseController
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
         $members = Member::whereIn('user_id',$ids)->pluck('id')->toArray();
-        $topics = $topic->whereIn('member_id',$members)->paginate(config('wap.global.paginate'));
+        $topics = $topic->whereIn('member_id',$members)->recent()->paginate(config('wap.global.paginate'));
 //        dd($topics);
         return view(getThemeView('topics.index'), compact('topics'));
     }

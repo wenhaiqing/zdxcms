@@ -21,7 +21,7 @@ class VideosController extends BaseController
         }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
-		$videos = $video->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+		$videos = $video->whereIn('user_id',$ids)->recent()->paginate(config('admin.global.paginate'));
 		return view(getThemeView('videos.index'), compact('videos'));
 	}
 

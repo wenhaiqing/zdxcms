@@ -22,7 +22,7 @@ class MeetingsController extends BaseController
         }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
-        $meetings = $meeting->whereIn('user_id',$ids)->paginate(config('wap.global.paginate'));
+        $meetings = $meeting->whereIn('user_id',$ids)->recent()->paginate(config('wap.global.paginate'));
 		return view(getThemeView('meetings.index'), compact('meetings'));
 	}
 

@@ -23,7 +23,7 @@ class QianyisController extends Controller
             $qianyi = $qianyi->where('name', 'like', "%{$keyword}%");
         }
 	    //迁出申请
-		$qianyis = $qianyi->where('to_user_id','<>','0')->paginate(config('admin.global.paginate'));
+		$qianyis = $qianyi->where('to_user_id','<>','0')->recent()->paginate(config('admin.global.paginate'));
 
 		return view(getThemeView('qianyis.index'), compact('qianyis','linshi_qianyis'));
 	}

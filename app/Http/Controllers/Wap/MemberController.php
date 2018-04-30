@@ -77,7 +77,7 @@ class MemberController extends Controller
     public function myqianyi()
     {
         $member_id = Auth::guard('wap')->id();
-        $qianyi = Qianyi::where('member_id',$member_id)->paginate(config('wap.global.paginate'));
+        $qianyi = Qianyi::where('member_id',$member_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.myqianyi',compact('qianyi'));
     }
 
@@ -115,7 +115,7 @@ class MemberController extends Controller
         }
         $member_id = Auth::guard('wap')->id();
         $videos = Browselog::where(['member_id'=>$member_id,'model_name'=>'videos'])->pluck('model_id')->toArray();
-        $lists = $video->whereIn('id',$videos)->paginate(config('wap.global.paginate'));
+        $lists = $video->whereIn('id',$videos)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.myvideo',compact('lists'));
 
     }
@@ -127,7 +127,7 @@ class MemberController extends Controller
         }
         $member_id = Auth::guard('wap')->id();
         $res = Browselog::where(['member_id'=>$member_id,'model_name'=>'theme_dangs'])->pluck('model_id')->toArray();
-        $themeds = $themeDang->whereIn('id',$res)->paginate(config('wap.global.paginate'));
+        $themeds = $themeDang->whereIn('id',$res)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.mythemed',compact('themeds'));
 
     }
@@ -138,7 +138,7 @@ class MemberController extends Controller
             $topic = $topic->where('title', 'like', "%{$keyword}%");
         }
         $member_id = Auth::guard('wap')->id();
-        $topics = $topic->where('member_id',$member_id)->paginate(config('wap.global.paginate'));
+        $topics = $topic->where('member_id',$member_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.mytopic',compact('topics'));
         
     }
@@ -149,7 +149,7 @@ class MemberController extends Controller
             $reply = $reply->where('content', 'like', "%{$keyword}%");
         }
         $member_id = Auth::guard('wap')->id();
-        $replies = $reply->where('member_id',$member_id)->paginate(config('wap.global.paginate'));
+        $replies = $reply->where('member_id',$member_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.myreply',compact('replies'));
 
     }
@@ -157,7 +157,7 @@ class MemberController extends Controller
     public function myhistory()
     {
         $member_id = Auth::guard('wap')->id();
-        $lists = Browselog::where('member_id',$member_id)->get();
+        $lists = Browselog::where('member_id',$member_id)->recent()->get();
         return view('wap.member.myhistory',compact('lists'));
 
     }
@@ -238,7 +238,7 @@ class MemberController extends Controller
         }
         $meeting_id = $request->meeting_id;
         $member_id = Auth::guard('wap')->id();
-        $meeting_signs = $meetingsign->where(['member_id'=>$member_id,'meeting_id'=>$meeting_id])->paginate(config('wap.global.paginate'));
+        $meeting_signs = $meetingsign->where(['member_id'=>$member_id,'meeting_id'=>$meeting_id])->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.meetingsignlist',compact('meeting_signs','meeting_id'));
     }
 
@@ -264,7 +264,7 @@ class MemberController extends Controller
         }
         $member_id = Auth::guard('wap')->id();
         $res = MeetingSign::where(['member_id'=>$member_id])->pluck('meeting_id')->toArray();
-        $meetings = $meeting->whereIn('id',$res)->paginate(config('wap.global.paginate'));
+        $meetings = $meeting->whereIn('id',$res)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.member.mymeeting',compact('meetings'));
     }
 

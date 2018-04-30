@@ -36,7 +36,13 @@ class MobileController extends Controller
             $user = $user->where('name', 'like', "%{$keyword}%");
         }
         $id = Auth::guard('wap')->user()->user_id;
-        $ids = get_mobileson([$id],[$id]);
+        $linshiid = Auth::guard('wap')->user()->linshi_user_id;
+        if ($linshiid != 0){
+            $id = [$id,$linshiid];
+        }else{
+            $id = [$id];
+        }
+        $ids = get_mobileson($id,$id);
         $notices = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.notice',compact('notices'));
 
@@ -53,7 +59,7 @@ class MobileController extends Controller
             $notify = $notify->where('title', 'like', "%{$keyword}%");
         }
         $user_id = $request->id;
-        $notices = $notify->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        $notices = $notify->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.noticelist',compact('notices','user_id'));
     }
 
@@ -79,7 +85,7 @@ class MobileController extends Controller
         if($keyword = $request->keyword ?? ''){
             $video = $video->where('title', 'like', "%{$keyword}%");
         }
-        $lists = $video->paginate(config('wap.global.paginate'));
+        $lists = $video->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.videolist',compact('lists'));
     }
 
@@ -101,7 +107,13 @@ class MobileController extends Controller
             $user = $user->where('name', 'like', "%{$keyword}%");
         }
         $id = Auth::guard('wap')->user()->user_id;
-        $ids = get_mobileson([$id],[$id]);
+        $linshiid = Auth::guard('wap')->user()->linshi_user_id;
+        if ($linshiid != 0){
+            $id = [$id,$linshiid];
+        }else{
+            $id = [$id];
+        }
+        $ids = get_mobileson($id,$id);
         $themeds = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.themed',compact('themeds'));
     }
@@ -112,7 +124,7 @@ class MobileController extends Controller
             $themeDang = $themeDang->where('title', 'like', "%{$keyword}%");
         }
         $user_id = $request->id;
-        $themeds = $themeDang->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        $themeds = $themeDang->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.themedlist',compact('themeds','user_id'));
     }
 
@@ -129,7 +141,13 @@ class MobileController extends Controller
             $user = $user->where('name', 'like', "%{$keyword}%");
         }
         $id = Auth::guard('wap')->user()->user_id;
-        $ids = get_mobileson([$id],[$id]);
+        $linshiid = Auth::guard('wap')->user()->linshi_user_id;
+        if ($linshiid != 0){
+            $id = [$id,$linshiid];
+        }else{
+            $id = [$id];
+        }
+        $ids = get_mobileson($id,$id);
         $meetings = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
         return view('wap.dang.meetings',compact('meetings'));
     }
@@ -140,7 +158,7 @@ class MobileController extends Controller
             $meeting = $meeting->where('meeting_title', 'like', "%{$keyword}%");
         }
         $user_id = $request->id;
-        $meetings = $meeting->where('user_id',$user_id)->paginate(config('wap.global.paginate'));
+        $meetings = $meeting->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.meetingslist',compact('meetings','user_id'));
     }
 

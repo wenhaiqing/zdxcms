@@ -18,7 +18,7 @@ class NotifiesController extends BaseController
         }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
-		$notifies = $notify->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+		$notifies = $notify->whereIn('user_id',$ids)->recent()->paginate(config('admin.global.paginate'));
 		return view(getThemeView('notifies.index'), compact('notifies'));
 	}
 

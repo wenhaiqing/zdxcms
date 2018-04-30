@@ -16,7 +16,7 @@ class RepliesController extends Controller
         if($keyword = $request->keyword ?? ''){
             $reply = $reply->where('content', 'like', "%{$keyword}%");
         }
-        $replies = $reply->where('topic_id',$request->id)->paginate(config('wap.global.paginate'));
+        $replies = $reply->where('topic_id',$request->id)->recent()->paginate(config('wap.global.paginate'));
         return view(getThemeView('topics.reply'), compact('replies'));
     }
 

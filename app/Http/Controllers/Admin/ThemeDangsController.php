@@ -21,7 +21,7 @@ class ThemeDangsController extends BaseController
         }
         $id = \Auth::id();
         $ids = $this->get_adminson([$id],[$id]);
-		$theme_dangs = $themeDang->whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+		$theme_dangs = $themeDang->whereIn('user_id',$ids)->recent()->paginate(config('admin.global.paginate'));
 		return view(getThemeView('theme_dangs.index'), compact('theme_dangs'));
 	}
 
