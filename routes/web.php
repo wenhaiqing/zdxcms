@@ -92,9 +92,12 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::post('upload_image', 'UploadController@uploadImage')->name('wap.upload_image');
     //更改党员头像
     Route::post('member_avatar', 'UploadController@member_avatar')->name('wap.member_avatar');
-
+    //申请迁党
     Route::get('qianyi', ['uses'=>'MemberController@qianyi'])->name('wap.qianyi');
     Route::get('searchqianyi', ['uses'=>'MemberController@searchqianyi'])->name('wap.searchqianyi');
+    //临时迁移 流动党员
+    Route::get('linshi_qianyi', ['uses'=>'MemberController@linshi_qianyi'])->name('wap.linshi_qianyi');
+    Route::get('linshi_searchqianyi', ['uses'=>'MemberController@linshi_searchqianyi'])->name('wap.linshi_searchqianyi');
 
     Route::get('myvideo', ['uses'=>'MemberController@myvideo'])->name('wap.myvideo');
     Route::get('mythemed', ['uses'=>'MemberController@mythemed'])->name('wap.mythemed');

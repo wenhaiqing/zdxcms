@@ -16,10 +16,28 @@ class QianyisController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(Request $request,Qianyi $qianyi)
 	{
-		$qianyis = Qianyi::paginate();
-		return view(getThemeView('qianyis.index'), compact('qianyis'));
+        // 关键字过滤
+        if($keyword = $request->keyword ?? ''){
+            $qianyi = $qianyi->where('name', 'like', "%{$keyword}%");
+        }
+	    //迁出申请
+		$qianyis = $qianyi->where('to_user_id','<>','0')->paginate(config('admin.global.paginate'));
+
+		return view(getThemeView('qianyis.index'), compact('qianyis','linshi_qianyis'));
+	}
+
+    public function linshi_index(Request $request,Qianyi $qianyi)
+    {
+
+        // 关键字过滤
+        if($keyword = $request->keyword ?? ''){
+            $qianyi = $qianyi->where('name', 'like', "%{$keyword}%");
+        }
+        //流动党员临时迁入申请
+        $qianyis = $qianyi->where('linshi_to_user_id','<>','0')->paginate(config('admin.global.paginate'));
+        return view(getThemeView('qianyis.linshiindex'), compact('qianyis'));
 	}
 
     public function show(Qianyi $qianyi)
@@ -80,4 +98,13 @@ class QianyisController extends Controller
         Member::where('id',$qianyi->member_id)->update(['user_id'=>$qianyi->to_user_id]);
         return back()->with('message',trans('qianyis.end'));
 	}
+    public function linshi_end_qianyi(Request $request)
+    {
+        $id = $request->id;
+        $qianyi =  Qianyi::find($id);
+        $qianyi ->status = 2;
+        $qianyi->save();
+        Member::where('id',$qianyi->member_id)->update(['linshi_user_id'=>$qianyi->linshi_to_user_id]);
+        return back()->with('message',trans('qianyis.end'));
+    }
 }

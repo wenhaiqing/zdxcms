@@ -55,8 +55,10 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
     Route::resource('qianyis', 'QianyisController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    Route::get('linshi_index', 'QianyisController@linshi_index')->name('qianyis.linshi_index');
     Route::get('up_qianyis', 'QianyisController@up_qianyi')->name('zdxadmin.up_qianyis');
     Route::post('end_qianyis', 'QianyisController@end_qianyi')->name('qianyis.end');
+    Route::post('linshi_end_qianyis', 'QianyisController@linshi_end_qianyi')->name('qianyis.linshi_end');
 
     Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 

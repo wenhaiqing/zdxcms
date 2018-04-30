@@ -60,20 +60,18 @@
                         <td>{{ $qianyi->id }}</td>
                         <td>{{ $qianyi->name  }}</td>
                         <td>{{ $qianyi->from_user_name  }}</td>
-                        <td>{{ $qianyi->to_user_name  }}</td>
+                        <td>{{ $qianyi->linshi_to_user_name  }}</td>
                         <td>@switch($qianyi->status)
                                 @case(0){{ trans('qianyis.status_0')  }}@break
-                                @case(1){{ trans('qianyis.status_1')  }}@break
                                 @case(2){{ trans('qianyis.status_2')}}@break
-                            @endswitch</td>
+                                @endswitch
+                        </td>
 {{--                        <td>{{ $qianyi->view_count  }}</td>--}}
                         <td>{{ $qianyi->created_at->diffForHumans() }}</td>
                         <td>
+
                             @if($qianyi->status == 0)
-                            <a href="{{ route('zdxadmin.up_qianyis', ['id'=>$qianyi->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('qianyis.upqianyi')}}</a>
-                            @endif
-                            @if($qianyi->status == 1)
-                            <a href="javascript:;" data-url="{{ route('qianyis.end', ['id'=>$qianyi->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal qianyi-form">{{trans('qianyis.end')}}</a>
+                            <a href="javascript:;" data-url="{{ route('qianyis.linshi_end', ['id'=>$qianyi->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal qianyi-form">{{trans('qianyis.linshiend')}}</a>
                                 @endif
                                 @if($qianyi->status !=2)
                             <a href="javascript:;" data-url="{{ route('qianyis.destroy', $qianyi->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
@@ -112,7 +110,7 @@
 
                 var tUrl = $(this).attr('data-url');
 
-                layer.confirm('确认已经迁移完成了？该操作后党员会被直接迁移不可更改', {
+                layer.confirm('确认已经迁移完成了？该操作后流动党员可以查看与参加本组织的活动与会议', {
                     btn: ['确认', '取消']
                 }, function(index){
                     $("#qianyi-form").attr("action",tUrl).submit();

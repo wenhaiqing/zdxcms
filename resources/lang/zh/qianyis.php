@@ -19,5 +19,8 @@ return [
     'status_2'=>'已迁移',
     'upqianyi' => '向上级党组织申请',
     'upqianyi_success'=>'申请成功,请耐心等待',
-    'end'=>'完成迁移'
+    'end'=>'完成迁移',
+    'qianyi'=>'迁出申请',
+    'linshi_qianyi'=>'流动党员临时迁入申请',
+    'linshiend'=>'同意流动党员迁入本组织'
 ];
