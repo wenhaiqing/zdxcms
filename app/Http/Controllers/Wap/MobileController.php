@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wap;
 
 use App\Models\Meeting;
+use App\Models\Member;
 use App\Models\Notify;
 use App\Models\ThemeDang;
 use App\Models\User;

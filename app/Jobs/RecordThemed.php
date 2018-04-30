@@ -2,13 +2,14 @@
 
 namespace App\Jobs;
 
+use App\Models\Member;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class RecordEveryJifenLog implements ShouldQueue
+class RecordThemed implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -17,9 +18,10 @@ class RecordEveryJifenLog implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    protected $member;
+    public function __construct(Member $member)
     {
-        //
+        $this->member = $member;
     }
 
     /**
@@ -29,6 +31,6 @@ class RecordEveryJifenLog implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $this->member->check_member_themed();
     }
 }

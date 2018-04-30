@@ -8,9 +8,49 @@
     <meta name="keywords" content="吕梁 红色E站">
     <link rel="stylesheet" type="text/css" href="{{asset('wap/bootstrap/css/myindex.css')}}">
     <title>红色E站--首页</title>
+    <style type="text/css">
+        .aui-tips {
+            padding: 0 0.75rem;
+            width: 100%;
+            z-index: 99;
+            height: 1.9rem;
+            line-height: 1.9rem;
+            position: relative;
+            background-color: rgba(0,0,0,.6);
+            color: #ffffff;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .aui-iconfont {
+            position: relative;
+            font-family: "aui_iconfont" !important;
+            font-size: 0.7rem;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .aui-tips .aui-tips-title {
+            padding: 0 0.5rem;
+            font-size: 0.7rem;
+            position: relative;
+            max-width: 100%;
+        }
+    </style>
 </head>
 <body>
-
+@if($member->if_out == 1)
+<div class="aui-tips aui-margin-b-15" id="tips-1">
+    <i class="aui-iconfont aui-icon-info"></i>
+    <div class="aui-tips-title">消息提示条消息提示条消息提示</div>
+    <i class="aui-iconfont aui-icon-close"></i>
+</div>
+@endif
 
 <table class="mytab">
     <tr>
