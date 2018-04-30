@@ -90,6 +90,8 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::delete('reply/destroy', ['uses'=>'RepliesController@destroy'])->name('wap.reply_destroy');
 
     Route::post('upload_image', 'UploadController@uploadImage')->name('wap.upload_image');
+    //更改党员头像
+    Route::post('member_avatar', 'UploadController@member_avatar')->name('wap.member_avatar');
 
     Route::get('qianyi', ['uses'=>'MemberController@qianyi'])->name('wap.qianyi');
     Route::get('searchqianyi', ['uses'=>'MemberController@searchqianyi'])->name('wap.searchqianyi');

@@ -69,11 +69,11 @@
         <div class="aui-list aui-media-list aui-list-noborder aui-bg-info user-info">
             <div class="aui-list-item aui-list-item-middle">
                 <div class="aui-media-list-item-inner ">
-                    <div class="aui-list-item-media" style="width:3rem;">
+                    <div class="aui-list-item-media" id="img_test1" style="width:3rem;">
                         @if($member->avatar)
-                            <img src="{{$member->avatar}}" class="aui-img-round"  />
+                            <img src="{{$member->avatar}}" class="aui-img-round demo1"  />
                         @else
-                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round"  />
+                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round demo1"  />
                         @endif
                     </div>
                     <div class="aui-list-item-inner">
@@ -173,5 +173,44 @@
         </div>
 
     </section>
+
+    @stop
+
+@section('js')
+    <script>
+        layui.use('upload', function() {
+            var $ = layui.jquery
+                , upload = layui.upload;
+            //普通图片上传
+            var uploadInst = upload.render({
+                elem: '#img_test1'
+                ,url: '{{ route('wap.member_avatar') }}'
+                ,data: { _token: '{{ csrf_token() }}'}
+                ,before: function(obj){
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function(index, file, result){
+                        $('.demo1').attr('src', result); //图片链接（base64）
+                    });
+                }
+                ,done: function(res){
+                    //如果上传失败
+                    if(!res.success){
+                        return layer.msg(res.msg);
+                    }
+                    $("#cover").attr('value',res.file_path);
+                    //上传成功
+                }
+                ,error: function(){
+                    //演示失败状态，并实现重传
+                    var demoText = $('#demoText');
+                    demoText.html('<span style="color: #FF5722;">{{trans('global.upload_error')}}</span> <a class="layui-btn layui-btn-mini demo-reload">{{trans('global.restart')}}</a>');
+                    demoText.find('.demo-reload').on('click', function(){
+                        uploadInst.upload();
+                    });
+                }
+            });
+
+        })
+    </script>
 
     @stop
