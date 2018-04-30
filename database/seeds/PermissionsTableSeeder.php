@@ -533,5 +533,36 @@ class PermissionsTableSeeder extends Seeder
             'updated_at'=>Carbon::now()->toDateTimeString()
         ]);
 
+        $echarts = Permission::create([
+            'name' => "manage_echarts",
+            'pid' => 0,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/echarts",
+            'remarks' => "数据分析",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "manage_echarts_bar",
+            'pid' => $echarts->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/echarts/bar",
+            'remarks' => "党员数据分析",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+        Permission::create([
+            'name' => "manage_echarts_pie",
+            'pid' => $echarts->id,
+            'icon' => "fa fa-users",
+            'url' => "zdxadmin/echarts/pie",
+            'remarks' => "党组织数据分析",
+            'status'=>1,
+            'created_at'=>Carbon::now()->toDateTimeString(),
+            'updated_at'=>Carbon::now()->toDateTimeString()
+        ]);
+
     }
 }
