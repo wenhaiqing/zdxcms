@@ -9,22 +9,23 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Mail;
 
-class RecordActiveUser implements ShouldQueue
+class SendEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
-    protected $member;
+    protected $content;
+    protected $to;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(Member $member,User $user)
+    public function __construct($content,$to)
     {
-        $this->member = $member;
-        $this->user = $user;
+       $this->content = $content;
+       $this->to = $to;
     }
 
     /**
@@ -34,6 +35,12 @@ class RecordActiveUser implements ShouldQueue
      */
     public function handle()
     {
-        //
+        $contents = $this->content;
+        $num = Mail::raw($contents, function($message) {
+            $message->from(config('mail.from.address'), config('mail.from.name'));
+            $message->subject('吕梁市委通知');
+            $message->to($this->to);
+
+        });
     }
 }

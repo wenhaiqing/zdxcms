@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Qianyi;
 use App\Notifications\MemberQianyi;
+use App\Jobs\SendEmail;
 class HomeController extends Controller
 {
     /**
@@ -30,14 +33,26 @@ class HomeController extends Controller
 
     public function test()
     {
-        $qianyi = Qianyi::find(1);
-        $qianyi->user->notify(new MemberQianyi($qianyi));
+//        $qianyi = Qianyi::find(1);
+//        $qianyi->user->notify(new MemberQianyi($qianyi));
+//        $content = 'aa';$from = 'whqrlm@163.com';$from_name='a';$title='test';$to='243083741@qq.com';
+//        $num = Mail::raw($content, function($message) use ($from_name,$from,$title,$to) {
+//
+//            $message->from($from, $from_name);
+//            $message->subject('吕梁市委通知');
+//            $message->to('243083741@qq.com');
+//        });
 
-        $num = Mail::raw('邮件内容', function($message) {
-
-            $message->from('whqrlm@163.com', '发件人名称');
-            $message->subject('邮件主题');
-            $message->to('243083741@qq.com');
-        });
+//        new SendEmail('邮件内','whqrlm@163.com','wenhaiqing','hh','243083741@qq.com');
+        $member = User::where('id','49')->first();
+        $to = $member->email;
+        \Log::info($to);
+        dispatch(new SendEmail('title',$to));
+//        $content = 'aa';$from = 'whqrlm@163.com';$from_name='a';$title='s';$to='243083741@qq.com';
+//        $num = Mail::raw($content, function($message) use ($from_name,$from,$title,$to) {
+//            $message->from($from, $from_name);
+//            $message->subject($title);
+//            $message->to($to);
+//        });
     }
 }

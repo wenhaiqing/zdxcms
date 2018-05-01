@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
 use App\Models\Qianyi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QianyiRequest;
 use App\Notifications\MemberQianyi;
+use App\Jobs\SendEmail;
 
 class QianyisController extends Controller
 {
@@ -85,6 +87,10 @@ class QianyisController extends Controller
         $qianyi->touser->notify(new MemberQianyi($qianyi));
         $qianyi->status=1;
         $qianyi->save();
+        $title = $qianyi->name.'提出了迁党申请,请前往迁党管理中处理';
+        $upuser = User::where('id',$qianyi->user->pid)->first();
+        $to = $upuser->email;
+        dispatch(new SendEmail($title,$to));
         return redirect()->route('qianyis.index')->with('message', trans('qianyis.upqianyi_success'));
         
 	}
