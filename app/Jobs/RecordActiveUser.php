@@ -3,25 +3,28 @@
 namespace App\Jobs;
 
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class RecordThemed implements ShouldQueue
+class RecordActiveUser implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $user;
+    protected $member;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    protected $member;
-    public function __construct(Member $member)
+    public function __construct(Member $member,User $user)
     {
         $this->member = $member;
+        $this->user = $user;
     }
 
     /**
@@ -31,6 +34,6 @@ class RecordThemed implements ShouldQueue
      */
     public function handle()
     {
-        $this->member->check_member_themed();
+        //
     }
 }

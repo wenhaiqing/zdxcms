@@ -164,10 +164,10 @@
                 </div>
 
                 <div class="aui-col-xs-3">
-                    {{--<a href="{{route('wap.user_active')}}">--}}
+                    <a href="{{route('wap.user_active')}}">
                     <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-star"></i></div>
                     <div class="aui-grid-label aui-font-size-12">活跃支部</div>
-                    {{--</a>--}}
+                    </a>
                 </div>
             </div>
         </div>

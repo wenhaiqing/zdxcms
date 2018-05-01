@@ -274,9 +274,10 @@ class MemberController extends Controller
         return view('wap.member.memberactive',compact('members'));
     }
 
-    public function user_active()
+    public function user_active(Member $member)
     {
-        
+        $users = $member->getActiveUsers();
+        return view('wap.member.useractive',compact('users'));
     }
 
 

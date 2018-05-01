@@ -4,23 +4,22 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Member;
-use App\Jobs\RecordThemed;
 
-class CheckMemberThemed extends Command
+class RecordActiveUsers extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'zdxcms:check-member-themed';
+    protected $signature = 'zdxcms:record-active-users';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '检查用户是否一个月没有参加主题党日或者三会一课';
+    protected $description = '每天进行一次党组织排名';
 
     /**
      * Create a new command instance.
@@ -39,7 +38,7 @@ class CheckMemberThemed extends Command
      */
     public function handle(Member $member)
     {
-        $member->check_member_themed();
-        $this->info('检查完成');
+        $member->record_active_user();
+        $this->info('排名完成');
     }
 }

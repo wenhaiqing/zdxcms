@@ -7,6 +7,7 @@ class Member extends User
 {
     use Traits\EveryAction;
     use Traits\RecordThemedDang;
+    use Traits\RecordActiveUser;
 
     protected $fillable = ['birthday','user_id', 'mobile', 'name', 'password', 'sex', 'nation', 'cardnum', 'record', 'age', 'if_dang', 'if_movedang', 'status', 'remember_token','jifen'];
 
