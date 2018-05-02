@@ -127,7 +127,6 @@ class WeChatController extends Controller
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
             // $oauth->redirect()->send();
         }
-        \Log::info(2);
 // 已经登录过
        // $user = $_SESSION['wechat_user'];
 
@@ -161,7 +160,6 @@ class WeChatController extends Controller
         $request->session()->put('wechat_user', $user->toArray());
         //dd($_SESSION['wechat_user']);
         $targetUrl = $request->session()->get('target_url', '/wap/bind_wechat');
-        \Log::info($targetUrl);
         header('location:'. $targetUrl); // 跳转到 user/profile
         
     }
@@ -169,11 +167,8 @@ class WeChatController extends Controller
     public function bind(Request $request)
     {
         if (!$request->session()->has('wechat_user')){
-            \Log::info(1);
-            $request->session()->put('target_url', '/wap/bind_wechat');
             return redirect()->route('wap.getuser');
         }
-
         dd($request->session()->get('wechat_user'));
     }
 }
