@@ -161,7 +161,7 @@ class WeChatController extends Controller
         $_SESSION['wechat_user'] = $user->toArray();
         \Log::info($_SESSION['wechat_user']);
 
-        $targetUrl = empty($_SESSION['target_url']) ? '/' : $_SESSION['target_url'];
+        $targetUrl = empty($_SESSION['target_url']) ? '/wap/bind_wechat' : $_SESSION['target_url'];
 
         header('location:'. $targetUrl); // 跳转到 user/profile
         
