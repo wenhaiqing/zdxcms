@@ -133,7 +133,7 @@ class WeChatController extends Controller
 
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
         $wechat = Wechat::where('id',2)->first();
         $config = [
@@ -158,16 +158,17 @@ class WeChatController extends Controller
         $user = $oauth->user();
 
         $_SESSION['wechat_user'] = $user->toArray();
+        $request->session()->put('wechat_user', $user->toArray());
         //dd($_SESSION['wechat_user']);
-        $targetUrl = empty($_SESSION['target_url']) ? '/wap/index' : $_SESSION['target_url'];
+        $targetUrl = empty($_SESSION['target_url']) ? '/wap/bind_wechat' : $_SESSION['target_url'];
         \Log::info($targetUrl);
         header('location:'. $targetUrl); // 跳转到 user/profile
         
     }
 
-    public function bind()
+    public function bind(Request $request)
     {
-        if (empty($_SESSION['wechat_user'])){
+        if ($request->session()->has('wechat_user')){
             \Log::info(1);
             $_SESSION['target_url'] = '/wap/bind_wechat';
             return redirect()->route('wap.getuser');
