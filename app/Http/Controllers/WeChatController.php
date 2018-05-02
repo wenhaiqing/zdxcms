@@ -171,7 +171,8 @@ class WeChatController extends Controller
             return redirect()->route('wap.getuser');
         }
         $user = $request->session()->get('wechat_user');
-        $openid = $user->id;
+        var_dump($user);
+        $openid = $user['id'];
         dd($openid);
         $member = Member::where('id',\Auth::guard('wap')->id)->update(['openid'=>$openid]);
         if ($member){
