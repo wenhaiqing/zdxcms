@@ -90,4 +90,59 @@ class WeChatController extends Controller
         $text = $content->text ?? '小编不知道该怎么回你';
         return $text;
     }
+
+    public function get_userinfo()
+    {
+        $config = [
+            // ...
+            'oauth' => [
+                'scopes'   => ['snsapi_userinfo'],
+                'callback' => '/profile',
+            ],
+            // ..
+        ];
+
+        $app = Factory::officialAccount($config);
+        $oauth = $app->oauth;
+        
+
+// 未登录
+        if (empty($_SESSION['wechat_user'])) {
+
+            $_SESSION['target_url'] = 'user/profile';
+
+            return $oauth->redirect();
+            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
+            // $oauth->redirect()->send();
+        }
+
+// 已经登录过
+        $user = $_SESSION['wechat_user'];
+
+    }
+
+    public function profile()
+    {
+        $config = [
+            'oauth' => [
+                'scopes'   => ['snsapi_userinfo'],
+                'callback' => '/profile',
+            ],
+        ];
+
+        $app = Factory::officialAccount($config);
+        $oauth = $app->oauth;
+
+// 获取 OAuth 授权结果用户信息
+        $user = $oauth->user();
+        \Log::info($user);
+        dd($user);
+
+        $_SESSION['wechat_user'] = $user->toArray();
+
+        $targetUrl = empty($_SESSION['target_url']) ? '/' : $_SESSION['target_url'];
+
+        header('location:'. $targetUrl); // 跳转到 user/profile
+        
+    }
 }
