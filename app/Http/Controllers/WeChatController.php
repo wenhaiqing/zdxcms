@@ -153,7 +153,7 @@ class WeChatController extends Controller
 
 // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
-        \Log::info($user);
+        \Log::info($user->toArray());
         dd($user);
 
         $_SESSION['wechat_user'] = $user->toArray();
