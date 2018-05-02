@@ -64,7 +64,7 @@
         </div>
         <div class="aui-title">个人中心</div>
     </header>
-
+@include('flash::message')
     <section class="aui-content bg-white aui-margin-b-15">
         <div class="aui-list aui-media-list aui-list-noborder aui-bg-info user-info">
             <div class="aui-list-item aui-list-item-middle">

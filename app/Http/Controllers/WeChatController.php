@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Member;
 use App\Models\Wechat;
 use Illuminate\Http\Request;
 use Log;
@@ -169,6 +170,14 @@ class WeChatController extends Controller
         if (!$request->session()->has('wechat_user')){
             return redirect()->route('wap.getuser');
         }
-        dd($request->session()->get('wechat_user'));
+        $user = $request->session()->get('wechat_user');
+        $openid = $user->id;
+        $member = Member::where('id',\Auth::guard('wap')->id)->update(['openid'=>$openid]);
+        if ($member){
+            flash('微信绑定成功');
+            return redirect()->route('wap.center');
+        }
+        flash('微信绑定失败');
+        return redirect()->route('wap.center');
     }
 }
