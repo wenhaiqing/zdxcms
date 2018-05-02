@@ -24,7 +24,7 @@ class WeChatController extends Controller
             'app_id'  => $wechat->app_id,      // AppID
             'secret'  => $wechat->app_secret,      // AppSecret
             'token'   => $wechat->token,       // Token
-            'aes_key' => '',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
+            'aes_key' => 'UgakHzZPPOAa0OLQuZGHRwLpK536oNtOOQLvykKKZis',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
             'log' => [
                 'level' => 'debug',
                 'file' => storage_path('logs/wechat.log'),  //这个必须要有，要不调试有问题，你都会找不到原因
