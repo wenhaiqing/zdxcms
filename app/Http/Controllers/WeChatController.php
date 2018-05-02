@@ -93,8 +93,16 @@ class WeChatController extends Controller
 
     public function get_userinfo()
     {
+        $wechat = Wechat::where('id',2)->first();
         $config = [
-            // ...
+                'app_id'  => $wechat->app_id,      // AppID
+                'secret'  => $wechat->app_secret,      // AppSecret
+                'token'   => $wechat->token,       // Token
+                'aes_key' => 'UgakHzZPPOAa0OLQuZGHRwLpK536oNtOOQLvykKKZis',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
+                'log' => [
+                    'level' => 'debug',
+                    'file' => storage_path('logs/wechat.log'),  //这个必须要有，要不调试有问题，你都会找不到原因
+                ],
             'oauth' => [
                 'scopes'   => ['snsapi_userinfo'],
                 'callback' => '/profile',
