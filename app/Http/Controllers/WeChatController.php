@@ -19,7 +19,7 @@ class WeChatController extends Controller
         $wechat = Wechat::where('object_id',$request->wechat)->first();
         \Log::info($wechat->app_id);
         \Log::info($wechat->app_secret);
-        \Log::info($wechat->app_token);
+        \Log::info($wechat->token);
         $config = [
             'app_id'  => $wechat->app_id,      // AppID
             'secret'  => $wechat->app_secret,      // AppSecret
@@ -33,7 +33,8 @@ class WeChatController extends Controller
         Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
         //$app = app('wechat.official_account');
         $app = Factory::officialAccount($config);
-        return $app->server->serve();
+        $response = $app->server->serve();
+        return $response;
 
         $app->server->push(function($message){
             switch ($message['MsgType']) {
