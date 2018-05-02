@@ -88,8 +88,8 @@
     <script type="text/javascript" src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
     <script type="text/javascript">
         $(".form-sync").click(function(){
-            layer.confirm({{trans('wechatmenu.confirm')}}, {
-                btn: [{{trans('wechatmenu.yes')}},{{trans('wechatmenu.cancle')}}]
+            layer.confirm("{{trans('wechatmenu.confirm')}}", {
+                btn: ["{{trans('wechatmenu.yes')}}","{{trans('wechatmenu.cancle')}}"]
             }, function(index){
                 $("#form-sync").submit();
                 layer.close(index);
