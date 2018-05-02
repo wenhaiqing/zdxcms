@@ -20,7 +20,7 @@ Route::get('/home', function () {
 
 
 Route::get('wap/home', 'HomeController@test')->name('wap.test');
-Route::get('/getuser', 'WeChatController@get_userinfo');
+Route::get('/getuser', 'WeChatController@get_userinfo')->name('wap.getuser');
 Route::get('/profile', 'WeChatController@profile');
 // 微信路由
 Route::any('wechat/{wechat}.html', 'WeChatController@serve')->name('wechat.api');
