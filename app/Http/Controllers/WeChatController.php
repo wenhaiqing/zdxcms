@@ -120,7 +120,7 @@ class WeChatController extends Controller
         $app = Factory::officialAccount($config);
         $oauth = $app->oauth;
         // 未登录
-        if ($request->session()->has('wechat_user')) {
+        if (!$request->session()->has('wechat_user')) {
 
             $request->session()->put('target_url', '/wap/bind_wechat');
             return $oauth->redirect();
