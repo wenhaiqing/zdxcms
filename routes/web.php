@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home', function () {
-    return view('welcome');
-});
+
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 
 Route::get('wap/home', 'HomeController@test')->name('wap.test');
