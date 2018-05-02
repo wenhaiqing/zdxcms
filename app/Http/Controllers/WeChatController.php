@@ -98,7 +98,7 @@ class WeChatController extends Controller
         return $text;
     }
 
-    public function get_userinfo()
+    public function get_userinfo(Request $request)
     {
         $wechat = Wechat::where('id',2)->first();
         $config = [
