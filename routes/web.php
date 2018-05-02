@@ -18,7 +18,7 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['wechat.oauth']], function () {
+Route::group(['middleware' => ['wechat.oauth:snsapi_userinfo']], function () {
     Route::get('/userinfo', function () {
         $user = session('wechat.oauth_user'); // 拿到授权用户资料
 
