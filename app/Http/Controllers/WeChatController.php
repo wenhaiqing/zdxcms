@@ -14,7 +14,7 @@ class WeChatController extends Controller
 
     public function __construct()
     {
-        
+
     }
     /**
      * 处理微信的请求消息
@@ -121,10 +121,10 @@ class WeChatController extends Controller
         $oauth = $app->oauth;
 
 
-// 未登录
+        // 未登录
         if (empty($_SESSION['wechat_user'])) {
 
-            $_SESSION['target_url'] = 'user/profile';
+            $_SESSION['target_url'] = '/wap/bind_wechat';
 
             return $oauth->redirect();
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
@@ -158,10 +158,8 @@ class WeChatController extends Controller
         $app = Factory::officialAccount($config);
         $oauth = $app->oauth;
 
-// 获取 OAuth 授权结果用户信息
+        // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
-        \Log::info($user->toArray());
-        dd($user);
 
         $_SESSION['wechat_user'] = $user->toArray();
 
@@ -169,5 +167,14 @@ class WeChatController extends Controller
 
         header('location:'. $targetUrl); // 跳转到 user/profile
         
+    }
+
+    public function bind()
+    {
+        if (empty($_SESSION['wechat_user'])){
+            return redirect()->route('wap.bind_wechat');
+        }
+
+        dd($_SESSION['wechat_user']);
     }
 }
