@@ -167,7 +167,7 @@ class WeChatController extends Controller
 
     public function bind()
     {
-        if (!$_SESSION['wechat_user']){
+        if (empty($_SESSION['wechat_user'])){
             \Log::info(1);
             $_SESSION['target_url'] = '/wap/bind_wechat';
             return redirect()->route('wap.getuser');
