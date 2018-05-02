@@ -64,9 +64,14 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
 
 });
 
-Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap']], function ($router)
+Route::group([ 'prefix' => 'wap', 'middleware' => ['auth:wap']], function ($router)
 {
     Route::get('bind_wechat','WeChatController@bind')->name('wap.bind_wechat');
+});
+
+Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap']], function ($router)
+{
+
     Route::get('index', 'MobileController@index')->name('wap.index');
 
     //手机端通知公告
