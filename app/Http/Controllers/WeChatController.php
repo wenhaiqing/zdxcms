@@ -159,7 +159,7 @@ class WeChatController extends Controller
 
         $_SESSION['wechat_user'] = $user->toArray();
         //dd($_SESSION['wechat_user']);
-        $targetUrl = empty($_SESSION['target_url']) ? '/wap/bind_wechat' : $_SESSION['target_url'];
+        $targetUrl = empty($_SESSION['target_url']) ? '/wap/index' : $_SESSION['target_url'];
         \Log::info($targetUrl);
         header('location:'. $targetUrl); // 跳转到 user/profile
         
@@ -167,7 +167,7 @@ class WeChatController extends Controller
 
     public function bind()
     {
-        if (empty($_SESSION['wechat_user'])){
+        if (!$_SESSION['wechat_user']){
             \Log::info(1);
             $_SESSION['target_url'] = '/wap/bind_wechat';
             return redirect()->route('wap.getuser');
