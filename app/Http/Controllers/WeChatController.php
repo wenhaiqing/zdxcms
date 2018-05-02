@@ -112,7 +112,7 @@ class WeChatController extends Controller
                 ],
             'oauth' => [
                 'scopes'   => ['snsapi_userinfo'],
-                'callback' => '/profile',
+                'callback' => '/wap/bind_wechat',
             ],
             // ..
         ];
@@ -167,13 +167,34 @@ class WeChatController extends Controller
 
     public function bind()
     {
-        \Log::info($_SESSION['wechat_user']);
         if (empty($_SESSION['wechat_user'])){
             \Log::info(1);
             $_SESSION['target_url'] = '/wap/bind_wechat';
             return redirect()->route('wap.getuser');
         }
+        $wechat = Wechat::where('id',2)->first();
+        $config = [
+            'app_id'  => $wechat->app_id,      // AppID
+            'secret'  => $wechat->app_secret,      // AppSecret
+            'token'   => $wechat->token,       // Token
+            'aes_key' => 'UgakHzZPPOAa0OLQuZGHRwLpK536oNtOOQLvykKKZis',     // EncodingAESKey，兼容与安全模式下请一定要填写！！！
+            'log' => [
+                'level' => 'debug',
+                'file' => storage_path('logs/wechat.log'),  //这个必须要有，要不调试有问题，你都会找不到原因
+            ],
+            'oauth' => [
+                'scopes'   => ['snsapi_userinfo'],
+                'callback' => '/wap/bind_wechat',
+            ],
+            // ..
+        ];
+        $app = Factory::officialAccount($config);
+        $oauth = $app->oauth;
 
+        // 获取 OAuth 授权结果用户信息
+        $user = $oauth->user();
+
+        $_SESSION['wechat_user'] = $user->toArray();
         dd($_SESSION['wechat_user']);
     }
 }
