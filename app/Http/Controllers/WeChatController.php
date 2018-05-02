@@ -120,16 +120,16 @@ class WeChatController extends Controller
         $app = Factory::officialAccount($config);
         $oauth = $app->oauth;
         // 未登录
-        if (empty($_SESSION['wechat_user'])) {
+        if ($request->session()->has('wechat_user')) {
 
-            $_SESSION['target_url'] = '/wap/bind_wechat';
+            $request->session()->put('target_url', '/wap/bind_wechat');
             return $oauth->redirect();
             // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
             // $oauth->redirect()->send();
         }
         \Log::info(2);
 // 已经登录过
-        $user = $_SESSION['wechat_user'];
+       // $user = $_SESSION['wechat_user'];
 
     }
 
@@ -157,10 +157,10 @@ class WeChatController extends Controller
         // 获取 OAuth 授权结果用户信息
         $user = $oauth->user();
 
-        $_SESSION['wechat_user'] = $user->toArray();
+        //$_SESSION['wechat_user'] = $user->toArray();
         $request->session()->put('wechat_user', $user->toArray());
         //dd($_SESSION['wechat_user']);
-        $targetUrl = empty($_SESSION['target_url']) ? '/wap/bind_wechat' : $_SESSION['target_url'];
+        $targetUrl = $request->session()->get('target_url', '/wap/bind_wechat');
         \Log::info($targetUrl);
         header('location:'. $targetUrl); // 跳转到 user/profile
         
@@ -170,10 +170,10 @@ class WeChatController extends Controller
     {
         if ($request->session()->has('wechat_user')){
             \Log::info(1);
-            $_SESSION['target_url'] = '/wap/bind_wechat';
+            $request->session()->put('target_url', '/wap/bind_wechat');
             return redirect()->route('wap.getuser');
         }
 
-        dd($_SESSION['wechat_user']);
+        dd($request->session()->get('wechat_user'));
     }
 }
