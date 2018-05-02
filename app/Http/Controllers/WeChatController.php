@@ -168,8 +168,7 @@ class WeChatController extends Controller
 
     public function bind(Request $request)
     {
-        dd($request->session());
-        if ($request->session()->has('wechat_user')){
+        if (!$request->session()->has('wechat_user')){
             \Log::info(1);
             $request->session()->put('target_url', '/wap/bind_wechat');
             return redirect()->route('wap.getuser');
