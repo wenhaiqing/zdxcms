@@ -17,6 +17,9 @@ class WeChatController extends Controller
     public function serve(Request $request)
     {
         $wechat = Wechat::where('object_id',$request->wechat)->first();
+        \Log::info($wechat->app_id);
+        \Log::info($wechat->app_secret);
+        \Log::info($wechat->app_token);
         $config = [
             'app_id'  => $wechat->app_id,      // AppID
             'secret'  => $wechat->app_secret,      // AppSecret
