@@ -119,17 +119,6 @@ class WeChatController extends Controller
 
         $app = Factory::officialAccount($config);
         $oauth = $app->oauth;
-        // 未登录
-        if (empty($_SESSION['wechat_user'])) {
-
-            $_SESSION['target_url'] = '/wap/bind_wechat';
-            return $oauth->redirect();
-            // 这里不一定是return，如果你的框架action不是返回内容的话你就得使用
-            // $oauth->redirect()->send();
-        }
-
-// 已经登录过
-        $user = $_SESSION['wechat_user'];
 
     }
 
@@ -158,6 +147,7 @@ class WeChatController extends Controller
         $user = $oauth->user();
 
         $_SESSION['wechat_user'] = $user->toArray();
+        \Log::info($_SESSION['wechat_user']);
 
         $targetUrl = empty($_SESSION['target_url']) ? '/' : $_SESSION['target_url'];
 
@@ -168,6 +158,8 @@ class WeChatController extends Controller
     public function bind()
     {
         if (empty($_SESSION['wechat_user'])){
+            \Log::info(1);
+            $_SESSION['target_url'] = '/wap/bind_wechat';
             return redirect()->route('wap.getuser');
         }
 
