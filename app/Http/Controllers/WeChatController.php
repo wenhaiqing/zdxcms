@@ -9,6 +9,13 @@ use EasyWeChat\Factory;
 use App\Models\WechatResponse;
 class WeChatController extends Controller
 {
+    
+    protected $config;
+
+    public function __construct()
+    {
+        
+    }
     /**
      * 处理微信的请求消息
      *

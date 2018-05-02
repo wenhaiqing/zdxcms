@@ -18,6 +18,13 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['wechat.oauth']], function () {
+    Route::get('/userinfo', function () {
+        $user = session('wechat.oauth_user'); // 拿到授权用户资料
+
+        dd($user);
+    });
+});
 Route::get('wap/home', 'HomeController@test')->name('wap.test');
 Route::get('/getuser', 'WeChatController@get_userinfo');
 Route::get('/profile', 'WeChatController@profile');

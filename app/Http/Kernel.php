@@ -60,5 +60,6 @@ class Kernel extends HttpKernel
         'language' => \App\Http\Middleware\LanguageMiddleware::class,
         // 记录用户每一次的行为足迹
         'everyaction' => \App\Http\Middleware\RecordEveryActionTime::class,
+        'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
     ];
 }
