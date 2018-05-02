@@ -104,7 +104,7 @@ class WeChatController extends Controller
 
         $app = Factory::officialAccount($config);
         $oauth = $app->oauth;
-        
+
 
 // 未登录
         if (empty($_SESSION['wechat_user'])) {
