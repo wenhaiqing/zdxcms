@@ -124,7 +124,11 @@ class MobileController extends Controller
         if($keyword = $request->keyword ?? ''){
             $themeDang = $themeDang->where('title', 'like', "%{$keyword}%");
         }
+        $id = Auth::guard('wap')->user()->linshi_user_id;
         $user_id = $request->id;
+        if ($user_id == $id){
+            $themeDang = $themeDang->where('if_all','0');
+        }
         $themeds = $themeDang->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.themedlist',compact('themeds','user_id'));
     }
@@ -158,7 +162,11 @@ class MobileController extends Controller
         if($keyword = $request->keyword ?? ''){
             $meeting = $meeting->where('meeting_title', 'like', "%{$keyword}%");
         }
+        $id = Auth::guard('wap')->user()->linshi_user_id;
         $user_id = $request->id;
+        if ($user_id == $id){
+            $meeting = $meeting->where('if_all','0');
+        }
         $meetings = $meeting->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.meetingslist',compact('meetings','user_id'));
     }
@@ -168,5 +176,12 @@ class MobileController extends Controller
         $id = $request->id;
         $meetings = Meeting::where('id',$id)->get();
         return view('wap.dang.meetingsdetail',compact('meetings','id'));
+    }
+
+    public function getuserinfo(User $user)
+    {
+        $id = \Auth::guard('wap')->user()->user_id;
+        $userinfo = $user->where('id',$id)->first();
+        return view('wap.dang.userinfo',compact('userinfo'));
     }
 }

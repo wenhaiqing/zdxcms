@@ -66,12 +66,25 @@ class LoginController extends Controller
      */
     public function register(MemberRequest $memberRequest)
     {
-        $res = $memberRequest->all();
-        $res['password'] = Hash::make($memberRequest->password);
-        $member = Member::create($res);
-        flash('您已注册成功，请等待上级支部管理员审核');
+        //自己注册
+//        $res = $memberRequest->all();
+//        $res['password'] = Hash::make($memberRequest->password);
+//        $member = Member::create($res);
+//        flash('您已注册成功，请等待上级支部管理员审核');
         //因为注册之后要通过审核所以这里不直接登录
        // Auth::guard('wap')->login($member, true);
+        //return redirect()->route('wap.index');
+        //匹配用户
+        $res = $memberRequest->all();
+        $user_id = $res['user_id'];
+        $name = $res['name'];
+        $mobile = $res['mobile'];
+        $cardnum = $res['cardnum'];
+//        $arr = Member::where('');
+//        $member = Member::create($res);
+//        flash('您已注册成功，请等待上级支部管理员审核');
+        //因为注册之后要通过审核所以这里不直接登录
+        // Auth::guard('wap')->login($member, true);
         //return redirect()->route('wap.index');
         return redirect()->route('wap.login');
     }

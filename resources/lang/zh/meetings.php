@@ -11,5 +11,8 @@ return [
     'meeting_record'=>'会议记录上传',
     'author'=>'会议发起人',
     'upload_file'=>'上传文件',
-    'meeting_sign_qrcode'=>'生成签到二维码'
+    'meeting_sign_qrcode'=>'生成签到二维码',
+    'if_all'=>'是否对流动党员开放',
+    'if_all_0'=>'是',
+    'if_all_1'=>'否'
 ];

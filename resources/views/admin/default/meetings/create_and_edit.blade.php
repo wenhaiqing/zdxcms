@@ -87,6 +87,13 @@
                 </div>
             </blockquote>
         </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">{{trans('meetings.if_all')}}</label>
+            <div class="layui-input-block">
+                <input type="radio" name="if_all" value="0" @if(old('if_all',$meeting->if_all) == 0) checked="" @endif title="{{trans('meetings.if_all_0')}}" lay-verify="required">
+                <input type="radio" name="if_all" value="1" @if(old('if_all',$meeting->if_all) == 1) checked="" @endif title="{{trans('meetings.if_all_1')}}" lay-verify="required">
+            </div>
+        </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>

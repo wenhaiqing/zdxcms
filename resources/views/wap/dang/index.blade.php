@@ -51,9 +51,11 @@
     <i class="aui-iconfont aui-icon-close"></i>
 </div>
 @endif
-
+<a href="{{route('wap.getuserinfo')}}">
 <table class="mytab">
+
     <tr>
+
         <td rowspan="2" class="mylogo"><a href="">
                 @if($member->avatar)
                     <img src="{{$member->avatar}}"/>
@@ -63,11 +65,14 @@
             </a></td>
         <td class="mypsn"><span class="myname">{{$member->name}}</span></td>
         {{--<td  rowspan="2"  class="gomore"><a href="" style="color:#CCCCCC"><img src="" width="30" /></a></td>--}}
+
     </tr>
     <tr>
         <td class="zhibu">所属党支部:{{$member->user->name}}</td>
     </tr>
+
 </table>
+</a>
 
 <div class="self">
     <div class=" clear myinfo">

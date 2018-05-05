@@ -19,6 +19,7 @@ return [
     'users_type_0'=>'软弱涣散',
     'users_type_1'=>'规范建设',
     'users_type_2'=>'创建品牌',
+    'users_type_3'=>'集中整顿',
     'found_time'=>'成立时间',
     'team_members'=>'班子成员',
     'users_picture'=>'支部图片',
