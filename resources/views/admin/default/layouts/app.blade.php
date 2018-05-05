@@ -114,7 +114,8 @@
 
     <div class="layui-footer">
         <!-- 底部固定区域 -->
-        © zdxcms version-1.0  github:http://github.com/wenhaiqing
+        {{--© zdxcms version-1.0  github:http://github.com/wenhaiqing--}}
+        ©吕梁智慧党建云系统
     </div>
 </div>
 <script src="{{ asset('layui/lib/layui/layui.all.js') }}"></script>
