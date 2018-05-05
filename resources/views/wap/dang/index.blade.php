@@ -47,7 +47,7 @@
 @if($member->if_out == 1)
 <div class="aui-tips aui-margin-b-15" id="tips-1">
     <i class="aui-iconfont aui-icon-info"></i>
-    <div class="aui-tips-title">消息提示条消息提示条消息提示</div>
+    <div class="aui-tips-title">您已经一个月没有参加主题党日了</div>
     <i class="aui-iconfont aui-icon-close"></i>
 </div>
 @endif
