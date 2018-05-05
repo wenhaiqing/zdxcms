@@ -22,11 +22,67 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('demo1'));
 
+    var data1 = [{
+        value: {{$data[0]['value']}},
+        name: "{{$data[0]['name']}}"
+        },
+        {
+            value: {{$data[1]['value']}},
+            name: "{{$data[1]['name']}}"
+        },
+        {
+            value: {{$data[2]['value']}},
+            name: "{{$data[2]['name']}}"
+        },
+        {
+            value: {{$data[3]['value']}},
+            name: "{{$data[3]['name']}}"
+        },
+        {
+            value: {{$data[4]['value']}},
+            name: "{{$data[4]['name']}}"
+        },
+        {
+            value: {{$data[5]['value']}},
+            name: "{{$data[5]['name']}}"
+        },
+        {
+            value: {{$data[6]['value']}},
+            name: "{{$data[6]['name']}}"
+        },
+        {
+            value: {{$data[7]['value']}},
+            name: "{{$data[7]['name']}}"
+        },
+        {
+            value: {{$data[8]['value']}},
+            name: "{{$data[8]['name']}}"
+        },
+        {
+            value: {{$data[9]['value']}},
+            name: "{{$data[9]['name']}}"
+        },
+        {
+            value: {{$data[10]['value']}},
+            name: "{{$data[10]['name']}}"
+        },
+        {
+            value: {{$data[11]['value']}},
+            name: "{{$data[11]['name']}}"
+        },
+        {
+            value: {{$data[12]['value']}},
+            name: "{{$data[12]['name']}}"
+        }
+
+    ];
+    //console.log(data1);
+
     // 指定图表的配置项和数据
     var option = {
         title: {
-            text: '某站点用户访问来源',
-            subtext: '纯属虚构',
+            text: '各县现在注册人数统计',
+            subtext: '真实数据',
             x: 'center'
         },
         tooltip: {
@@ -36,34 +92,14 @@
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+            data: ['离石市区', '孝义市', '汾阳市', '石楼县', '方山县','柳林县','交口县','文水县','交城县','兴县','临县','岚县','中阳县']
         },
         series: [{
-            name: '访问来源',
+            name: '注册人数',
             type: 'pie',
             radius: '55%',
             center: ['50%', '60%'],
-            data: [{
-                value: 335,
-                name: '直接访问'
-            },
-                {
-                    value: 310,
-                    name: '邮件营销'
-                },
-                {
-                    value: 234,
-                    name: '联盟广告'
-                },
-                {
-                    value: 135,
-                    name: '视频广告'
-                },
-                {
-                    value: 1548,
-                    name: '搜索引擎'
-                }
-            ],
+            data: data1,
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
