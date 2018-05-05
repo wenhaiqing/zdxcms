@@ -1,5 +1,9 @@
 @extends(getThemeView('layouts.main'))
 
+@php
+    $users_picture = is_json($user->users_picture) ? json_decode($user->users_picture) : new \stdClass();
+@endphp
+
 @section('content')
 
 
@@ -50,10 +54,39 @@
             </div>
 
             <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">{{trans('users.team_members')}}</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="" name="team_members" lay-verify="required" class="layui-textarea">{{ old('team_members',$user->team_members) }}</textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">{{trans('users.introduction')}}</label>
                 <div class="layui-input-block">
                     <textarea placeholder="" name="introduction" lay-verify="required" class="layui-textarea">{{ old('introduction',$user->introduction) }}</textarea>
                 </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">{{trans('users.found_time')}}</label>
+                <div class="layui-input-block">
+                    <input type="text" id="found_time" name="found_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{{ old('found_time',$user->found_time) }}" >
+                </div>
+            </div>
+            <div class="layui-upload">
+                {{--@if(!$meeting->id)--}}
+                <button type="button" class="layui-btn" id="test2">多图片上传</button>
+                {{--@endif--}}
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                    党支部宣传照片：
+                    <div class="layui-upload-list" id="demo2">
+                        @if(get_json_params($user->users_picture,'0'))
+                            @foreach($users_picture as $index=>$v)
+                                <img src="{{$v}}" class="layui-upload-img"
+                                     style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>
+                                <input type="hidden" name="users_picture[]" value="{{$v}}">
+                            @endforeach
+                        @endif
+                    </div>
+                </blockquote>
             </div>
             <div class="layui-form-item" pane="">
                 <label class="layui-form-label">{{trans('users.if_zhi')}}</label>
@@ -66,7 +99,15 @@
                 <label class="layui-form-label">{{trans('users.status')}}</label>
                 <div class="layui-input-block">
                     <input type="radio" name="status" value="1" @if(old('status',$user->status) == 1) checked="" @endif title="{{trans('users.normal')}}" lay-verify="required">
-                    <input type="radio" name="status" value="2" @if(old('status',$user->status) == 2) checked="" @endif title="{{trans('users.forbidden')}}" lay-verify="required">
+                    <input type="radio" name="status" value="2" @if(old('status',$user->status) == 2) @endif title="{{trans('users.forbidden')}}" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">{{trans('users.users_type')}}</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="users_type" value="0" @if(old('users_type',$user->users_type) == 0) checked="" @endif title="{{trans('users.users_type_0')}}" lay-verify="required">
+                    <input type="radio" name="users_type" value="1" @if(old('users_type',$user->users_type) == 1) checked="" @endif title="{{trans('users.users_type_1')}}" lay-verify="required">
+                    <input type="radio" name="users_type" value="2" @if(old('users_type',$user->users_type) == 2) checked="" @endif title="{{trans('users.users_type_2')}}" lay-verify="required">
                 </div>
             </div>
 
@@ -79,3 +120,41 @@
             </div>
         </form>
 @endsection
+
+@section('js')
+    <script>
+        layui.use('upload', function () {
+            var $ = layui.jquery
+                , upload = layui.upload;
+            //多图片上传
+            upload.render({
+                elem: '#test2'
+                , url: '{{ route('upload_image') }}'
+                , data: {_token: '{{ csrf_token() }}'}
+                , multiple: true
+                , before: function (obj) {
+                    //预读本地文件示例，不支持ie8
+                    obj.preview(function (index, file, result) {
+                        var html = '';
+//
+                        html += '<img src="' + result + '" alt="' + file.name + '" class="notes-image" style="width: 92px;height: 92px;margin: 0 10px 10px 0;">';
+//
+                        $('#demo2').append(html)
+                    });
+                }
+                , done: function (res) {
+                    console.log(res.file_path);
+                    $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="users_picture[]">');
+                    //上传完毕
+                }
+            });
+        });
+        layui.laydate.render({
+            elem: '#found_time',
+            type: 'datetime'
+        });
+    </script>
+
+
+
+    @stop

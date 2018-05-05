@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar','introduction','status','phone','wechat_openid','wechat_unionid','pid','if_zhi'
+        'name', 'email', 'password','avatar','introduction','status','phone','wechat_openid','wechat_unionid','pid','if_zhi',
+        'found_time','team_members','users_picture','users_type'
     ];
 
     public function notify($instance)

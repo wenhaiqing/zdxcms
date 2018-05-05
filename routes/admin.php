@@ -12,6 +12,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     $router->resource('users','UsersController');
     $router->get('users/{user}/password','UsersController@editPassword')->name('zdxadmin.password.edit');
     $router->put('user/password/{user}','UsersController@updatePassword')->name('zdxadmin.password.update');
+    $router->get('user/search','UsersController@searchindex')->name('zdxadmin.searchuser');
 
     // 微信公众号相关路由
     Route::put('wechats/order','WechatsController@order')->name('wechats.order');

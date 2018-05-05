@@ -77,7 +77,7 @@ function get_json_params($content,$key, $default = ''){
     return get_block_params(...func_get_args());
 }
 
-function tree($data ,$name, $lefthtml = '|— ' , $pid=0 , $lvl=0)
+function tree($data ,$name, $pid=0 ,$lefthtml = '|— ' ,  $lvl=0)
 {
     $arr = [];
     foreach ($data as $k => $v) {
@@ -85,7 +85,7 @@ function tree($data ,$name, $lefthtml = '|— ' , $pid=0 , $lvl=0)
             $v[$name] = str_repeat($lefthtml, $lvl) . $v[$name];
             $arr[] = $v;
             unset($data[$k]);
-            $arr = array_merge($arr,tree($data, $name,$lefthtml, $v['id'], $lvl + 1));
+            $arr = array_merge($arr,tree($data, $name,$v['id'],$lefthtml,  $lvl + 1));
         }
     }
 

@@ -8,39 +8,51 @@
         $keyword = request('keyword', '');
         $begin_time = request('begin_time', '');
         $end_time = request('end_time', '');
+        $users_type = request('users_type', '');
     @endphp
     <blockquote class="layui-elem-quote news_search">
-        <form class="layui-form layui-form-pane" method="GET" action="">
+        <form class="layui-form layui-form-pane" method="GET" action="{{route('zdxadmin.searchuser')}}">
             <div class="layui-inline">
                 <a href="{{ route('users.create') }}" class="layui-btn">{{trans('global.add')}}</a>
             </div>
-            {{--<div style="float: right;">--}}
-            {{--<div class="layui-form-item">--}}
-                {{--<div class="layui-inline">--}}
-                    {{--<label class="layui-form-label">{{trans('global.start_time')}}</label>--}}
-                    {{--<div class="layui-input-inline">--}}
-                        {{--<input type="text" id="begin_time" name="begin_time" autocomplete="off" class="layui-input" value="{{$begin_time}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+            <div style="float: right;">
+                <div class="layui-inline">
+                    <label class="layui-form-label">党支部类型</label>
+                    <div class="layui-input-block">
+                        <select name="users_type" lay-filter="articles_category">
+                            <option value=""></option>
+                                <option @if($users_type == 0) selected @endif value="0">{{trans('users.users_type_0')}}</option>
+                                <option @if($users_type == 1) selected @endif value="1">{{trans('users.users_type_1')}}</option>
+                                <option @if($users_type == 2) selected @endif value="2">{{trans('users.users_type_2')}}</option>
+                        </select>
+                    </div>
+                </div>
 
-                {{--<div class="layui-inline">--}}
-                    {{--<label class="layui-form-label">{{trans('global.end_time')}}</label>--}}
-                    {{--<div class="layui-input-inline">--}}
-                        {{--<input type="text" id="end_time" name="end_time" autocomplete="off" class="layui-input" value="{{$end_time}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="layui-inline">
+                    <label class="layui-form-label">{{trans('global.start_time')}}</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="begin_time" name="begin_time" autocomplete="off" class="layui-input" value="{{$begin_time}}">
+                    </div>
+                </div>
 
-                {{--<div class="layui-inline">--}}
-                    {{--<label class="layui-form-label">{{trans('users.username')}}</label>--}}
-                    {{--<div class="layui-input-inline">--}}
-                        {{--<input type="text" name="keyword" lay-verify="email" autocomplete="off" value="{{$keyword}}" class="layui-input">--}}
-                    {{--</div>--}}
-                    {{--<input type="hidden" name="category" value="{{$category_id}}">--}}
-                    {{--<input type="hidden" name="page" value="{{request('page',1)}}">--}}
-                    {{--<button type="submit" class="layui-btn layui-btn-normal">{{trans('global.search')}}</button>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
+                <div class="layui-inline">
+                    <label class="layui-form-label">{{trans('global.end_time')}}</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="end_time" name="end_time" autocomplete="off" class="layui-input" value="{{$end_time}}">
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">{{trans('users.username')}}</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" lay-verify="" autocomplete="off" value="{{$keyword}}" class="layui-input">
+                    </div>
+
+                    <input type="hidden" name="page" value="{{request('page',1)}}">
+                    <button type="submit" class="layui-btn layui-btn-normal">{{trans('global.search')}}</button>
+                </div>
+            </div>
+
         </form>
     </blockquote>
 
@@ -70,7 +82,7 @@
                 </thead>
                 <tbody class="links_content">
                 @foreach($users as $index => $user)
-                    <tr class="treegrid-{{$user['id']}} @if($user['pid']!=0) treegrid-parent-{{$user['pid']}} @endif">
+                    <tr class="treegrid-{{$user['id']}}  @if($user['pid']!=0) treegrid-parent-{{$user['pid']}} @endif">
                         <td>{{ $user['id'] }}</td>
                         <td>{{ $user['name']  }}</td>
                         <td>{{ $user['email']  }}</td>

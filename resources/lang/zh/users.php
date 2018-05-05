@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'username' => '用户名',
+    'username' => '党组织名称',
     'email' => '邮箱',
-    'introduction' => '个人简介',
+    'introduction' => '党组织简介',
     'created_at' => '注册时间',
     'resetpassword' => '重置密码',
     'roles' => '角色',
@@ -14,5 +14,12 @@ return [
     'pid'=>'上属组织',
     'if_zhi'=>'是否直属',
     'if_zhi_1'=>'是',
-    'if_zhi_0'=>'否'
+    'if_zhi_0'=>'否',
+    'users_type'=>'支部类型',
+    'users_type_0'=>'软弱涣散',
+    'users_type_1'=>'规范建设',
+    'users_type_2'=>'创建品牌',
+    'found_time'=>'成立时间',
+    'team_members'=>'班子成员',
+    'users_picture'=>'支部图片',
 ];
