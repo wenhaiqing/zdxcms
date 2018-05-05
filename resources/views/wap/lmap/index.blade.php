@@ -4,31 +4,7 @@
     $keyword = request('keyword', '');
 @endphp
 
-@section('css')
-    <style>
-        .aui-list .aui-list-item-inner {    position: relative;
-            min-height: 2rem;
-            padding-right: 0.75rem;
-            width: 100%;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-flex: 1;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-            border-left: #03a9f4 3px solid;
-            margin: 0.5em 0;
-            padding-left: 0.75rem;}
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #03a9f4;}
-    </style>
 
-    @stop
 
 @section('content')
     <header class="aui-bar aui-bar-nav">
@@ -77,8 +53,7 @@
                         @endforeach
                     </ul>
                 </div>
-                <div id="paginate-render" style="padding-left:0;
-                     text-align: center;"> </div>
+                <div id="paginate-render" style=""> </div>
             @else
                 <br/>
                 <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>

@@ -12,7 +12,8 @@ class MemberRequest extends Request
             case 'POST':
             {
                 return [
-                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
+//                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
+                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/',
                     'age'=>'required|numeric:age',
                     'password' => 'required|string|min:6',
                     'cardnum'=>'required|identitycards',

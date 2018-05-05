@@ -75,17 +75,26 @@ class LoginController extends Controller
        // Auth::guard('wap')->login($member, true);
         //return redirect()->route('wap.index');
         //匹配用户
-        $res = $memberRequest->all();
+        $res = $memberRequest->except('_token');
+        $res['password'] = Hash::make($memberRequest->password);
         $user_id = $res['user_id'];
         $name = $res['name'];
         $mobile = $res['mobile'];
         $cardnum = $res['cardnum'];
-//        $arr = Member::where('');
-//        $member = Member::create($res);
-//        flash('您已注册成功，请等待上级支部管理员审核');
-        //因为注册之后要通过审核所以这里不直接登录
-        // Auth::guard('wap')->login($member, true);
-        //return redirect()->route('wap.index');
+        $arr = Member::where(['user_id'=>$user_id,'name'=>$name])->where(function($query) use($mobile,$cardnum) {
+            $query->where('mobile',$mobile)
+                ->orWhere(function($query) use($cardnum) {
+                    $query->where('cardnum',$cardnum);
+                });
+        })->first();
+        if ($arr){
+            $member = Member::where('id',$arr->id)->first();
+            $member ->update($res);
+             Auth::guard('wap')->login($member, true);
+            return redirect()->route('wap.index');
+        }else{
+            flash('系统没有找到您，请先联系您所属党支部管理员');
+        }
         return redirect()->route('wap.login');
     }
 
