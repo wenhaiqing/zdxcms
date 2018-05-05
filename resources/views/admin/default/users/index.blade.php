@@ -138,7 +138,32 @@
     <script type="text/javascript" src="/layui/lib/jquery/jquery-2.1.4.js"></script>
     <script type="text/javascript" src="/layui/treegrid/js/jquery.treegrid.js"></script>
     <script type="text/javascript">
+
         $('.tree').treegrid({initialState: 'collapsed'});
+
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage
+                ,layer = layui.layer,
+                $ = layui.jquery;
+
+            $(".form-delete").click(function(){
+                var tUrl = $(this).attr('data-url');
+                layer.confirm('确认删除吗？', {
+                    btn: ['确认', '取消']
+                }, function(index){
+                    $("#delete-form").attr("action",tUrl).submit();
+//                console.log(tUrl);
+                    layer.close(index);
+                    return false;
+                }, function(index){
+                    layer.close(index);
+                    return true;
+                });
+
+                return false;
+            });
+
+        });
         layui.laydate.render({
             elem: '#begin_time'
         });
