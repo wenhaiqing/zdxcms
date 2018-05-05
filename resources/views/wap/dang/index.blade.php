@@ -99,7 +99,7 @@
         </a>
         <a href="">
             <div class="col2con_l">
-                <a href="" target="_self">
+                <a href="javascript:;" onclick="waitting();" target="_self">
                     <div class="col2icon">
                         <img src="{{asset('wap/bootstrap/images/lldj/ztjy.png')}}"/>
                     </div>
@@ -166,7 +166,7 @@
         </a>
         <a href="">
             <div class="col2con_l">
-                <a href="{:U('yanweiming')}" target="_self">
+                <a href="javascript:;" onclick="waitting();" target="_self">
                     <div class="col2icon">
                         <img src="{{asset('wap/bootstrap/images/lldj/wmfw.png')}}"/>
                     </div>
@@ -194,4 +194,9 @@
 </div>
 <div class="qiandao clear"><a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></div>
 </body>
+<script>
+    function waitting() {
+        alert('敬请期待');
+    }
+</script>
 </html>
