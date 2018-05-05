@@ -69,7 +69,7 @@ class LmapController extends Controller
     public function list_tree(Request $request)
     {
         $id = $request->id;
-        $list = User::where(['pid'=>$id,'status'=>1])->get();
+        $list = User::where(['pid'=>$id,'status'=>1])->paginate(config('wap.global.paginate'));
         if (!$list->count()){
             return redirect()->route('wap.register', ['user_id'=>$id]);
         }
