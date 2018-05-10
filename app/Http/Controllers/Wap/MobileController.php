@@ -60,7 +60,8 @@ class MobileController extends Controller
             $notify = $notify->where('title', 'like', "%{$keyword}%");
         }
         $user_id = $request->id;
-        $notices = $notify->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
+        //$notices = $notify->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
+        $notices = $notify->recent()->paginate(config('wap.global.paginate'));
         return view('wap.dang.noticelist',compact('notices','user_id'));
     }
 

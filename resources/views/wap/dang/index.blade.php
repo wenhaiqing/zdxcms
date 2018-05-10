@@ -85,7 +85,7 @@
     <div class="col2con">
         <a href="">
             <div class="col2con_l">
-                <a href="{{route('wap.notice')}}" target="_self">
+                <a href="{{route('wap.noticelist')}}" target="_self">
                     <div class="col2icon">
                         <img src="{{asset('wap/bootstrap/images/lldj/logo1.png')}}"/>
                     </div>
