@@ -7,7 +7,7 @@
     <meta name="Description" content="红色E站">
     <meta name="keywords" content="吕梁 红色E站">
     <link rel="stylesheet" type="text/css" href="{{asset('wap/bootstrap/css/myindex.css')}}">
-    <title>红色E站--首页</title>
+    <title>吕梁智慧党建云--首页</title>
     <style type="text/css">
         .aui-tips {
             padding: 0 0.75rem;

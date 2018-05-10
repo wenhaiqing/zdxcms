@@ -16,7 +16,7 @@
     <meta name="description" content="红色e站,吕梁党建网">
     <meta name="author" content="AUI, a-ui.com">
     <meta name="baidu-site-verification" content="ZVPGgtpUfW"/>
-    <title>红色e站--专题学习</title>
+    <title>吕梁智慧党建云--专题学习</title>
     <link rel="icon" type="image/x-icon" href="/Public/lldjwap2/favicon.ico">
     <link href="/Public/lldjwap2/iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
     <link rel="stylesheet" href="{{asset('wap/amaze/css/amazeui.min.css')}}">
