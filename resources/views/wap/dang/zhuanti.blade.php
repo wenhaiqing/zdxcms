@@ -49,7 +49,7 @@
                     <ul class="am-list">
                         <!--缩略图在标题右边-->
                         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_topci_list">
-                            <a href="http://www.12371.cn/special/2018qglh/" class="pet_topci_block">
+                            <a href="http://www.chinanews.com/gn/z/2018quanguolianghui/index.shtml" class="pet_topci_block">
                                 <div class="pet_topci_video"><i class="iconfont">&#xe62d;</i></div>
                                 <div class="pet_topci_shadow_font">2018全国两会专题</div>
                                 <div class="pet_topci_shadow"></div>
@@ -57,7 +57,7 @@
                             </a>
                         </li>
                         <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-right pet_topci_list">
-                            <a href="http://www.12371.cn/special/19jszqh/" class="pet_topci_block">
+                            <a href="http://www.12371.cn/special/xg19thjs/" class="pet_topci_block">
                                 <div class="pet_topci_video"><i class="iconfont">&#xe62d;</i></div>
                                 <div class="pet_topci_shadow_font">学习贯彻党的十九届三中全会精神</div>
                                 <div class="pet_topci_shadow"></div>
