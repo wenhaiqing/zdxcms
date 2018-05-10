@@ -117,11 +117,12 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myqianyi')}}">
-                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">申请迁党</div>
+                    <a href="{{route('wap.myvideo')}}">
+                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">视频学习</div>
                     </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -129,9 +130,9 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.mymeeting')}}">
-                        <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-pencil"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">三会一课</div>
+                    <a href="{{route('wap.myqianyi')}}">
+                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">申请迁党</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
@@ -147,9 +148,10 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.member_active')}}">
-                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-laud"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">活跃党员</div>
+
+                    <a href="{{route('wap.mythemed')}}">
+                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">主题学习</div>
                     </a>
                 </div>
             </div>
@@ -163,16 +165,17 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myvideo')}}">
-                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">视频学习</div>
+                    <a href="{{route('wap.mymeeting')}}">
+                        <div class="label-icon aui-bg-success"><i class=" aui-iconfont aui-icon-pencil"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">三会一课</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-3">
 
-                    <a href="{{route('wap.mythemed')}}">
-                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-flag"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">主题学习</div>
+
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.member_active')}}">
+                        <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-laud"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">活跃党员</div>
                     </a>
                 </div>
 

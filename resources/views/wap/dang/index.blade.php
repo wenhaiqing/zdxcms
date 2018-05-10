@@ -64,11 +64,11 @@
                 @endif
             </a></td>
         <td class="mypsn"><span class="myname">{{$member->name}}</span></td>
-        {{--<td  rowspan="2"  class="gomore"><a href="" style="color:#CCCCCC"><img src="" width="30" /></a></td>--}}
+        <td  rowspan="2"  class="gomore"><a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></td>
 
     </tr>
     <tr>
-        <td class="zhibu">所属党支部:{{$member->user->name}}</td>
+        <td class="zhibu">所属党支部:{{$member->getpid($member->user->pid)}}→{{$member->user->name}}</td>
     </tr>
 
 </table>
@@ -192,7 +192,7 @@
         </a>
     </div>
 </div>
-<div class="qiandao clear"><a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></div>
+{{--<div class="qiandao clear"><a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/bootstrap/images/lldj/qd.png')}}"></a></div>--}}
 </body>
 <script>
     function waitting() {

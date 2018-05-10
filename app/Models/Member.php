@@ -25,4 +25,13 @@ class Member extends User
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function getpid($pid)
+    {
+        if ($pid ==0){
+            $pid =1;
+        }
+        $user = \App\Models\User::where('id',$pid)->first();
+        return $user->name;
+    }
 }
