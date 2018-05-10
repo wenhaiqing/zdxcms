@@ -86,6 +86,32 @@
     </section>
     <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
                 src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
+
+    <section class="aui-content-padded">
+        @if($themedjing->count())
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-list-in">
+
+                    @foreach($themedjing as $index=>$themed)
+                        <a href="{{route('wap.themeddetail',['id'=>$themed->id,'title'=>$themed->title])}}">
+                            <li class="aui-list-item">
+                                <div class="aui-list-item-inner">
+                                    <div class="aui-list-item-title">{{$themed->title}}</div>
+                                    @if($themed->if_cream==1)
+                                        <div class="aui-list-item-right">
+                                            <div class="aui-label aui-label-info">精华</div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </li>
+                        </a>
+
+                    @endforeach
+                </ul>
+            </div>
+        @else
+        @endif
+    </section>
 @stop
 @section('js')
     @include(getThemeView('layouts._paginate'),[ 'count' => $themeds->total(), ])
