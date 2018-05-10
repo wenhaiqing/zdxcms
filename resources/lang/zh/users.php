@@ -15,7 +15,7 @@ return [
     'if_zhi'=>'是否直属',
     'if_zhi_1'=>'是',
     'if_zhi_0'=>'否',
-    'users_type'=>'支部类型',
+    'users_type'=>'党支部现状',
     'users_type_0'=>'软弱涣散',
     'users_type_1'=>'规范建设',
     'users_type_2'=>'创建品牌',

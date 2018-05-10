@@ -57,4 +57,13 @@ class User extends Authenticatable
         $this->attributes['password'] = $value;
     }
 
+    public function getpid($pid)
+    {
+        if ($pid ==0){
+            $pid =1;
+        }
+        $user = $this->where('id',$pid)->first();
+        return $user->name;
+    }
+
 }

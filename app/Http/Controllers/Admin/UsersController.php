@@ -23,7 +23,7 @@ class UsersController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, User $user)
+    public function indexold(Request $request, User $user)
     {
         $this->authorize('view', $this->user);
 
@@ -34,6 +34,13 @@ class UsersController extends BaseController
             $id =0;
         }
         $users = tree($users, 'name',$id);
+        return view(getThemeView('users.index'), compact('users'));
+
+    }
+    public function index(Request $request, User $user)
+    {
+        $this->authorize('view', $this->user);
+        $users = $user->paginate(config('admin.global.paginate'));
         return view(getThemeView('users.index'), compact('users'));
 
     }
@@ -62,7 +69,7 @@ class UsersController extends BaseController
         if ($end_time = $request->end_time ?? '') {
             $user = $user->where('created_at', '<', $end_time);
         }
-        $users = $user->get()->toArray();
+        $users = $user->paginate(config('admin.global.paginate'));
         return view(getThemeView('users.index'), compact('users'));
     }
 

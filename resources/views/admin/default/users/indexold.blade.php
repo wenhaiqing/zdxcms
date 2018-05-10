@@ -17,9 +17,10 @@
             </div>
             <div style="float: right;">
                 <div class="layui-inline">
-                    <label class="layui-form-label">{{trans('users.users_type')}}</label>
+                    <label class="layui-form-label">党支部类型</label>
                     <div class="layui-input-block">
                         <select name="users_type" lay-filter="articles_category">
+                            <option value=""></option>
                                 <option @if($users_type == 0) selected @endif value="0">{{trans('users.users_type_0')}}</option>
                                 <option @if($users_type == 1) selected @endif value="1">{{trans('users.users_type_1')}}</option>
                                 <option @if($users_type == 2) selected @endif value="2">{{trans('users.users_type_2')}}</option>
@@ -60,8 +61,6 @@
         @if(count($users)>0)
             <table class="layui-table tree">
                 <colgroup>
-                    <col width="80">
-                    <col width="150">
                     <col width="150">
                     <col width="150">
                     <col width="150">
@@ -75,8 +74,6 @@
                     <th>#</th>
                     <th>{{trans('users.username')}}</th>
                     <th>{{trans('users.email')}}</th>
-                    <th>{{trans('users.pid')}}</th>
-                    <th>{{trans('users.users_type')}}</th>
                     <th>{{trans('users.introduction')}}</th>
                     <th>{{trans('users.created_at')}}</th>
                     <th>{{trans('users.status')}}</th>
@@ -85,27 +82,20 @@
                 </thead>
                 <tbody class="links_content">
                 @foreach($users as $index => $user)
-                    <tr class="">
-                        <td>{{ $user->id }}</td>
-                        <td>{{ $user->name  }}</td>
-                        <td>{{ $user->email  }}</td>
-                        <td>{{ $user->getpid($user->pid)  }}</td>
-                        <td>@switch($user->users_type)
-                                @case(0){{trans('users.users_type_0')}}@break
-                                @case(1){{trans('users.users_type_1')}}@break
-                                @case(2){{trans('users.users_type_2')}}@break
-                            @endswitch
-                        </td>
-                        <td>{{ $user->introduction  }}</td>
-                        <td>{{ $user->created_at }}</td>
-                        <td>@switch($user->status)
+                    <tr class="treegrid-{{$user['id']}}  @if($user['pid']!=0) treegrid-parent-{{$user['pid']}} @endif">
+                        <td>{{ $user['id'] }}</td>
+                        <td>{{ $user['name']  }}</td>
+                        <td>{{ $user['email']  }}</td>
+                        <td>{{ $user['introduction']  }}</td>
+                        <td>{{ $user['created_at'] }}</td>
+                        <td>@switch($user['status'])
                                 @case(1){{trans('users.normal')}}@break
                                 @case(2){{trans('users.forbidden')}}@break
                             @endswitch</td>
                         <td>
-                            <a href="{{ route('users.edit', $user->id) }}"
+                            <a href="{{ route('users.edit', $user['id']) }}"
                                class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
-                            <a href="javascript:;" data-url="{{ route('users.destroy', $user->id) }}"
+                            <a href="javascript:;" data-url="{{ route('users.destroy', $user['id']) }}"
                                class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                         </td>
                     </tr>
@@ -127,11 +117,29 @@
 @endsection
 
 @section('js')
+    @if (Session::has('message'))
 
-    @include(getThemeView('layouts._paginate'),[ 'count' => $users->total(), ])
+        <script>layer.alert('{{ Session::get('message') }}', {icon: 4,time:3000});</script>
+    @endif
 
+    @if (Session::has('success'))
+
+        <script>layer.alert('{{ Session::get('success') }}', {icon: 1,time:2000});</script>
+    @endif
+
+    @if (Session::has('danger'))
+        <script>layer.alert('{{ Session::get('danger') }}', {icon: 3,time:3000});</script>
+    @endif
+
+    @if (count($errors) > 0)
+        <script>layer.alert('@foreach ($errors->all() as $error) {{ $error }} <br /> @endforeach', {icon: 2,time:3000});</script>
+    @endif
+
+    <script type="text/javascript" src="/layui/lib/jquery/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="/layui/treegrid/js/jquery.treegrid.js"></script>
     <script type="text/javascript">
 
+        $('.tree').treegrid({initialState: 'collapsed'});
 
         layui.use(['laypage', 'layer'], function(){
             var laypage = layui.laypage

@@ -89,6 +89,7 @@ class LoginController extends Controller
         })->first();
         if ($arr){
             $member = Member::where('id',$arr->id)->first();
+            $res['status'] = 1;
             $member ->update($res);
              Auth::guard('wap')->login($member, true);
             return redirect()->route('wap.index');

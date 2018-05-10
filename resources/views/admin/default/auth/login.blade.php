@@ -25,7 +25,7 @@
 	    <form class="layui-form" method="POST" action="{{ route('login') }}">
 			{{ csrf_field() }}
 	    	<div class="layui-form-item">
-				<input id="name" type="text" name="name" lay-verify="required" autocomplete="off" placeholder="用户名" value="{{ old('name') }}" autofocus class="layui-input">
+				<input id="email" type="email" name="email" lay-verify="required" autocomplete="off" placeholder="邮箱号" value="{{ old('email') }}" autofocus class="layui-input">
 		    </div>
 		    <div class="layui-form-item">
 				<input type="password" name="password" lay-verify="pass" autocomplete="off" placeholder="密码" class="layui-input">
