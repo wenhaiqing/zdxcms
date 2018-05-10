@@ -5,7 +5,8 @@
 @endphp
 @section('css')
     <style>
-        .aui-list .aui-list-item-inner {    position: relative;
+        .aui-list .aui-list-item-inner {
+            position: relative;
             min-height: 2rem;
             padding-right: 0.75rem;
             width: 100%;
@@ -23,10 +24,17 @@
             align-items: center;
             border-left: #03a9f4 3px solid;
             margin: 0.5em 0;
-            padding-left: 0.75rem;}
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #03a9f4;}
-        #paginate-render{padding-left:0;
-            text-align: center;}
+            padding-left: 0.75rem;
+        }
+
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #03a9f4;
+        }
+
+        #paginate-render {
+            padding-left: 0;
+            text-align: center;
+        }
     </style>
 
 @stop
@@ -42,7 +50,7 @@
                     <i class="aui-iconfont aui-icon-search"></i>
                     <form class="layui-form layui-form-pane" id="search-form" method="GET" action="">
                         <input name="keyword" type="search" placeholder="请输入搜索内容" id="zdx-search" value="{{$keyword}}">
-                        <input name="id" type="hidden"  value="{{$user_id}}">
+                        <input name="id" type="hidden" value="{{$user_id}}">
                     </form>
                     <div class="aui-searchbar-clear-btn">
                         <i class="aui-iconfont aui-icon-close"></i>

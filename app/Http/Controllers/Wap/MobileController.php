@@ -122,7 +122,8 @@ class MobileController extends Controller
         }
         $ids = get_mobileson($id,$id);
         $themeds = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
-        return view('wap.dang.themed',compact('themeds'));
+        $themedjing = $themeDang->where('if_cream',1)->get();
+        return view('wap.dang.themed',compact('themeds','themedjing'));
     }
 
     public function themedlist(Request $request,ThemeDang $themeDang)
@@ -190,6 +191,7 @@ class MobileController extends Controller
     {
         $id = \Auth::guard('wap')->user()->user_id;
         $userinfo = $user->where('id',$id)->first();
-        return view('wap.dang.userinfo',compact('userinfo'));
+        $list = Member::where('user_id',$id)->paginate(config('admin.global.paginate'));
+        return view('wap.dang.userinfo',compact('userinfo','list'));
     }
 }
