@@ -99,7 +99,7 @@
         </a>
         <a href="">
             <div class="col2con_l">
-                <a href="javascript:;" onclick="waitting();" target="_self">
+                <a href="{{route('wap.zhuanti')}}" target="_self">
                     <div class="col2icon">
                         <img src="{{asset('wap/bootstrap/images/lldj/ztjy.png')}}"/>
                     </div>

@@ -77,6 +77,11 @@ class MobileController extends Controller
         return view('wap.dang.noticedetail',compact('notices'));
     }
 
+    public function zhuanti()
+    {
+        return view('wap.dang.zhuanti');
+    }
+
     /**
      * @param \Illuminate\Http\Request $request
      *

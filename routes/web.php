@@ -72,6 +72,8 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('index', 'MobileController@index')->name('wap.index');
     //展示党支部详情
     Route::get('usersinfo', 'MobileController@getuserinfo')->name('wap.getuserinfo');
+    //专题教育
+    Route::get('zhuanti', 'MobileController@zhuanti')->name('wap.zhuanti');
 
     //手机端通知公告
     Route::get('notice', ['uses'=>'MobileController@notice'])->name('wap.notice');
