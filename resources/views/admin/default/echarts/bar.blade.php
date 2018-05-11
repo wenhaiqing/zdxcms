@@ -25,7 +25,7 @@
     // 指定图表的配置项和数据
     var option = {
         title: {
-            text: '吕梁智慧云党建系统党员数据分析'
+            text: '吕梁智慧云党建系统党员学历分析'
         },
         tooltip: {},
         legend: {
