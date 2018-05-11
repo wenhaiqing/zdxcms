@@ -89,18 +89,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="aui-list-item">
-                    <div class="aui-list-item-inner">
-                        <div class="aui-list-item-label aui-border-r color-orange" style="font-size:14px;">
-                            年龄
-                            <small class="aui-margin-l-5 aui-text-warning"></small>
-                        </div>
-                        <div class="aui-list-item-input aui-padded-l-10">
-                            <input id="age" name="age" required value="{{ old('age') }}" class="form-control" placeholder="请输入年龄"
-                                   type="number">
-                        </div>
-                    </div>
-                </li>
+
                 <li class="aui-list-item">
                     <div class="aui-list-item-inner">
                         <div class="aui-list-item-label">

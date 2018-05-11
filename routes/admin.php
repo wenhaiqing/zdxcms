@@ -70,5 +70,10 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     //数据分析
     Route::get('echarts/bar','EchartsController@bar')->name('echarts.bar');
     Route::get('echarts/pie','EchartsController@pie')->name('echarts.pie');
+    Route::get('echarts/test','EchartsController@test')->name('echarts.test');
+    Route::get('echarts/zheng','EchartsController@zheng')->name('echarts.zheng');
+    Route::get('echarts/sex','EchartsController@sex')->name('echarts.sex');
+    Route::get('echarts/current','EchartsController@current')->name('echarts.current');
+
 
 });
