@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Meeting;
+use App\Models\MeetingSign;
 use App\Models\Member;
 use App\Models\Qianyi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Cache;
 
 class EchartsController extends BaseController
 {
@@ -611,5 +614,155 @@ class EchartsController extends BaseController
         ];
         //$data = json_encode($data);
         return view(getThemeView('echarts.census_move'), compact('data'));
+    }
+
+    public function census_meeting()
+    {
+        $data = Cache::remember('census_meeting', '1400', function() {
+                   return $this->census_meeting_action();
+        });
+        return view(getThemeView('echarts.census_meeting'),compact('data'));
+    }
+
+    public function census_meeting_action()
+    {
+        $res1 = User::where('name', 'like', '%离石市区%')->first(['id']);
+        $ids1 = $this->get_adminson([$res1->id], [$res1->id]);
+        $arr1 = Member::whereIn('user_id', $ids1)->pluck('id')->toArray();
+        $arr1 = $this->getmeeting($arr1);
+        $res2 = User::where('name', 'like', '%孝义市%')->first(['id']);
+        $ids2 = $this->get_adminson([$res2->id], [$res2->id]);
+        $arr2 = Member::whereIn('user_id', $ids2)->pluck('id')->toArray();
+        $arr2 = $this->getmeeting($arr2);
+        $res3 = User::where('name', 'like', '%汾阳市%')->first(['id']);
+        $ids3 = $this->get_adminson([$res3->id], [$res3->id]);
+        $arr3 = Member::whereIn('user_id', $ids3)->pluck('id')->toArray();
+        $arr3 = $this->getmeeting($arr3);
+        $res4 = User::where('name', 'like', '%石楼县%')->first(['id']);
+        $ids4 = $this->get_adminson([$res4->id], [$res4->id]);
+        $arr4 = Member::whereIn('user_id', $ids4)->pluck('id')->toArray();
+        $arr4 = $this->getmeeting($arr4);
+        $res5 = User::where('name', 'like', '%方山县%')->first(['id']);
+        $ids5 = $this->get_adminson([$res5->id], [$res5->id]);
+        $arr5 = Member::whereIn('user_id', $ids5)->pluck('id')->toArray();
+        $arr5 = $this->getmeeting($arr5);
+        $res6 = User::where('name', 'like', '%柳林县%')->first(['id']);
+        $ids6 = $this->get_adminson([$res6->id], [$res6->id]);
+        $arr6 = Member::whereIn('user_id', $ids6)->pluck('id')->toArray();
+        $arr6 = $this->getmeeting($arr6);
+        $res7 = User::where('name', 'like', '%交口县%')->first(['id']);
+        $ids7 = $this->get_adminson([$res7->id], [$res7->id]);
+        $arr7 = Member::whereIn('user_id', $ids7)->pluck('id')->toArray();
+        $arr7 = $this->getmeeting($arr7);
+        $res8 = User::where('name', 'like', '%文水县%')->first(['id']);
+        $ids8 = $this->get_adminson([$res8->id], [$res8->id]);
+        $arr8 = Member::whereIn('user_id', $ids8)->pluck('id')->toArray();
+        $arr8 = $this->getmeeting($arr8);
+        $res9 = User::where('name', 'like', '%交城县%')->first(['id']);
+        $ids9 = $this->get_adminson([$res9->id], [$res9->id]);
+        $arr9 = Member::whereIn('user_id', $ids9)->pluck('id')->toArray();
+        $arr9 = $this->getmeeting($arr9);
+        $res10 = User::where('name', 'like', '%兴县%')->first(['id']);
+        $ids10 = $this->get_adminson([$res10->id], [$res10->id]);
+        $arr10 = Member::whereIn('user_id', $ids10)->pluck('id')->toArray();
+        $arr10 = $this->getmeeting($arr10);
+        $res11 = User::where('name', 'like', '%临县%')->first(['id']);
+        $ids11 = $this->get_adminson([$res11->id], [$res11->id]);
+        $arr11 = Member::whereIn('user_id', $ids11)->pluck('id')->toArray();
+        $arr11 = $this->getmeeting($arr11);
+        $res12 = User::where('name', 'like', '%岚县%')->first(['id']);
+        $ids12 = $this->get_adminson([$res12->id], [$res12->id]);
+        $arr12 = Member::whereIn('user_id', $ids12)->pluck('id')->toArray();
+        $arr12 = $this->getmeeting($arr12);
+        $res13 = User::where('name', 'like', '%中阳县%')->first(['id']);
+        $ids13 = $this->get_adminson([$res13->id], [$res13->id]);
+        $arr13 = Member::whereIn('user_id', $ids13)->pluck('id')->toArray();
+        $arr13 = $this->getmeeting($arr13);
+        $data = [
+            [
+                'value' => $arr13,
+                'name' => '中阳县',
+            ],
+            [
+                'value' => $arr12,
+                'name' => '岚县',
+            ],
+            [
+                'value' => $arr11,
+                'name' => '临县',
+            ],
+            [
+                'value' => $arr10,
+                'name' => '兴县',
+            ],
+            [
+                'value' => $arr9,
+                'name' => '交城县',
+            ],
+            [
+                'value' => $arr8,
+                'name' => '文水县',
+            ],
+            [
+                'value' => $arr7,
+                'name' => '交口县',
+            ],
+            [
+                'value' => $arr6,
+                'name' => '柳林县',
+            ],
+            [
+                'value' => $arr5,
+                'name' => '方山县',
+            ],
+            [
+                'value' => $arr4,
+                'name' => '石楼县',
+            ],
+            [
+                'value' => $arr3,
+                'name' => '汾阳市',
+            ],
+            [
+                'value' => $arr2,
+                'name' => '孝义市',
+            ],
+            [
+                'value' => $arr1,
+                'name' => '离石市区',
+            ],
+        ];
+        return $data;
+    }
+
+    public function getmeeting($ids)
+    {
+        $year = date('Y');
+        $time1 = $year.'-01';
+        $count1 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time1}%")->count();
+        $time2 = $year.'-02';
+        $count2 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time2}%")->count();
+        $time3 = $year.'-03';
+        $count3 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time3}%")->count();
+        $time4 = $year.'-04';
+        $count4 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time4}%")->count();
+        $time5 = $year.'-05';
+        $count5 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time5}%")->count();
+        $time6 = $year.'-06';
+        $count6 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time6}%")->count();
+        $time7 = $year.'-07';
+        $count7 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time7}%")->count();
+        $time8 = $year.'-08';
+        $count8 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time8}%")->count();
+        $time9 = $year.'-09';
+        $count9 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time9}%")->count();
+        $time10 = $year.'-10';
+        $count10 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time10}%")->count();
+        $time11 = $year.'-11';
+        $count11 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time11}%")->count();
+        $time12 = $year.'-12';
+        $count12 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time12}%")->count();
+        $res = [$count1,$count2,$count3,$count4,$count5,$count6,$count7,$count8,$count9,$count10,$count11,$count12];
+        return $res;
     }
 }

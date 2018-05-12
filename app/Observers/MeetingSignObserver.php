@@ -18,6 +18,13 @@ class MeetingSignObserver
         if (!$meetingsign->member_id){
             $meetingsign->member_id = \Auth::guard('wap')->id();
         }
+        $member = \Auth::guard('wap')->user();
+        $jifen = config('wap.global.meeting_sign');
+        $res = MeetingSign::where(['member_id'=>$member->id,'meeting_id'=>$meetingsign->meeting->id])->first();
+        if ($res){
+            $jifen = 0;
+        }
+        $meetingsign->jifen = $jifen;
     }
 
     public function created(MeetingSign $meetingsign)
@@ -27,6 +34,7 @@ class MeetingSignObserver
         $modelid = $meetingsign->id;
         $modeltitle = $meetingsign->meeting->meeting_title;
         $jifen = config('wap.global.meeting_sign');
+
         //判断是否第一次签到，如果不是第一次签到就不计算积分;
         $res = MeetingSign::where(['member_id'=>$member->id,'meeting_id'=>$meetingsign->meeting->id])->first();
         if ($res){

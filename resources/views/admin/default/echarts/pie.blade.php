@@ -89,7 +89,8 @@
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['离石市区', '孝义市', '汾阳市', '石楼县', '方山县','柳林县','交口县','文水县','交城县','兴县','临县','岚县','中阳县']
+            data: [data1[0]['name'], data1[1]['name'], data1[2]['name'], data1[3]['name'], data1[4]['name'],data1[5]['name'],data1[6]['name'],
+                data1[7]['name'],data1[8]['name'],data1[9]['name'],data1[9]['name'],data1[10]['name'],data1[11]['name']]
         },
         series: [{
             name: '注册人数',
