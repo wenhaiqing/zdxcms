@@ -9,7 +9,7 @@ class Member extends User
     use Traits\RecordThemedDang;
     use Traits\RecordActiveUser;
 
-    protected $fillable = ['birthday','user_id','openid', 'mobile', 'name', 'password', 'sex', 'nation', 'cardnum', 'record', 'age', 'if_dang', 'if_movedang', 'status', 'remember_token','jifen'];
+    protected $fillable = ['birthday','dang_age','joindang_time','user_id','openid', 'mobile', 'name', 'password', 'sex', 'nation', 'cardnum', 'record', 'age', 'if_dang', 'if_movedang', 'status', 'remember_token','jifen'];
 
     public function user()
     {

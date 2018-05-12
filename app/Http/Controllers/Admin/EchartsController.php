@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Member;
+use App\Models\Qianyi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -377,5 +378,238 @@ class EchartsController extends BaseController
         $chuan = json_encode($chuan);
 
         return view(getThemeView('echarts.current'), compact('ruan','gui','chuan'));
+    }
+
+    //党员年龄统计分析
+    public function census_age(Member $member)
+    {
+        $age1 = $member->where('age','<=',30)->count();
+        $age2 = $member->where('age','>',30)->where('age','<=',35)->count();
+        $age3 = $member->where('age','>',35)->where('age','<=',40)->count();
+        $age4 = $member->where('age','>',40)->where('age','<=',45)->count();
+        $age5 = $member->where('age','>',45)->where('age','<=',50)->count();
+        $age6 = $member->where('age','>',50)->where('age','<=',55)->count();
+        $age7 = $member->where('age','>',60)->where('age','<=',65)->count();
+        $age8 = $member->where('age','>',65)->where('age','<=',70)->count();
+        $age9 = $member->where('age','>',70)->count();
+        $records = [$age1, $age2, $age3, $age4, $age5,$age6,$age7,$age8,$age9];
+        $records = json_encode($records);
+        return view(getThemeView('echarts.census_age'),compact('records'));
+    }
+    //党员年龄统计分析
+    public function census_dang_age(Member $member)
+    {
+        $dang_age1 = $member->where('dang_age','<=',2)->count();
+        $dang_age2 = $member->where('dang_age','>',2)->where('dang_age','<=',5)->count();
+        $dang_age3 = $member->where('dang_age','>',5)->where('dang_age','<=',7)->count();
+        $dang_age4 = $member->where('dang_age','>',7)->where('dang_age','<=',9)->count();
+        $dang_age5 = $member->where('dang_age','>',9)->where('dang_age','<=',10)->count();
+        $dang_age6 = $member->where('dang_age','>',10)->where('dang_age','<=',15)->count();
+        $dang_age7 = $member->where('dang_age','>',15)->where('dang_age','<=',20)->count();
+        $dang_age8 = $member->where('dang_age','>',20)->where('dang_age','<=',30)->count();
+        $dang_age9 = $member->where('dang_age','>',30)->count();
+        $records = [$dang_age1, $dang_age2, $dang_age3, $dang_age4, $dang_age5,$dang_age6,$dang_age7,$dang_age8,$dang_age9];
+        $records = json_encode($records);
+        return view(getThemeView('echarts.census_dang_age'),compact('records'));
+    }
+
+    //各县党支部入驻数量统计
+    public function census_xian()
+    {
+        $res1 = User::where('name', 'like', '%离石市区%')->first(['id']);
+        $arr1 = $this->get_adminson([$res1->id], [$res1->id]);
+        $res2 = User::where('name', 'like', '%孝义市%')->first(['id']);
+        $arr2 = $this->get_adminson([$res2->id], [$res2->id]);
+        $res3 = User::where('name', 'like', '%汾阳市%')->first(['id']);
+        $arr3 = $this->get_adminson([$res3->id], [$res3->id]);
+        $res4 = User::where('name', 'like', '%石楼县%')->first(['id']);
+        $arr4 = $this->get_adminson([$res4->id], [$res4->id]);
+        $res5 = User::where('name', 'like', '%方山县%')->first(['id']);
+        $arr5 = $this->get_adminson([$res5->id], [$res5->id]);
+        $res6 = User::where('name', 'like', '%柳林县%')->first(['id']);
+        $arr6 = $this->get_adminson([$res6->id], [$res6->id]);
+        $res7 = User::where('name', 'like', '%交口县%')->first(['id']);
+        $arr7 = $this->get_adminson([$res7->id], [$res7->id]);
+        $res8 = User::where('name', 'like', '%文水县%')->first(['id']);
+        $arr8 = $this->get_adminson([$res8->id], [$res8->id]);
+        $res9 = User::where('name', 'like', '%交城县%')->first(['id']);
+        $arr9 = $this->get_adminson([$res9->id], [$res9->id]);
+        $res10 = User::where('name', 'like', '%兴县%')->first(['id']);
+        $arr10 = $this->get_adminson([$res10->id], [$res10->id]);
+        $res11 = User::where('name', 'like', '%临县%')->first(['id']);
+        $arr11 = $this->get_adminson([$res11->id], [$res11->id]);
+        $res12 = User::where('name', 'like', '%岚县%')->first(['id']);
+        $arr12 = $this->get_adminson([$res12->id], [$res12->id]);
+        $res13 = User::where('name', 'like', '%中阳县%')->first(['id']);
+        $arr13 = $this->get_adminson([$res13->id], [$res13->id]);
+        $data = [
+            [
+                'value' => count($arr13),
+                'name' => '中阳县',
+            ],
+            [
+                'value' => count($arr12),
+                'name' => '岚县',
+            ],
+            [
+                'value' => count($arr11),
+                'name' => '临县',
+            ],
+            [
+                'value' => count($arr10),
+                'name' => '兴县',
+            ],
+            [
+                'value' => count($arr9),
+                'name' => '交城县',
+            ],
+            [
+                'value' => count($arr8),
+                'name' => '文水县',
+            ],
+            [
+                'value' => count($arr7),
+                'name' => '交口县',
+            ],
+            [
+                'value' => count($arr6),
+                'name' => '柳林县',
+            ],
+            [
+                'value' => count($arr5),
+                'name' => '方山县',
+            ],
+            [
+                'value' => count($arr4),
+                'name' => '石楼县',
+            ],
+            [
+                'value' => count($arr3),
+                'name' => '汾阳市',
+            ],
+            [
+                'value' => count($arr2),
+                'name' => '孝义市',
+            ],
+            [
+                'value' => count($arr1),
+                'name' => '离石市区',
+            ],
+        ];
+        //$data = json_encode($data);
+        return view(getThemeView('echarts.census_xian'), compact('data'));
+    }
+
+    public function census_move()
+    {
+        $res1 = User::where('name', 'like', '%离石市区%')->first(['id']);
+        $ids1 = $this->get_adminson([$res1->id], [$res1->id]);
+        $arr1 = Member::whereIn('user_id', $ids1)->where('linshi_user_id','>','0')->count();
+        $lin1 = Qianyi::whereIn('from_user_id',$ids1)->orwhereIn('to_user_id',$ids1)->count();
+        $res2 = User::where('name', 'like', '%孝义市%')->first(['id']);
+        $ids2 = $this->get_adminson([$res2->id], [$res2->id]);
+        $arr2 = Member::whereIn('user_id', $ids2)->where('linshi_user_id','>','0')->count();
+        $res3 = User::where('name', 'like', '%汾阳市%')->first(['id']);
+        $ids3 = $this->get_adminson([$res3->id], [$res3->id]);
+        $arr3 = Member::whereIn('user_id', $ids3)->where('linshi_user_id','>','0')->count();
+        $res4 = User::where('name', 'like', '%石楼县%')->first(['id']);
+        $ids4 = $this->get_adminson([$res4->id], [$res4->id]);
+        $arr4 = Member::whereIn('user_id', $ids4)->where('linshi_user_id','>','0')->count();
+        $res5 = User::where('name', 'like', '%方山县%')->first(['id']);
+        $ids5 = $this->get_adminson([$res5->id], [$res5->id]);
+        $arr5 = Member::whereIn('user_id', $ids5)->where('linshi_user_id','>','0')->count();
+        $res6 = User::where('name', 'like', '%柳林县%')->first(['id']);
+        $ids6 = $this->get_adminson([$res6->id], [$res6->id]);
+        $arr6 = Member::whereIn('user_id', $ids6)->where('linshi_user_id','>','0')->count();
+        $res7 = User::where('name', 'like', '%交口县%')->first(['id']);
+        $ids7 = $this->get_adminson([$res7->id], [$res7->id]);
+        $arr7 = Member::whereIn('user_id', $ids7)->where('linshi_user_id','>','0')->count();
+        $res8 = User::where('name', 'like', '%文水县%')->first(['id']);
+        $ids8 = $this->get_adminson([$res8->id], [$res8->id]);
+        $arr8 = Member::whereIn('user_id', $ids8)->where('linshi_user_id','>','0')->count();
+        $res9 = User::where('name', 'like', '%交城县%')->first(['id']);
+        $ids9 = $this->get_adminson([$res9->id], [$res9->id]);
+        $arr9 = Member::whereIn('user_id', $ids9)->where('linshi_user_id','>','0')->count();
+        $res10 = User::where('name', 'like', '%兴县%')->first(['id']);
+        $ids10 = $this->get_adminson([$res10->id], [$res10->id]);
+        $arr10 = Member::whereIn('user_id', $ids10)->where('linshi_user_id','>','0')->count();
+        $res11 = User::where('name', 'like', '%临县%')->first(['id']);
+        $ids11 = $this->get_adminson([$res11->id], [$res11->id]);
+        $arr11 = Member::whereIn('user_id', $ids11)->where('linshi_user_id','>','0')->count();
+        $res12 = User::where('name', 'like', '%岚县%')->first(['id']);
+        $ids12 = $this->get_adminson([$res12->id], [$res12->id]);
+        $arr12 = Member::whereIn('user_id', $ids12)->where('linshi_user_id','>','0')->count();
+        $res13 = User::where('name', 'like', '%中阳县%')->first(['id']);
+        $ids13 = $this->get_adminson([$res13->id], [$res13->id]);
+        $arr13 = Member::whereIn('user_id', $ids13)->where('linshi_user_id','>','0')->count();
+
+        $lin2 = Qianyi::whereIn('from_user_id',$ids2)->orwhereIn('to_user_id',$ids2)->count();
+        $lin3 = Qianyi::whereIn('from_user_id',$ids3)->orwhereIn('to_user_id',$ids3)->count();
+        $lin4 = Qianyi::whereIn('from_user_id',$ids4)->orwhereIn('to_user_id',$ids4)->count();
+        $lin5 = Qianyi::whereIn('from_user_id',$ids5)->orwhereIn('to_user_id',$ids5)->count();
+        $lin6 = Qianyi::whereIn('from_user_id',$ids6)->orwhereIn('to_user_id',$ids6)->count();
+        $lin7 = Qianyi::whereIn('from_user_id',$ids7)->orwhereIn('to_user_id',$ids7)->count();
+        $lin8 = Qianyi::whereIn('from_user_id',$ids8)->orwhereIn('to_user_id',$ids8)->count();
+        $lin9 = Qianyi::whereIn('from_user_id',$ids9)->orwhereIn('to_user_id',$ids9)->count();
+        $lin10 = Qianyi::whereIn('from_user_id',$ids10)->orwhereIn('to_user_id',$ids10)->count();
+        $lin11 = Qianyi::whereIn('from_user_id',$ids11)->orwhereIn('to_user_id',$ids11)->count();
+        $lin12 = Qianyi::whereIn('from_user_id',$ids12)->orwhereIn('to_user_id',$ids12)->count();
+        $lin13 = Qianyi::whereIn('from_user_id',$ids13)->orwhereIn('to_user_id',$ids13)->count();
+        $data = [
+            [
+                'value' => $arr13+$lin13,
+                'name' => '中阳县',
+            ],
+            [
+                'value' => $arr12+$lin12,
+                'name' => '岚县',
+            ],
+            [
+                'value' => $arr11+$lin11,
+                'name' => '临县',
+            ],
+            [
+                'value' => $arr10+$lin10,
+                'name' => '兴县',
+            ],
+            [
+                'value' => $arr9+$lin9,
+                'name' => '交城县',
+            ],
+            [
+                'value' => $arr8+$lin8,
+                'name' => '文水县',
+            ],
+            [
+                'value' => $arr7+$lin7,
+                'name' => '交口县',
+            ],
+            [
+                'value' => $arr6+$lin6,
+                'name' => '柳林县',
+            ],
+            [
+                'value' => $arr5+$lin5,
+                'name' => '方山县',
+            ],
+            [
+                'value' => $arr4+$lin4,
+                'name' => '石楼县',
+            ],
+            [
+                'value' => $arr3+$lin3,
+                'name' => '汾阳市',
+            ],
+            [
+                'value' => $arr2+$lin2,
+                'name' => '孝义市',
+            ],
+            [
+                'value' => $arr1+$lin1,
+                'name' => '离石市区',
+            ],
+        ];
+        //$data = json_encode($data);
+        return view(getThemeView('echarts.census_move'), compact('data'));
     }
 }

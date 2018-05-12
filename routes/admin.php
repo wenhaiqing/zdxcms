@@ -74,6 +74,10 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::get('echarts/zheng','EchartsController@zheng')->name('echarts.zheng');
     Route::get('echarts/sex','EchartsController@sex')->name('echarts.sex');
     Route::get('echarts/current','EchartsController@current')->name('echarts.current');
+    Route::get('echarts/census_age','EchartsController@census_age')->name('echarts.census_age');
+    Route::get('echarts/census_dang_age','EchartsController@census_dang_age')->name('echarts.census_dang_age');
+    Route::get('echarts/census_xian','EchartsController@census_xian')->name('echarts.census_xian');
+    Route::get('echarts/census_move','EchartsController@census_move')->name('echarts.census_move');
 
 
 });
