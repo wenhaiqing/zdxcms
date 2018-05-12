@@ -28,12 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        Member::chunk(1000, function ($members) {
-            foreach ($members as $member) {
-                $age = rand(0,50);
-                    $member->update(['dang_age'=>$age]);
-                }
-        });
+//        Member::chunk(1000, function ($members) {
+//            foreach ($members as $member) {
+//                $age = rand(0,50);
+//                    $member->update(['dang_age'=>$age]);
+//                }
+//        });
 
 
         return view('welcome');
