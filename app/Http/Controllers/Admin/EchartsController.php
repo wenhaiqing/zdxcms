@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Browselog;
 use App\Models\Meeting;
 use App\Models\MeetingSign;
 use App\Models\Member;
 use App\Models\Qianyi;
 use App\Models\User;
+use App\Models\Video;
+use App\Models\VideoCategory;
 use Illuminate\Http\Request;
 use Cache;
 
@@ -764,5 +767,19 @@ class EchartsController extends BaseController
         $count12 = MeetingSign::where('jifen','>',0)->whereIn('member_id',$ids)->where('created_at','like',"%{$time12}%")->count();
         $res = [$count1,$count2,$count3,$count4,$count5,$count6,$count7,$count8,$count9,$count10,$count11,$count12];
         return $res;
+    }
+
+    public function census_video()
+    {
+        $cates = VideoCategory::all()->toArray();
+
+        $count = count($cates);
+        $data = [];
+        for ($i=0 ;$i<$count;$i++){
+            $data1[$i] = $cates[$i]['title'];
+            $arr = Video::where('cid',$cates[$i]['id'])->pluck('id')->toArray();
+            $data[$i] = Browselog::where('model_name','videos')->whereIn('member_id',$arr)->count();
+        }
+        return view(getThemeView('echarts.census_video'),compact('data','data1'));
     }
 }

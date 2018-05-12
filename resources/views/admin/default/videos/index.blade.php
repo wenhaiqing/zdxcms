@@ -7,6 +7,9 @@
     <blockquote class="layui-elem-quote news_search">
         <form class="layui-form layui-form-pane" method="GET" action="">
             <div class="layui-inline">
+                <a href="{{ route('videos.category.index') }}" class="layui-btn">{{trans('video.category')}}</a>
+            </div>
+            <div class="layui-inline">
                 <a href="{{ route('videos.create') }}" class="layui-btn">{{trans('global.add')}}</a>
             </div>
             <div class="layui-inline">

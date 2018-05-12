@@ -46,6 +46,12 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::post('upload_image', 'UploadController@uploadImage')->name('upload_image');
     Route::resource('theme_dangs', 'ThemeDangsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('videos', 'VideosController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    Route::get('videos_category', 'VideosController@category')->name('videos.category.index');
+    Route::get('videos_category/add', 'VideosController@categoryadd')->name('videos.category.add');
+    Route::post('videos_category/store', 'VideosController@categorystore')->name('videos.category.store');
+    Route::get('videos_category/edit', 'VideosController@categoryedit')->name('videos.category.edit');
+    Route::patch('videos_category/update', 'VideosController@categoryupdate')->name('videos.category.update');
+    Route::delete('videos_category/destroy', 'VideosController@categorydestroy')->name('videos.category.destroy');
     Route::resource('members', 'MembersController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     //设置视频为推荐视频
     Route::post('videos/jinghua','VideosController@jinghua')->name('videos.jinghua');
@@ -79,6 +85,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::get('echarts/census_xian','EchartsController@census_xian')->name('echarts.census_xian');
     Route::get('echarts/census_move','EchartsController@census_move')->name('echarts.census_move');
     Route::get('echarts/census_meeting','EchartsController@census_meeting')->name('echarts.census_meeting');
+    Route::get('echarts/census_video','EchartsController@census_video')->name('echarts.census_video');
 
 
 });

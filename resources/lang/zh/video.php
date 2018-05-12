@@ -10,5 +10,8 @@ return [
     'cover'=>'视频封面',
     'url'=>'视频url',
     'select_jinghua'=>'查看精华视频',
-    'jifen' => '积分'
+    'jifen' => '积分',
+    'category'=>'视频分类',
+    'category_title'=>'分类标题',
+    'select_category'=>'选择分类'
 ];

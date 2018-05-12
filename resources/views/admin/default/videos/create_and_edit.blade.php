@@ -22,6 +22,17 @@
                 <input type="text" name="description" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('description',$video->description) }}" >
             </div>
         </div>
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">{{trans('permissions.pid')}}</label>
+            <div class="layui-input-block">
+                <select name="cid" lay-verify="" lay-search="">
+                    <option value="0" @if(0 == $video->cid) selected @endif>{{trans('video.select_category')}}</option>
+                    @foreach($category as $key => $val)
+                        <option value="{{$val['id']}}" @if($val['id'] == $video->cid) selected @endif>{{$val['title']}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         <div class="layui-upload">
             <button type="button" class="layui-btn" id="test1">{{trans('video.cover')}}</button>
             <div class="layui-upload-list">
