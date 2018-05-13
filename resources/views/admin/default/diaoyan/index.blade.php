@@ -37,6 +37,7 @@
                     <col>
                     <col>
                     <col>
+                    <col>
                     <col width="300">
                 </colgroup>
                 <thead>
@@ -48,6 +49,7 @@
                     <th>{{trans('diaoyans.prode_object')}}</th>
                     <th>{{trans('diaoyans.problem')}}</th>
                     <th>{{trans('diaoyans.opinions')}}</th>
+                    <th>{{trans('diaoyans.created_at')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
                 </thead>
@@ -76,6 +78,7 @@
                             </td>
                         <td>{{ $diaoyan->problem  }}</td>
                         <td>{{ $diaoyan->opinions  }}</td>
+                        <td>{{ $diaoyan->created_at  }}</td>
                         <td>
 
                             {{--<a href="{{ route('diaoyan.edit', $diaoyan->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>--}}

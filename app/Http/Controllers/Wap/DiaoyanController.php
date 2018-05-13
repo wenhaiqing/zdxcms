@@ -21,6 +21,6 @@ class DiaoyanController extends Controller
     public function store(Request $request)
     {
         $res = Diaoyan::create($request->all());
-        return redirect()->route('wap.diaoyan.add');
+        return redirect()->route('wap.indexlist');
     }
 }

@@ -8,5 +8,6 @@ return [
     'problem'=>'发现的问题',
     'opinions'=>'基层意见建议',
     'comment'=>'备注',
+    'created_at'=>'调研时间'
 
 ];
