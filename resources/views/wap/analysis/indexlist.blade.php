@@ -45,13 +45,7 @@
 
         <div class="aui-content aui-margin-b-15">
             <ul class="aui-list aui-list-in">
-                <a href="{{route('analysis.census_video')}}">
-                    <li class="aui-list-item">
-                        <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">内容偏好分析</div>
-                        </div>
-                    </li>
-                </a>
+
                 <a href="{{route('analysis.pie')}}">
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
@@ -119,6 +113,13 @@
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
                             <div class="aui-list-item-title">党支部现状数据分析</div>
+                        </div>
+                    </li>
+                </a>
+                <a href="{{route('analysis.census_video')}}">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">内容偏好分析</div>
                         </div>
                     </li>
                 </a>
