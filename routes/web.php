@@ -22,6 +22,7 @@ Route::get('/profile', 'WeChatController@profile');
 // 微信路由
 Route::any('wechat/{wechat}.html', 'WeChatController@serve')->name('wechat.api');
 
+
 Route::group([ 'middleware' => 'language'], function ($router)
 {
     // Authentication Routes...
@@ -38,6 +39,12 @@ Route::group([ 'middleware' => 'language'], function ($router)
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+});
+Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
+{
+    //首页
+    Route::get('index', 'MobileController@index')->name('wap.index');
 });
 
 require_once 'admin.php';
@@ -69,7 +76,8 @@ Route::group([ 'prefix' => 'wap', 'middleware' => ['auth:wap']], function ($rout
 Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap']], function ($router)
 {
 
-    Route::get('index', 'MobileController@index')->name('wap.index');
+
+    Route::get('indexlist', 'MobileController@indexlist')->name('wap.indexlist');
     //展示党支部详情
     Route::get('usersinfo', 'MobileController@getuserinfo')->name('wap.getuserinfo');
     //专题教育

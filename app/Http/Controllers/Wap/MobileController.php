@@ -24,6 +24,11 @@ class MobileController extends Controller
      */
     public function index()
     {
+        return view('wap.dang.index_yin');
+    }
+
+    public function indexlist()
+    {
         $member = Auth::guard('wap')->user();
         return view('wap.dang.index',compact('member'));
     }
