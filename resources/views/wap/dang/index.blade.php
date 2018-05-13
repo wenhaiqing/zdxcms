@@ -107,7 +107,7 @@
     </li>
     <li>
         <a href="{{route('wap.getuserinfo')}}"><img src="{{asset('wap/new/images/logo11.jpg')}}"/>
-            <div>党组信息</div></a>
+            <div>我的支部</div></a>
     </li>
     <li>
         <a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/logo12.jpg')}}"/>
