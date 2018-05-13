@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
-    <title>吕梁智慧党建云</title>
+    <title>吕梁共产党员党建云</title>
     <meta name="Description" content="吕梁智慧党建,组工大调研">
     <meta name="keywords" content="吕梁智慧党建,组工大调研">
     <style>

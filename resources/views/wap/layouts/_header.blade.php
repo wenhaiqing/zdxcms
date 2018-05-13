@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'zdxcms') }}</title>
+    {{--<title>{{ config('app.name', 'zdxcms') }}</title>--}}
+    <title>吕梁共产党员党建云</title>
     <link href="{{asset('wap/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
     <link href="{{asset('wap/bootstrap/css/aui.css')}}" rel="stylesheet">

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>吕梁智慧党建——三会一课</title>
+    <title>吕梁共产党员党建云——三会一课</title>
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/index.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/sanhuiyk.css')}}">
     <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
