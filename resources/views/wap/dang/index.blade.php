@@ -94,8 +94,8 @@
             <div>互动中心</div></a>
     </li>
     <li>
-        <a href=""><img src="{{asset('wap/new/images/hsez_10.jpg')}}"/>
-            <div>党务文书</div></a>
+        <a href="{{route('wap.diaoyan.index')}}"><img src="{{asset('wap/new/images/hsez_10.jpg')}}"/>
+            <div>党务助手</div></a>
     </li>
     <li>
         <a href="{{route('wap.analysis.index')}}"><img src="{{asset('wap/new/images/hsez_11.jpg')}}"/>

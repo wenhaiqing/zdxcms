@@ -158,6 +158,10 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('analysis/census_video','AnalysisController@census_video')->name('analysis.census_video');
     Route::post('analysis/census_video_json','AnalysisController@census_video_json')->name('analysis.census_video_json');
 
+    Route::get('diaoyan', ['uses'=>'DiaoyanController@index'])->name('wap.diaoyan.index');
+    Route::get('diaoyan/add', ['uses'=>'DiaoyanController@create'])->name('wap.diaoyan.add');
+    Route::post('diaoyan/store', ['uses'=>'DiaoyanController@store'])->name('wap.diaoyan.store');
+
 
 });
 

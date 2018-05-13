@@ -11,7 +11,6 @@ class UploadController extends Controller
 {
     public function uploadImage(Request $request, ImageUploadHandler $uploader)
     {
-        //dd($request->file());
         // 初始化返回数据，默认是失败的
         $data = [
             'success'   => false,
