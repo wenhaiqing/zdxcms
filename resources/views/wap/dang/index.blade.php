@@ -66,7 +66,7 @@
 
 <ul class="body-ula">
     <li>
-        <a href=""><img src="{{asset('wap/new/images/hsez_03.jpg')}}"/>
+        <a href="http://www.llzg.gov.cn/web/p_list.html?lmmc=%E8%A6%81%E9%97%BB%E5%8A%A8%E6%80%81&pageno=1"><img src="{{asset('wap/new/images/hsez_03.jpg')}}"/>
             <div>党建动态</div></a>
     </li>
     <li>
