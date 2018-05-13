@@ -98,30 +98,25 @@
         </div>
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-4">
                     <a href="{{route('wap.mytopic')}}">
                         <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->topic->count()}}</big>
                         <div class="aui-grid-label aui-font-size-12">我的话题</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-4">
                     <a href="{{route('wap.myreply')}}">
                         <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->replies->count()}}</big>
                         <div class="aui-grid-label aui-font-size-12">我的回复</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-3">
+                <div class="aui-col-xs-4">
                     <a href="{{route('wap.myjifen')}}">
                         <big class="label-cont aui-font-size-14 aui-text-danger">{{$member->jifen}}</big>
                         <div class="aui-grid-label aui-font-size-12">我的积分</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myvideo')}}">
-                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">视频学习</div>
-                    </a>
-                </div>
+
 
             </div>
         </div>
@@ -136,15 +131,15 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myqiandao')}}">
-                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-calendar"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">每日签到</div>
+                    <a href="{{route('wap.myvideo')}}">
+                        <div class="label-icon aui-bg-warning"><i class=" aui-iconfont aui-icon-comment"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">视频学习</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
                     <a href="{{route('wap.myhistory')}}">
                         <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-paper"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">足迹</div>
+                        <div class="aui-grid-label aui-font-size-12">我的足迹</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
