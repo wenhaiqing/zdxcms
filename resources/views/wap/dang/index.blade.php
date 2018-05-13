@@ -128,10 +128,10 @@
             <a href=""><img src="{{asset('wap/new/images/hsez_14.jpg')}}"/>
                 <div>微服</div></a>
         </li>
-        <li>
-            <a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>
-                <div>我的</div></a>
-        </li>
+        {{--<li>--}}
+            {{--<a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>--}}
+                {{--<div>我的</div></a>--}}
+        {{--</li>--}}
     </ul>
     <br/>
 </footer>
