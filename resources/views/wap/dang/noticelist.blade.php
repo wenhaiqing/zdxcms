@@ -59,28 +59,7 @@
     @endif
 </div>
 
-<footer>
-    <ul>
-        <li>
-            <img src="{{asset('wap/new/images/hsez_12.jpg')}}"/>
-            <div>党建</div>
-        </li>
-        <li>
-            <img src="{{asset('wap/new/images/hsez_13.jpg')}}"/>
-            <div>微课</div>
-        </li>
-        <li>
-            <img src="{{asset('wap/new/images/hsez_14.jpg')}}"/>
-            <div>微服</div>
-        </li>
-        <li>
-            <a href="{{route('wap.center')}}" target="_self">
-            <img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>
-            <div>我的</div>
-            </a>
-        </li>
-    </ul>
-</footer>
+
 </body>
 @include(getThemeView('layouts._paginate'),[ 'count' => $notices->total(), ])
 </html>
