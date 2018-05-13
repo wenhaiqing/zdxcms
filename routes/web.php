@@ -133,7 +133,23 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 
     Route::get('member_active', ['uses'=>'MemberController@member_active'])->name('wap.member_active');
     Route::get('user_active', ['uses'=>'MemberController@user_active'])->name('wap.user_active');
+    Route::get('analysis/index', ['uses'=>'AnalysisController@indexlist'])->name('wap.analysis.index');
+    Route::get('analysis/census_move', ['uses'=>'AnalysisController@census_move'])->name('wap.analysis.census_move');
 
+    //数据分析
+    Route::get('analysis/bar','AnalysisController@bar')->name('analysis.bar');
+    Route::get('analysis/pie','AnalysisController@pie')->name('analysis.pie');
+    Route::get('analysis/test','AnalysisController@test')->name('analysis.test');
+    Route::get('analysis/zheng','AnalysisController@zheng')->name('analysis.zheng');
+    Route::get('analysis/sex','AnalysisController@sex')->name('analysis.sex');
+    Route::get('analysis/current','AnalysisController@current')->name('analysis.current');
+    Route::get('analysis/census_age','AnalysisController@census_age')->name('analysis.census_age');
+    Route::get('analysis/census_dang_age','AnalysisController@census_dang_age')->name('analysis.census_dang_age');
+    Route::get('analysis/census_xian','AnalysisController@census_xian')->name('analysis.census_xian');
+    Route::get('analysis/census_move','AnalysisController@census_move')->name('analysis.census_move');
+    Route::get('analysis/census_meeting','AnalysisController@census_meeting')->name('analysis.census_meeting');
+    Route::get('analysis/census_video','AnalysisController@census_video')->name('analysis.census_video');
+    Route::post('analysis/census_video_json','AnalysisController@census_video_json')->name('analysis.census_video_json');
 
 
 });

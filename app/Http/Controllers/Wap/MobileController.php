@@ -194,4 +194,6 @@ class MobileController extends Controller
         $list = Member::where('user_id',$id)->paginate(config('admin.global.paginate'));
         return view('wap.dang.userinfo',compact('userinfo','list'));
     }
+
+
 }

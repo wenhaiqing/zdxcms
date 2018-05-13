@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Wap;
 
+use App\Http\Controllers\Controller;
 use App\Models\Browselog;
 use App\Models\Meeting;
 use App\Models\MeetingSign;
@@ -13,10 +14,24 @@ use App\Models\VideoCategory;
 use Illuminate\Http\Request;
 use Cache;
 
-
-class EchartsController extends BaseController
+class AnalysisController extends Controller
 {
+    public function get_adminson($id,$arr = array())
+    {
 
+        $res = User::whereIn('pid',$id)->pluck('id')->toArray();
+
+        if (!$res){
+            return $arr;
+        }
+        $arr = array_merge($arr,$res);
+
+        return $this->get_adminson($res,$arr);
+    }
+    public function indexlist()
+    {
+        return view('wap.analysis.indexlist');
+    }
     public function get_xian($title)
     {
         $res1 = User::where('name', 'like', "%{$title}%")->first(['id']);
@@ -33,7 +48,7 @@ class EchartsController extends BaseController
         $record = Member::count() - $record1 - $record2 - $record3 - $record4 - $record5;
         $records = [$record1, $record2, $record3, $record4, $record5, $record];
         $records = json_encode($records);
-        return view(getThemeView('echarts.bar'), compact('records'));
+        return view('wap.analysis.bar', compact('records'));
     }
 
     public function pie()
@@ -41,7 +56,7 @@ class EchartsController extends BaseController
         $data = Cache::remember('census_pie', '1400', function() {
             return $this->pie_action();
         });
-        return view(getThemeView('echarts.pie'), compact('data'));
+        return view('wap.analysis.pie', compact('data'));
     }
 
     public function pie_action()
@@ -138,7 +153,7 @@ class EchartsController extends BaseController
         });
         $records = json_encode($data['records']);
         $records1 = json_encode($data['records1']);
-        return view(getThemeView('echarts.zheng'), compact('records','records1'));
+        return view('wap.analysis.zheng', compact('records','records1'));
     }
     public function zheng_action()
     {
@@ -197,7 +212,7 @@ class EchartsController extends BaseController
         });
         $records = json_encode($data['records']);
         $records1 = json_encode($data['records1']);
-        return view(getThemeView('echarts.sex'), compact('records','records1'));
+        return view('wap.analysis.sex', compact('records','records1'));
     }
     public function sex_action()
     {
@@ -258,7 +273,7 @@ class EchartsController extends BaseController
         $ruan = json_encode($data['ruan']);
         $gui = json_encode($data['gui']);
         $chuan = json_encode($data['chuan']);
-        return view(getThemeView('echarts.current'), compact('ruan','gui','chuan'));
+        return view('wap.analysis.current', compact('ruan','gui','chuan'));
     }
     public function current_action()
     {
@@ -316,13 +331,13 @@ class EchartsController extends BaseController
         $chuan13 = User::whereIn('pid', $ids13)->where('users_type', '=', 2)->count();
 
         $ruan = [$ruan1,$ruan2,$ruan3,$ruan4,$ruan5,$ruan6,$ruan7,$ruan8,$ruan9,$ruan10,$ruan11,$ruan12,$ruan13];
-       $gui = [$gui1,$gui2,$gui3,$gui4,$gui5,$gui6,$gui7,$gui8,$gui9,$gui10,$gui11,$gui12,$gui13];
-       $chuan = [$chuan1,$chuan2,$chuan3,$chuan4,$chuan5,$chuan6,$chuan7,$chuan8,$chuan9,$chuan10,$chuan11,$chuan12,$chuan13];
+        $gui = [$gui1,$gui2,$gui3,$gui4,$gui5,$gui6,$gui7,$gui8,$gui9,$gui10,$gui11,$gui12,$gui13];
+        $chuan = [$chuan1,$chuan2,$chuan3,$chuan4,$chuan5,$chuan6,$chuan7,$chuan8,$chuan9,$chuan10,$chuan11,$chuan12,$chuan13];
 
-       $data['ruan'] = $ruan;
-       $data['gui'] = $gui;
-       $data['chuan'] = $chuan;
-       return $data;
+        $data['ruan'] = $ruan;
+        $data['gui'] = $gui;
+        $data['chuan'] = $chuan;
+        return $data;
     }
 
     //党员年龄统计分析
@@ -339,7 +354,7 @@ class EchartsController extends BaseController
         $age9 = $member->where('age','>',70)->count();
         $records = [$age1, $age2, $age3, $age4, $age5,$age6,$age7,$age8,$age9];
         $records = json_encode($records);
-        return view(getThemeView('echarts.census_age'),compact('records'));
+        return view('wap.analysis.census_age',compact('records'));
     }
     //党员年龄统计分析
     public function census_dang_age(Member $member)
@@ -355,7 +370,7 @@ class EchartsController extends BaseController
         $dang_age9 = $member->where('dang_age','>',30)->count();
         $records = [$dang_age1, $dang_age2, $dang_age3, $dang_age4, $dang_age5,$dang_age6,$dang_age7,$dang_age8,$dang_age9];
         $records = json_encode($records);
-        return view(getThemeView('echarts.census_dang_age'),compact('records'));
+        return view('wap.analysis.census_dang_age',compact('records'));
     }
 
     //各县党支部入驻数量统计
@@ -364,7 +379,7 @@ class EchartsController extends BaseController
         $data = Cache::remember('census_xian', '1400', function() {
             return $this->census_xian_action();
         });
-        return view(getThemeView('echarts.census_xian'), compact('data'));
+        return view('wap.analysis.census_xian', compact('data'));
     }
     public function census_xian_action()
     {
@@ -381,7 +396,7 @@ class EchartsController extends BaseController
         $arr11 = $this->get_xian('临县');
         $arr12 = $this->get_xian('岚县');
         $arr13 = $this->get_xian('中阳县');
-        
+
         $data = [
             [
                 'value' => count($arr13),
@@ -445,7 +460,7 @@ class EchartsController extends BaseController
         $data = Cache::remember('census_move', '1400', function() {
             return $this->census_move_action();
         });
-        return view(getThemeView('echarts.census_move'), compact('data'));
+        return view('wap.analysis.census_move', compact('data'));
     }
 
     public function census_move_action()
@@ -550,9 +565,9 @@ class EchartsController extends BaseController
     public function census_meeting()
     {
         $data = Cache::remember('census_meeting', '1400', function() {
-                   return $this->census_meeting_action();
+            return $this->census_meeting_action();
         });
-        return view(getThemeView('echarts.census_meeting'),compact('data'));
+        return view('wap.analysis.census_meeting',compact('data'));
     }
 
     public function census_meeting_action()
@@ -721,6 +736,6 @@ class EchartsController extends BaseController
     public function census_video()
     {
 
-        return view(getThemeView('echarts.census_video'));
+        return view('wap.analysis.census_video');
     }
 }
