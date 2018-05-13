@@ -1,5 +1,5 @@
-body { font-family: 'Roboto'; padding: 10px; }
-.flex { margin: -55px auto 0; max-width: 768px; }
+body { font-family: 'Roboto'; padding: 0px; }
+.flex { margin: -30px auto 0; max-width: 768px; }
 
 .slides,.slides--titles {
 	margin:0;
