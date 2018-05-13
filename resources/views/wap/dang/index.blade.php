@@ -10,6 +10,15 @@
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/index.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/lrtk2.css')}}"/>
     <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
+    <style>
+        .body-ula li {
+            width: 24%;
+            text-align: center;
+            font-size: 0.55466rem;
+            line-height: 1.408rem;
+            margin-top: 0.42666rem;
+        }
+    </style>
     <script type="text/javascript">
 
         document.addEventListener('plusready', function(){
@@ -66,12 +75,25 @@
 
 <ul class="body-ula">
     <li>
-        <a href="http://www.llzg.gov.cn/web/p_list.html?lmmc=%E8%A6%81%E9%97%BB%E5%8A%A8%E6%80%81&pageno=1"><img src="{{asset('wap/new/images/hsez_03.jpg')}}"/>
-            <div>党建动态</div></a>
+        <a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/new/images/logo10.jpg')}}"/>
+            <div>每日签到</div></a>
     </li>
+    <li>
+        <a href="{{route('wap.getuserinfo')}}"><img src="{{asset('wap/new/images/logo11.jpg')}}"/>
+            <div>我的支部</div></a>
+    </li>
+    <li>
+        <a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/logo12.jpg')}}"/>
+            <div>个人中心</div></a>
+    </li>
+
     <li>
         <a href="{{route('wap.noticelist')}}"><img src="{{asset('wap/new/images/hsez_04.jpg')}}"/>
             <div>通知公告</div></a>
+    </li>
+    <li>
+        <a href="http://www.llzg.gov.cn/web/p_list.html?lmmc=%E8%A6%81%E9%97%BB%E5%8A%A8%E6%80%81&pageno=1"><img src="{{asset('wap/new/images/hsez_03.jpg')}}"/>
+            <div>党建动态</div></a>
     </li>
     <li>
         <a href="{{route('wap.videos')}}"><img src="{{asset('wap/new/images/hsez_05.jpg')}}"/>
@@ -101,18 +123,7 @@
         <a href="{{route('wap.analysis.index')}}"><img src="{{asset('wap/new/images/hsez_11.jpg')}}"/>
             <div>数据中心</div></a>
     </li>
-    <li>
-        <a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/new/images/logo10.jpg')}}"/>
-            <div>每日签到</div></a>
-    </li>
-    <li>
-        <a href="{{route('wap.getuserinfo')}}"><img src="{{asset('wap/new/images/logo11.jpg')}}"/>
-            <div>我的支部</div></a>
-    </li>
-    <li>
-        <a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/logo12.jpg')}}"/>
-            <div>个人中心</div></a>
-    </li>
+
 </ul>
 <footer>
     <ul>
