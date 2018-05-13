@@ -36,7 +36,8 @@ header{
 	width: 2.56rem;
 	height: 2.56rem;
 }
-footer{
+footer{ position:fixed; bottom: 0;
+	left:0;
 	width: 100%;
 	border-top: 1px solid rgb(210,210,210);
 }
@@ -47,6 +48,7 @@ footer ul{
 	list-style: none;
 	flex-wrap: wrap;
 	padding: 0.256rem 1.23733rem;
+	background: #f8f8f8;
 }
 footer ul li{
 	text-align: center;
