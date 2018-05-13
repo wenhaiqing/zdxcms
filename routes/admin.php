@@ -86,6 +86,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::get('echarts/census_move','EchartsController@census_move')->name('echarts.census_move');
     Route::get('echarts/census_meeting','EchartsController@census_meeting')->name('echarts.census_meeting');
     Route::get('echarts/census_video','EchartsController@census_video')->name('echarts.census_video');
+    Route::post('echarts/census_video_json','EchartsController@census_video_json')->name('echarts.census_video_json');
 
 
 });

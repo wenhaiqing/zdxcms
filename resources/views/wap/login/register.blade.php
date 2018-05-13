@@ -123,15 +123,15 @@
                         </div>
                     </div>
                 </li>
-                <li class="aui-list-item">
-                    <div class="aui-list-item-inner">
-                        <div class="aui-list-item-label">
-                            出生日期
-                        </div>
-                        <input type="text" name="birthday" value="{{ old('birthday') }}" required class="layui-input" id="test1" placeholder="yyyy-MM-dd">
-                    </div>
+                {{--<li class="aui-list-item">--}}
+                    {{--<div class="aui-list-item-inner">--}}
+                        {{--<div class="aui-list-item-label">--}}
+                            {{--出生日期--}}
+                        {{--</div>--}}
+                        {{--<input type="text" name="birthday" value="{{ old('birthday') }}" required class="layui-input" id="test1" placeholder="yyyy-MM-dd">--}}
+                    {{--</div>--}}
 
-                </li>
+                {{--</li>--}}
             </ul>
             <section class="aui-content-padded">
                 <button class="aui-btn aui-btn-block aui-btn-sm " style="background-color: #76BE0E" tapmode

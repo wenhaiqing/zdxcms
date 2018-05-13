@@ -14,7 +14,6 @@ class MemberRequest extends Request
                 return [
 //                    'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members',
                     'mobile' => 'required|regex:/^1[3456789]\d{9}$/',
-                    'age'=>'required|numeric:age',
                     'password' => 'required|string|min:6',
                     'cardnum'=>'required|identitycards',
 
@@ -27,7 +26,6 @@ class MemberRequest extends Request
                 return [
                     'name' => 'required',
                     'mobile' => 'required|regex:/^1[3456789]\d{9}$/|unique:members,mobile,'.$this->member->id,
-                    'age'=>'required|numeric',
                     'cardnum'=>'required|identitycards',
 
                 ];
