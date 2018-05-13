@@ -9,7 +9,7 @@
         </div>
         <div class="aui-title">通知公告</div>
     </header>
-    <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/tzgglist.jpg')}}" width="100%"/></div>
+    <div class=" sqhdtit"><img src="{{asset('wap/new/images/tonggao_top.jpg')}}" width="100%"/></div>
     @foreach($notices as $index=>$notice)
         <section class="aui-content-padded">
             <div class="aui-card-list">
