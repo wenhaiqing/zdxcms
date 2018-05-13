@@ -1,91 +1,87 @@
-@extends('wap.layouts._header')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!--<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>吕梁智慧党建——三会一课</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/index.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/sanhuiyk.css')}}">
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
+    <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+    <script type="text/javascript">
 
-@php
-    $keyword = request('keyword', '');
-@endphp
-@section('css')
-    <style>
-        .aui-list .aui-list-item-inner {    position: relative;
-            min-height: 2rem;
-            padding-right: 0.75rem;
-            width: 100%;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-flex: 1;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-            border-left: #03a9f4 3px solid;
-            margin: 0.5em 0;
-            padding-left: 0.75rem;}
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #03a9f4;}
-        #paginate-render{padding-left:0;
-            text-align: center;}
-    </style>
+        document.addEventListener('plusready', function(){
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
 
-@stop
-@section('content')
+        });
 
-    <header class="aui-bar aui-bar-nav">
-        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
-            <span class="aui-iconfont aui-icon-left"></span>
-        </div>
-        <div class="aui-title" style="left:2rem; right: 2rem;">
-            <div class="aui-searchbar" id="search">
-                <div class="aui-searchbar-input aui-border-radius">
-                    <i class="aui-iconfont aui-icon-search"></i>
-                    <form class="layui-form layui-form-pane" id="search-form" method="GET" action="">
-                        <input name="keyword" type="search" placeholder="请输入搜索内容" id="zdx-search" value="{{$keyword}}">
-                        <input name="id" type="hidden"  value="{{$user_id}}">
-                    </form>
-                    <div class="aui-searchbar-clear-btn">
-                        <i class="aui-iconfont aui-icon-close"></i>
-                    </div>
-                </div>
-                <div class="aui-searchbar-btn" tapmode>取消</div>
-            </div>
-        </div>
-        <div class="aui-pull-right aui-btn aui-btn-outlined search-button" id="search-button">
-            <span class="aui-iconfont aui-icon-search"></span>
-        </div>
-    </header>
-    {{--<div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>--}}
-    <section class="aui-content-padded">
-        @if($meetings->count())
-            <div class="aui-content aui-margin-b-15">
-                <ul class="aui-list aui-list-in">
-                    @foreach($meetings as $index=>$meeting)
-                        <a href="{{route('wap.meetingsdetail',['id'=>$meeting->id,'title'=>$meeting->meeting_title])}}">
-                            <li class="aui-list-item">
-                                <div class="aui-list-item-inner">
-                                    <div class="aui-list-item-title">{{$meeting->meeting_title}}</div>
-                                    @if($meeting->if_cream==1)
-                                        <div class="aui-list-item-right">
-                                            <div class="aui-label aui-label-info">精华</div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </li>
-                        </a>
+        $(function () {
+            docEl = document.documentElement;
+            var width = docEl.clientWidth>768?768:docEl.clientWidth;
+            fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+            docEl.style.fontSize = fontsize + 'px';
+            window.onresize = function () {
+                docEl = document.documentElement;
+                width = docEl.clientWidth>768?768:docEl.clientWidth;
+                fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+                docEl.style.fontSize = fontsize + 'px';
+            }
+        })
+    </script>
+</head>
+<body style="max-width: 750px;margin: 0 auto;">
 
-                    @endforeach
-                </ul>
-            </div>
-            <div id="paginate-render"></div>
-        @else
-            <br/>
-            <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
-        @endif
-    </section>
-    <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
-                src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
-@stop
-@section('js')
-    @include(getThemeView('layouts._paginate'),[ 'count' => $meetings->total(), ])
-@stop
+<div class="banner">
+    <img src="{{asset('wap/new/images/shyk_top.jpg')}}" width="100%"/>
+</div>
+<div class="t-main1">
+    @if($meetings->count())
+    <ul class="sanhuiyk">
+        @foreach($meetings as $index=>$meeting)
+            <a href="{{route('wap.meetingsdetail',['id'=>$meeting->id,'title'=>$meeting->meeting_title])}}">
+                <li>
+                    <a href="" >
+                        <div class="leftw"> <img src="{{asset('wap/new/images/shyk_top.jpg')}}"  alt="" /></div>
+                        <div class="rightw"> <p>{{$meeting->meeting_title}}</p> </div>
+                    </a>
+                    <div class="clear"></div>
+                </li>
+            </a>
+        @endforeach
+        <div id="paginate-render"></div>
+    </ul>
+    @else
+        <br/>
+        <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
+    @endif
+</div>
+
+<footer>
+    <ul>
+        <li>
+            <img src="{{asset('wap/new/images/hsez_12.jpg')}}"/>
+            <div>党建</div>
+        </li>
+        <li>
+            <img src="{{asset('wap/new/images/hsez_13.jpg')}}"/>
+            <div>微课</div>
+        </li>
+        <li>
+            <img src="{{asset('wap/new/images/hsez_14.jpg')}}"/>
+            <div>微服</div>
+        </li>
+        <li>
+            <a href="{{route('wap.center')}}" target="_self">
+                <img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>
+                <div>我的</div>
+            </a>
+        </li>
+    </ul>
+</footer>
+</body>
+@include(getThemeView('layouts._paginate'),[ 'count' => $meetings->total(), ])
+</html>

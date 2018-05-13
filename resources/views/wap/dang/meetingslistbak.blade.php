@@ -42,7 +42,7 @@
                     <i class="aui-iconfont aui-icon-search"></i>
                     <form class="layui-form layui-form-pane" id="search-form" method="GET" action="">
                         <input name="keyword" type="search" placeholder="请输入搜索内容" id="zdx-search" value="{{$keyword}}">
-                        {{--<input name="id" type="hidden"  value="{{$user_id}}">--}}
+                        <input name="id" type="hidden"  value="{{$user_id}}">
                     </form>
                     <div class="aui-searchbar-clear-btn">
                         <i class="aui-iconfont aui-icon-close"></i>
@@ -55,19 +55,25 @@
             <span class="aui-iconfont aui-icon-search"></span>
         </div>
     </header>
-    <div class=" sqhdtit"><img src="{{asset('wap/new/images/shyk_top.jpg')}}" width="100%"/></div>
+    {{--<div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>--}}
     <section class="aui-content-padded">
         @if($meetings->count())
             <div class="aui-content aui-margin-b-15">
                 <ul class="aui-list aui-list-in">
                     @foreach($meetings as $index=>$meeting)
-                        <a href="{{route('wap.meetingslist',['id'=>$meeting->id])}}">
+                        <a href="{{route('wap.meetingsdetail',['id'=>$meeting->id,'title'=>$meeting->meeting_title])}}">
                             <li class="aui-list-item">
                                 <div class="aui-list-item-inner">
-                                    <div class="aui-list-item-title">{{$meeting->name}}</div>
+                                    <div class="aui-list-item-title">{{$meeting->meeting_title}}</div>
+                                    @if($meeting->if_cream==1)
+                                        <div class="aui-list-item-right">
+                                            <div class="aui-label aui-label-info">精华</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </li>
                         </a>
+
                     @endforeach
                 </ul>
             </div>
@@ -77,8 +83,9 @@
             <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
         @endif
     </section>
-    <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}"  width="100%"/></div>
-    @stop
+    <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
+                src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
+@stop
 @section('js')
     @include(getThemeView('layouts._paginate'),[ 'count' => $meetings->total(), ])
 @stop
