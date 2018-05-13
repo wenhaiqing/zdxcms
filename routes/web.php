@@ -88,6 +88,9 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('noticelist', ['uses'=>'MobileController@noticelist'])->name('wap.noticelist');
     Route::get('noticedetail', ['middleware'=>'everyaction:notifies','uses'=>'MobileController@noticedetail'])->name('wap.noticedetail');
 
+    Route::get('builddanglist', ['uses'=>'MobileController@builddanglist'])->name('wap.builddanglist');
+    Route::get('builddangdetail', ['uses'=>'MobileController@builddangdetail'])->name('wap.builddangdetail');
+
     //手机端在线学习
     Route::get('videos', ['uses'=>'MobileController@videos'])->name('wap.videos');
     Route::get('videodetail', ['middleware'=>'everyaction:videos','uses'=>'MobileController@videodetail'])->name('wap.videodetail');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Wap;
 
+use App\Models\BuildDang;
 use App\Models\Meeting;
 use App\Models\Member;
 use App\Models\Notify;
@@ -80,6 +81,24 @@ class MobileController extends Controller
         $id = $request->id;
         $notices = Notify::where('id',$id)->get();
         return view('wap.dang.noticedetail',compact('notices'));
+    }
+
+    public function builddanglist(Request $request,BuildDang $buildDang)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $buildDang = $buildDang->where('title', 'like', "%{$keyword}%");
+        }
+        $user_id = $request->id;
+        //$notices = $notify->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
+        $notices = $buildDang->recent()->paginate(config('wap.global.paginate'));
+        return view('wap.dang.builddanglist',compact('notices','user_id'));
+    }
+
+    public function builddangdetail(Request $request)
+    {
+        $id = $request->id;
+        $notices = BuildDang::where('id',$id)->get();
+        return view('wap.dang.builddangdetail',compact('notices'));
     }
 
     public function zhuanti()
