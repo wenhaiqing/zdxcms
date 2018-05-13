@@ -24,7 +24,7 @@
             border-left: #03a9f4 3px solid;
             margin: 0.5em 0;
             padding-left: 0.75rem;}
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #03a9f4;}
+        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #c52030;}
         #paginate-render{padding-left:0;
             text-align: center;}
     </style>

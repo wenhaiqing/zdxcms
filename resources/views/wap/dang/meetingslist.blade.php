@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
     <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+    <style>
+        .aui-list .aui-list-item-inner {    position: relative;
+            min-height: 2rem;
+            padding-right: 0.75rem;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-left: #03a9f4 3px solid;
+            margin: 0.5em 0;
+            padding-left: 0.75rem;}
+        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #c52030;}
+        #paginate-render{padding-left:0;
+            text-align: center;}
+    </style>
     <script type="text/javascript">
 
         document.addEventListener('plusready', function(){
@@ -44,10 +68,8 @@
         @foreach($meetings as $index=>$meeting)
             <a href="{{route('wap.meetingsdetail',['id'=>$meeting->id,'title'=>$meeting->meeting_title])}}">
                 <li>
-                    <a href="" >
                         <div class="leftw"> <img src="{{asset('wap/new/images/shyk_top.jpg')}}"  alt="" /></div>
                         <div class="rightw"> <p>{{$meeting->meeting_title}}</p> </div>
-                    </a>
                     <div class="clear"></div>
                 </li>
             </a>

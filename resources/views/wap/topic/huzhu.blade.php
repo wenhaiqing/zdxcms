@@ -63,6 +63,17 @@
             text-align: center;
             border-radius: 50%;
         }
+        .add-photos > div {
+            width: 62%;
+            height: 3.15rem;
+            line-height: 3.15rem;
+        }
+        .image-item {
+            position: relative;
+            height: 3.15rem;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
     </style>
 @stop
 

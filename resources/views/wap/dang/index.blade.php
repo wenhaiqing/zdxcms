@@ -102,15 +102,15 @@
             <div>数据中心</div></a>
     </li>
     <li>
-        <a href="{{route('wap.topic_create')}}"><img src="{{asset('wap/new/images/logo10.jpg')}}"/>
+        <a href="{{route('wap.myqiandao')}}"><img src="{{asset('wap/new/images/logo10.jpg')}}"/>
             <div>每日签到</div></a>
     </li>
     <li>
-        <a href=""><img src="{{asset('wap/new/images/logo11.jpg')}}"/>
+        <a href="{{route('wap.getuserinfo')}}"><img src="{{asset('wap/new/images/logo11.jpg')}}"/>
             <div>党组信息</div></a>
     </li>
     <li>
-        <a href="{{route('wap.analysis.index')}}"><img src="{{asset('wap/new/images/logo12.jpg')}}"/>
+        <a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/logo12.jpg')}}"/>
             <div>个人中心</div></a>
     </li>
 </ul>
