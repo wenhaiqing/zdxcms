@@ -12,7 +12,9 @@
     <link href="{{asset('wap/new/diaoyan/css/list2.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/diaoyan/css/diyUpload.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/diaoyan/css/webuploader.css')}}" />
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
     <script type="text/javascript" src="{{asset('wap/new/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     <style>
         *{ padding: 0px; margin: 0px;}
         body{ font-family: "微软雅黑"; font-size: 16px;}
@@ -128,6 +130,13 @@
         <div class="t-main1-list" style="padding-top: 20px;">
             <label>基层意见建议：</label><textarea name="opinions" cols="25" rows="5"></textarea>
         </div>
+        {{--<div class="layui-upload">--}}
+            {{--<button type="button" class="layui-btn" id="test2">多图片上传</button>--}}
+            {{--<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">--}}
+                {{--预览图：--}}
+                {{--<div class="layui-upload-list" id="demo2"></div>--}}
+            {{--</blockquote>--}}
+        {{--</div>--}}
         {{--<div class="t-main1-list" style="padding-top: 20px;">--}}
             {{--<label style="margin-left:2em">上传照片：</label>--}}
             {{--<div style="margin-left:1em">--}}
@@ -174,7 +183,7 @@
     $(function(){
         //上传图片
         $('#goodsUpload').diyUpload({
-            url : '{{route('wap.upload_image')}}',
+            url : '{{route('wap.diao_upload')}}',
             success : function(data) {
                 $.ajax({
                     async : false,

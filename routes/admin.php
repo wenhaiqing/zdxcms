@@ -73,6 +73,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::post('signs/getsign', 'SignsController@getsign')->name('signs.getsign');
     Route::get('signs/signshow', 'SignsController@signshow')->name('signs.signshow');
     Route::resource('meetings', 'MeetingsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+    Route::resource('diaoyan', 'DiaoyanController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     //数据分析
     Route::get('echarts/bar','EchartsController@bar')->name('echarts.bar');
     Route::get('echarts/pie','EchartsController@pie')->name('echarts.pie');

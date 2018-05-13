@@ -108,6 +108,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::delete('reply/destroy', ['uses'=>'RepliesController@destroy'])->name('wap.reply_destroy');
 
     Route::post('upload_image', 'UploadController@uploadImage')->name('wap.upload_image');
+    Route::post('diao_upload_image', 'UploadController@diao_upload')->name('wap.diao_upload');
     //更改党员头像
     Route::post('member_avatar', 'UploadController@member_avatar')->name('wap.member_avatar');
     //申请迁党

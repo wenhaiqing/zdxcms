@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 clearPadding">
-            <div class=""><img src="{{asset('wap/bootstrap/images/lldj/qdBanner.jpg')}}" class="img-responsive"></div>
+            <div class=""><img src="{{asset('wap/bootstrap/images/lldj/qdBanner.png')}}" class="img-responsive"></div>
 
             <div class="calendar">
                 <div class="calenbox">

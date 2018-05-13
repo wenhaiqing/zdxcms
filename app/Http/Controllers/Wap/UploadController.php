@@ -54,4 +54,26 @@ class UploadController extends Controller
         }
         return $data;
     }
+
+    public function diao_upload()
+    {
+        $file = $_FILES['file'];//得到传输的数据
+
+        $name = $file['name'];
+        $type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
+        $allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
+        if(!in_array($type, $allow_type)){
+            return ;
+        }
+        if(!is_uploaded_file($file['tmp_name'])){
+            return ;
+        }
+        $upload_path =public_path() . DIRECTORY_SEPARATOR . "uploads" . DIRECTORY_SEPARATOR ."images". DIRECTORY_SEPARATOR ."diaoyan"; //上传文件的存放路径
+        if(move_uploaded_file($file['tmp_name'],$upload_path.time().$file['name'])){
+            $data  = $upload_path.time().$file['name'];
+            return response()->json($data);
+        }else{
+            echo "Failed!";
+        }
+    }
 }
