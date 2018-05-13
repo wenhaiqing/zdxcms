@@ -117,17 +117,18 @@
 <footer>
     <ul>
         <li>
-            <a href=""><img src="{{asset('wap/new/images/hsez_12.jpg')}}"/>
+            <a href="http://news.12371.cn/"><img src="{{asset('wap/new/images/hsez_12.jpg')}}"/>
                 <div>党建</div></a>
         </li>
         <li>
-            <a href=""><img src="{{asset('wap/new/images/hsez_13.jpg')}}"/>
-                <div>微课</div></a>
+            <a href="http://sjdx.xinhuanet.com/xuexiban/special?id=39"><img src="{{asset('wap/new/images/hsez_14.jpg')}}"/>
+                <div>学习班</div></a>
         </li>
         <li>
-            <a href=""><img src="{{asset('wap/new/images/hsez_14.jpg')}}"/>
-                <div>微服</div></a>
+            <a href="http://sjdx.xinhuanet.com/sjdtyb/special?id=547"><img src="{{asset('wap/new/images/hsez_13.jpg')}}"/>
+                <div>知识测试</div></a>
         </li>
+
         {{--<li>--}}
             {{--<a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>--}}
                 {{--<div>我的</div></a>--}}
