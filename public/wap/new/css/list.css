@@ -1,0 +1,402 @@
+﻿html, body {
+	/*position:relative;
+	height:100%;*/
+	color:#222;
+	font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+	background-color:#EAE7E7;
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+	border:2px solid #fff
+}
+body >.tips {
+	position:fixed;
+	display:none;
+	top:50%;
+	left:50%;
+	z-index:100;
+	text-align:center;
+	padding:20px;
+	width:200px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+span{ color:#666; font:1em/1.5em "微软雅黑"}
+
+ol, ul {
+	list-style: none outside none;
+	margin:0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+a {
+	color:#000000;
+	text-decoration: none;
+}
+.left{ float:left}
+.right{ float:right}
+q:before, q:after {
+	content:'';
+}
+abbr, acronym {
+	border:0;
+	font-variant:normal;
+}
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+
+.page {
+	padding:15px;
+}
+.page .page-error, .page .page-loading {
+	text-align:center;
+	position:relative;
+	line-height:30px;
+}
+.btn {
+	display:block;
+	color:#222;
+	text-decoration:none;
+	font-size:15px;
+	/*font-weight:bold;*/
+	background-color:#fcfcfc;
+	margin:0 0 15px 0;
+	padding:10px;
+	text-align:center;
+	cursor:pointer;
+}
+.icons {
+	position:relative;
+	border-radius:5px;
+	width:25px;
+	height:25px;
+	overflow:hidden;
+}
+.icons.arrow-r {
+	background:url(../images/8e8300c9e44e41fe8755ea027e328af4.gif) no-repeat center center;
+	width:12px;
+	height:16px;
+	background-size:100%;
+}
+
+
+.clr {
+	display:block;
+	clear:both;
+	height:0;
+	overflow:hidden;
+}
+
+
+.link {
+	display: inline-block;
+	width:63px;
+	height:20px;
+	color: #999999;
+	font-size: 12px;
+	line-height:30px;
+	padding-top:55px;
+	margin:10px 1px;
+	text-align:center;
+	color:#808080;
+	text-decoration:none;
+	background-size:50px auto;
+	background-repeat:no-repeat;
+	background:url(../images/bg-face.png) no-repeat;
+}
+
+.copyright{padding:8px;text-align:center;font-size:11px;color:#ccc;}
+.copyright a{color:#ccc;}
+
+	
+/**/
+h2 {
+	font-size:16px;
+}
+h3 {
+	font-size: 18px;
+}
+
+
+/*news*/
+.news{margin: 0 auto;
+    max-width: 640px;
+    min-width: 320px;
+	overflow-x: hidden;
+	}
+.header { margin-left:20px
+	  
+}
+.news h1{font:1.2em/2em "微软雅黑"; font-weight:bold; color:#333}
+#activity-detail{background:#F0EFEF;}
+.news .text{ margin:15px 0; word-wrap: break-word;}
+.text em{ font-style:italic}
+
+.showpic img{
+    width: 95%;height:auto; margin:0 0 5px 0;
+}
+.showpic p{ margin:10px;text-align:justify; padding:0 10px; color:#666666;text-indent:2em; font:1em/1.6em "微软雅黑"}
+
+.text img {
+    max-width: 100%;
+}
+.news .list{
+	border:0px solid #D1D1D1;
+	box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	background-color:#FFFFFF;
+	margin:10px;
+	padding:10px 15px;
+}
+.news #recommend{
+	display: block;
+	color: #535353;
+	border: 0;
+	text-align: left;
+	font-size: 16px;
+	border-radius: 0;
+	height: 33px;
+	line-height: 33px;
+	text-decoration: none;
+	margin: 0;
+	text-indent:25px;
+	background: url("../images/ttext.png") no-repeat scroll left center transparent;
+	background-size: 20px auto;
+}
+.news #olload{
+	display: block;
+	color: #535353;
+	border: 0;
+	text-align: left;
+	font-size: 16px;
+	border-radius: 0;
+	height: 33px;
+	line-height: 33px;
+	text-decoration: none;
+	margin: 0;
+	text-indent:25px;
+	background: url("../images/recommend.png") no-repeat scroll left center transparent;
+	background-size: 20px auto;
+}
+.news .newsmore{
+	display:block;
+	margin-top: 0;
+	cursor: pointer;
+	border-top:1px solid #E0E0E0;
+}
+.news .olditem {
+	display: block;
+	padding: 10px 0 9px 0;
+	background-color: #ffffff;
+	line-height:25px;
+    border-radius: 0;
+    box-shadow: 0;
+	text-align: left;
+	background: url("../images/ico-next.png") no-repeat scroll right center transparent;
+	background-size: 7px auto;
+}
+.news .title {
+    display: block;
+	margin-left:0;
+	color: #535353;
+    font-size: 14px;
+	padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+}
+.news .footer {
+    /*box-shadow:0 3px 6px #e2e2e2;*/
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	cursor: pointer;
+	background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #DDDDDD;
+	box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow:0 1px 2px 0 rgba(0, 0, 0, 0.15);
+	margin:10px;
+	padding:15px;
+	text-align:center;
+	display: block;
+}
+.news .more{
+    border: 1px solid #E0E0E0;
+	-webkit-border-radius:26px;
+	-moz-border-radius:26px;
+	border-radius:26px;
+	cursor: pointer;
+	background-color:#FFFFFF;
+	margin:10px 0;
+	padding:10px;
+	text-align:center;
+	display: block;
+}
+.footer .top{
+	background: url("../images/newstop.png") no-repeat scroll left center transparent;
+	background-size: 11px auto;
+	display: block;
+    margin: 0 auto;
+    text-indent: 15px;
+    width: 85px;
+}
+
+
+/*iscroll*/
+
+.banner {
+	width:320px;
+	margin:0 auto;
+	padding:0;
+	background-color: #333333;
+}
+#wrapper {
+	margin:0;
+	width:320px;
+	height:auto;
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+	
+}
+
+#scroller {
+	height:auto;
+	float:left;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:auto;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	
+	display:block; float:left;
+	width:320px; height:auto;
+	text-align:center;
+	font-size:0px;
+	padding:0;
+	position:relative;
+}
+#scroller li a{
+	
+	display:block;
+	padding:0;
+	margin:0;
+}
+#scroller li p{
+	position:absolute;
+	z-index:2;
+	display:block;
+	width:100%;
+	bottom:0;
+	background-color:rgba(0, 0, 0, 0.5);
+	color:#F4F4F4;
+	font-size:14px;
+	text-indent: 55px;
+	line-height:24px;
+	text-align: left;
+    text-indent: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	padding:0;
+	margin:0;
+}
+#nav {
+	float: right;
+    margin-top: -15px;
+    padding: 0;
+    position: relative;
+    width: auto;
+    z-index: 3;
+}
+
+#prev, #next {
+	float:left;
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 0;
+	width:80px;
+	display: none;
+}
+
+#next {
+	float:right;
+	text-align:right;
+}
+
+#indicator > li {
+	display:block; float:left;
+	list-style:none;
+	padding:0; margin:0;
+}
+
+#indicator {
+	display: block;
+    margin: 0 8px;
+    padding: 0;
+    width: auto;
+}
+
+#indicator > li {
+	text-indent:-9999em;
+	width:8px; height:8px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	border-radius:4px;
+	background:#888;
+	overflow:hidden;
+	margin-right:4px;
+}
+
+#indicator > li.active {
+	background:#DDDDDD;
+}
+
+#indicator > li:last-child {
+	margin:0;
+}
+#scroller li img{ width:320px; height:auto;}
+
+.info{ margin-left:30px}
+.news_img{ text-align:center}
+.news_img img{ width:80%; margin-top:10px}
+
+.lunbo{ text-align:center}
+.lunbo img{ width:95%}
+.news_list{ margin:10px 10px 0 10px; }
+.news_list li{ border-bottom:1px dashed #CCCCCC;background:#f8f8f8; margin-bottom:8px }
+.news_list h1{ color:#333333; font:1em/1.2em "微软雅黑"; margin-left:10px; max-width:500px}
+.news_list span{font:0.8em/1em "微软雅黑";margin-left:10px; max-width:500px}
+.news_list img{ float:right; width:7px; height:18px;margin-right:10px; margin-top:-8px}
+.slh {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+	
+}
