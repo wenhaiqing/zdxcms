@@ -134,7 +134,6 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('member_active', ['uses'=>'MemberController@member_active'])->name('wap.member_active');
     Route::get('user_active', ['uses'=>'MemberController@user_active'])->name('wap.user_active');
     Route::get('analysis/index', ['uses'=>'AnalysisController@indexlist'])->name('wap.analysis.index');
-    Route::get('analysis/census_move', ['uses'=>'AnalysisController@census_move'])->name('wap.analysis.census_move');
 
     //数据分析
     Route::get('analysis/bar','AnalysisController@bar')->name('analysis.bar');
