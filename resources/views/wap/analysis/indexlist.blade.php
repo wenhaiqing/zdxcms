@@ -45,10 +45,10 @@
 
         <div class="aui-content aui-margin-b-15">
             <ul class="aui-list aui-list-in">
-                <a href="{{route('analysis.bar')}}">
+                <a href="{{route('analysis.census_video')}}">
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">党员学历数据分析</div>
+                            <div class="aui-list-item-title">内容偏好分析</div>
                         </div>
                     </li>
                 </a>
@@ -59,24 +59,10 @@
                         </div>
                     </li>
                 </a>
-                <a href="{{route('analysis.zheng')}}">
-                    <li class="aui-list-item">
-                        <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">党员正式预备数据分析</div>
-                        </div>
-                    </li>
-                </a>
                 <a href="{{route('analysis.sex')}}">
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
                             <div class="aui-list-item-title">党员男女数量分析</div>
-                        </div>
-                    </li>
-                </a>
-                <a href="{{route('analysis.current')}}">
-                    <li class="aui-list-item">
-                        <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">党支部现状数据分析</div>
                         </div>
                     </li>
                 </a>
@@ -94,17 +80,17 @@
                         </div>
                     </li>
                 </a>
-                <a href="{{route('analysis.census_xian')}}">
-                    <li class="aui-list-item">
-                        <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">各县入驻党支部数量分析</div>
-                        </div>
-                    </li>
-                </a>
                 <a href="{{route('analysis.census_move')}}">
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
                             <div class="aui-list-item-title">各县党支部流动党员分析</div>
+                        </div>
+                    </li>
+                </a>
+                <a href="{{route('analysis.census_xian')}}">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">各县入驻党支部数量分析</div>
                         </div>
                     </li>
                 </a>
@@ -115,13 +101,30 @@
                         </div>
                     </li>
                 </a>
-                <a href="{{route('analysis.census_video')}}">
+                <a href="{{route('analysis.bar')}}">
                     <li class="aui-list-item">
                         <div class="aui-list-item-inner">
-                            <div class="aui-list-item-title">内容偏好分析</div>
+                            <div class="aui-list-item-title">党员学历数据分析</div>
                         </div>
                     </li>
                 </a>
+                <a href="{{route('analysis.zheng')}}">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">党员正式预备数据分析</div>
+                        </div>
+                    </li>
+                </a>
+                <a href="{{route('analysis.current')}}">
+                    <li class="aui-list-item">
+                        <div class="aui-list-item-inner">
+                            <div class="aui-list-item-title">党支部现状数据分析</div>
+                        </div>
+                    </li>
+                </a>
+
+
+
             </ul>
         </div>
 

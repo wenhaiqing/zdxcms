@@ -22,7 +22,7 @@
 
     $.ajax({
         type:'post',
-        url:"{{route('echarts.census_video_json')}}",
+        url:"{{route('analysis.census_video_json')}}",
         data:'',
         dataType:'json',
         headers: {
