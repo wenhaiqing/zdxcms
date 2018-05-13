@@ -74,8 +74,10 @@
             <div>微服</div>
         </li>
         <li>
+            <a href="{{route('wap.center')}}" target="_self">
             <img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>
             <div>我的</div>
+            </a>
         </li>
     </ul>
 </footer>

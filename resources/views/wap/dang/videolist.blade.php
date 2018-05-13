@@ -56,7 +56,7 @@
         </div>
     </header>
 
-    {{--<div class="sptop"><img src="{{asset('wap/bootstrap/images/lldj/splunbo.jpg')}}"/></div>--}}
+    <div class="sptop"><img src="{{asset('wap/new/images/video_top.jpg')}}"/></div>
     <section class="aui-content-padded">
         @if($lists->count())
             @foreach($lists as $index=>$list)
