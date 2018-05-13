@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=0" />
     <title></title>
     <script src="{{asset('layui/lib/echarts/echarts.min.js')}}"></script>
 </head>
@@ -10,12 +11,14 @@
 <body>
 
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-<div id="demo1" style="width: 50%;height:600px;">
+<div id="demo1" style="width: 100%;height:600px;">
 
-</div>
+    </div>
 
+<script src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
 
 <script type="text/javascript">
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('demo1'));
 

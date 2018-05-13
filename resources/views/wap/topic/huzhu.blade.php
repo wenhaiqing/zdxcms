@@ -15,7 +15,7 @@
         }
 
         textarea {
-            height: 8rem;
+            height: 4rem;
             background-color: #ffffff;
             padding: 0.5rem;
         }
