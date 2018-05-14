@@ -23,6 +23,11 @@ class MobileController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
+    public function testimage()
+    {
+        return view('wap.dang.testimage');
+    }
     public function index()
     {
         return view('wap.dang.index_yin');

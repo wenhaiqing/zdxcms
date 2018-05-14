@@ -45,6 +45,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
 {
     //首页
     Route::get('index', 'MobileController@index')->name('wap.index');
+    Route::get('testimage', 'MobileController@testimage')->name('wap.testimage');
     Route::get('dangwei', 'MobileController@dangwei')->name('wap.dangwei');
     Route::get('dangwang', 'MobileController@dangwang')->name('wap.dangwang');
 });
