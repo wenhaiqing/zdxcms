@@ -184,6 +184,7 @@
         </div>
 
     </section>
+    <p><a href="{{route('wap.logout')}}"><div class="aui-btn aui-btn-block">退出登录</div></p></a>
 
 @stop
 
