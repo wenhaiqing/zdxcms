@@ -69,7 +69,7 @@ class UploadController extends Controller
             \Log::info($file);
             // 保存图片到本地
             $result = $uploader->save($request->file, 'topics', \Auth::id(), 1024);
-            \Log::info($request);
+            \Log::info($result);
             // 图片保存成功的话
             if ($result) {
                 $data['file_path'] = $result['path'];
