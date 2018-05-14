@@ -113,7 +113,7 @@
     </li>
     <li>
         <a href="{{route('wap.topic_create')}}"><img src="{{asset('wap/new/images/hsez_09.jpg')}}"/>
-            <div>互动中心</div></a>
+            <div>互助交流</div></a>
     </li>
     <li>
         <a href="{{route('wap.diaoyan.index')}}"><img src="{{asset('wap/new/images/hsez_10.jpg')}}"/>
