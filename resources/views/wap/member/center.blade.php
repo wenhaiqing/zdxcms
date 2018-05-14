@@ -98,22 +98,28 @@
         </div>
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
-                <div class="aui-col-xs-4">
+                <div class="aui-col-xs-3">
                     <a href="{{route('wap.mytopic')}}">
                         <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->topic->count()}}</big>
-                        <div class="aui-grid-label aui-font-size-12">我的话题</div>
+                        <div class="aui-grid-label aui-font-size-12">参与话题</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-4">
+                <div class="aui-col-xs-3">
                     <a href="{{route('wap.myreply')}}">
                         <big class="label-cont aui-font-size-16 aui-text-danger">{{$member->replies->count()}}</big>
-                        <div class="aui-grid-label aui-font-size-12">我的回复</div>
+                        <div class="aui-grid-label aui-font-size-12">参与回复</div>
                     </a>
                 </div>
-                <div class="aui-col-xs-4">
+                <div class="aui-col-xs-3">
                     <a href="{{route('wap.myjifen')}}">
                         <big class="label-cont aui-font-size-14 aui-text-danger">{{$member->jifen}}</big>
-                        <div class="aui-grid-label aui-font-size-12">我的积分</div>
+                        <div class="aui-grid-label aui-font-size-12">今日积分</div>
+                    </a>
+                </div>
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.myjifen')}}">
+                        <big class="label-cont aui-font-size-14 aui-text-danger">{{$member->jifen}}</big>
+                        <div class="aui-grid-label aui-font-size-12">积分总计</div>
                     </a>
                 </div>
 
