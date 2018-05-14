@@ -57,7 +57,7 @@ class UploadController extends Controller
 
     public function diao_upload(Request $request, ImageUploadHandler $uploader)
     {
-        return response()->json($request->file());
+        return response()->json($request->file);
         // 初始化返回数据，默认是失败的
         $data = [
             'success'   => false,
