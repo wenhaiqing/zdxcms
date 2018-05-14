@@ -113,7 +113,7 @@
             //多图片上传
             upload.render({
                 elem: '#test2'
-                , url: '{{ route('wap.diao_upload') }}'
+                , url: '{{ route('wap.upload_image') }}'
                 , data: {_token: '{{ csrf_token() }}'}
                 , multiple: false
                 , before: function (obj) {
