@@ -32,6 +32,10 @@ class MobileController extends Controller
     {
         return view('wap.dang.index_yin');
     }
+    public function index_youke()
+    {
+        return view('wap.dang.index_youke');
+    }
 
     public function indexlist()
     {
