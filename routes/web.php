@@ -45,6 +45,8 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap',], function ($router)
 {
     //首页
     Route::get('index', 'MobileController@index')->name('wap.index');
+    Route::get('dangwei', 'MobileController@dangwei')->name('wap.dangwei');
+    Route::get('dangwang', 'MobileController@dangwang')->name('wap.dangwang');
 });
 
 require_once 'admin.php';
@@ -78,8 +80,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
 
 
     Route::get('indexlist', 'MobileController@indexlist')->name('wap.indexlist');
-    Route::get('dangwei', 'MobileController@dangwei')->name('wap.dangwei');
-    Route::get('dangwang', 'MobileController@dangwang')->name('wap.dangwang');
+
     //展示党支部详情
     Route::get('usersinfo', 'MobileController@getuserinfo')->name('wap.getuserinfo');
     //专题教育
