@@ -104,17 +104,17 @@
                     <li class="aui-list-item">
                         <div class="aui-media-list-item-inner">
 
-                            {{--<div class="aui-list-item-inner">--}}
-                                {{--<div class="aui-list-item-text">--}}
-                                    {{--<div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">--}}
-                                    {{--{{ $topic->excerpt }}--}}
-                                {{--</div>--}}
-                                {{--<div class="aui-list-item-text aui-font-size-12 text-light">--}}
-                                    {{--共{{$topic->reply_count}}条回答--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
+                                </div>
+                                <div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">
+                                    {{ $topic->excerpt }}
+                                </div>
+                                <div class="aui-list-item-text aui-font-size-12 text-light">
+                                    共{{$topic->reply_count}}条回答
+                                </div>
+                            </div>
 
                         </div>
                     </li>
