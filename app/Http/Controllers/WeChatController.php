@@ -172,8 +172,9 @@ class WeChatController extends Controller
         }
         $user = $request->session()->get('wechat_user');
         $openid = $user['id'];
-        $member = Member::where('id',\Auth::guard('wap')->id())->update(['openid'=>$openid]);
         Member::where('openid',$openid)->update(['openid'=>'']);
+        $member = Member::where('id',\Auth::guard('wap')->id())->update(['openid'=>$openid]);
+
         if ($member){
             flash('微信绑定成功');
             return redirect()->route('wap.center');
