@@ -15,6 +15,21 @@
         html{height:100%;}
         body{min-height:100%;}
         body{ background:url(/wap/new/images/register_bg.jpg) no-repeat;background-size:100%;}
+        .login_btn {
+            width: 100%;
+            display: block;
+            padding: 3% 0;
+            background: #ffffff;
+            border: 0;
+            font-size: 1em;
+            font-family: "Microsoft YaHei";
+            color: #374782;
+            -webkit-box-shadow: #ff9b90 0px 0px 20px;
+            -moz-box-shadow: #ff9b90 0px 0px 20px;
+            box-shadow: #ff9b90 0px 0px 20px;
+            text-align: center;
+            margin-bottom: 2em;
+        }
     </style>
 </head>
 <body class="news">
