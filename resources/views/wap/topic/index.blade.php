@@ -103,7 +103,13 @@
                         <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
                     <li class="aui-list-item">
                         <div class="aui-media-list-item-inner">
-
+                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
+                                @if($topic->member->avatar)
+                                <img src="{{$topic->member->avatar}}" class="aui-img-round" >
+                                    @else
+                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
+                                @endif
+                            </div>
                             <div class="aui-list-item-inner">
                                 <div class="aui-list-item-text">
                                     <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
@@ -115,7 +121,13 @@
                                     共{{$topic->reply_count}}条回答
                                 </div>
                             </div>
-
+                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
+                                @if(get_json_params($topic->image,'0'))
+                                <img src="{{get_json_params($topic->image,'0')}}" />
+                                    @else
+                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" />
+                                @endif
+                            </div>
                         </div>
                     </li>
                         </a>
