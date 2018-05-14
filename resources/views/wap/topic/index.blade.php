@@ -103,13 +103,7 @@
                         <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
                     <li class="aui-list-item">
                         <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                @if($topic->member->avatar)
-                                <img src="{{$topic->member->avatar}}" class="aui-img-round" >
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
-                                @endif
-                            </div>
+                            
                             <div class="aui-list-item-inner">
                                 <div class="aui-list-item-text">
                                     <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
