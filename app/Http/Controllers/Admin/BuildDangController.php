@@ -37,20 +37,22 @@ class BuildDangController extends BaseController
 		return redirect()->route('builddangs.index', $buildDang->id)->with('message', trans('global.stored'));
 	}
 
-	public function edit(BuildDang $buildDang,Request $request)
+	public function edit($id)
 	{
+        $buildDang = BuildDang::where('id',$id)->first();
 		return view(getThemeView('builddangs.create_and_edit'), compact('buildDang'));
 	}
 
-	public function update(Request $request, BuildDang $buildDang)
+	public function update(Request $request, $id)
 	{
-		$buildDang->update($request->all());
-
-		return redirect()->route('builddangs.index', $buildDang->id)->with('message', trans('global.updated'));
+	    $content = $request->input('content');
+		$buildDang = BuildDang::where('id',$id)->update(['title'=>$request->title,'content'=>$content]);
+		return redirect()->route('builddangs.index')->with('message', trans('global.updated'));
 	}
 
-	public function destroy(BuildDang $buildDang)
+	public function destroy($id)
 	{
+	    $buildDang = BuildDang::where('id',$id)->first();
 		$buildDang->delete();
 
 		return redirect()->route('builddangs.index')->with('message', trans('global.destoried'));
