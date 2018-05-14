@@ -127,7 +127,7 @@
                     });
                 }
                 , done: function (res) {
-                    console.log(res);
+                    alert(JSON.stringify(res));
                     console.log(res.file_path);
                     $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
                     //上传完毕
