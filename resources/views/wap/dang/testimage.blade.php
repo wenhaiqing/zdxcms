@@ -115,7 +115,7 @@
                 elem: '#test2'
                 , url: '{{ route('wap.diao_upload') }}'
                 , data: {_token: '{{ csrf_token() }}'}
-                , multiple: true
+                , multiple: false
                 , before: function (obj) {
                     //预读本地文件示例，不支持ie8
                     obj.preview(function (index, file, result) {
