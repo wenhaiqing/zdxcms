@@ -54,7 +54,6 @@ class BuildDangController extends BaseController
 	{
 	    $buildDang = BuildDang::where('id',$id)->first();
 		$buildDang->delete();
-
 		return redirect()->route('builddangs.index')->with('message', trans('global.destoried'));
 	}
 }

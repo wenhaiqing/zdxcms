@@ -34,6 +34,16 @@ class MobileController extends Controller
         return view('wap.dang.index',compact('member'));
     }
 
+    public function dangwei()
+    {
+        return view('wap.dang.dangwei');
+    }
+
+    public function dangwang()
+    {
+        return view('wap.dang.dangwang');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

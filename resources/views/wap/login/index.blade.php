@@ -41,6 +41,7 @@
             </div>
             <!--<a href="newPassword.html">忘记密码</a>-->            </div>
         <button class="login_btn" type="submit">登&nbsp;&nbsp;录</button>
+        <a class="login_btn"  href="{{route('wap.lmap')}}">注&nbsp;&nbsp;册</a>
     </form>
 
 
