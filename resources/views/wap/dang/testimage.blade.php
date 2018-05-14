@@ -113,7 +113,7 @@
             //多图片上传
             upload.render({
                 elem: '#test2'
-                , url: '{{ route('wap.upload_image') }}'
+                , url: '{{ route('wap.diao_upload') }}'
                 , data: {_token: '{{ csrf_token() }}'}
                 , multiple: true
                 , before: function (obj) {
@@ -127,6 +127,7 @@
                     });
                 }
                 , done: function (res) {
+                    console.log(res);
                     console.log(res.file_path);
                     $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
                     //上传完毕
