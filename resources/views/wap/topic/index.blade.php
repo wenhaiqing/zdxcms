@@ -121,13 +121,7 @@
                                     共{{$topic->reply_count}}条回答
                                 </div>
                             </div>
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                @if(get_json_params($topic->image,'0'))
-                                <img src="{{get_json_params($topic->image,'0')}}" />
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" />
-                                @endif
-                            </div>
+                            
                         </div>
                     </li>
                         </a>
