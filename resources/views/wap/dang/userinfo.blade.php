@@ -116,9 +116,11 @@
                                     <div class="aui-list-item-inner ">
                                         {{$v->name}}
                                     </div>
+                                    @if($v->job)
                                     <div class="aui-list-item-right">
                                         <div class="aui-label aui-label-info">{{$v->job}}</div>
                                     </div>
+                                        @endif
                                 </div>
                             </li>
                         @endforeach

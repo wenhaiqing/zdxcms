@@ -14,7 +14,7 @@ class AddJobToMemberTable extends Migration
     public function up()
     {
         Schema::table('members', function (Blueprint $table) {
-            $table->string('job')->default('无职务')->comment('党员职务');
+            $table->string('job')->nullable()->comment('党员职务');
         });
     }
 
