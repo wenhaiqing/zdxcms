@@ -56,7 +56,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">{{trans('users.team_members')}}</label>
                 <div class="layui-input-block">
-                    <textarea placeholder="" name="team_members" lay-verify="required" class="layui-textarea">{{ old('team_members',$user->team_members) }}</textarea>
+                    <textarea placeholder="" name="team_members" lay-verify="" class="layui-textarea">{{ old('team_members',$user->team_members) }}</textarea>
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
@@ -68,7 +68,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('users.found_time')}}</label>
                 <div class="layui-input-block">
-                    <input type="text" id="found_time" name="found_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{{ old('found_time',$user->found_time) }}" >
+                    <input type="text" id="found_time" name="found_time" lay-verify="" placeholder="" autocomplete="off" class="layui-input" value="{{ old('found_time',$user->found_time) }}" >
                 </div>
             </div>
             <div class="layui-upload">
