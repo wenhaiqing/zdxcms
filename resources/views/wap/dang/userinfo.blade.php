@@ -124,7 +124,7 @@
                             <div class="aui-list-item-inner">
                                 <div class="aui-list-item-title">{{$v->name}}</div>
                                 <div class="aui-list-item-right">
-                                    <div class="aui-label aui-label-info">成员</div>
+                                    <div class="aui-label aui-label-info">{{$v->job}}</div>
                                 </div>
                             </div>
                         </li>

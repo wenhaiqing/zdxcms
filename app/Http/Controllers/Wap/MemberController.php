@@ -19,15 +19,31 @@ use App\Models\Member;
 use Redis;
 use Auth;
 
+/**
+ * Class MemberController
+ *
+ * @package App\Http\Controllers\Wap
+ */
 class MemberController extends Controller
 {
+    /**
+     * @param \App\Models\Member $member
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function center(Member $member)
     {
         $member = Auth::guard('wap')->user();
         return view('wap.member.center',compact('member'));
     }
 
-    public function qianyi(Request $request,User $user)
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function qianyi(Request $request, User $user)
     {
         $id = $request->id;
         $list = $user->where(['pid'=>$id,'status'=>1])->paginate(config('wap.global.paginate'));
