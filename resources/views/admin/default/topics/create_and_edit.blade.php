@@ -59,7 +59,7 @@
                 <input type="radio" name="status" value="0" @if(old('status',$topic->status) == 0) checked=""
                        @endif title="{{trans('topics.status_0')}}" lay-verify="required">
                 <input type="radio" name="status" value="1" @if(old('status',$topic->status) == 1) checked=""
-                       @endif title="{{trans('topics.status_1')}}" checked lay-verify="required">
+                       @endif title="{{trans('topics.status_1')}}"  lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item" pane="">

@@ -36,7 +36,7 @@
                     <col>
                     <col>
                     <col>
-                    {{--<col>--}}
+                    <col>
                     <col width="300">
                 </colgroup>
                 <thead>
@@ -46,7 +46,7 @@
                     <th>{{trans('topics.content')}}</th>
                     <th>{{trans('topics.author')}}</th>
                     <th>{{trans('topics.reply_count')}}</th>
-                    {{--<th>{{trans('topics.view_count')}}</th>--}}
+                    <th>{{trans('topics.status')}}</th>
                     <th>{{trans('topics.create_at')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
@@ -59,7 +59,11 @@
                         <td>{{ $topic->excerpt  }}</td>
                         <td>{{ $topic->member->name  }}</td>
                         <td>{{ $topic->reply_count  }}</td>
-{{--                        <td>{{ $topic->view_count  }}</td>--}}
+                        <td>@switch($topic->status)
+                                @case(0) 未审核 @break
+                                @case(1) 已审核 @break
+                                @endswitch
+                            </td>
                         <td>{{ $topic->created_at->diffForHumans() }}</td>
                         <td>
                             <a href="{{ route('topics.edit', $topic->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>

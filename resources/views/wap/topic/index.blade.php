@@ -121,6 +121,17 @@
                                     共{{$topic->reply_count}}条回答
                                 </div>
                             </div>
+                            @if(\Auth::guard('wap')->id() == $topic->member_id && \Carbon\Carbon::now()->subMinutes(30)->lt($topic->created_at))
+                                <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;float: right">
+                                    <form action="{{ route('wap.topic_destroy', ['id'=>$topic->id,'member_id'=>$topic->member_id]) }}" method="post">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-default btn-xs pull-left">
+                                            <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
                             <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
                                 @if(get_json_params($topic->image,'0'))
                                 <img src="{{get_json_params($topic->image,'0')}}" />
