@@ -18,25 +18,7 @@
             width: auto;
             height: 100%;
         }
-        .aui-list .aui-list-item-inner {    position: relative;
-            min-height: 2rem;
-            padding-right: 0.75rem;
-            width: 100%;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-flex: 1;
-            -webkit-box-pack: justify;
-            -webkit-justify-content: space-between;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -webkit-align-items: center;
-            align-items: center;
-            border-left: #03a9f4 3px solid;
-            margin: 0.5em 0;
-            padding-left: 0.75rem;}
+
         .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #c52030;}
         #paginate-render{padding-left:0;
             text-align: center;}
@@ -116,27 +98,40 @@
         </ul>
     </div>
     <section class="aui-content-padded">
-        @if($list->count())
-            <div class="aui-content aui-margin-b-15">
-                <ul class="aui-list aui-list-in">
-                    @foreach($list as $index=>$v)
-                        <li class="aui-list-item">
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-title">{{$v->name}}</div>
-                                <div class="aui-list-item-right">
-                                    <div class="aui-label aui-label-info">{{$v->job}}</div>
+        <div class="aui-card-list">
+            @if($list->count())
+                <div class="aui-card-list-content">
+                    <ul class="aui-list aui-media-list">
+                        @foreach($list as $index=>$v)
+                            <li class="aui-list-item aui-list-item-middle">
+                                <div class="aui-media-list-item-inner">
+                                    <div class="aui-list-item-media">
+                                        @if($v->avatar)
+                                            <img src="{{$v->avatar}}" class="aui-img-round aui-list-img-sm"/>
+                                        @else
+                                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"
+                                                 class="aui-img-round aui-list-img-sm"/>
+                                        @endif
+                                    </div>
+                                    <div class="aui-list-item-inner ">
+                                        {{$v->name}}
+                                    </div>
+                                    <div class="aui-list-item-right">
+                                        <div class="aui-label aui-label-info">{{$v->job}}</div>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div id="paginate-render"></div>
-        @else
-            <br/>
-            <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
-        @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div id="paginate-render"></div>
+            @else
+                <br/>
+                <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
+            @endif
+        </div>
     </section>
+
 
 @stop
 
