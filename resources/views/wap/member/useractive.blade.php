@@ -21,15 +21,14 @@
                     @foreach($users as $index=>$value)
                         <li class="aui-list-item">
                             <div class="aui-list-item-inner">
-                                <div class="aui-list-item-title">{{$value['name']}}</div>
-
+                                <div class="aui-list-item-title">
+                                    @if(strpos($value['name'],'小组') !== false){{get_userpid_pid($value['pid'])}}-@endif{{get_userpid($value['pid'])}}-{{$value['name']}}
+                                </div>
                                 <div class="aui-list-item-right">
                                     <div class="aui-label aui-label-info">{{$index+1}}</div>
                                 </div>
-
                             </div>
                         </li>
-
                     @endforeach
                 </ul>
             </div>

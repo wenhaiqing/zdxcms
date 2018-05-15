@@ -15,6 +15,24 @@ function make_excerpt($value, $length = 15)
     $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
     return str_limit($excerpt, $length);
 }
+
+function get_userpid($pid)
+{
+    if ($pid ==0){
+        $pid =1;
+    }
+    $user =  \App\Models\User::where('id',$pid)->first();
+    return $user->name;
+}
+function get_userpid_pid($pid)
+{
+    if ($pid ==0){
+        $pid =1;
+    }
+    $user =  \App\Models\User::where('id',$pid)->first();
+    $userpid = \App\Models\User::where('id',$user->pid)->first();
+    return $userpid->name;
+}
 /*
  * 获取下属党组织
  */
