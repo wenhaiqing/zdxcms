@@ -28,7 +28,7 @@
             -moz-box-shadow: #ff9b90 0px 0px 20px;
             box-shadow: #ff9b90 0px 0px 20px;
             text-align: center;
-            margin-bottom: 2em;
+            margin-bottom: 1em;
         }
     </style>
 </head>
@@ -51,8 +51,7 @@
 
         <div class="choose_box">
             <div>
-                <input type="checkbox" checked="checked" name="checkbox"/>
-                <lable>记住用户信息</lable>
+                <a href="{{route('wap.lmap')}}"><lable>忘记密码?点击找回</lable></a>
             </div>
             <!--<a href="newPassword.html">忘记密码</a>-->            </div>
         <button class="login_btn" type="submit">登&nbsp;&nbsp;录</button>

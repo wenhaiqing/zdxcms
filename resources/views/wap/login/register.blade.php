@@ -9,6 +9,7 @@
             <span class="aui-iconfont aui-icon-left"></span>
         </div>
         <div class="aui-title">注册</div>
+        <a href="{{route('wap.login')}}"><span class="aui-pull-right aui-btn ">登录</span></a>
     </header>
     <section class="aui-content aui-margin-t-15">
         <form class="form-signin" action="{{route('register.create')}}" method="POST" role="form">
