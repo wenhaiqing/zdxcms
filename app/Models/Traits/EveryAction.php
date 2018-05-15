@@ -77,4 +77,42 @@ trait EveryAction
         
     }
 
+    public function get_today_jifen()
+    {
+        $today_date = Carbon::now()->toDateString();
+        // Redis 哈希表的命名，如：larabbs_last_actived_at_2017-10-21
+        $hash = $this->hash_prefix .$today_date;
+        // 从 Redis 中获取所有哈希表里的数据
+        $dates = Redis::hGetAll($hash);
+        $today_jifen = 0;
+        // 遍历，并同步到数据库中
+        foreach ($dates as $user_id => $action) {
+            //将$action从json转换成数组
+            $action = json_decode($action);
+            if ($action->member_id == \Auth::guard('wap')->id()){
+                $today_jifen +=$action->jifen;
+            }
+        }
+        return $today_jifen;
+    }
+
+    public function today_myjifen()
+    {
+        $today_date = Carbon::now()->toDateString();
+        // Redis 哈希表的命名，如：larabbs_last_actived_at_2017-10-21
+        $hash = $this->hash_prefix .$today_date;
+        // 从 Redis 中获取所有哈希表里的数据
+        $dates = Redis::hGetAll($hash);
+        $list = array();
+        // 遍历，并同步到数据库中
+        foreach ($dates as $user_id => $action) {
+            //将$action从json转换成数组
+            $action = json_decode($action);
+            if ($action->member_id == \Auth::guard('wap')->id() && $action->jifen >0){
+                $list[] = $action;
+            }
+        }
+        return $list;
+    }
+
 }

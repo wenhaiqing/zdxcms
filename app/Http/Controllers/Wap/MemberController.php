@@ -34,7 +34,8 @@ class MemberController extends Controller
     public function center(Member $member)
     {
         $member = Auth::guard('wap')->user();
-        return view('wap.member.center',compact('member'));
+        $today_jifen = $member->get_today_jifen();
+        return view('wap.member.center',compact('member','today_jifen'));
     }
 
     /**
@@ -239,6 +240,13 @@ class MemberController extends Controller
         $member_id = Auth::guard('wap')->id();
         $lists = Browselog::where('member_id',$member_id)->where('jifen','>','0')->orderBy('id','desc')->paginate(config('wap.global.paginate'));
         return view('wap.member.myjifen',compact('lists'));
+    }
+
+    public function today_myjifen(Member $member)
+    {
+        $lists = $member->today_myjifen();
+
+        return view('wap.member.today_myjifen',compact('lists'));
     }
 
     public function meeting_sign(Request $request)

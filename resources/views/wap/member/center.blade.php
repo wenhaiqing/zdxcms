@@ -111,8 +111,8 @@
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myjifen')}}">
-                        <big class="label-cont aui-font-size-14 aui-text-danger">{{$member->jifen}}</big>
+                    <a href="{{route('wap.today_myjifen')}}">
+                        <big class="label-cont aui-font-size-14 aui-text-danger">{{$today_jifen}}</big>
                         <div class="aui-grid-label aui-font-size-12">今日积分</div>
                     </a>
                 </div>
