@@ -234,8 +234,26 @@ class MobileController extends Controller
     {
         $id = \Auth::guard('wap')->user()->user_id;
         $userinfo = $user->where('id',$id)->first();
-        $list = Member::where('user_id',$id)->paginate(config('admin.global.paginate'));
+        if(strpos($userinfo->name,'小组') !== false){
+            $user = $user->where('id',$userinfo->pid)->first();
+            $ids = $this->get_adminson([$user->id],[$user->id]);
+            $list = Member::whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+        }else{
+            $list = Member::where('user_id',$id)->paginate(config('admin.global.paginate'));
+        }
         return view('wap.dang.userinfo',compact('userinfo','list'));
+    }
+    public function get_adminson($id,$arr = array())
+    {
+
+        $res = User::whereIn('pid',$id)->pluck('id')->toArray();
+
+        if (!$res){
+            return $arr;
+        }
+        $arr = array_merge($arr,$res);
+
+        return $this->get_adminson($res,$arr);
     }
 
 
