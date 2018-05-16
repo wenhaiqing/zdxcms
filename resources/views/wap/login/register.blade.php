@@ -24,7 +24,7 @@
 
 <div class="t-main"><img src="{{asset('wap/new/images/register_top.png')}}" style="vertical-align: middle;"></div>
 <div class="t-main1">
-    <form action="{{route('register.create')}}" method="POST">
+    <form action="{{route('register.create')}}" method="POST" id="form1">
         {{ csrf_field() }}
         <input type="hidden" name="user_id" value="{{$user_id}}">
         <input type="hidden" name="status" value="0">
@@ -48,6 +48,13 @@
             <i class="fa fa-key fa-lg fa-color fa-width"></i>
             <input type="password" required class="name-input password"
                    id="password" name="password" placeholder="请输入密码"
+                   value=""/><span id="error3"
+                                   style="display:inline;color:red;font-size: 12px"></span>
+        </div>
+        <div class="t-main1-list t-line">
+            <i class="fa fa-key fa-lg fa-color fa-width"></i>
+            <input type="password" required class="name-input password"
+                   id="confirm_password" name="confirm_password" placeholder="请确认密码"
                    value=""/><span id="error3"
                                    style="display:inline;color:red;font-size: 12px"></span>
         </div>
@@ -102,10 +109,10 @@
                     type="radio" class="sex" name="if_movedang" value="1" id="sex_1" style="margin-left: 1em;"/> 否
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="error8" style="display:inline;">流动党员</span>
         </div>
-        <button class="subbtn" type="submit">提交</button>
+
     </form>
     <br/><br/>
-
+    <div class="subbtn" onclick="tijiao();">提交</div>
 </div>
 
 <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
@@ -114,6 +121,16 @@
     layui.laydate.render({
         elem: '#test1'
     });
+
+    function tijiao() {
+        var password = $("#password").val();
+        var confirm_password = $("#confirm_password").val();
+        if (password !== confirm_password){
+            layer.alert('俩次输入密码不一致');
+            return;
+        }
+        form1.submit();
+    }
 </script>
 
 <!--input有默认值，且为灰色，点击后默认值消失，输入值变为黑色-->
