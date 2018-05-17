@@ -85,7 +85,7 @@
 
         <div class="t-main1-list t-line">
             <i class="fa fa-camera-retro fa-lg fa-color fa-width"></i>
-            <input type="text" required id="test1" name="addtime"
+            <input type="text" required id="test1" name="joindang_time"
                    class="name-input addtime"
                    placeholder="请选择入党日期"/>
         </div>
@@ -123,6 +123,27 @@
     });
 
     function tijiao() {
+        var name = $("#name").val();
+        if (!name){
+            layer.alert('姓名必填');return;
+        }
+        var sex = $("#sex").val();
+        if (!sex){
+            layer.alert('性别必选');return;
+        }
+        var nation = $("#nation").val();
+        if (!nation){
+            layer.alert('民族必填');return;
+        }
+        var record = $("#record").val();
+        if (!record){
+            layer.alert('学历必填');return;
+        }
+//        var joindang_time = $("#test1").val();
+//        if (!joindang_time){
+//            layer.alert('入党时间必填');return;
+//        }
+
         var password = $("#password").val();
         var confirm_password = $("#confirm_password").val();
         if (password !== confirm_password){
