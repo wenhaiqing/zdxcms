@@ -127,10 +127,6 @@
         if (!name){
             layer.alert('姓名必填');return;
         }
-        var sex = $("#sex").val();
-        if (!sex){
-            layer.alert('性别必选');return;
-        }
         var nation = $("#nation").val();
         if (!nation){
             layer.alert('民族必填');return;

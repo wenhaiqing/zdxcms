@@ -173,6 +173,24 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('diaoyan/add', ['uses'=>'DiaoyanController@create'])->name('wap.diaoyan.add');
     Route::post('diaoyan/store', ['uses'=>'DiaoyanController@store'])->name('wap.diaoyan.store');
 
+    Route::get('bind_admin','BackendController@bind_admin')->name('wap.bind_admin');
+    Route::get('untie_admin','BackendController@untie_admin')->name('wap.untie_admin');
+    Route::post('bind_admin_post','BackendController@bind_admin_post')->name('wap.bind_admin.post');
+    Route::get('admin_themed_list','BackendController@themed_list')->name('wap.admin_themed_list');
+    Route::get('admin_themed_create','BackendController@themed_create')->name('wap.admin_themed_create');
+    Route::post('admin_themed_store','BackendController@themed_store')->name('wap.admin_themed_store');
+    Route::get('admin_themed_edit','BackendController@themed_edit')->name('wap.admin_themed_edit');
+    Route::patch('admin_themed_update','BackendController@themed_update')->name('wap.admin_themed_update');
+    Route::get('admin_themed_destroy','BackendController@themed_destroy')->name('wap.admin_themed_destroy');
+    Route::get('admin_meeting_list','BackendController@meeting_list')->name('wap.admin_meeting_list');
+    Route::get('admin_meeting_create','BackendController@meeting_create')->name('wap.admin_meeting_create');
+    Route::post('admin_meeting_store','BackendController@meeting_store')->name('wap.admin_meeting_store');
+    Route::get('admin_meeting_edit','BackendController@meeting_edit')->name('wap.admin_meeting_edit');
+    Route::patch('admin_meeting_update','BackendController@meeting_update')->name('wap.admin_meeting_update');
+    Route::get('admin_meeting_destroy','BackendController@meeting_destroy')->name('wap.admin_meeting_destroy');
+
+
+
 
 });
 

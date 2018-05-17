@@ -188,6 +188,37 @@
                 </div>
             </div>
         </div>
+        <div class=" aui-grid aui-padded-b-15 aui-padded-t-15 aui-border-t">
+            <div class="aui-row">
+                @if($member->if_admin == 0)
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.bind_admin')}}">
+                        <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-gear"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">绑定后台管理员</div>
+                    </a>
+                </div>
+                    @else
+                    <div class="aui-col-xs-3">
+                        <a href="{{route('wap.untie_admin')}}">
+                            <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-gear"></i></div>
+                            <div class="aui-grid-label aui-font-size-12">解绑后台管理员</div>
+                        </a>
+                    </div>
+                    <div class="aui-col-xs-3">
+                        <a href="{{route('wap.admin_themed_list')}}">
+                            <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-flag"></i></div>
+                            <div class="aui-grid-label aui-font-size-12">管理主题党日</div>
+                        </a>
+                    </div>
+                    <div class="aui-col-xs-3">
+                        <a href="{{route('wap.admin_meeting_list')}}">
+                            <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-pencil"></i></div>
+                            <div class="aui-grid-label aui-font-size-12">管理三会一课</div>
+                        </a>
+                    </div>
+                @endif
+            </div>
+        </div>
 
     </section>
     <p><a href="{{route('wap.logout')}}"><div class="aui-btn aui-btn-block">退出登录</div></p></a>
