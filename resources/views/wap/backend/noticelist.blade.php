@@ -32,7 +32,9 @@
             border-left: #03a9f4 3px solid;
             margin: 0.5em 0;
             padding-left: 0.75rem;}
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #c52030;}
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #03a9f4;
+        }
         #paginate-render{padding-left:0;
             text-align: center;}
     </style>
@@ -69,9 +71,13 @@
         @foreach($notices as $index=>$notice)
             <a href="{{route('wap.admin_notice_edit',['id'=>$notice->id])}}">
                 @if($index <=2)
-                <li><img src="{{asset('wap/new/images/new.png')}}"/><span>{{$notice->title}}</span></li>
+                <li><img src="{{asset('wap/new/images/new.png')}}"/><span>{{$notice->title}}</span>
+                    <a href="javascript:;" style="float: right" data-url="{{ route('wap.admin_notice_destroy',['id'=>$notice->id]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                </li>
                     @else
-                    <li><span>{{$notice->title}}</span></li>
+                    <li><span>{{$notice->title}}</span>
+                        <a href="javascript:;" style="float: right" data-url="{{ route('wap.admin_notice_destroy',['id'=>$notice->id]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                    </li>
                 @endif
             </a>
         @endforeach
@@ -81,6 +87,10 @@
         <br/>
         <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
     @endif
+        <form id="delete-form" action="" method="POST" style="display:none;">
+            <input type="hidden" name="_method" value="DELETE">
+            {{ csrf_field() }}
+        </form>
 </div>
 <a href="{{route('wap.admin_notice_create')}}"><button class="layui-btn layui-btn-fluid">发布通知</button></a>
 

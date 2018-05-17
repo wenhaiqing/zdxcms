@@ -50,9 +50,6 @@
             {{--<div class="layui-input-block">--}}
             <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>
             <button type="reset" class="layui-btn layui-btn-primary">{{trans('global.reset')}}</button>
-            <a class="layui-btn" href="{{route('wap.admin_themed_destroy',['id'=>$theme_dang->id])}}">
-           删除
-            </a>
             {{--</div>--}}
         </div>
     </form>

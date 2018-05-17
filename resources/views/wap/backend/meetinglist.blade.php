@@ -69,8 +69,12 @@
             <a href="{{route('wap.admin_meeting_edit',['id'=>$meeting->id])}}">
                 <li>
                         <div class="leftw"> <img src="{{asset('wap/new/images/shyk_top.jpg')}}"  alt="" /></div>
-                        <div class="rightw"> <p>{{$meeting->meeting_title}}</p> </div>
-                    <div class="clear"></div>
+                        <div class="rightw"> <p>{{$meeting->meeting_title}}</p>
+                            <a href="javascript:;" style="float: right" data-url="{{ route('wap.admin_meeting_destroy',['id'=>$meeting->id]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                        </div>
+                    <div class="clear">
+
+                    </div>
                 </li>
             </a>
         @endforeach
@@ -80,6 +84,10 @@
         <br/>
         <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
     @endif
+        <form id="delete-form" action="" method="POST" style="display:none;">
+            <input type="hidden" name="_method" value="DELETE">
+            {{ csrf_field() }}
+        </form>
 </div>
 <a href="{{route('wap.admin_meeting_create')}}"><button class="layui-btn layui-btn-fluid">发布三会一课</button></a>
 </body>

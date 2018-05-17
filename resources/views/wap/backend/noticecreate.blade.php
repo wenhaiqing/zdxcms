@@ -31,14 +31,12 @@
             {{--<div class="layui-input-block">--}}
             <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>
             <button type="reset" class="layui-btn layui-btn-primary">{{trans('global.reset')}}</button>
-            <a class="layui-btn" href="{{route('wap.admin_notice_destroy',['id'=>$notify->id])}}">
-                删除
-            </a>
             {{--</div>--}}
         </div>
     </form>
 @endsection
 @section('js')
+    @include(getThemeView('layouts._paginate'),[ 'count' => 0, ])
     <script type="text/javascript"  src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script>
     <script type="text/javascript"  src="{{ asset('editor/js/module.js') }}"></script>
     <script type="text/javascript"  src="{{ asset('editor/js/hotkeys.js') }}"></script>

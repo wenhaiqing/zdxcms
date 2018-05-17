@@ -74,11 +74,11 @@
                             <li class="aui-list-item">
                                 <div class="aui-list-item-inner">
                                     <div class="aui-list-item-title">{{$themed->title}}</div>
-                                    @if($themed->if_cream==1)
+
                                         <div class="aui-list-item-right">
-                                            <div class="aui-label aui-label-info">精华</div>
+                                            <a href="javascript:;" data-url="{{ route('wap.admin_themed_destroy',['id'=>$themed->id]) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                                         </div>
-                                    @endif
+
                                 </div>
                             </li>
                         </a>
@@ -96,7 +96,10 @@
         {{--<br/>--}}
         {{--<blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>--}}
     @endif
-
+    <form id="delete-form" action="" method="POST" style="display:none;">
+        <input type="hidden" name="_method" value="DELETE">
+        {{ csrf_field() }}
+    </form>
 @stop
 @section('js')
     @include(getThemeView('layouts._paginate'),[ 'count' => $themeds->total(), ])
