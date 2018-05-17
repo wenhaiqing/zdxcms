@@ -81,7 +81,7 @@
         <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
     @endif
 </div>
-
+<a href="{{route('wap.admin_meeting_create')}}"><button class="layui-btn layui-btn-fluid">发布三会一课</button></a>
 </body>
 @include(getThemeView('layouts._paginate'),[ 'count' => $meetings->total(), ])
 </html>
