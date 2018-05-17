@@ -75,7 +75,7 @@
         </div>
         <div class="t-main1-list t-line">
             <i class="fa fa-user-circle-o fa-lg fa-color fa-width"></i>
-            <input type="text" required class="name-input mz" id="mz"
+            <input type="text" required class="name-input mz" id="nation"
                    name="nation" placeholder="民族"
                    value="{{ old('nation') }}"/><span
                     id="error6"
@@ -87,13 +87,13 @@
             <i class="fa fa-camera-retro fa-lg fa-color fa-width"></i>
             <input type="text" required id="test1" name="joindang_time"
                    class="name-input addtime"
-                   placeholder="请选择入党日期"/>
+                   placeholder="请选择入党日期" value="{{ old('joindang_time') }}"/>
         </div>
         <div class="t-main1-list t-line">
             <i class="fa fa-address-card-o fa-lg fa-color fa-width "></i>
             <input type="text" required id="record" name="record"
                    class="name-input addtime"
-                   placeholder="请输入学历"/>&nbsp;
+                   placeholder="请输入学历" value="{{ old('record') }}"/>&nbsp;
         </div>
         <div class="t-main1-list t-line">
             <i class="fa fa-bank fa-lg fa-color fa-width"></i>
@@ -123,22 +123,34 @@
     });
 
     function tijiao() {
-//        var name = $("#name").val();
-//        if (!name){
-//            layer.alert('姓名必填');return;
-//        }
-//        var nation = $("#nation").val();
-//        if (!nation){
-//            layer.alert('民族必填');return;
-//        }
-//        var record = $("#record").val();
-//        if (!record){
-//            layer.alert('学历必填');return;
-//        }
-//        var joindang_time = $("#test1").val();
-//        if (!joindang_time){
-//            layer.alert('入党时间必填');return;
-//        }
+        var name = $("#name").val();
+        if (!name){
+            layer.alert('姓名必填');return;
+        }
+        var nation = $("#nation").val();
+        if (!nation){
+            layer.alert('民族必填');return;
+        }
+        var record = $("#record").val();
+        if (!record){
+            layer.alert('学历必填');return;
+        }
+        var joindang_time = $("#test1").val();
+        if (!joindang_time){
+            layer.alert('入党时间必填');return;
+        }
+        var sex = $("input[name='sex']:checked").val();
+        if (!sex){
+            layer.alert('性别必选');return;
+        }
+        var if_dang = $("input[name='if_dang']:checked").val();
+        if (!if_dang){
+            layer.alert('是否正式党员必选');return;
+        }
+        var if_movedang = $("input[name='if_movedang']:checked").val();
+        if (!if_movedang){
+            layer.alert('是否流动党员必选');return;
+        }
 
         var password = $("#password").val();
         var confirm_password = $("#confirm_password").val();
