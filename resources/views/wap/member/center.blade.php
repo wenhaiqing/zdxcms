@@ -216,6 +216,12 @@
                             <div class="aui-grid-label aui-font-size-12">管理三会一课</div>
                         </a>
                     </div>
+                    <div class="aui-col-xs-3">
+                        <a href="{{route('wap.admin_notice_list')}}">
+                            <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-info"></i></div>
+                            <div class="aui-grid-label aui-font-size-12">管理通知</div>
+                        </a>
+                    </div>
                 @endif
             </div>
         </div>

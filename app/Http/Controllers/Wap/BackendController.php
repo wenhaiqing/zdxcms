@@ -6,6 +6,7 @@ use App\Models\Member;
 use App\Models\ThemeDang;
 use App\Models\User;
 use App\Models\Meeting;
+use App\Models\Notify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -129,5 +130,44 @@ class BackendController extends Controller
         $meeting = $meeting->where('id',$request->id)->first();
         $meeting->delete();
         return redirect()->route('wap.admin_meeting_list')->with('message', trans('global.destoried'));
+    }
+    public function notice_list(Request $request,Notify $notice)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $notice = $notice->where('title', 'like', "%{$keyword}%");
+        }
+        $notices = $notice->recent()->paginate(config('wap.global.paginate'));
+        return view('wap.backend.noticelist', compact('notices'));
+    }
+
+    public function notice_create(Notify $notify)
+    {
+        return view('wap.backend.noticecreate',compact('notify'));
+    }
+
+    public function notice_store(Request $request)
+    {
+        $notice = Notify::create($request->all());
+        return redirect()->route('wap.admin_notice_list')->with('message', trans('global.stored'));
+    }
+
+    public function notice_edit(Notify $notify,Request $request)
+    {
+        $notify = $notify->where('id',$request->id)->first();
+//        dd($notice);
+        return view('wap.backend.noticecreate', compact('notify'));
+    }
+
+    public function notice_update(Request $request,Notify $notice)
+    {
+        $notice->where('id',$request->id)->update($request->only(['user_id','title','content']));
+        return redirect()->route('wap.admin_notice_list')->with('message', trans('global.updated'));
+    }
+
+    public function notice_destroy(Notify $notice,Request $request)
+    {
+        $notice = $notice->where('id',$request->id)->first();
+        $notice->delete();
+        return redirect()->route('wap.admin_notice_list')->with('message', trans('global.destoried'));
     }
 }

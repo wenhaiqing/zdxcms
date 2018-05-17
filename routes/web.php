@@ -188,6 +188,12 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('admin_meeting_edit','BackendController@meeting_edit')->name('wap.admin_meeting_edit');
     Route::patch('admin_meeting_update','BackendController@meeting_update')->name('wap.admin_meeting_update');
     Route::get('admin_meeting_destroy','BackendController@meeting_destroy')->name('wap.admin_meeting_destroy');
+    Route::get('admin_notice_list','BackendController@notice_list')->name('wap.admin_notice_list');
+    Route::get('admin_notice_create','BackendController@notice_create')->name('wap.admin_notice_create');
+    Route::post('admin_notice_store','BackendController@notice_store')->name('wap.admin_notice_store');
+    Route::get('admin_notice_edit','BackendController@notice_edit')->name('wap.admin_notice_edit');
+    Route::patch('admin_notice_update','BackendController@notice_update')->name('wap.admin_notice_update');
+    Route::get('admin_notice_destroy','BackendController@notice_destroy')->name('wap.admin_notice_destroy');
 
 
 
