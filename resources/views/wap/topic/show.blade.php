@@ -65,6 +65,10 @@
             text-align: center;
             border-radius: 50%;
         }
+
+         .max{width:100%;height:auto;}
+        .min{width:100px;height:auto;}
+
     </style>
 @stop
 @section('content')
@@ -90,7 +94,9 @@
                             <div class="aui-row aui-row-padded">
                                 @foreach($image as $index=>$v)
                                 <div class="aui-col-xs-4">
-                                    <img src="{{$v}}"/>
+                                    <a href="{{$v}}">
+                                    <img class="image-item" src="{{$v}}"/>
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>

@@ -64,8 +64,9 @@
         </div>
     </header>
     <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>
+    @if($themeds->count())
     <section class="aui-content-padded">
-        @if($themeds->count())
+
             <div class="aui-content aui-margin-b-15">
                 <ul class="aui-list aui-list-in">
 
@@ -87,14 +88,14 @@
                 </ul>
             </div>
             <div id="paginate-render"></div>
-        @else
-            <br/>
-            <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
-        @endif
+
     </section>
     <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
                 src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
-
+    @else
+        {{--<br/>--}}
+        {{--<blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>--}}
+    @endif
     <section class="aui-content-padded">
         @if($themedjing->count())
             <div class="aui-content aui-margin-b-15">
