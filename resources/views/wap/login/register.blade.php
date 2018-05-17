@@ -123,18 +123,18 @@
     });
 
     function tijiao() {
-        var name = $("#name").val();
-        if (!name){
-            layer.alert('姓名必填');return;
-        }
-        var nation = $("#nation").val();
-        if (!nation){
-            layer.alert('民族必填');return;
-        }
-        var record = $("#record").val();
-        if (!record){
-            layer.alert('学历必填');return;
-        }
+//        var name = $("#name").val();
+//        if (!name){
+//            layer.alert('姓名必填');return;
+//        }
+//        var nation = $("#nation").val();
+//        if (!nation){
+//            layer.alert('民族必填');return;
+//        }
+//        var record = $("#record").val();
+//        if (!record){
+//            layer.alert('学历必填');return;
+//        }
 //        var joindang_time = $("#test1").val();
 //        if (!joindang_time){
 //            layer.alert('入党时间必填');return;
