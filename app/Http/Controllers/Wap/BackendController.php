@@ -33,7 +33,7 @@ class BackendController extends Controller
     {
         if (\Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])){
             $mid = \Auth::guard('wap')->id();
-            $adminid = Auth::guard('web')->id();
+            $adminid = \Auth::guard('web')->id();
             Member::where('if_admin',$adminid)->update(['if_admin'=>0]);//把已绑定的账号解绑一个后台只允许绑一个
             Member::where('id',$mid)->update(['if_admin'=>$adminid]);
             return redirect()->route('wap.center');
