@@ -210,7 +210,8 @@
                     });
                 }
                 , done: function (res) {
-                    console.log(res.file_path);
+//                    console.log(res.file_path);
+                    layer.alert('图片上传完毕');
                     $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
                     //上传完毕
                 }
