@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/index.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/lrtk2.css')}}"/>
     <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
     <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     <style>
         .body-ula li {
