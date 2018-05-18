@@ -77,7 +77,7 @@
             <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
         @endif
     </section>
-    <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}"  width="100%"/></div>
+    {{--<div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}"  width="100%"/></div>--}}
     <section class="aui-content-padded">
         @if($themedjing->count())
             <div class="aui-content aui-margin-b-15">
