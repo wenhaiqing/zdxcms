@@ -21,6 +21,10 @@
                 <div class="aui-card-list-content-padded">
                     {!! $meeting->meeting_compere !!}
                 </div>
+                <div class="aui-card-list-content-padded">
+                    {!! $meeting->meeting_content !!}
+                </div>
+
                 <div class="aui-card-list-footer">
                     {{$meeting->created_at}}
                 </div>
