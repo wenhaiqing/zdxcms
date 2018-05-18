@@ -2,6 +2,9 @@
 @php
     $meeting_picture = is_json($meeting->meeting_picture) ? json_decode($meeting->meeting_picture) : new \stdClass();
 @endphp
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('editor/css/simditor.css') }}">
+@endsection
 
 @section('content')
 
@@ -31,6 +34,12 @@
                 <input type="text" id="address" name="meeting_address" lay-verify="required" autocomplete="off"
                        placeholder=""
                        class="layui-input" value="{{ old('meeting_address',$meeting->meeting_address) }}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">{{trans('meetings.content')}}</label>
+            <div class="layui-input-block">
+                <input type="text" id="editor" name="meeting_content" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('content',$meeting->meeting_content) }}" >
             </div>
         </div>
         <div class="layui-form-item">
@@ -106,7 +115,24 @@
     <script src="{{asset('js/spark-md5.min.js') }}"></script><!--需要引入spark-md5.min.js-->
     <script src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script><!--需要引入jquery.min.js-->
     <script src="{{asset('js/aetherupload.js') }}"></script><!--需要引入aetherupload.js-->
+    <script type="text/javascript"  src="{{ asset('editor/js/module.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/hotkeys.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/uploader.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/simditor.js') }}"></script>
     <script>
+        $(document).ready(function(){
+            var editor = new Simditor({
+                textarea: $('#editor'),
+                upload: {
+                    url: '{{ route('upload_image') }}',
+                    params: { _token: '{{ csrf_token() }}' },
+                    fileKey: 'file',
+                    connectionCount: 3,
+                    leaveConfirm: '{{trans('global.leaveConfirm')}}'
+                },
+                pasteImage: true,
+            });
+        });
         layui.use('upload', function () {
             var $ = layui.jquery
                 , upload = layui.upload;

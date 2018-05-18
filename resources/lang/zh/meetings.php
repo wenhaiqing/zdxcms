@@ -14,5 +14,6 @@ return [
     'meeting_sign_qrcode'=>'生成签到二维码',
     'if_all'=>'是否对流动党员开放',
     'if_all_0'=>'是',
-    'if_all_1'=>'否'
+    'if_all_1'=>'否',
+    'content'=>'会议内容'
 ];
