@@ -157,7 +157,7 @@
 </footer>
 <script>
     function nopermission() {
-        layer.alert('请先去个人中心绑定管理员');
+        layer.alert('请先去个人中心绑定后台管理员');
     }
 </script>
 </body>
