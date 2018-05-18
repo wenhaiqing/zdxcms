@@ -68,10 +68,10 @@
         .tablist{ float: left; display: inline; width: 30.3%; margin: 0 1.5%; overflow: hidden; text-align: center; font-size: 15px; margin-bottom:6px; }
 
 
-        .tablist .icon{ width: 60%; margin: 0 20%; overflow: hidden;}
+        .tablist .icon{overflow: hidden;align-content: center}
 
 
-        .tablist .icon img{ width: 100%; display: block;}
+        .tablist .icon img{ width: 64px;height: 64px;}
 
 
         .tablist p{ padding:6px 0; font-size:14px;}

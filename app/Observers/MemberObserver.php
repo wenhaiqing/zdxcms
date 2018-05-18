@@ -37,4 +37,9 @@ class MemberObserver
         }
     }
 
+    public function deleted(Member $member)
+    {
+        \DB::table('topic')->where('member_id', $member->id)->delete();
+    }
+
 }

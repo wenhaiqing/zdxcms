@@ -85,7 +85,4 @@
                 <button type="reset" class="layui-btn layui-btn-primary">{{trans('global.reset')}}</button>
             </div>
     </form>
-
-
-
 @endsection
