@@ -181,7 +181,7 @@ class MobileController extends Controller
         }
 
         $themeds = $themeDang->where('user_id',$user_id)->recent()->paginate(config('wap.global.paginate'));
-        $themedjing = $themeDang->where('if_cream',1)->get();
+        $themedjing = $themeDang->where('if_cream',1)->recent()->get();
         return view('wap.dang.themedlist',compact('themeds','user_id','themedjing'));
     }
 
