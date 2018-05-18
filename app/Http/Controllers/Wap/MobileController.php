@@ -165,7 +165,7 @@ class MobileController extends Controller
         }
         $ids = get_mobileson($id,$id);
         $themeds = $user->whereIn('id',$ids)->paginate(config('wap.global.paginate'));
-        $themedjing = ThemeDang::where('if_cream',1)->get();
+        $themedjing = ThemeDang::where('if_cream',1)->rencent()->get();
         return view('wap.dang.themed',compact('themeds','themedjing'));
     }
 

@@ -55,7 +55,7 @@
             <span class="aui-iconfont aui-icon-search"></span>
         </div>
     </header>
-    <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>
+    {{--<div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>--}}
     <section class="aui-content-padded">
         @if($themeds->count())
             <div class="aui-content aui-margin-b-15">
