@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Jobs\EveryAction;
 class Sign extends Model
 {
     protected $fillable = ['member_id', 'sign_day', 'sign_month', 'sign_year', 'sign_year_month', 'sign_contiday', 'jifen','sign_time'];
@@ -29,6 +30,7 @@ class Sign extends Model
         ];
         $arr = Sign::create($res);
         if ($arr){
+            dispatch(new EveryAction('signs',\Auth::guard('wap')->user(),$arr->id,'每日签到','参加了',config('wap.global.signs')));
             $data['msg']='签到成功';
             $data['code']=1;
         }else{

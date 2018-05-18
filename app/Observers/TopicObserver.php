@@ -27,7 +27,7 @@ class TopicObserver
         $model = 'topic';
         $modelid = $topic->id;
         $modeltitle = $topic->title;
-        dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'发布了'));
+        dispatch(new EveryAction($model,$member,$modelid,$modeltitle,'发布了',config('wap.global.topic')));
 
     }
 
