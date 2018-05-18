@@ -7,7 +7,7 @@
     <form class="layui-form layui-form-pane" method="POST" action="{{ $theme_dang->id ? route('theme_dangs.update', $theme_dang->id) : route('theme_dangs.store') }}">
         {{ csrf_field() }}
         <input type="hidden" name="_method" class="mini-hidden" value="{{ $theme_dang->id ? 'PATCH' : 'POST' }}">
-        <input type="hidden" name="user_id" value="{{Auth()->id()}}">
+        <input type="hidden" name="user_id" value="{{$theme_dang->id ? $theme_dang->user_id : Auth()->id()}}">
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('theme_dang.title')}}</label>
             <div class="layui-input-block">

@@ -9,7 +9,7 @@
           action="{{ $meeting->id ? route('meetings.update', $meeting->id) : route('meetings.store') }}">
         {{ csrf_field() }}
         <input type="hidden" name="_method" class="mini-hidden" value="{{ $meeting->id ? 'PATCH' : 'POST' }}">
-        <input type="hidden" name="user_id" value="{{\Auth::id()}}">
+        <input type="hidden" name="user_id" value="{{$meeting->id ? $meeting->user_id : Auth()->id()}}">
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('meetings.title')}}</label>
             <div class="layui-input-block">

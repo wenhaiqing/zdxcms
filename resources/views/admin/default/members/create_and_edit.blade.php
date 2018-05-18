@@ -5,7 +5,7 @@
         <form class="layui-form layui-form-pane" method="POST" action="{{ $member->id ? route('members.update', $member->id) : route('members.store') }}">
             {{ csrf_field() }}
             <input type="hidden" name="_method" class="mini-hidden" value="{{ $member->id ? 'PATCH' : 'POST' }}">
-            <input type="hidden" name="user_id" value="{{$member->user_id ? $member->user_id : Auth::guard('web')->id()}}">
+            <input type="hidden" name="user_id" value="{{$member->user_id ? $member->user_id : Auth()->id()}}">
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('members.name')}}</label>
                 <div class="layui-input-block">

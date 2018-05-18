@@ -7,7 +7,7 @@
     <form class="layui-form layui-form-pane" method="POST" action="{{ $buildDang->id ? route('builddangs.update', $buildDang->id) : route('builddangs.store') }}">
         {{ csrf_field() }}
         <input type="hidden" name="_method" class="mini-hidden" value="{{ $buildDang->id ? 'PATCH' : 'POST' }}">
-        <input type="hidden" name="user_id" value="{{Auth()->id()}}">
+        <input type="hidden" name="user_id" value="{{$buildDang->id ? $buildDang->user_id : Auth()->id()}}">
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('builddangs.title')}}</label>
             <div class="layui-input-block">
