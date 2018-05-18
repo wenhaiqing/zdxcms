@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/index.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('wap/new/css/lrtk2.css')}}"/>
     <script src="{{asset('wap/llmap/js/jquery-3.3.1.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
+    <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
     <style>
         .body-ula li {
             width: 24%;
@@ -119,10 +121,17 @@
         <a href="{{route('wap.diaoyan.index')}}"><img src="{{asset('wap/new/images/hsez_10.jpg')}}"/>
             <div>党务助手</div></a>
     </li>
+    @if(\Auth::guard('wap')->user()->if_admin == 1)
     <li>
         <a href="{{route('wap.analysis.index')}}"><img src="{{asset('wap/new/images/hsez_11.jpg')}}"/>
             <div>数据中心</div></a>
     </li>
+        @else
+        <li>
+            <a href="javascript:;" onclick="nopermission();"><img src="{{asset('wap/new/images/hsez_11.jpg')}}"/>
+                <div>数据中心</div></a>
+        </li>
+        @endif
 
 </ul>
 <footer>
@@ -147,5 +156,10 @@
     </ul>
     <br/>
 </footer>
+<script>
+    function nopermission() {
+        layer.alert('请先去个人中心绑定管理员');
+    }
+</script>
 </body>
 </html>
