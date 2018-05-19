@@ -136,6 +136,7 @@
                     });
                 }
                 , done: function (res) {
+                    layer.alert('上传成功');
                     console.log(res.file_path);
                     $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="sign_picture[]">');
                     //上传完毕

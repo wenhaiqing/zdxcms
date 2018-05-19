@@ -88,7 +88,9 @@
                             <div class="aui-row aui-row-padded">
                                 @foreach($sign_picture as $index=>$v)
                                 <div class="aui-col-xs-4">
+                                    <a href="{{$v}}">
                                     <img src="{{$v}}"/>
+                                    </a>
                                 </div>
                                 @endforeach
                             </div>
