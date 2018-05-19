@@ -74,8 +74,8 @@ class MeetingsController extends BaseController
 
     public function sign_destroy(Request $request)
     {
-        $meetsign = MeetingSign::where('id',$request->id);
+        $meetsign = MeetingSign::where('id',$request->id)->first();
         $meetsign->delete();
-        return redirect()->route('meetings.sign')->with('message',trans('global.destoried'));
+        return back()->with('message',trans('global.destoried'));
 	}
 }
