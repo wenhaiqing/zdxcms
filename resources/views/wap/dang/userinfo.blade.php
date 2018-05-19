@@ -19,9 +19,14 @@
             height: 100%;
         }
 
-        .layui-laypage .layui-laypage-curr .layui-laypage-em{background-color: #c52030;}
-        #paginate-render{padding-left:0;
-            text-align: center;}
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #c52030;
+        }
+
+        #paginate-render {
+            padding-left: 0;
+            text-align: center;
+        }
     </style>
 @stop
 @section('content')
@@ -32,16 +37,25 @@
         <div class="aui-title">支部详情</div>
     </header>
     @if(get_json_params($userinfo->users_picture,'0'))
-        <div id="aui-slide3">
-            <div class="aui-slide-wrap">
-                @foreach($users_picture as $index=>$v)
-                    <div class="aui-slide-node bg-dark">
-                        <img src="{{$v}}"/>
-                    </div>
-                @endforeach
+
+            <div id="aui-slide3">
+                <div class="aui-slide-wrap">
+                    @foreach($users_picture as $index=>$v)
+                        @if(count($users_picture)>5)
+                        @if($index>count($users_picture)-6)
+                            <div class="aui-slide-node bg-dark">
+                                <img src="{{$v}}"/>
+                            </div>
+                        @endif
+                        @else
+                            <div class="aui-slide-node bg-dark">
+                                <img src="{{$v}}"/>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="aui-slide-page-wrap"><!--分页容器--></div>
             </div>
-            <div class="aui-slide-page-wrap"><!--分页容器--></div>
-        </div>
     @endif
     <div class="aui-content aui-margin-b-15">
         <ul class="aui-list aui-list-in">
@@ -97,7 +111,9 @@
 
         </ul>
     </div>
-    <a href="{{route('wap.userinfo_picture')}}"><button class="layui-btn layui-btn-fluid">支部掠影</button></a>
+    <a href="{{route('wap.userinfo_picture')}}">
+        <button class="layui-btn layui-btn-fluid">支部掠影</button>
+    </a>
     <section class="aui-content-padded">
         <div class="aui-card-list">
             @if($list->count())
@@ -118,10 +134,10 @@
                                         {{$v->name}}
                                     </div>
                                     @if($v->job)
-                                    <div class="aui-list-item-right">
-                                        <div class="aui-label aui-label-info">{{$v->job}}</div>
-                                    </div>
-                                        @endif
+                                        <div class="aui-list-item-right">
+                                            <div class="aui-label aui-label-info">{{$v->job}}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </li>
                         @endforeach
