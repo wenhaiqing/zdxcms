@@ -52,12 +52,18 @@
                 @foreach($dang_moneys as $index => $dangmoney)
                     <tr>
                         <td>{{ $dangmoney->id }}</td>
-                        <td>{{ $dangmoney->title  }}</td>
-                        <td>{{ $dangmoney->user->name  }}</td>
+                        <td>{{ $dangmoney->name  }}</td>
+                        <td>{{ $dangmoney->salary  }}</td>
+                        <td>{{ $dangmoney->paymoney  }}</td>
                         <td>{{ $dangmoney->created_at->diffForHumans() }}</td>
+                        <td>@switch($dangmoney->status)
+                                @case(0) 未确定 @break
+                                @case(1) 已确定 @break
+                                @endswitch
+                        </td>
                         <td>
-                            <a href="{{ route('dangmoney.edit', $dangmoney->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
-                            <a href="javascript:;" data-url="{{ route('dangmoney.destroy', $dangmoney->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                            <a href="{{ route('dang_moneys.edit', $dangmoney->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                            <a href="javascript:;" data-url="{{ route('dang_moneys.destroy', $dangmoney->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                         </td>
                     </tr>
                 @endforeach
