@@ -194,6 +194,8 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('admin_notice_edit','BackendController@notice_edit')->name('wap.admin_notice_edit');
     Route::patch('admin_notice_update','BackendController@notice_update')->name('wap.admin_notice_update');
     Route::delete('admin_notice_destroy','BackendController@notice_destroy')->name('wap.admin_notice_destroy');
+    Route::get('userinfo_picture','MobileController@userinfo_picture')->name('wap.userinfo_picture');
+    Route::post('userinfo_picture_add','MobileController@userinfo_picture_add')->name('wap.userinfo_picture_add');
 
 
 

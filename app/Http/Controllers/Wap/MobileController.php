@@ -256,5 +256,20 @@ class MobileController extends Controller
         return $this->get_adminson($res,$arr);
     }
 
+    public function userinfo_picture()
+    {
+        $id = \Auth::guard('wap')->user()->user_id;
+        $userinfo = User::where('id',$id)->first();
+        return view('wap.dang.userinfo_picture',compact('userinfo'));
+    }
+
+    public function userinfo_picture_add(Request $request)
+    {
+        $id = \Auth::guard('wap')->user()->user_id;
+        $user = User::where('id',$id)->first();
+        $res = $user->update(['users_picture'=>$request->users_picture]);
+        return redirect()->route('wap.getuserinfo');
+    }
+
 
 }
