@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\Qianyi;
 use App\Notifications\MemberQianyi;
 use App\Jobs\SendEmail;
+
 class HomeController extends Controller
 {
     /**
@@ -34,8 +35,14 @@ class HomeController extends Controller
 //                    $member->update(['dang_age'=>$age]);
 //                }
 //        });
-
-
+//
+//        $members = Member::all();
+//        foreach ($members as $member) {
+//            $age = rand(0, 50);
+//            $member->update(['dang_age' => $age]);
+//        }
+//        $a = 1;
+//        var_dump(1);
         return view('welcome');
     }
 
@@ -43,14 +50,14 @@ class HomeController extends Controller
     {
         Member::chunk(1000, function ($members) {
             foreach ($members as $member) {
-                if ($member->cardnum){
-                    $cardnum = substr($member->cardnum,6,4);
+                if ($member->cardnum) {
+                    $cardnum = substr($member->cardnum, 6, 4);
                     $d = date('Y');
-                    $age = ($d-$cardnum+1);
-                    if ($age>100 || $age<0){
+                    $age = ($d - $cardnum + 1);
+                    if ($age > 100 || $age < 0) {
                         $age = 0;
                     }
-                    $member->update(['age'=>$age]);
+                    $member->update(['age' => $age]);
                 }
             }
         });

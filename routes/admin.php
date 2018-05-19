@@ -90,5 +90,8 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::get('echarts/census_video','EchartsController@census_video')->name('echarts.census_video');
     Route::post('echarts/census_video_json','EchartsController@census_video_json')->name('echarts.census_video_json');
 
+    //党费缴纳
+    Route::resource('dang_moneys', 'DangMoneysController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
 
 });
