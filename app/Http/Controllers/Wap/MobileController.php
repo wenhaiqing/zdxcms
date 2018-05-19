@@ -237,9 +237,9 @@ class MobileController extends Controller
         if(strpos($userinfo->name,'小组') !== false){
             $user = $user->where('id',$userinfo->pid)->first();
             $ids = $this->get_adminson([$user->id],[$user->id]);
-            $list = Member::whereIn('user_id',$ids)->paginate(config('admin.global.paginate'));
+            $list = Member::whereIn('user_id',$ids)->orderBy('jifen','desc')->paginate(config('admin.global.paginate'));
         }else{
-            $list = Member::where('user_id',$id)->paginate(config('admin.global.paginate'));
+            $list = Member::where('user_id',$id)->orderBy('jifen','desc')->paginate(config('admin.global.paginate'));
         }
         return view('wap.dang.userinfo',compact('userinfo','list'));
     }

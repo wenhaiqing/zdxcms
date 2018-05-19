@@ -120,9 +120,29 @@
                 <div class="aui-card-list-content">
                     <ul class="aui-list aui-media-list">
                         @foreach($list as $index=>$v)
+                            {{--<li class="aui-list-item aui-list-item-middle">--}}
+                                {{--<div class="aui-media-list-item-inner">--}}
+                                    {{--<div class="aui-list-item-media">--}}
+                                        {{--@if($v->avatar)--}}
+                                            {{--<img src="{{$v->avatar}}" class="aui-img-round aui-list-img-sm"/>--}}
+                                        {{--@else--}}
+                                            {{--<img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"--}}
+                                                 {{--class="aui-img-round aui-list-img-sm"/>--}}
+                                        {{--@endif--}}
+                                    {{--</div>--}}
+                                    {{--<div class="aui-list-item-inner ">--}}
+                                        {{--{{$v->name}}--}}
+                                    {{--</div>--}}
+                                    {{--@if($v->job)--}}
+                                        {{--<div class="aui-list-item-right">--}}
+                                            {{--<div class="aui-label aui-label-info">{{$v->job}}</div>--}}
+                                        {{--</div>--}}
+                                    {{--@endif--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
                             <li class="aui-list-item aui-list-item-middle">
                                 <div class="aui-media-list-item-inner">
-                                    <div class="aui-list-item-media">
+                                    <div class="aui-list-item-media" style="width: 3rem;">
                                         @if($v->avatar)
                                             <img src="{{$v->avatar}}" class="aui-img-round aui-list-img-sm"/>
                                         @else
@@ -130,14 +150,21 @@
                                                  class="aui-img-round aui-list-img-sm"/>
                                         @endif
                                     </div>
-                                    <div class="aui-list-item-inner ">
-                                        {{$v->name}}
-                                    </div>
-                                    @if($v->job)
-                                        <div class="aui-list-item-right">
-                                            <div class="aui-label aui-label-info">{{$v->job}}</div>
+                                    <div class="aui-list-item-inner">
+                                        <div class="aui-list-item-text">
+                                            <div class="aui-list-item-title aui-font-size-14">{{$v->name}}</div>
+
                                         </div>
-                                    @endif
+                                        <div class="aui-list-item-text">
+                                           积分：{{$v->jifen}}
+                                            @if($v->job)
+                                                <div class="aui-list-item-right">
+                                                    <div class="aui-label aui-label-info">{{$v->job}}</div>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                    </div>
                                 </div>
                             </li>
                         @endforeach
