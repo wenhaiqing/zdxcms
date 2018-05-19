@@ -79,6 +79,23 @@
             </div>
         </div>
 
+        {{--<div class="layui-upload">--}}
+            {{--@if(!$meeting->id)--}}
+            {{--<button type="button" class="layui-btn" id="test2">多图片上传</button>--}}
+            {{--@endif--}}
+            {{--<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">--}}
+                {{--会议现场照片：--}}
+                {{--<div class="layui-upload-list" id="demo2">--}}
+                    {{--@if(get_json_params($meeting->meeting_picture,'0'))--}}
+                        {{--@foreach($meeting_picture as $index=>$v)--}}
+                            {{--<img src="{{$v}}" class="layui-upload-img"--}}
+                                 {{--style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>--}}
+                            {{--<input type="hidden" name="meeting_picture[]" value="{{$v}}">--}}
+                        {{--@endforeach--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--</blockquote>--}}
+        {{--</div>--}}
         <div class="layui-upload">
             {{--@if(!$meeting->id)--}}
             <button type="button" class="layui-btn" id="test2">多图片上传</button>
@@ -143,22 +160,53 @@
                 , data: {_token: '{{ csrf_token() }}'}
                 , multiple: true
                 , before: function (obj) {
+                    layer.msg('图片上传中...', {
+                        icon: 16,
+                        shade: 0.01,
+                        time: 0
+                    })
                     //预读本地文件示例，不支持ie8
                     obj.preview(function (index, file, result) {
-                        var html = '';
-//                        html += '<div class="aui-col-xs-4 image-item">';
-                        html += '<img src="' + result + '" alt="' + file.name + '" class="notes-image" style="width: 92px;height: 92px;margin: 0 10px 10px 0;">';
-//                        html += '</div>';
-                        $('#demo2').append(html)
+
                     });
                 }
-                , done: function (res) {
+                , done: function (res,file) {
+                    layer.close(layer.msg());//关闭上传提示窗口
                     console.log(res.file_path);
-                    $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="meeting_picture[]">');
+                    var html = '';
+                    html += '<div id="'+res.mieid+'" class="layui-inline">';
+                    html += '<img src="' + res.file_path + '" alt="' + res.mieid + '" class="notes-image" style="width: 92px;height: 92px;margin: 0 10px 10px 0;">';
+                    html += '<i onclick=UPLOAD_IMG_DEL("' + res.mieid + '","'+res.file_path+'") class="close layui-icon"></i>';
+                    html += '<input value="' + res.file_path + '" type="hidden" name="meeting_picture[]">';
+                    html += '</div>';
+                    $('#demo2').append(html);
+                   // $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="meeting_picture[]">');
                     //上传完毕
                 }
             });
         });
+
+        function UPLOAD_IMG_DEL(divs,filepath) {
+            layer.msg('图片删除中...', {
+                icon: 16,
+                shade: 0.01,
+                time: 0
+            })
+            $.ajax({
+                type:'post',
+                url:"{{route('delete_image')}}",
+                data:{link:filepath},
+                dataType:'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success:function(data){
+                    layer.close(layer.msg());//关闭上传提示窗口
+                    $("#"+divs).remove();
+                }
+            });
+
+        }
 
         layui.laydate.render({
             elem: '#meeting_starttime',

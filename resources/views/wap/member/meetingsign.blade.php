@@ -124,8 +124,13 @@
                 elem: '#test2'
                 , url: '{{ route('wap.upload_image') }}'
                 , data: {_token: '{{ csrf_token() }}'}
-                , multiple: false
+                , multiple: true
                 , before: function (obj) {
+                    layer.msg('图片上传中...', {
+                        icon: 16,
+                        shade: 0.01,
+                        time: 0
+                    });
                     //预读本地文件示例，不支持ie8
                     obj.preview(function (index, file, result) {
                         var html = '';
@@ -136,7 +141,8 @@
                     });
                 }
                 , done: function (res) {
-                    layer.alert('上传成功');
+                    layer.close(layer.msg());//关闭上传提示窗口
+//                    layer.alert('上传成功');
                     console.log(res.file_path);
                     $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="sign_picture[]">');
                     //上传完毕

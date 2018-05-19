@@ -45,6 +45,7 @@ Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['a
     Route::resource('notifies', 'NotifiesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('builddangs', 'BuildDangController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::post('upload_image', 'UploadController@uploadImage')->name('upload_image');
+    Route::post('delete_image', 'UploadController@deleteImage')->name('delete_image');
     Route::resource('theme_dangs', 'ThemeDangsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::resource('videos', 'VideosController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
     Route::get('videos_category', 'VideosController@category')->name('videos.category.index');

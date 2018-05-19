@@ -15,8 +15,10 @@ class UploadController extends Controller
         $data = [
             'success'   => false,
             'msg'       => trans('global.upload_error'),
-            'file_path' => ''
+            'file_path' => '',
+            'mieid' => ''
         ];
+        $str="QWERTYUIOPASDFGHJKLZXCVBNM1234567890qwertyuiopasdfghjklzxcvbnm";
         // 判断是否有上传文件，并赋值给 $file
         if ($file = $request->file) {
             // 保存图片到本地
@@ -26,8 +28,22 @@ class UploadController extends Controller
                 $data['file_path'] = $result['path'];
                 $data['msg']       = trans('global.upload_success');
                 $data['success']   = true;
+                $data['mieid'] = substr(str_shuffle($str),26,10);
             }
         }
         return $data;
+    }
+
+    public function deleteImage(Request $request)
+    {
+        $link = $request->link;
+        $link = str_replace('http://'.$_SERVER['HTTP_HOST'].'/','',$link);
+        if (unlink($link)){
+            return response()->json(['message'=>'删除成功']);
+        }else{
+            return response()->json(['message'=>'删除失败，请重新删除']);
+        }
+
+
     }
 }
