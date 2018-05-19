@@ -105,9 +105,11 @@
                 <div class="layui-upload-list" id="demo2">
                     @if(get_json_params($meeting->meeting_picture,'0'))
                         @foreach($meeting_picture as $index=>$v)
+                            <a href="{{$v}}">
                             <img src="{{$v}}" class="layui-upload-img"
                                  style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>
                             <input type="hidden" name="meeting_picture[]" value="{{$v}}">
+                            </a>
                         @endforeach
                     @endif
                 </div>

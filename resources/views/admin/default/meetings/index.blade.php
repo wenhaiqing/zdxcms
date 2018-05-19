@@ -37,7 +37,7 @@
                     <col>
                     <col>
                     <col>
-                    <col width="300">
+                    <col width="400">
                 </colgroup>
                 <thead>
                 <tr>
@@ -64,6 +64,7 @@
                         <td>
                             <a href="javascript:;" data-method="notice" data-url="{{route('wap.meeting_sign',['meeting_id'=>$meeting->id])}}" id="qrcode" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('meetings.meeting_sign_qrcode')}}</a>
                             <a href="{{ route('meetings.edit', $meeting->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>
+                            <a href="{{ route('meetings.sign', ['id'=>$meeting->id]) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('meetings.meeting_sign')}}</a>
                             <a href="javascript:;" data-url="{{ route('meetings.destroy', $meeting->id) }}" class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
                         </td>
                     </tr>

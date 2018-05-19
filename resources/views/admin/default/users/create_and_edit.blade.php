@@ -81,10 +81,12 @@
                         @if(get_json_params($user->users_picture,'0'))
                             @foreach($users_picture as $index=>$v)
                                 <div class="layui-inline" id="{{$index}}">
+                                    <a href="{{$v}}">
                                 <img src="{{$v}}" class="layui-upload-img"
                                      style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>
                                     <i onclick='UPLOAD_IMG_DEL("{{$index}}","{{$v}}")' class="close layui-icon"></i>
                                 <input type="hidden" name="users_picture[]" value="{{$v}}">
+                                    </a>
                                 </div>
                             @endforeach
                         @endif
@@ -141,7 +143,7 @@
                         icon: 16,
                         shade: 0.01,
                         time: 0
-                    })
+                    });
                     //预读本地文件示例，不支持ie8
                     obj.preview(function (index, file, result) {
 
@@ -171,7 +173,7 @@
                 icon: 16,
                 shade: 0.01,
                 time: 0
-            })
+            });
             $.ajax({
                 type:'post',
                 url:"{{route('delete_image')}}",

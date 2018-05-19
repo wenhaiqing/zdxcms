@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Meeting;
+use App\Models\MeetingSign;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\MeetingRequest;
@@ -62,5 +63,19 @@ class MeetingsController extends BaseController
 		$meeting->delete();
 
 		return redirect()->route('meetings.index')->with('message', trans('global.destoried'));
+	}
+
+    public function sign(Request $request)
+    {
+        $meeting_id = $request->id;
+        $lists = MeetingSign::where('meeting_id',$meeting_id)->paginate(config('admin.global.paginate'));
+        return view(getThemeView('meetings.sign'),compact('lists'));
+	}
+
+    public function sign_destroy(Request $request)
+    {
+        $meetsign = MeetingSign::where('id',$request->id);
+        $meetsign->delete();
+        return redirect()->route('meetings.sign')->with('message',trans('global.destoried'));
 	}
 }

@@ -29,8 +29,10 @@
                 <div class="layui-upload-list" id="demo2">
                     @if(get_json_params($topic->image,'0'))
                         @foreach($image as $index=>$v)
+                            <a href="{{$v}}">
                             <img src="{{$v}}" class="layui-upload-img"
                                  style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>
+                            </a>
                         @endforeach
                     @endif
                 </div>

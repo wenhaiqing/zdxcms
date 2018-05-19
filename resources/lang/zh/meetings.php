@@ -15,5 +15,9 @@ return [
     'if_all'=>'是否对流动党员开放',
     'if_all_0'=>'是',
     'if_all_1'=>'否',
-    'content'=>'会议内容'
+    'content'=>'会议内容',
+    'meeting_sign' => '查看签到情况',
+    'meeting_sign_title'=>'随笔记录',
+    'meeting_sign_picture'=>'随笔图片',
+    'sign_created_at'=>'签到/发布时间'
 ];
