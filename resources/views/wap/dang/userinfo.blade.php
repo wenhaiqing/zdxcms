@@ -153,7 +153,6 @@
                                     <div class="aui-list-item-inner">
                                         <div class="aui-list-item-text">
                                             <div class="aui-list-item-title aui-font-size-14">{{$v->name}}</div>
-
                                         </div>
                                         <div class="aui-list-item-text">
                                            积分：{{$v->jifen}}
@@ -163,7 +162,6 @@
                                                 </div>
                                             @endif
                                         </div>
-
                                     </div>
                                 </div>
                             </li>
@@ -177,8 +175,6 @@
             @endif
         </div>
     </section>
-
-
 @stop
 
 @section('js')
