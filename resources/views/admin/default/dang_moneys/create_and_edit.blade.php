@@ -20,13 +20,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.salary')}}</label>
             <div class="layui-input-block">
-                <input type="number" id="editor" name="salary" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('salary',$dang_money->salary) }}" >
+                <input type="text" id="editor" name="salary" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('salary',$dang_money->salary) }}" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.paymoney')}}</label>
             <div class="layui-input-block">
-                <input type="number" id="paymoney" name="paymoney" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('paymoney',$dang_money->paymoney) }}" >
+                <input type="text" id="paymoney" name="paymoney" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('paymoney',$dang_money->paymoney) }}" >
             </div>
         </div>
         <div class="layui-form-item">
