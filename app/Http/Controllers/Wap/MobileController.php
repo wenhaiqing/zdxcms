@@ -267,7 +267,7 @@ class MobileController extends Controller
     {
         $id = \Auth::guard('wap')->user()->user_id;
         $user = User::where('id',$id)->first();
-        $res = $user->update(['users_picture'=>$request->users_picture]);
+        $res = $user->update(['users_picture'=>$request->users_picture,'team_members'=>$request->team_members,'introduction'=>$request->introduction]);
         return redirect()->route('wap.getuserinfo');
     }
 

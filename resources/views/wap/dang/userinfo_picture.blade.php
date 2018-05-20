@@ -3,7 +3,14 @@
 @php
     $users_picture = is_json($userinfo->users_picture) ? json_decode($userinfo->users_picture) : new \stdClass();
 @endphp
-
+@section('css')
+    <style>
+        .layui-form-pane .yy {
+            margin-left: 1px;
+            left: -1px;
+        }
+    </style>
+@endsection
 @section('content')
     <header class="aui-bar aui-bar-nav" id="header">
         <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
@@ -11,8 +18,34 @@
         </div>
         <div class="aui-title">支部掠影</div>
     </header>
-    <form action="{{route('wap.userinfo_picture_add')}}" method="POST">
+    <form action="{{route('wap.userinfo_picture_add')}}" class="layui-form layui-form-pane" method="POST">
         {{ csrf_field() }}
+        @if(\Auth::guard('wap')->user()->if_admin>0)
+        <div class="aui-content aui-margin-b-15">
+            <ul class="aui-list aui-form-list">
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            班子:
+                        </div>
+                        <div class="aui-list-item-input">
+                            <textarea name="team_members" lay-verify="required" autocomplete="off" placeholder="请输入班子成员" >{{ old('team_members',$userinfo->team_members) }}</textarea>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-label">
+                            支部简介:
+                        </div>
+                        <div class="aui-list-item-input">
+                            <textarea  name="introduction" lay-verify="required" autocomplete="off" placeholder="请输入支部简介">{{ old('introduction',$userinfo->introduction) }}</textarea>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        @endif
     <div class="layui-upload">
         {{--@if(!$meeting->id)--}}
         <button type="button" class="layui-btn" id="test2">多图片上传</button>
