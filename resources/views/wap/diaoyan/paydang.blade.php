@@ -53,7 +53,7 @@
         </div>
         <input type="hidden" name="paytime" value="{{date('Y-m-d')}}">
         <div class="t-main2-list" style="padding-top:0">
-            <label style="margin-left:1em; width:6em">实际缴费金额</label><input type="number" name="paymoney_actual" class="name-input mobile" placeholder="请确认缴纳金额" required style="border:1px solid #87baea" />
+            <label style="margin-left:1em; width:6em">实际缴费金额</label><input id="actual" type="text" name="paymoney_actual" class="name-input mobile" placeholder="请确认缴纳金额" required style="border:1px solid #87baea" />
         </div>
         <div class="t-main2-list" style="padding-top:0">
             <label style="margin-left:1em; width:6em">备注:</label><input type="text" name="note" class="name-input mobile" placeholder="请输入备注" style="border:1px solid #87baea" value="无" />
@@ -69,8 +69,14 @@
 <div style="display:none"></div>
 <div class="copyright"></div>
 </div>
+<script type="text/javascript" src="{{asset('wap/new/js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
 <script type="text/javascript">
     function tijiao() {
+        var name = $("#actual").val();
+        if (!name){
+            layer.alert('请填写实际缴纳金额');return;
+        }
         form1.submit();
     }
 </script>
