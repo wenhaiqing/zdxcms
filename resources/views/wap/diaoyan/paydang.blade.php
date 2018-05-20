@@ -53,10 +53,10 @@
         </div>
         <input type="hidden" name="paytime" value="{{date('Y-m-d')}}">
         <div class="t-main2-list" style="padding-top:0">
-            <label style="margin-left:3em; width:6em">实际缴费金额</label><input type="number" name="paymoney_actual" class="name-input mobile" placeholder="请确认缴纳金额" required style="border:1px solid #87baea" />
+            <label style="margin-left:1em; width:6em">实际缴费金额</label><input type="number" name="paymoney_actual" class="name-input mobile" placeholder="请确认缴纳金额" required style="border:1px solid #87baea" />
         </div>
         <div class="t-main2-list" style="padding-top:0">
-            <label style="margin-left:3em; width:6em">备注:</label><input type="text" name="note" class="name-input mobile" placeholder="请输入备注" style="border:1px solid #87baea" value="无" />
+            <label style="margin-left:1em; width:6em">备注:</label><input type="text" name="note" class="name-input mobile" placeholder="请输入备注" style="border:1px solid #87baea" value="无" />
         </div>
 
         <div style="width:90%; margin:0 auto"><span style=" color:#b01523">注：如缴费情况与实际缴费不符，请与所属党支部相关负责人联系更正。</span></div>
