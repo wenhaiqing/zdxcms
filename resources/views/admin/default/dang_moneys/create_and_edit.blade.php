@@ -29,13 +29,45 @@
                 <input type="number" id="paymoney" name="paymoney" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('paymoney',$dang_money->paymoney) }}" >
             </div>
         </div>
-        {{--<div class="layui-form-item">--}}
-            {{--<label class="layui-form-label">{{trans('dangmoney.create_at')}}</label>--}}
-            {{--<div class="layui-input-inline">--}}
-                {{--<input type="text" id="pay_time" name="pay_time" autocomplete="off" class="layui-input"--}}
-                       {{--value="{{old('pay_time',$dang_money->pay_time)}}">--}}
-            {{--</div>--}}
-        {{--</div>--}}
+        <div class="layui-form-item">
+            <label class="layui-form-label">{{trans('dangmoney.paybase')}}</label>
+            <div class="layui-input-block">
+                <input type="text" id="paybase" name="paybase" lay-verify="required" autocomplete="off" placeholder="请输入基数例如：1%" class="layui-input" value="{{ old('paybase',$dang_money->paybase) }}" >
+            </div>
+        </div>
+        @if($dang_money->id)
+        <div class="layui-form-item" pane="">
+            <label class="layui-form-label">{{trans('dangmoney.paytype')}}</label>
+            <div class="layui-input-block">
+                <select name="paytype" lay-verify="" lay-search="">
+                    <option value="0" @if(0 == $dang_money->paytype) selected @endif>{{trans('dangmoney.paytype_0')}}</option>
+                    <option value="1" @if(1 == $dang_money->paytype) selected @endif>{{trans('dangmoney.paytype_1')}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">{{trans('dangmoney.paytime')}}</label>
+            <div class="layui-input-inline">
+                <input type="text" id="paytime" name="paytime" autocomplete="off" class="layui-input"
+                       value="{{old('paytime',$dang_money->paytime)}}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">{{trans('dangmoney.usertime')}}</label>
+            <div class="layui-input-inline">
+                <input type="text" id="usertime" name="usertime" autocomplete="off" class="layui-input"
+                       value="{{old('usertime',$dang_money->usertime)}}">
+            </div>
+        </div>
+            @else
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">{{trans('dangmoney.if_adminset')}}</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="if_adminset" value="0" @if(old('if_adminset',$dang_money->if_adminset) == 0) checked="" @endif title="{{trans('dangmoney.if_adminset_0')}}" lay-verify="required">
+                    <input type="radio" name="if_adminset" value="1" @if(old('if_adminset',$dang_money->if_adminset) == 1) checked="" @endif title="{{trans('dangmoney.if_adminset_1')}}" checked lay-verify="required">
+                </div>
+            </div>
+        @endif
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.note')}}</label>
             <div class="layui-input-block">
@@ -50,6 +82,7 @@
             </div>
         </div>
 
+
         <div class="layui-form-item">
             {{--<div class="layui-input-block">--}}
             <button class="layui-btn" lay-submit="" lay-filter="demo1">{{trans('global.submit')}}</button>
@@ -61,8 +94,12 @@
 @section('js')
     <script>
         layui.laydate.render({
-            elem: '#pay_time',
-            type: 'datetime'
+            elem: '#paytime',
+//            type: 'datetime'
+        });
+        layui.laydate.render({
+            elem: '#usertime',
+//            type: 'datetime'
         });
     </script>
     @stop

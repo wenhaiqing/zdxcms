@@ -43,7 +43,7 @@
                     <th>{{trans('dangmoney.name')}}</th>
                     <th>{{trans('dangmoney.salary')}}</th>
                     <th>{{trans('dangmoney.paymoney')}}</th>
-                    <th>{{trans('dangmoney.created_at')}}</th>
+                    <th>{{trans('dangmoney.paytime')}}</th>
                     <th>{{trans('dangmoney.status')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
@@ -55,7 +55,7 @@
                         <td>{{ $dangmoney->name  }}</td>
                         <td>{{ $dangmoney->salary  }}</td>
                         <td>{{ $dangmoney->paymoney  }}</td>
-                        <td>{{ $dangmoney->created_at->diffForHumans() }}</td>
+                        <td>{{ $dangmoney->paytime }}</td>
                         <td>@switch($dangmoney->status)
                                 @case(0) 未确定 @break
                                 @case(1) 已确定 @break

@@ -25,5 +25,8 @@ class DangMoneyObserver
         $member_id = $dang_money->member_id;
         $member= Member::where('id',$member_id)->first(['name']);
         $dang_money->name = $member->name;
+        $paytime = $dang_money->paytime;
+        $dang_money->paymonth = substr($paytime,5,2);
+
     }
 }

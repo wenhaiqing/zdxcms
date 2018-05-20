@@ -173,6 +173,11 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('diaoyan/add', ['uses'=>'DiaoyanController@create'])->name('wap.diaoyan.add');
     Route::post('diaoyan/store', ['uses'=>'DiaoyanController@store'])->name('wap.diaoyan.store');
 
+    Route::get('paydang', ['uses'=>'DiaoyanController@paydang'])->name('wap.paydang.index');
+    Route::get('paydang/help', ['uses'=>'DiaoyanController@paydang_help'])->name('wap.paydang.help');
+    Route::get('paydang/histroy', ['uses'=>'DiaoyanController@paydang_histroy'])->name('wap.paydang.histroy');
+    Route::post('paydang/add', ['uses'=>'DiaoyanController@paydang_add'])->name('wap.paydang.add');
+
     Route::get('bind_admin','BackendController@bind_admin')->name('wap.bind_admin');
     Route::get('untie_admin','BackendController@untie_admin')->name('wap.untie_admin');
     Route::post('bind_admin_post','BackendController@bind_admin_post')->name('wap.bind_admin.post');
