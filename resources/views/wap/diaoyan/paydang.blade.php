@@ -36,11 +36,11 @@
             <input type="hidden" name="paytype" value="0">
         </div>
         <div class="t-main2-list t-line">
-            <label class="label-width">月收入</label><span>&nbsp;&nbsp;▏</span><span>{{$member->salary}}</span><span>元</span>
+            <label class="label-width">缴纳基数</label><span>&nbsp;&nbsp;▏</span><span>{{$member->salary}}</span><span>元</span>
             <input type="hidden" name="salary" value="{{$member->salary}}">
         </div>
         <div class="t-main2-list t-line">
-            <label class="label-width">缴纳基数</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paybase}}</span>
+            <label class="label-width">缴纳比例</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paybase}}</span>
             <input type="hidden" name="paybase" value="{{$member->paybase}}">
         </div>
         <div class="t-main2-list t-line" >
@@ -48,7 +48,7 @@
             <input type="hidden" name="paymonth" value="{{$month}}">
         </div>
         <div class="t-main2-list t-line">
-            <label class="label-width">缴纳金额</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paymoney}}</span><span>元</span>
+            <label class="label-width">月应缴额</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paymoney}}</span><span>元</span>
             <input type="hidden" name="paymoney" value="{{$member->paymoney}}">
         </div>
         <input type="hidden" name="paytime" value="{{date('Y-m-d')}}">
