@@ -51,7 +51,7 @@ class DiaoyanController extends Controller
     {
         $month = $request->paymonth;
         $year = date('Y');
-        $dangmoney = DangMoney::where(['paymonth'=>$month])->where('paytime','like',"%{$year}%")->first();
+        $dangmoney = DangMoney::where(['paymonth'=>$month,'if_adminset'=>0])->where('paytime','like',"%{$year}%")->first();
         if ($dangmoney){
             return back()->with('message','该月已经缴纳过党费，请重新选择月份');
         }
