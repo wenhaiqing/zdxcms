@@ -32,7 +32,12 @@
             <input type="hidden" name="name" value="{{$member->name}}">
         </div>
         <div  class="t-main2-list t-line">
-            <label class="label-width">缴费类型</label><span>&nbsp;&nbsp;▏</span><span>党费</span>
+            <label class="label-width">缴费类型</label><span>&nbsp;&nbsp;▏</span>
+            <select name="paytype" class="selcet-input select">
+                <option value="0">正常缴纳</option>
+                <option value="1">补交党费</option>
+            </select>
+            {{--<span>党费</span>--}}
             <input type="hidden" name="paytype" value="0">
         </div>
         <div class="t-main2-list t-line">
@@ -44,8 +49,22 @@
             <input type="hidden" name="paybase" value="{{$member->paybase}}">
         </div>
         <div class="t-main2-list t-line" >
-            <label class="label-width">缴纳月份</label><span>&nbsp;&nbsp;▏</span><span>{{$month}}</span><span>月</span>
-            <input type="hidden" name="paymonth" value="{{$month}}">
+            <label class="label-width">缴纳月份</label><span>&nbsp;&nbsp;▏</span>
+            <select name="paymonth" class="selcet-input select">
+                <option value="01" @if($month == 01) selected @endif>01</option>
+                <option value="02" @if($month == 02) selected @endif>02</option>
+                <option value="03" @if($month == 03) selected @endif>03</option>
+                <option value="04" @if($month == 04) selected @endif>04</option>
+                <option value="05" @if($month == 05) selected @endif>05</option>
+                <option value="06" @if($month == 06) selected @endif>06</option>
+                <option value="07" @if($month == 07) selected @endif>07</option>
+                <option value="08" @if($month == '08') selected @endif>08</option>
+                <option value="09" @if($month == '09') selected @endif>09</option>
+                <option value="10" @if($month == 10) selected @endif>10</option>
+                <option value="11" @if($month == 11) selected @endif>11</option>
+                <option value="12" @if($month == 12) selected @endif>12</option>
+            </select>
+            <span>月</span>
         </div>
         <div class="t-main2-list t-line">
             <label class="label-width">月应缴额</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paymoney}}</span><span>元</span>
@@ -69,8 +88,14 @@
 <div style="display:none"></div>
 <div class="copyright"></div>
 </div>
+
+
 <script type="text/javascript" src="{{asset('wap/new/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+@if (Session::has('message'))
+
+    <script>layer.alert('{{ Session::get('message') }}', {icon: 4,time:3000});</script>
+@endif
 <script type="text/javascript">
     function tijiao() {
         var name = $("#actual").val();
@@ -79,6 +104,7 @@
         }
         form1.submit();
     }
+
 </script>
 
 </body>
