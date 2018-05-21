@@ -84,9 +84,10 @@
                                     <a href="{{$v}}">
                                 <img src="{{$v}}" class="layui-upload-img"
                                      style="width: 92px;height: 92px;margin: 0 10px 10px 0;"/>
+                                    </a>
                                     <i onclick='UPLOAD_IMG_DEL("{{$index}}","{{$v}}")' class="close layui-icon"></i>
                                 <input type="hidden" name="users_picture[]" value="{{$v}}">
-                                    </a>
+
                                 </div>
                             @endforeach
                         @endif
