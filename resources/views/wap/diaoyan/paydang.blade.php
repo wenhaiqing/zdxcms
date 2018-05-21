@@ -37,8 +37,6 @@
                 <option value="0">正常缴纳</option>
                 <option value="1">补交党费</option>
             </select>
-            {{--<span>党费</span>--}}
-            <input type="hidden" name="paytype" value="0">
         </div>
         <div class="t-main2-list t-line">
             <label class="label-width">缴纳基数</label><span>&nbsp;&nbsp;▏</span><span>{{$member->salary}}</span><span>元</span>

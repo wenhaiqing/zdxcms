@@ -17,4 +17,5 @@ return [
     'if_adminset'=>'后台设置缴纳基数',
     'if_adminset_1'=>'是',
     'if_adminset_0' =>  '否',
+    'month' => '缴纳月数',
 ];

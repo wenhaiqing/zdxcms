@@ -35,6 +35,7 @@
                     <col>
                     <col>
                     <col>
+                    <col>
                     <col width="300">
                 </colgroup>
                 <thead>
@@ -45,6 +46,7 @@
                     <th>{{trans('dangmoney.paymoney')}}</th>
                     <th>{{trans('dangmoney.paytime')}}</th>
                     <th>{{trans('dangmoney.status')}}</th>
+                    <th>{{trans('dangmoney.paytype')}}</th>
                     <th>{{trans('global.operation')}}</th>
                 </tr>
                 </thead>
@@ -60,6 +62,11 @@
                                 @case(0) 未确定 @break
                                 @case(1) 已确定 @break
                                 @endswitch
+                        </td>
+                        <td>@switch($dangmoney->paytype)
+                                @case(0) 正常缴纳 @break
+                                @case(1) 补交党费 @break
+                            @endswitch
                         </td>
                         <td>
                             <a href="{{ route('dang_moneys.edit', $dangmoney->id) }}" class="layui-btn layui-btn-sm layui-btn-normal">{{trans('global.edit')}}</a>

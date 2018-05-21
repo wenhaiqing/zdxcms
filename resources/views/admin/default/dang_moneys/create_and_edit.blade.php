@@ -52,6 +52,13 @@
                        value="{{old('paytime',$dang_money->paytime)}}">
             </div>
         </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">{{trans('dangmoney.month')}}</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="paymonth" autocomplete="off" class="layui-input"
+                           value="{{old('paymonth',$dang_money->paymonth)}}">
+                </div>
+            </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.usertime')}}</label>
             <div class="layui-input-inline">
