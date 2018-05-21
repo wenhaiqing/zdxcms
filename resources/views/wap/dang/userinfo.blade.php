@@ -44,12 +44,12 @@
                         @if(count($users_picture)>5)
                         @if($index>count($users_picture)-6)
                             <div class="aui-slide-node bg-dark">
-                                <img src="{{$v}}"/>
+                                <img src="{{$v}}" style="width:100%"/>
                             </div>
                         @endif
                         @else
                             <div class="aui-slide-node bg-dark">
-                                <img src="{{$v}}"/>
+                                <img src="{{$v}}" style="width:100%"/>
                             </div>
                         @endif
                     @endforeach
@@ -183,7 +183,7 @@
     <script>
         var slide3 = new auiSlide({
             container: document.getElementById("aui-slide3"),
-            // "width":300,
+//             "width":'100%',
             "height": 240,
             "speed": 500,
             "autoPlay": 3000, //自动播放
