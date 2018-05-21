@@ -71,7 +71,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.note')}}</label>
             <div class="layui-input-block">
-                <input type="text" id="note" name="note" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('note',$dang_money->note) }}" >
+                <input type="text" id="note" name="note" lay-verify="" autocomplete="off" placeholder="" class="layui-input" value="{{ old('note',$dang_money->note) }}" >
             </div>
         </div>
         <div class="layui-form-item" pane="">
