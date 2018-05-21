@@ -20,6 +20,7 @@
     </header>
     <form action="{{route('wap.userinfo_picture_add')}}" class="layui-form layui-form-pane" method="POST">
         {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{$userinfo->id}}">
         @if(\Auth::guard('wap')->user()->if_admin>0)
         <div class="aui-content aui-margin-b-15">
             <ul class="aui-list aui-form-list">

@@ -113,9 +113,13 @@
             <div>三会一课</div></a>
     </li>
     <li>
-        <a href="{{route('wap.topic_create')}}"><img src="{{asset('wap/new/images/hsez_09.jpg')}}"/>
-            <div>互助交流</div></a>
+        <a href="{{route('wap.paydang.index')}}"><img src="{{asset('wap/new/images/dangfei.png')}}"/>
+            <div>党费证</div></a>
     </li>
+    {{--<li>--}}
+        {{--<a href="{{route('wap.topic_create')}}"><img src="{{asset('wap/new/images/hsez_09.jpg')}}"/>--}}
+            {{--<div>互助交流</div></a>--}}
+    {{--</li>--}}
     <li>
         <a href="{{route('wap.diaoyan.index')}}"><img src="{{asset('wap/new/images/hsez_10.jpg')}}"/>
             <div>党务助手</div></a>
@@ -148,10 +152,10 @@
                 <div>知识测试</div></a>
         </li>
 
-        {{--<li>--}}
-            {{--<a href="{{route('wap.center')}}"><img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>--}}
-                {{--<div>我的</div></a>--}}
-        {{--</li>--}}
+        <li>
+            <a href="{{route('wap.myqianyi')}}"><img src="{{asset('wap/new/images/hsez_15.jpg')}}"/>
+                <div>组织迁移</div></a>
+        </li>
     </ul>
     <br/>
 </footer>

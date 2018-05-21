@@ -236,6 +236,7 @@ class MobileController extends Controller
         $userinfo = $user->where('id',$id)->first();
         if(strpos($userinfo->name,'小组') !== false){
             $user = $user->where('id',$userinfo->pid)->first();
+            $userinfo = $user;
             $ids = $this->get_adminson([$user->id],[$user->id]);
             $list = Member::whereIn('user_id',$ids)->orderBy('jifen','desc')->paginate(config('admin.global.paginate'));
         }else{
@@ -256,17 +257,15 @@ class MobileController extends Controller
         return $this->get_adminson($res,$arr);
     }
 
-    public function userinfo_picture()
+    public function userinfo_picture(Request $request)
     {
-        $id = \Auth::guard('wap')->user()->user_id;
-        $userinfo = User::where('id',$id)->first();
+        $userinfo = User::where('id',$request->id)->first();
         return view('wap.dang.userinfo_picture',compact('userinfo'));
     }
 
     public function userinfo_picture_add(Request $request)
     {
-        $id = \Auth::guard('wap')->user()->user_id;
-        $user = User::where('id',$id)->first();
+        $user = User::where('id',$request->id)->first();
         $res = $user->update(['users_picture'=>$request->users_picture,'team_members'=>$request->team_members,'introduction'=>$request->introduction]);
         return redirect()->route('wap.getuserinfo');
     }

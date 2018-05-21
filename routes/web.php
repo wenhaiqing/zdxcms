@@ -199,6 +199,13 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('admin_notice_edit','BackendController@notice_edit')->name('wap.admin_notice_edit');
     Route::patch('admin_notice_update','BackendController@notice_update')->name('wap.admin_notice_update');
     Route::delete('admin_notice_destroy','BackendController@notice_destroy')->name('wap.admin_notice_destroy');
+    Route::get('admin_dangmoney_list','BackendController@dangmoney_list')->name('wap.admin_dangmoney_list');
+    Route::get('admin_dangmoney_create','BackendController@dangmoney_create')->name('wap.admin_dangmoney_create');
+    Route::post('admin_dangmoney_store','BackendController@dangmoney_store')->name('wap.admin_dangmoney_store');
+    Route::get('admin_dangmoney_edit','BackendController@dangmoney_edit')->name('wap.admin_dangmoney_edit');
+    Route::patch('admin_dangmoney_update','BackendController@dangmoney_update')->name('wap.admin_dangmoney_update');
+    Route::delete('admin_dangmoney_destroy','BackendController@dangmoney_destroy')->name('wap.admin_dangmoney_destroy');
+    
     Route::get('userinfo_picture','MobileController@userinfo_picture')->name('wap.userinfo_picture');
     Route::post('userinfo_picture_add','MobileController@userinfo_picture_add')->name('wap.userinfo_picture_add');
 

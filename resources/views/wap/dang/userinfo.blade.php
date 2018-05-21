@@ -111,7 +111,7 @@
 
         </ul>
     </div>
-    <a href="{{route('wap.userinfo_picture')}}">
+    <a href="{{route('wap.userinfo_picture',['id'=>$userinfo->id])}}">
         <button class="layui-btn layui-btn-fluid">支部掠影</button>
     </a>
     <section class="aui-content-padded">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Wap;
 
+use App\Models\DangMoney;
 use App\Models\Member;
 use App\Models\ThemeDang;
 use App\Models\User;
@@ -169,5 +170,54 @@ class BackendController extends Controller
         $notice = $notice->where('id',$request->id)->first();
         $notice->delete();
         return redirect()->route('wap.admin_notice_list')->with('message', trans('global.destoried'));
+    }
+
+    public function dangmoney_list(Request $request,DangMoney $dangmoney)
+    {
+        if($keyword = $request->keyword ?? ''){
+            $dangmoney = $dangmoney->where('name', 'like', "%{$keyword}%");
+        }
+        $id = \Auth::guard('wap')->user()->user_id;
+        $ids = $this->get_adminson([$id],[$id]);
+        $members = Member::whereIn('user_id',$ids)->pluck('id')->toArray();
+        $dangmoneys = $dangmoney->whereIn('member_id',$members)->recent()->paginate(config('wap.global.paginate'));
+        return view('wap.backend.dangmoneylist', compact('dangmoneys'));
+    }
+
+    public function dangmoney_create(DangMoney $dang_money)
+    {
+        $id = \Auth::guard('wap')->user()->user_id;
+        $ids = $this->get_adminson([$id],[$id]);
+        $members = Member::whereIn('user_id',$ids)->get();
+        return view('wap.backend.dangmoneycreate',compact('dang_money','members'));
+    }
+
+    public function dangmoney_store(Request $request)
+    {
+        $dangmoney = DangMoney::create($request->all());
+        return redirect()->route('wap.admin_dangmoney_list')->with('message', trans('global.stored'));
+    }
+
+    public function dangmoney_edit(DangMoney $dang_money,Request $request)
+    {
+        $id = \Auth::guard('wap')->user()->user_id;
+        $ids = $this->get_adminson([$id],[$id]);
+        $members = Member::whereIn('user_id',$ids)->get();
+        $dang_money = $dang_money->where('id',$request->id)->first();
+        return view('wap.backend.dangmoneycreate', compact('dang_money','members'));
+    }
+
+    public function dangmoney_update(Request $request,DangMoney $dangmoney)
+    {
+        $dangmoney = $dangmoney->where('id',$request->id)->first();
+        $dangmoney->update($request->all());
+        return redirect()->route('wap.admin_dangmoney_list')->with('message', trans('global.updated'));
+    }
+
+    public function dangmoney_destroy(DangMoney $dangmoney,Request $request)
+    {
+        $dangmoney = $dangmoney->where('id',$request->id)->first();
+        $dangmoney->delete();
+        return redirect()->route('wap.admin_dangmoney_list')->with('message', trans('global.destoried'));
     }
 }

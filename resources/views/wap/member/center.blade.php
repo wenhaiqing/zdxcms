@@ -131,9 +131,9 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.myqianyi')}}">
+                    <a href="{{route('wap.topic_create')}}">
                         <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
-                        <div class="aui-grid-label aui-font-size-12">申请迁党</div>
+                        <div class="aui-grid-label aui-font-size-12">互助交流</div>
                     </a>
                 </div>
                 <div class="aui-col-xs-3">
@@ -222,9 +222,22 @@
                             <div class="aui-grid-label aui-font-size-12">管理通知</div>
                         </a>
                     </div>
+
                 @endif
             </div>
         </div>
+        @if($member->if_admin>0)
+        <div class=" aui-grid aui-padded-b-15 aui-padded-t-15 aui-border-t">
+            <div class="aui-row">
+                <div class="aui-col-xs-3">
+                    <a href="{{route('wap.admin_dangmoney_list')}}">
+                        <div class="label-icon aui-bg-info"><i class=" aui-iconfont aui-icon-hide"></i></div>
+                        <div class="aui-grid-label aui-font-size-12">管理党费</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+            @endif
 
     </section>
     <p><a href="{{route('wap.logout')}}"><div class="aui-btn aui-btn-block">退出登录</div></p></a>

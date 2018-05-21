@@ -21,7 +21,10 @@ class DangMoneysController extends BaseController
         if($keyword = $request->keyword ?? ''){
             $dangMoney = $dangMoney->where('name', 'like', "%{$keyword}%");
         }
-		$dang_moneys = $dangMoney->recent()->paginate(config('admin.global.paginate'));
+        $id = \Auth::id();
+        $ids = $this->get_adminson([$id],[$id]);
+        $members = Member::whereIn('user_id',$ids)->pluck('id')->toArray();
+		$dang_moneys = $dangMoney->whereIn('member_id',$members)->recent()->paginate(config('admin.global.paginate'));
 
 		return view(getThemeView('dang_moneys.index'), compact('dang_moneys'));
 	}
