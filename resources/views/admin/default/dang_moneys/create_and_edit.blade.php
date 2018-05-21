@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="layui-form layui-form-pane" method="POST" action="{{ $dang_money->id ? route('dang_moneys.update', $dang_money->id) : route('dang_moneys.store') }}">
+    <form class="layui-form" method="POST" action="{{ $dang_money->id ? route('dang_moneys.update', $dang_money->id) : route('dang_moneys.store') }}">
         {{ csrf_field() }}
         <input type="hidden" name="_method" class="mini-hidden" value="{{ $dang_money->id ? 'PATCH' : 'POST' }}">
         <div class="layui-form-item" pane="">
@@ -20,19 +20,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.salary')}}</label>
             <div class="layui-input-block">
-                <input type="text" id="editor" name="salary" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('salary',$dang_money->salary) }}" >
+                <input type="text" id="editor" name="salary" lay-verify="required" autocomplete="off" placeholder="请输入缴纳基数例如：2000" class="layui-input" value="{{ old('salary',$dang_money->salary) }}" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.paymoney')}}</label>
             <div class="layui-input-block">
-                <input type="text" id="paymoney" name="paymoney" lay-verify="required" autocomplete="off" placeholder="" class="layui-input" value="{{ old('paymoney',$dang_money->paymoney) }}" >
+                <input type="text" id="paymoney" name="paymoney" lay-verify="required" autocomplete="off" placeholder="请输入应缴金额例如：20" class="layui-input" value="{{ old('paymoney',$dang_money->paymoney) }}" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">{{trans('dangmoney.paybase')}}</label>
             <div class="layui-input-block">
-                <input type="text" id="paybase" name="paybase" lay-verify="required" autocomplete="off" placeholder="请输入基数例如：1%" class="layui-input" value="{{ old('paybase',$dang_money->paybase) }}" >
+                <input type="text" id="paybase" name="paybase" lay-verify="required" autocomplete="off" placeholder="请输入缴纳比例例如：1%" class="layui-input" value="{{ old('paybase',$dang_money->paybase) }}" >
             </div>
         </div>
         @if($dang_money->id)
