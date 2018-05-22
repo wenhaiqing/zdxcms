@@ -108,5 +108,9 @@
             elem: '#usertime',
 //            type: 'datetime'
         });
+        layui.laydate.render({
+            elem: '#paymonth',
+            type: 'month'
+        });
     </script>
     @stop

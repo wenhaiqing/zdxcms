@@ -13,6 +13,7 @@ return [
     'paytype'=>'缴纳类型',
     'paytype_0'=>'正常缴纳党费',
     'paytype_1'=>'补交党费',
+    'paytype_2'=>'特殊党费',
     'usertime'=>'支部确认时间',
     'if_adminset'=>'后台设置缴纳基数',
     'if_adminset_1'=>'是',

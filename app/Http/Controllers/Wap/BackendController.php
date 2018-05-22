@@ -203,8 +203,8 @@ class BackendController extends Controller
         $id = \Auth::guard('wap')->user()->user_id;
         $ids = $this->get_adminson([$id],[$id]);
         $members = Member::whereIn('user_id',$ids)->get();
-        $dang_money = $dang_money->where('id',$request->id)->first();
-        return view('wap.backend.dangmoneycreate', compact('dang_money','members'));
+        $member = $dang_money->where('id',$request->id)->first();
+        return view('wap.backend.dangmoneyedit', compact('member','members'));
     }
 
     public function dangmoney_update(Request $request,DangMoney $dangmoney)

@@ -108,12 +108,13 @@
                     </div>
                 </div>
             </li>
-
         </ul>
     </div>
+    @if(\Auth::guard('wap')->user()->if_admin>0)
     <a href="{{route('wap.userinfo_picture',['id'=>$userinfo->id])}}">
         <button class="layui-btn layui-btn-fluid">支部掠影</button>
     </a>
+    @endif
     <section class="aui-content-padded">
         <div class="aui-card-list">
             @if($list->count())

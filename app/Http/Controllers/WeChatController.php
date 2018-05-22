@@ -92,10 +92,10 @@ class WeChatController extends Controller
             $wechat_response = WechatResponse::where('type',$message['MsgType'])->where('key','default')->first();
         }
         if (!$wechat_response){
-            return '小编无语了';
+            return '欢迎各位积极应用各功能、提宝贵意见、为推进吕梁经济社会全面发展努力贡献自己的力量！';
         }
         $content = is_json($wechat_response->content) ? json_decode($wechat_response->content) : new \stdClass();
-        $text = $content->text ?? '小编不知道该怎么回你';
+        $text = $content->text ?? '欢迎各位积极应用各功能、提宝贵意见、为推进吕梁经济社会全面发展努力贡献自己的力量！';
         return $text;
     }
 

@@ -27,7 +27,7 @@ class DiaoyanController extends Controller
 
     public function paydang()
     {
-        $month = date('m');
+        $month = date('Y-m');
         $year = date('Y');
         $member_id = \Auth::guard('wap')->id();
         $member = DangMoney::where(['member_id'=>$member_id,'if_adminset'=>1])->where('created_at','like',"%{$year}%")->first();

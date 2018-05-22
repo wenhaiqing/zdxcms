@@ -33,9 +33,10 @@
         </div>
         <div  class="t-main2-list t-line">
             <label class="label-width">缴费类型</label><span>&nbsp;&nbsp;▏</span>
-            <select name="paytype" class="selcet-input select">
+            <select name="paytype" id="paytype" class="selcet-input select">
                 <option value="0">正常缴纳</option>
                 <option value="1">补交党费</option>
+                <option value="2">特殊党费</option>
             </select>
         </div>
         <div class="t-main2-list t-line">
@@ -48,23 +49,24 @@
         </div>
         <div class="t-main2-list t-line" >
             <label class="label-width">缴纳月份</label><span>&nbsp;&nbsp;▏</span>
-            <select name="paymonth" class="selcet-input select">
-                <option value="01" @if($month == 01) selected @endif>01</option>
-                <option value="02" @if($month == 02) selected @endif>02</option>
-                <option value="03" @if($month == 03) selected @endif>03</option>
-                <option value="04" @if($month == 04) selected @endif>04</option>
-                <option value="05" @if($month == 05) selected @endif>05</option>
-                <option value="06" @if($month == 06) selected @endif>06</option>
-                <option value="07" @if($month == 07) selected @endif>07</option>
-                <option value="08" @if($month == '08') selected @endif>08</option>
-                <option value="09" @if($month == '09') selected @endif>09</option>
-                <option value="10" @if($month == 10) selected @endif>10</option>
-                <option value="11" @if($month == 11) selected @endif>11</option>
-                <option value="12" @if($month == 12) selected @endif>12</option>
-            </select>
+            {{--<select name="paymonth" id="paymonth" class="selcet-input select">--}}
+                {{--<option value="01" @if($month == '01') selected @endif>01</option>--}}
+                {{--<option value="02" @if($month == '02') selected @endif>02</option>--}}
+                {{--<option value="03" @if($month == '03') selected @endif>03</option>--}}
+                {{--<option value="04" @if($month == '04') selected @endif>04</option>--}}
+                {{--<option value="05" @if($month == '05') selected @endif>05</option>--}}
+                {{--<option value="06" @if($month == '06') selected @endif>06</option>--}}
+                {{--<option value="07" @if($month == '07') selected @endif>07</option>--}}
+                {{--<option value="08" @if($month == '08') selected @endif>08</option>--}}
+                {{--<option value="09" @if($month == '09') selected @endif>09</option>--}}
+                {{--<option value="10" @if($month == '10') selected @endif>10</option>--}}
+                {{--<option value="11" @if($month == '11') selected @endif>11</option>--}}
+                {{--<option value="12" @if($month == '12') selected @endif>12</option>--}}
+            {{--</select>--}}
+            <input type="text" id="paymonth" name="paymonth" value="{{$month}}"/>
             <span>月</span>
         </div>
-        <div class="t-main2-list t-line">
+      <div class="t-main2-list t-line">
             <label class="label-width">月应缴额</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paymoney}}</span><span>元</span>
             <input type="hidden" name="paymoney" value="{{$member->paymoney}}">
         </div>
@@ -95,12 +97,57 @@
     <script>layer.alert('{{ Session::get('message') }}', {icon: 4,time:3000});</script>
 @endif
 <script type="text/javascript">
+    layui.laydate.render({
+        elem: '#paymonth',
+            type: 'month'
+    });
+
+    var themonth = "{{$month}}";
     function tijiao() {
         var name = $("#actual").val();
+        var paymonth = $('#paymonth').val();
         if (!name){
             layer.alert('请填写实际缴纳金额');return;
         }
-        form1.submit();
+        if (name>1000){
+            //询问框
+            layer.confirm('您缴纳的党费超过1000元属于特殊党费？', {
+                btn: ['是','否'] //按钮
+            }, function(){
+                $('#paytype').val('2');
+                check_month(paymonth);
+            }, function(){
+                layer.msg('请重新填入正确的党费');
+                return false;
+            });
+        }else{
+            check_month(paymonth);
+        }
+    }
+
+    function check_month(paymonth) {
+        var threemonth = "{{date('Y-m-d', strtotime("-0 year -3 month -0 day"))}}";
+        if (paymonth<themonth){
+            if (paymonth<threemonth){
+                layer.alert('补缴时间不能超过三个月');return;
+            }
+            //询问框
+            layer.confirm('您所选的缴纳时间已过，确定属于补交党费？', {
+                btn: ['是','否'] //按钮
+            }, function(){
+                $('#paytype').val('1');
+                form1.submit();
+            }, function(){
+                layer.msg('请重新选择缴纳月份');
+                return false;
+            });
+        }else{
+            if (paymonth>themonth){
+                layer.msg('不能预交党费');
+            }else{
+                form1.submit();
+            }
+        }
     }
 
 </script>

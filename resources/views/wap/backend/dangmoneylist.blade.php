@@ -78,9 +78,19 @@
             @foreach($dangmoneys as $index=>$dangmoney)
                 <a href="{{route('wap.admin_dangmoney_edit',['id'=>$dangmoney->id])}}">
                     <li><span>{{$dangmoney->name}}</span>
+                        @if($dangmoney->if_adminset==1)
                         <a href="javascript:;" style="float: right"
                            data-url="{{ route('wap.admin_dangmoney_destroy',['id'=>$dangmoney->id]) }}"
                            class="layui-btn layui-btn-sm layui-btn-danger form-delete">{{trans('global.delete')}}</a>
+                            @elseif(!$dangmoney->usertime)
+                            <a href="javascript:;" style="float: right"
+                               data-url="{{route('wap.admin_dangmoney_edit',['id'=>$dangmoney->id])}}"
+                               class="layui-btn layui-btn-sm form-delete">未确定</a>
+                            @else
+                            <a href="javascript:;" style="float: right"
+                               data-url="{{route('wap.admin_dangmoney_edit',['id'=>$dangmoney->id])}}"
+                               class="layui-btn layui-btn-sm form-delete">已确定</a>
+                            @endif
                     </li>
                 </a>
             @endforeach
