@@ -68,7 +68,7 @@
         </div>
       <div class="t-main2-list t-line">
             <label class="label-width">月应缴额</label><span>&nbsp;&nbsp;▏</span><span>{{$member->paymoney}}</span><span>元</span>
-            <input type="hidden" name="paymoney" value="{{$member->paymoney}}">
+            <input type="hidden" id="paymoney" name="paymoney" value="{{$member->paymoney}}">
         </div>
         <input type="hidden" name="paytime" value="{{date('Y-m-d')}}">
         <div class="t-main2-list" style="padding-top:0">
@@ -108,6 +108,10 @@
         var paymonth = $('#paymonth').val();
         if (!name){
             layer.alert('请填写实际缴纳金额');return;
+        }
+        var paymoney = $('#paymoney').val();
+        if(name<paymoney){
+            layer.alert('实际缴纳金额不能低于应缴金额');return;
         }
         if (name>1000){
             //询问框

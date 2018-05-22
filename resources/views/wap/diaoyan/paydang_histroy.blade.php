@@ -34,9 +34,9 @@
             @foreach($members as $index=>$member)
         <tr style="line-height:3em">
             <td width="21%">{{$member->paymonth}}月</td>
-            <td width="20%">{{$member->paymoney_actual}}<span>元</span></td>
-            <td width="20%">{{$member->paytime}}</td>
-            <td width="29%">{{$member->usertime}}</td>
+            <td width="15%">{{$member->paymoney_actual}}</td>
+            <td width="25%">{{$member->paytime}}</td>
+            <td width="28%">{{$member->usertime}}</td>
         </tr>
         @endforeach
         @endif
