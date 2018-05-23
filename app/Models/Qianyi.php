@@ -10,11 +10,11 @@ class Qianyi extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'from_user_id');
+        return $this->belongsTo(User::class,'from_user_id')->withDefault();
     }
 
     public function touser()
     {
-        return $this->belongsTo(User::class,'to_user_id');
+        return $this->belongsTo(User::class,'to_user_id')->withDefault();
     }
 }

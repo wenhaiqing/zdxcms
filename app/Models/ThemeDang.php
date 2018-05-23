@@ -8,6 +8,6 @@ class ThemeDang extends Model
     protected $fillable = ['title','if_all', 'descript', 'content', 'user_id', 'status', 'if_cream','jifen'];
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withDefault();
     }
 }

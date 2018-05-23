@@ -11,10 +11,10 @@ class MeetingSign extends Model
 
     public function member()
     {
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(Member::class)->withDefault();
     }
     public function meeting()
     {
-        return $this->belongsTo(Meeting::class);
+        return $this->belongsTo(Meeting::class)->withDefault();
     }
 }

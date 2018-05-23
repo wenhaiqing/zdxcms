@@ -8,11 +8,11 @@ class Reply extends Model
 
     public function topic()
     {
-        return $this->belongsTo(Topic::class);
+        return $this->belongsTo(Topic::class)->withDefault();
     }
 
     public function member()
     {
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(Member::class)->withDefault();
     }
 }
