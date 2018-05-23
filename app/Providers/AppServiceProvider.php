@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
 		\App\Models\DangMoney::observe(\App\Observers\DangMoneyObserver::class);
 		\App\Models\Meeting::observe(\App\Observers\MeetingObserver::class);
 		\App\Models\MeetingSign::observe(\App\Observers\MeetingSignObserver::class);
+		\App\Models\SuiRecord::observe(\App\Observers\SuiRecordObserver::class);
 		\App\Models\Sign::observe(\App\Observers\SignObserver::class);
 		\App\Models\Qianyi::observe(\App\Observers\QianyiObserver::class);
 		\App\Models\Reply::observe(\App\Observers\ReplyObserver::class);

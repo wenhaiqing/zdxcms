@@ -1,0 +1,93 @@
+@extends('wap.layouts._header')
+
+@php
+    $keyword = request('keyword', '');
+@endphp
+@section('css')
+    <style>
+        .aui-list .aui-list-item-inner {
+            position: relative;
+            min-height: 2rem;
+            padding-right: 0.75rem;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-flex: 1;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            border-left: #03a9f4 3px solid;
+            margin: 0.5em 0;
+            padding-left: 0.75rem;
+        }
+
+        .layui-laypage .layui-laypage-curr .layui-laypage-em {
+            background-color: #03a9f4;
+        }
+
+        #paginate-render {
+            padding-left: 0;
+            text-align: center;
+        }
+    </style>
+
+@stop
+@section('content')
+
+    <header class="aui-bar aui-bar-nav">
+        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </div>
+        <div class="aui-title">随笔记录</div>
+    </header>
+    {{--<div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>--}}
+    <section class="aui-content-padded">
+        @if($records->count())
+            <div class="aui-content aui-margin-b-15">
+                <ul class="aui-list aui-list-in">
+
+                    @foreach($records as $index=>$meeting)
+
+                        <li class="aui-list-item">
+                            <div class="aui-list-item-inner">
+                                <a href="{{route('wap_suirecords.show',['id'=>$meeting->id])}}">
+                                    <div class="aui-list-item-title">{{$meeting->record_title}}</div>
+                                </a>
+                                @if($meeting->member_id == 1)
+                                    <a href="javascript:;" style="float: right"
+                                       data-url="{{ route('wap_suirecords.destroy',['id'=>$meeting->id]) }}"
+                                       class="form-delete">
+                                        <div class="aui-list-item-right">
+                                            <div class="aui-label aui-label-info">{{trans('global.delete')}}</div>
+                                        </div>
+                                    </a>
+                                @endif
+                            </div>
+                        </li>
+
+
+                    @endforeach
+                </ul>
+            </div>
+            <div id="paginate-render"></div>
+        @else
+            <br/>
+            <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
+        @endif
+        <form id="delete-form" action="" method="POST" style="display:none;">
+            <input type="hidden" name="_method" value="DELETE">
+            {{ csrf_field() }}
+        </form>
+    </section>
+    <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
+                src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
+@stop
+@section('js')
+    @include('wap.layouts._paginate',[ 'count' => $records->total(), ])
+@stop

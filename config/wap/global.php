@@ -9,5 +9,6 @@ return [
     'topic'=>2,
     'replies'=>2,
     'videos'=>2,
-    'meeting_sign'=>2
+    'meeting_sign'=>2,
+    'sui_records'=>2
 ];

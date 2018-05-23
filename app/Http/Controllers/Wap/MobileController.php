@@ -188,7 +188,7 @@ class MobileController extends Controller
     public function themeddetail(Request $request)
     {
         $id = $request->id;
-        $themeds = ThemeDang::where('id',$id)->get();
+        $themeds = ThemeDang::where('id',$id)->first();
         return view('wap.dang.themeddetail',compact('themeds'));
     }
 

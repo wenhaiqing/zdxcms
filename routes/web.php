@@ -209,7 +209,7 @@ Route::group([ 'namespace'=>'Wap','prefix' => 'wap', 'middleware' => ['auth:wap'
     Route::get('userinfo_picture','MobileController@userinfo_picture')->name('wap.userinfo_picture');
     Route::post('userinfo_picture_add','MobileController@userinfo_picture_add')->name('wap.userinfo_picture_add');
 
-
+    Route::resource('wap_suirecords','SuiRecordController',['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 
 
 });
