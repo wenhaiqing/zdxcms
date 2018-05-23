@@ -237,6 +237,18 @@
             -o-animation: myfirst 1s ease both;
 
         }
+        .first{width: 30.3%;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 6px;}
+        .first img{ width:60%}
+        .first p{
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
 
 
     </style>
@@ -253,7 +265,7 @@
 
 </div>
 <div class="tabBox">
-    <div id="sub1" class="tabCon clearfix" style="display:block;">
+    <div id="first" class="tabCon clearfix" style="display:block;">
         <div class="clearfix">
             <li class="tablist">
                 <div class="icon">
