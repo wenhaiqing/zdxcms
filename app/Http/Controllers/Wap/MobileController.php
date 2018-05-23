@@ -266,7 +266,7 @@ class MobileController extends Controller
     public function userinfo_picture_add(Request $request)
     {
         $user = User::where('id',$request->id)->first();
-        $res = $user->update(['users_picture'=>$request->users_picture,'team_members'=>$request->team_members,'introduction'=>$request->introduction]);
+        $res = $user->update($request->all());
         return redirect()->route('wap.getuserinfo');
     }
 
