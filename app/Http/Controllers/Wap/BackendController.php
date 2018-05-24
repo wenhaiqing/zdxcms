@@ -172,13 +172,18 @@ class BackendController extends Controller
         return redirect()->route('wap.admin_notice_list')->with('message', trans('global.destoried'));
     }
 
-    public function dangmoney_list(Request $request,DangMoney $dangmoney)
+    public function dangmoney_list(Request $request,DangMoney $dangmoney,User $user)
     {
         if($keyword = $request->keyword ?? ''){
             $dangmoney = $dangmoney->where('name', 'like', "%{$keyword}%");
         }
         $id = \Auth::guard('wap')->user()->user_id;
         $ids = $this->get_adminson([$id],[$id]);
+        $userinfo = $user->where('id',$id)->first();
+        if(strpos($userinfo->name,'小组') !== false){
+            $user = $user->where('id',$userinfo->pid)->first();
+            $ids = $this->get_adminson([$user->id],[$user->id]);
+        }
         $members = Member::whereIn('user_id',$ids)->pluck('id')->toArray();
         $dangmoneys = $dangmoney->whereIn('member_id',$members)->recent()->paginate(config('wap.global.paginate'));
         return view('wap.backend.dangmoneylist', compact('dangmoneys'));
