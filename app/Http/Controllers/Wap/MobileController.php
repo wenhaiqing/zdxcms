@@ -199,6 +199,11 @@ class MobileController extends Controller
         }
         $id = Auth::guard('wap')->user()->user_id;
         $linshiid = Auth::guard('wap')->user()->linshi_user_id;
+        $userinfo = $user->where('id',$id)->first();
+        if(strpos($userinfo->name,'小组') !== false){
+            $user = $user->where('id',$userinfo->pid)->first();
+            $id = $this->get_adminson([$user->id],[$user->id]);
+        }
         if ($linshiid != 0){
             $id = [$id,$linshiid];
         }else{
