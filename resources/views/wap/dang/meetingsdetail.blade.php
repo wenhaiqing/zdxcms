@@ -29,6 +29,9 @@
                     参会人数：{!! $meeting->meeting_membercount !!}
                 </div>
                 <div class="aui-card-list-content-padded">
+                    会议地址：{!! $meeting->meeting_address !!}
+                </div>
+                <div class="aui-card-list-content-padded">
                     会议时间：{{$meeting->meeting_starttime}}-{{$meeting->meeting_endtime}}
                 </div>
                 <div class="aui-card-list-content-padded">

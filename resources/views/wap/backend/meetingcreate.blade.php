@@ -42,6 +42,11 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <div class="layui-input-block yy">
+                <input type="text" id="editor" name="meeting_content" lay-verify="required" autocomplete="off" placeholder="会议内容" class="layui-input" value="{{ old('content',$meeting->meeting_content) }}" >
+            </div>
+        </div>
+        <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label">{{trans('meetings.starttime')}}</label>
                 <div class="layui-input-inline">
@@ -78,7 +83,24 @@
     <script src="{{asset('js/spark-md5.min.js') }}"></script><!--需要引入spark-md5.min.js-->
     <script src="{{asset('layui/lib/jquery/jquery-2.1.4.js')}}"></script><!--需要引入jquery.min.js-->
     <script src="{{asset('js/aetherupload.js') }}"></script><!--需要引入aetherupload.js-->
+    <script type="text/javascript"  src="{{ asset('editor/js/module.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/hotkeys.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/uploader.js') }}"></script>
+    <script type="text/javascript"  src="{{ asset('editor/js/simditor.js') }}"></script>
     <script>
+        $(document).ready(function(){
+            var editor = new Simditor({
+                textarea: $('#editor'),
+                upload: {
+                    url: '{{ route('wap.upload_image') }}',
+                    params: { _token: '{{ csrf_token() }}' },
+                    fileKey: 'file',
+                    connectionCount: 3,
+                    leaveConfirm: '{{trans('global.leaveConfirm')}}'
+                },
+                pasteImage: true,
+            });
+        });
         layui.use('upload', function () {
             var $ = layui.jquery
                 , upload = layui.upload;

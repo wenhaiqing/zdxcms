@@ -116,8 +116,8 @@ class MobileController extends Controller
     public function builddangdetail(Request $request)
     {
         $id = $request->id;
-        $notices = BuildDang::where('id',$id)->get();
-        return view('wap.dang.builddangdetail',compact('notices'));
+        $notice = BuildDang::where('id',$id)->first();
+        return view('wap.dang.builddangdetail',compact('notice'));
     }
 
     public function zhuanti()
