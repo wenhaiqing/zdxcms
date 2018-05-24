@@ -16,10 +16,16 @@
         <section class="aui-content-padded">
             <div class="aui-card-list">
                 <div class="aui-card-list-header">
-                    {{$meeting->meeting_title}}
+                    会议主题：{{$meeting->meeting_title}}
                 </div>
                 <div class="aui-card-list-content-padded">
-                    {!! $meeting->meeting_compere !!}
+                    会议主持人：{!! $meeting->meeting_compere !!}
+                </div>
+                <div class="aui-card-list-content-padded">
+                    参会人数：{!! $meeting->meeting_membercount !!}
+                </div>
+                <div class="aui-card-list-content-padded">
+                    会议时间：{{$meeting->meeting_starttime}}-{{$meeting->meeting_endtime}}
                 </div>
                 <div class="aui-card-list-content-padded">
                     {!! $meeting->meeting_content !!}
