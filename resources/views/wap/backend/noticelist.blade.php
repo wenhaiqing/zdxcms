@@ -64,6 +64,7 @@
 <div class="banner">
     <img src="{{asset('wap/new/images/tonggao_top.jpg')}}"/>
 </div>
+<a href="{{route('wap.admin_notice_create')}}"><button class="layui-btn layui-btn-fluid">发布通知</button></a>
 <div class="t-main1">
     @if($notices->count())
     <ul class="tonggao">
@@ -92,7 +93,7 @@
             {{ csrf_field() }}
         </form>
 </div>
-<a href="{{route('wap.admin_notice_create')}}"><button class="layui-btn layui-btn-fluid">发布通知</button></a>
+
 
 </body>
 @include(getThemeView('layouts._paginate'),[ 'count' => $notices->total(), ])

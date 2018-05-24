@@ -63,6 +63,7 @@
         </div>
     </header>
     <div class=" sqhdtit"><img src="{{asset('wap/bootstrap/images/lldj/ztdr1.jpg')}}" width="100%"/></div>
+    <a href="{{route('wap.admin_themed_create')}}"><button class="layui-btn layui-btn-fluid">发布主题党日</button></a>
     @if($themeds->count())
     <section class="aui-content-padded">
 
@@ -89,7 +90,7 @@
             <div id="paginate-render"></div>
 
     </section>
-    <a href="{{route('wap.admin_themed_create')}}"><button class="layui-btn layui-btn-fluid">发布主题党日</button></a>
+
     <div style=" width:100%;position:relative; bottom:0; left:auto; margin:0 auto;max-width:760px; t"><img
                 src="{{asset('wap/bootstrap/images/lldj/mybg.jpg')}}" width="100%"/></div>
     @else
