@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         if (Auth::guard('wap')->attempt(['mobile' => $request->mobile, 'password' => $request->password, 'status' => 1])){
 
-            return redirect()->route('wap.index');
+            return redirect()->route('wap.indexlist');
         };
         flash('账号密码错误或者还未通过审核');
         return redirect()->route('wap.login');
