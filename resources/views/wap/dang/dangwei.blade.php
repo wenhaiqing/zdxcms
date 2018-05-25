@@ -265,17 +265,16 @@
 
 </div>
 <div class="tabBox">
-    <div id="first" class="tabCon clearfix" style="display:block;">
+    <div id="sub1" class="tabCon clearfix" style="display:block;">
+        <div class="first">
+            <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4ODUzNjAxOA==&scene=124#wechat_redirect"><img
+                        src="{{asset('wap/new/images/409357527662882429.jpg')}}"/></a>
+            <p>
+                <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4ODUzNjAxOA==&scene=124#wechat_redirect">共产党员</a>
+            </p>
+        </div>
         <div class="clearfix">
-            <li class="tablist">
-                <div class="icon">
-                    <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4ODUzNjAxOA==&scene=124#wechat_redirect"><img
-                                src="{{asset('wap/new/images/409357527662882429.jpg')}}"/></a>
-                </div>
-                <p>
-                    <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzA4ODUzNjAxOA==&scene=124#wechat_redirect">共产党员</a>
-                </p>
-            </li>
+
             <li class="tablist">
                 <div class="icon">
                     <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU0NDA4OTcxNA==&scene=124#wechat_redirect"><img

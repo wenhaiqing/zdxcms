@@ -199,6 +199,18 @@
 
         }
 
+        .first{width: 30.3%;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            font-size: 15px;
+            margin-bottom: 6px;}
+        .first img{ width:60%}
+        .first p{
+            padding: 6px 0;
+            font-size: 14px;
+        }
+
 
     </style>
 
@@ -216,13 +228,12 @@
 </div>
 <div class="tabBox">
     <div id="sub1" class="tabCon clearfix" style="display:block;">
+        <div class="first">
+            <a  href="http://www.12371.cn/"><img src="{{asset('wap/new/images/gcdy.jpg')}}" style="width: 64px;height: 64px"/></a>
+            <p><a href="http://www.12371.cn/">共产党员网</a></p>
+        </div>
+
         <div class="clearfix">
-            <li class="tablist">
-                <div class="icon">
-                    <a  href="http://www.12371.cn/"><img src="{{asset('wap/new/images/gcdy.jpg')}}" style="width: 64px;height: 64px"/></a>
-                </div>
-                <p><a href="http://www.12371.cn/">共产党员网</a></p>
-            </li>
             <li class="tablist">
                 <div class="icon">
                     <a  href="http://www.sxdygbjy.com/"><img src="{{asset('wap/new/images/sxzg.jpg')}}" style="width: 64px;height: 64px"/></a>
