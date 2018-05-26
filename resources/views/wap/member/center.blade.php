@@ -131,7 +131,7 @@
         <div class=" aui-grid aui-padded-b-15 aui-padded-t-15">
             <div class="aui-row">
                 <div class="aui-col-xs-3">
-                    <a href="{{route('wap.topic_create')}}">
+                    <a href="{{route('wap.topic_index')}}">
                         <div class="label-icon aui-bg-danger"><i class=" aui-iconfont aui-icon-phone"></i></div>
                         <div class="aui-grid-label aui-font-size-12">互助交流</div>
                     </a>
