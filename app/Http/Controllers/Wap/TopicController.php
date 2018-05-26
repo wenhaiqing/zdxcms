@@ -15,7 +15,8 @@ class TopicController extends Controller
             $topic = $topic->where('title', 'like', "%{$keyword}%");
         }
         $topics = $topic->orderBy('id','desc')->where('status',1)->paginate(config('wap.global.paginate'));
-        return view('wap.topic.index',compact('topics'));
+        $topicsjin = $topic->orderBy('id','desc')->where(['status'=>1,'if_cream'=>1])->paginate(config('wap.global.paginate'));
+        return view('wap.topic.index',compact('topics','topicsjin'));
 
     }
     public function create()
@@ -28,8 +29,8 @@ class TopicController extends Controller
     public function store(Request $request,Topic $topic)
     {
         $topics = Topic::create($request->all());
-        // flash(trans('global.stored'));
-        flash(trans('互助消息已提交，请等待审核'));
+         flash(trans('global.stored'));
+//        flash(trans('互助消息已提交，请等待审核'));
         return redirect()->route('wap.topic_create');
     }
 

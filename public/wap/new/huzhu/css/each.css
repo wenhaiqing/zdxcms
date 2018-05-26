@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+body{ color:#333}
+ul,li{ list-style-type:none;}
+ul li{list-style-type:none}
+a{ text-decoration:none;}
+.clear{ clear:both}
+.vert{vertical-align:top; color:#999}
+.width-pub{width:100%; background:#f2f2f2; text-align:right; line-height:2em}
+.width-pub a{ color:#666666}
+.publish{ width:100%; height:2em; line-height:2em; background:#ff3333; color:#ffffff; text-align:center; margin:0.5em auto }
+.e_main{ width:100%}
+.e_main ul{ padding: 0.5em;}
+.e_main li{ margin-bottom:0.5em}
+.e_main li a{ color:#333333}
+.e_main_left{ width:30%; float:left}
+.e_main_left img{ width:100%; height:8em}
+.e_main_right{ float:left; width:70%; padding:0.5em 0}
+.e_main_user{ width:100%}
+.e_main_user_icon{height:20px; float:left}
+.e_main_user_icon img{ width:20px; height:20px;border-radius:50%; padding:0 0.5em}
+.e_main_table span{ line-height:20px}
+.e_main_right_con{height:4.5em; width:100%; padding-left:0.5em;line-height: 1.5em;overflow: hidden;  text-overflow: ellipsis;  display: -webkit-box;  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;}
+.e_main_right_bot{width:100%; text-align:right}
+
+.t-main1 {
+    margin: 0.5em 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: #999999 3px 3px 3px 0px;
+    padding: 1em;
+    color: #333333;
+	border:1px solid #f0f0f0
+}
+.each{padding: 0.5em 0;}
+.each img{border-radius:50%;}
+.each li{ height:4em;border-right:5px solid #FF3333;padding: 0.5em; margin-bottom:1.5em; border-top-right-radius: 5px;border-bottom-right-radius: 5px;}
+.each li a{color:#444444}
+.each_con{height:2em; width:100%; padding:0.5em;line-height: 1.25em;overflow: hidden;  text-overflow: ellipsis;  display: -webkit-box;  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;}

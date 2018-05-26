@@ -1,159 +1,120 @@
-@extends('wap.layouts._header')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>吕梁智慧党建云—互助中心</title>
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/index.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/each.css')}}">
 
-@section('css')
     <style type="text/css">
-        .aui-list .aui-list-item-media {
-            width: 3rem;
-        }
+        body{ font-size:14px}
+        /*作图右文*/
+        .leftimg{display:inline-table; float:left;}
+        .righttext{width: 77%;display:inline-table;white-space:pre-wrap;color:#0066CC; float:left;text-align:justify;}
+        /*作图右文*/
 
-        .notes-add {
-            position: fixed;
-            left: 0.5rem;
-            bottom: 0.5rem;
-            width: 3rem;
-            z-index: 99;
-        }
-
-        textarea {
-            height: 8rem;
-            background-color: #ffffff;
-            padding: 0.5rem;
-        }
-
-        .photos img {
-            display: block;
-            width: 100%;
-        }
-
-        .add-photos > div {
-            width: 100%;
-            height: 5.15rem;
-            line-height: 5.15rem;
-        }
-
-        .add-photos > div .aui-iconfont {
-            font-size: 2rem;
-            color: #ccc;
-        }
-
-        .image-item {
-            position: relative;
-            height: 5.3rem;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
-
-        .image-item img {
-            display: block;
-            margin: 0 auto;
-            width: auto;
-            height: 100%;
-        }
-
-        .image-item .delete-btn {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 28px;
-            height: 28px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-left: -14px;
-            margin-top: -14px;
-            color: #ffffff;
-            text-align: center;
-            border-radius: 50%;
-        }
     </style>
-@stop
-@php
-    $keyword = request('keyword', '');
-@endphp
-@section('content')
+    <script type="text/javascript">
 
-    <header class="aui-bar aui-bar-nav">
-        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
-            <span class="aui-iconfont aui-icon-left"></span>
-        </div>
-        <div class="aui-title" style="left:2rem; right: 2rem;">
-            <div class="aui-searchbar" id="search">
-                <div class="aui-searchbar-input aui-border-radius">
-                    <i class="aui-iconfont aui-icon-search"></i>
-                    <form class="layui-form layui-form-pane" id="search-form" method="GET" action="">
-                        <input name="keyword" type="search" placeholder="请输入搜索内容" id="zdx-search" value="{{$keyword}}">
-                        {{--<input name="id" type="hidden"  value="{{$user_id}}">--}}
-                    </form>
-                    <div class="aui-searchbar-clear-btn">
-                        <i class="aui-iconfont aui-icon-close"></i>
-                    </div>
+        document.addEventListener('plusready', function(){
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+        });
+
+        $(function () {
+            docEl = document.documentElement;
+            var width = docEl.clientWidth>768?768:docEl.clientWidth;
+            fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+            docEl.style.fontSize = fontsize + 'px';
+            window.onresize = function () {
+                docEl = document.documentElement;
+                width = docEl.clientWidth>768?768:docEl.clientWidth;
+                fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+                docEl.style.fontSize = fontsize + 'px';
+            }
+        })
+    </script>
+</head>
+<body style="max-width: 750px;margin: 0 auto;">
+
+<div class="banner">
+    <img src="{{asset('wap/new/huzhu/images/each_top.jpg')}}"/>
+</div>
+<a href="{{route('wap.topic_create')}}"><div class="publish">我要发布</div></a>
+<div class="e_main">
+    @if($topics->count())
+    <ul>
+        @foreach($topics as $index=>$topic)
+        <li>
+            <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
+                <div class="e_main_left">
+                    @if(get_json_params($topic->image,'0'))
+                        <img src="{{get_json_params($topic->image,'0')}}" />
+                    @else
+                        <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" />
+                    @endif
                 </div>
-                <div class="aui-searchbar-btn" tapmode>取消</div>
-            </div>
-        </div>
-        <div class="aui-pull-right aui-btn aui-btn-outlined search-button" id="search-button">
-            <span class="aui-iconfont aui-icon-search"></span>
-        </div>
-    </header>
-
-    <section class="aui-content">
-        <div class="aui-card-list">
-            @if($topics->count())
-            <div class="aui-card-list-content">
-                <ul class="aui-list aui-media-list">
-                    @foreach($topics as $index=>$topic)
-                        <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
-                    <li class="aui-list-item">
-                        <div class="aui-media-list-item-inner">
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                @if($topic->member->avatar)
+                <div class="e_main_right">
+                    <div class="e_main_user">
+                        <div class="e_main_user_icon">
+                            @if($topic->member->avatar)
                                 <img src="{{$topic->member->avatar}}" class="aui-img-round" >
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
-                                @endif
-                            </div>
-                            <div class="aui-list-item-inner">
-                                <div class="aui-list-item-text">
-                                    <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-14" style="color:#333;padding-top: 0.4rem;">
-                                    {{ $topic->excerpt }}
-                                </div>
-                                <div class="aui-list-item-text aui-font-size-12 text-light">
-                                    共{{$topic->reply_count}}条回答
-                                </div>
-                            </div>
-                            @if(\Auth::guard('wap')->id() == $topic->member_id && \Carbon\Carbon::now()->subMinutes(30)->lt($topic->created_at))
-                                <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;float: right">
-                                    <form action="{{ route('wap.topic_destroy', ['id'=>$topic->id,'member_id'=>$topic->member_id]) }}" method="post">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-default btn-xs pull-left">
-                                            <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
-                                        </button>
-                                    </form>
-                                </div>
+                            @else
+                                <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
                             @endif
-                            <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                @if(get_json_params($topic->image,'0'))
-                                <img src="{{get_json_params($topic->image,'0')}}" />
-                                    @else
-                                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" />
-                                @endif
-                            </div>
-                        </div>
-                    </li>
-                        </a>
-                        @endforeach
-                </ul>
-            </div>
-                <div id="paginate-render"></div>
-            @else
-                <br/>
-                <blockquote class="layui-elem-quote">{{trans('global.empty')}}</blockquote>
-            @endif
-        </div>
-    </section>
-@stop
+                            <span class="vert" style="color:#666666">{{$topic->title}}</span></div>
+                        <div  style="text-align:right; float:right"><img src="{{asset('wap/new/huzhu/images/guanzhu.png')}}" style="margin-right:0.5em"><small><span class="vert">共</span><span class="vert">{{$topic->reply_count}}</span><span class="vert">人回复</span></small></div>
+                    </div>
+                    <div class="e_main_right_con" style="clear:both"> {{ $topic->excerpt }}</div>
+                    <div  class="e_main_right_bot vert"><small>{{$topic->created_at}}</small></div>
+                </div>
+            </a>
+            <div class="clear">
 
-@section('js')
-    @include(getThemeView('layouts._paginate'),[ 'count' => $topics->total(), ])
-@stop
+            </div>
+        </li>
+            @endforeach
+    </ul>
+        <div id="paginate-render"></div>
+        @endif
+</div>
+{{--<div class="width-pub"><a href="">更多>>&nbsp;&nbsp;</a></div>--}}
+<div class="clear"></div>
+<div class="t-main1">
+    <div style=" border-bottom:1px solid #FF3333; height:2.5em">
+        <span style=" font-size:14px;padding:0.5em 1em; background:#FF3333; color:#ffffff;line-height: 3em;">热点推荐</span>
+    </div>
+    @if($topicsjin->count())
+    <ul class="each">
+        @foreach($topicsjin as $index=>$topic)
+        <li>
+            <a href="">
+                <div class="e_main_user">
+                    <div class="e_main_user_icon">
+                        @if($topic->member->avatar)
+                            <img src="{{$topic->member->avatar}}" class="aui-img-round" >
+                        @else
+                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
+                        @endif
+                        <span class="vert" style="color:#666666">{{$topic->member->name}}</span></div>
+                    <div  style="text-align:right; float:right"><img src="{{asset('wap/new/huzhu/images/guanzhu.png')}}" style="margin-right:0.5em"><small><span class="vert">共</span><span class="vert">{{$topic->reply_count}}</span><span class="vert">人回复</span></small></div>
+                </div>
+                <div class="each_con" style="clear:both"> {{ $topic->excerpt }}</div>
+            </a><hr style=" border:none;border-bottom:1px dashed #CCCCCC; height:1em"/>
+        </li>
+        @endforeach
+        @if($topicsjin->count()>config('wap.global.paginate'))
+                <div id="paginate-render"></div>
+            @endif
+    </ul>
+        @endif
+</div>
+<script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+@include(getThemeView('layouts._paginate'),[ 'count' => $topics->total(), ])
+</body>
+</html>

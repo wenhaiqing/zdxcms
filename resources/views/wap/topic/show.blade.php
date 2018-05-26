@@ -1,174 +1,119 @@
-@extends('wap.layouts._header')
 @php
     $image = is_json($topics->image) ? json_decode($topics->image) : new \stdClass();
 @endphp
-@section('css')
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>吕梁智慧党建云—我要留言</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/index.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/message.css')}}">
+
     <style type="text/css">
-        .aui-list .aui-list-item-media {
-            width: 3rem;
-        }
-
-        .notes-add {
-            position: fixed;
-            left: 0.5rem;
-            bottom: 0.5rem;
-            width: 3rem;
-            z-index: 99;
-        }
-
-        textarea {
-            height: 8rem;
-            background-color: #ffffff;
-            padding: 0.5rem;
-        }
-
-        .photos img {
-            display: block;
-            width: 100%;
-        }
-
-        .add-photos > div {
-            width: 100%;
-            height: 5.15rem;
-            line-height: 5.15rem;
-        }
-
-        .add-photos > div .aui-iconfont {
-            font-size: 2rem;
-            color: #ccc;
-        }
-
-        .image-item {
-            position: relative;
-            height: 5.3rem;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
-
-        .image-item img {
-            display: block;
-            margin: 0 auto;
-            width: auto;
-            height: 100%;
-        }
-
-        .image-item .delete-btn {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 28px;
-            height: 28px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-left: -14px;
-            margin-top: -14px;
-            color: #ffffff;
-            text-align: center;
-            border-radius: 50%;
-        }
-
-         .max{width:100%;height:auto;}
-        .min{width:100px;height:auto;}
+        body{ font-size:14px}
+        /*作图右文*/
+        .leftimg{display:inline-table; float:left;}
+        .righttext{width: 77%;display:inline-table;white-space:pre-wrap;color:#0066CC; float:left;text-align:justify;}
+        /*作图右文*/
 
     </style>
-@stop
-@section('content')
-    <header class="aui-bar aui-bar-nav" id="header">
-        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
-            <span class="aui-iconfont aui-icon-left"></span>
-        </div>
-        <div class="aui-title">互助中心</div>
-    </header>
+    <script type="text/javascript">
 
-    <section class="aui-content-padded">
-        <div class="aui-card-list">
-            <div class="aui-card-list-header">
-                {{$topics->title}}
-            </div>
-            <div class="aui-card-list-content-padded">
-                {!! $topics->content !!}
-            </div>
+        document.addEventListener('plusready', function(){
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+
+        });
+
+        $(function () {
+            docEl = document.documentElement;
+            var width = docEl.clientWidth>768?768:docEl.clientWidth;
+            fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+            docEl.style.fontSize = fontsize + 'px';
+            window.onresize = function () {
+                docEl = document.documentElement;
+                width = docEl.clientWidth>768?768:docEl.clientWidth;
+                fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+                docEl.style.fontSize = fontsize + 'px';
+            }
+        })
+    </script>
+</head>
+<body style="max-width: 750px;margin: 0 auto;">
+<a href="{{route('wap.topic_create')}}"><div class="publish">我要发布&nbsp;&nbsp;</div></a>
+<div class="info">
+    <div class="e_main_right">
+        <div class="width-pub">
+            <div class="e_main_user_icon">
+                @if($topics->member->avatar)
+                    <img src="{{$topics->member->avatar}}" >
+                @else
+                    <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}">
+                @endif
+                <span class="vert" style="color:#666666">{{$topics->member->name}}</span></div>
+            <div  style="text-align:right; float:right"><img src="{{asset('wap/new/huzhu/images/guanzhu.png')}}" style="margin-right:0.5em"><small><span class="vert">共</span><span class="vert">{{$topics->reply_count}}</span><span class="vert">条回复</span></small></div>
+        </div><div class="clear"></div>
+        <h3 class="width-pub"> {{ $topics->title }}</h3>
+        <div class="e_main_left">
             @if(get_json_params($topics->image,'0'))
-                <ul class="aui-list aui-media-list">
-                    <li class="aui-list-item">
-                        <div class="aui-list-item-inner">
-                            <div class="aui-row aui-row-padded">
-                                @foreach($image as $index=>$v)
-                                <div class="aui-col-xs-4">
-                                    <a href="{{$v}}">
-                                    <img class="image-item" src="{{$v}}"/>
-                                    </a>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                @foreach($image as $index=>$v)
+                    <div class="aui-col-xs-4">
+                        <a href="{{$v}}">
+                            <img class="image-item" src="{{$v}}"/>
+                        </a>
+                    </div>
+                @endforeach
             @endif
-            <div class="aui-card-list-footer">
-                {{$topics->created_at}}
-                <div class="aui-info-item">{{$topics->member->name}}</div>
-            </div>
         </div>
-    </section>
+        <div class="e_main_right_con" style="clear:both"> {!! $topics->content !!}</div>
+        <div  class="e_main_right_bot vert width-pub"><small>{{$topics->created_at}}</small></div>
+    </div>
+</div>
+<div class="message">
+    <span style=" font-size:14px;padding:0.5em 1em; background:#FF3333; color:#ffffff;line-height: 3em;">我要留言</span>
+    <div class="message-con">
+        <form action="{{route('wap.reply_store')}}" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="topic_id" value="{{ $topics->id }}">
+            <textarea name="content" cols="" rows=""></textarea><br/><br/>
+            <input type="submit" name="button" id="button" value="回复"  class="subbut"><br/>
+        </form>
+    </div>
+</div><br/>
+<div class="clear"></div>
+@if ($topics->replies->count())
+<div class="t-main1">
+    <div style=" border-bottom:1px solid #FF3333; height:2.5em">
+        <span style=" font-size:14px;padding:0.5em 1em; background:#FF3333; color:#ffffff;line-height: 3em;">回复信息</span>
+    </div>
 
-        <section class="aui-content-padded">
-            <form action="{{route('wap.reply_store')}}" method="POST" accept-charset="UTF-8">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="topic_id" value="{{ $topics->id }}">
-            <textarea name="content" required placeholder="在这里输入内容..."></textarea></br>
-            <button type="submit" class="aui-btn" style="background-color: #03a9f4;float: right"><span
-                        style="color: #ffffff">回复</span></button>
-            </form>
-        </section>
-    @if ($topics->replies->count())
-        <section class="aui-content-padded" style="margin-top: 33px;">
-            <div class="aui-card-list">
-                <div class="aui-card-list-content">
-                    <ul class="aui-list aui-media-list">
-                        @foreach($topics->replies as $index=>$reply)
-
-                                <li class="aui-list-item">
-                                    <div class="aui-media-list-item-inner">
-                                        <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                            @if($reply->member->avatar)
-                                                <img src="{{$reply->member->avatar}}" class="aui-img-round">
-                                            @else
-                                                <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"
-                                                     class="aui-img-round">
-                                            @endif
-                                        </div>
-
-                                        <div class="aui-list-item-inner">
-                                            <a href="{{route('wap.topic_show',['id'=>$reply->topic_id])}}">
-                                            <div class="aui-list-item-text">
-                                                <div class="aui-list-item-title aui-font-size-12 text-light">{{$reply->member->name}}</div>
-                                            </div>
-                                            <div class="aui-list-item-text aui-font-size-14"
-                                                 style="color:#333;padding-top: 0.4rem;">
-                                                {!! $reply->content !!}
-                                            </div>
-                                            </a>
-                                        </div>
-                                        @if(\Auth::guard('wap')->id() == $reply->member_id)
-                                        <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;float: right">
-                                            <form action="{{ route('wap.reply_destroy', ['id'=>$reply->id,'member_id'=>$reply->member_id]) }}" method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-default btn-xs pull-left">
-                                                    <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                            @endif
-                                    </div>
-                                </li>
-
-                        @endforeach
-                    </ul>
+    <ul class="each">
+        @foreach($topics->replies as $index=>$reply)
+        <li>
+            <a href="{{route('wap.topic_show',['id'=>$reply->topic_id])}}">
+                <div class="e_main_user">
+                    <div class="e_main_user_icon">
+                        @if($reply->member->avatar)
+                            <img src="{{$reply->member->avatar}}" >
+                        @else
+                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}">
+                        @endif
+                        <span class="vert" style="color:#666666">{{$reply->member->name}}</span></div>
+                    <div  style="text-align:right; float:right"></div>
                 </div>
-            </div>
-        </section>
-    @endif
+                <div class="each_con" style="clear:both"> {!! $reply->content !!}</div>
+            </a><hr style=" border:none;border-bottom:1px dashed #CCCCCC; height:1em"/>
+        </li>
+            @endforeach
 
-    @stop
 
+    </ul>
+
+</div>
+@endif
+</body>
+</html>

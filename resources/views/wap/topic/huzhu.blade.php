@@ -1,226 +1,141 @@
-@extends('wap.layouts._header')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>吕梁智慧党建云—我的发布</title>
+    <link rel="stylesheet" href="{{asset('layui/lib/layui/css/layui.css')}}" media="all" />
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/index.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('wap/new/huzhu/css/publish.css')}}">
 
-@section('css')
     <style type="text/css">
-        .aui-list .aui-list-item-media {
-            width: 3rem;
-        }
+        body{ font-size:14px}
+        /*作图右文*/
+        .leftimg{display:inline-table; float:left;}
+        .righttext{width: 77%;display:inline-table;white-space:pre-wrap;color:#0066CC; float:left;text-align:justify;}
+        /*作图右文*/
 
-        .notes-add {
-            position: fixed;
-            left: 0.5rem;
-            bottom: 0.5rem;
-            width: 3rem;
-            z-index: 99;
-        }
-
-        textarea {
-            height: 4rem;
-            background-color: #ffffff;
-            padding: 0.5rem;
-        }
-
-        .photos img {
-            display: block;
-            width: 100%;
-        }
-
-        .add-photos > div {
-            width: 100%;
-            height: 5.15rem;
-            line-height: 5.15rem;
-        }
-
-        .add-photos > div .aui-iconfont {
-            font-size: 2rem;
-            color: #ccc;
-        }
-
-        .image-item {
-            position: relative;
-            height: 5.3rem;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
-
-        .image-item img {
-            display: block;
-            margin: 0 auto;
-            width: auto;
-            height: 100%;
-        }
-
-        .image-item .delete-btn {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 28px;
-            height: 28px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-left: -14px;
-            margin-top: -14px;
-            color: #ffffff;
-            text-align: center;
-            border-radius: 50%;
-        }
-        .add-photos > div {
-            width: 62%;
-            height: 3.15rem;
-            line-height: 3.15rem;
-        }
-        .image-item {
-            position: relative;
-            height: 3.15rem;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
     </style>
-@stop
+    <script type="text/javascript">
 
-@section('content')
+        document.addEventListener('plusready', function(){
+            //console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
 
-    <header class="aui-bar aui-bar-nav" id="header">
-        <div class="aui-pull-left aui-btn" tapmode onclick="window.history.go(-1);">
-            <span class="aui-iconfont aui-icon-left"></span>
-        </div>
-        <div class="aui-title">互助中心</div>
-    </header>
-    @include('flash::message')
-    <form action="{{route('wap.topic_store')}}" method="POST">
-        {{ csrf_field() }}
-        <input type="hidden" name="status" value="0">
-        <section class="aui-content-padded">
-            <ul class="aui-list aui-form-list">
-                <li class="aui-list-item">
-                    <div class="aui-list-item-inner">
-                        <div class="aui-list-item-input">
-                            <input type="text" required name="title" placeholder="标题" data-form-un="1524466128658.5515">
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="aui-content-padded">
-            <textarea name="content" required placeholder="在这里输入内容..."></textarea>
-        </section>
-        <p class="aui-text-center aui-margin-t-15">美图更真实</p>
-        <section class="aui-content-padded">
-            <div class="aui-row aui-row-padded" id="demo2">
-                {{--<div class="aui-col-xs-4 image-item">--}}
-                {{--<input type="hidden" >--}}
-                {{--<img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="notes-image">--}}
-                {{--<div class="delete-btn">--}}
-                {{--<i class="aui-iconfont aui-icon-trash"></i>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                <div class="aui-col-xs-4 add-photos" id="test2">
-                    <div class="aui-border aui-text-center">
-                        <i class="aui-iconfont aui-icon-plus"></i>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <button type="submit" class="aui-btn aui-btn-block aui-btn-sm " style="background-color: #03a9f4"><span
-                    style="color: #ffffff">点击提交</span></button>
-    </form>
+        });
 
-    <section class="aui-content">
-        <div class="aui-card-list">
-            @if($topics->count())
-            <div class="aui-card-list-content">
-                <ul class="aui-list aui-media-list">
-                    @foreach($topics as $index=>$topic)
-                        <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
-                            <li class="aui-list-item">
-                                <div class="aui-media-list-item-inner">
-                                    <div class="aui-list-item-media aui-padded-r-10" style="width: 1.5rem;">
-                                        @if($topic->member->avatar)
-                                            <img src="{{$topic->member->avatar}}" class="aui-img-round">
-                                        @else
-                                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"
-                                                 class="aui-img-round">
-                                        @endif
-                                    </div>
-                                    <div class="aui-list-item-inner">
-                                        <div class="aui-list-item-text">
-                                            <div class="aui-list-item-title aui-font-size-12 text-light">{{$topic->title}}</div>
-                                        </div>
-                                        <div class="aui-list-item-text aui-font-size-14"
-                                             style="color:#333;padding-top: 0.4rem;">
-                                            {{ $topic->excerpt }}
-                                        </div>
-                                        <div class="aui-list-item-text aui-font-size-12 text-light">
-                                            共{{$topic->reply_count}}条回答
-                                        </div>
-                                    </div>
-                                    @if(\Auth::guard('wap')->id() == $topic->member_id && \Carbon\Carbon::now()->subMinutes(30)->lt($topic->created_at))
-                                        <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;float: right">
-                                            <form action="{{ route('wap.topic_destroy', ['id'=>$topic->id,'member_id'=>$topic->member_id]) }}" method="post">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="btn btn-default btn-xs pull-left">
-                                                    <i class="aui-iconfont aui-icon-trash" style="float: right"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    @endif
-                                    <div class="aui-list-item-media aui-padded-r-10" style="width: 4rem;">
-                                        @if(get_json_params($topic->image,'0'))
-                                            <img src="{{get_json_params($topic->image,'0')}}"/>
-                                        @else
-                                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"/>
-                                        @endif
-                                    </div>
+        $(function () {
+            docEl = document.documentElement;
+            var width = docEl.clientWidth>768?768:docEl.clientWidth;
+            fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+            docEl.style.fontSize = fontsize + 'px';
+            window.onresize = function () {
+                docEl = document.documentElement;
+                width = docEl.clientWidth>768?768:docEl.clientWidth;
+                fontsize = 20 * (width / 320) > 20 ? 20 * (width / 320) : 20;
+                docEl.style.fontSize = fontsize + 'px';
+            }
+        })
+    </script>
+</head>
+<body style="max-width: 750px;margin: 0 auto;">
+<a href="{{route('wap.topic_index')}}"><div class="publish"><span style="margin-right:2em">互助列表</span></div></a>
+<div class="message" >
+    <span style=" font-size:14px;padding:0.5em 1em; background:#FF3333; color:#ffffff;line-height: 3em;">我要留言</span>
+    <div class="message-con" >
+        <form action="{{route('wap.topic_store')}}" method="POST">
+            {{ csrf_field() }}
+            <input type="hidden" name="status" value="1">
+            <label>主题</label><input name="title" type="text"><br/><br/>
+            <label style="vertical-align:top">正文</label><textarea name="content" cols="" rows=""></textarea><br/><br/>
+            <div class="layui-upload">
+                {{--@if(!$meeting->id)--}}
+                <button type="button" class="layui-btn" id="test2">多图片上传</button>
+                {{--@endif--}}
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                    欢迎上传更多真实照片：
+                    <div class="layui-upload-list" id="demo2">
+
+                                <div class="layui-inline">
                                 </div>
-                            </li>
-                        </a>
-                    @endforeach
-                </ul>
-            </div>
-                <a href="{{route('wap.topic_index')}}">
-                    <div class="aui-card-list-footer aui-text-center">
-                        查看更多
+
                     </div>
-                </a>
-            @endif
-        </div>
-    </section>
+                </blockquote>
+            </div>
+            <input type="submit" name="button" id="button" value="提交"  class="subbut" style="border:none"><br/>
+        </form>
+    </div>
+</div> <br/>
+<div class="clear"></div>
+<!--热点推荐-->
+@if($topics->count())
+<div class="t-main1">
+    <div style=" border-bottom:1px solid #FF3333; height:2.5em">
+        <span style=" font-size:14px;padding:0.5em 1em; background:#FF3333; color:#ffffff;line-height: 3em;">我的发布</span>
+    </div>
 
-@stop
+    <ul class="each">
+        @foreach($topics as $index=>$topic)
+        <li>
+            <a href="{{route('wap.topic_show',['id'=>$topic->id])}}">
+                <div class="e_main_user">
+                    <div class="e_main_user_icon">
+                        @if($topic->member->avatar)
+                            <img src="{{$topic->member->avatar}}" class="aui-img-round">
+                        @else
+                            <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}"
+                                 class="aui-img-round">
+                        @endif
+                        <span class="vert" style="color:#666666">{{$topic->title}}</span></div>
+                    <div  style="text-align:right; float:right">
+                        <img src="{{asset('wap/new/huzhu/images/guanzhu.png')}}" style="margin-right:0.5em">
+                        <small><span class="vert">共</span><span class="vert">{{$topic->reply_count}}</span><span class="vert">条回答</span></small></div>
+                </div>
+                <div class="each_con" style="clear:both"> {{ $topic->excerpt }}</div>
+            </a><hr style=" border:none;border-bottom:1px dashed #CCCCCC; height:1em"/>
+        </li>
+        @endforeach
+    </ul>
 
-@section('js')
-    <script>
-        layui.use('upload', function () {
-            var $ = layui.jquery
-                , upload = layui.upload;
-            //多图片上传
-            upload.render({
-                elem: '#test2'
-                , url: '{{ route('wap.upload_image') }}'
-                , data: {_token: '{{ csrf_token() }}'}
-                , multiple: true
-                , before: function (obj) {
+</div>
+@endif
+<script type="text/javascript" src="{{asset('layui/lib/layui/layui.all.js')}}"></script>
+<script>
+    layui.use('upload', function () {
+        var $ = layui.jquery
+            , upload = layui.upload;
+        //多图片上传
+        upload.render({
+            elem: '#test2'
+            , url: '{{ route('wap.upload_image') }}'
+            , data: {_token: '{{ csrf_token() }}'}
+            , multiple: true
+            , before: function (obj) {
+                //预读本地文件示例，不支持ie8
+                obj.preview(function (index, file, result) {
                     layer.msg('图片上传中...', {
                         icon: 16,
                         shade: 0.01,
                         time: 0
-                    })
-                    //预读本地文件示例，不支持ie8
-                    obj.preview(function (index, file, result) {
-                        var html = '';
-                        html += '<div class="aui-col-xs-4 image-item">';
-                        html += '<img src="' + result + '" alt="' + file.name + '" class="notes-image">';
-                        html += '</div>';
-                        $('#demo2').append(html)
                     });
-                }
-                , done: function (res) {
-//                    console.log(res.file_path);
-                    layer.close(layer.msg());//关闭上传提示窗口
-                    $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
-                    //上传完毕
-                }
-            });
-        })
-    </script>
-@stop
+                    var html = '';
+                    html += '<div class="layui-inline">';
+//
+                    html += '<img src="' + result + '" alt="' + file.name + '" class="notes-image" style="width: 92px;height: 92px;margin: 0 10px 10px 0;">';
+//
+                    html += '</div>';
+                    $('#demo2').append(html)
+                });
+            }
+            , done: function (res) {
+                layer.close(layer.msg());//关闭上传提示窗口
+                $('#demo2').append('<input value="' + res.file_path + '" type="hidden" name="image[]">');
+                //上传完毕
+            }
+        });
+    });
+</script>
+</body>
+</html>
