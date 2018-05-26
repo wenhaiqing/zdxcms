@@ -10,7 +10,7 @@ if (!function_exists('getThemeView')) {
     }
 }
 
-function make_excerpt($value, $length = 15)
+function make_excerpt($value, $length = 75)
 {
     $excerpt = trim(preg_replace('/\r\n|\r|\n+/', ' ', strip_tags($value)));
     return str_limit($excerpt, $length);
