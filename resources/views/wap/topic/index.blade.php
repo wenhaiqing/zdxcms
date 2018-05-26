@@ -67,7 +67,7 @@
                             @else
                                 <img src="{{asset('wap/bootstrap/images/test/head_logo.jpg')}}" class="aui-img-round" >
                             @endif
-                            <span class="vert" style="color:#666666">{{$topic->title}}</span></div>
+                            <span class="vert" style="color:#666666">{{$topic->member->name}}</span></div>
                         <div  style="text-align:right; float:right"><img src="{{asset('wap/new/huzhu/images/guanzhu.png')}}" style="margin-right:0.5em"><small><span class="vert">共</span><span class="vert">{{$topic->reply_count}}</span><span class="vert">人回复</span></small></div>
                     </div>
                     <div class="e_main_right_con" style="clear:both"> {{ $topic->excerpt }}</div>
