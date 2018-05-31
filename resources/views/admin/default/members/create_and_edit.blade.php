@@ -6,6 +6,7 @@
             {{ csrf_field() }}
             <input type="hidden" name="_method" class="mini-hidden" value="{{ $member->id ? 'PATCH' : 'POST' }}">
             <input type="hidden" name="user_id" value="{{$member->user_id ? $member->user_id : Auth()->id()}}">
+            <input type="hidden" name="jifen" value="{{$member->jifen ? $member->jifen : 0}}">
             <div class="layui-form-item">
                 <label class="layui-form-label">{{trans('members.name')}}</label>
                 <div class="layui-input-block">
