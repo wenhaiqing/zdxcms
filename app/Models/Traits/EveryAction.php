@@ -3,7 +3,7 @@
 namespace App\Models\Traits;
 
 use App\Models\Browselog;
-use Redis;
+use Predis;
 use Carbon\Carbon;
 use Log;
 
@@ -22,7 +22,7 @@ trait EveryAction
         // 字段名称，如：member_id_model_modelid
         $field = $this->field_prefix . $this->id . '_' . $model . '_' . $modelid;
         // 当前时间，如：20xx-xx-xx 08:35:15
-        $res = Redis::hGet($hash,$field);
+        $res = Predis::hGet($hash,$field);
         if (!$res){
             $this->increment('jifen',$jifen);
         }else{
@@ -40,7 +40,7 @@ trait EveryAction
             'created_at' => $now
         ];
         // 数据写入 Redis ，字段已存在会被更新
-        Redis::hSet($hash, $field, json_encode($res));
+        Predis::hSet($hash, $field, json_encode($res));
     }
 
     public function SyncUserEveryAction()
@@ -53,7 +53,7 @@ trait EveryAction
         $hash = $this->hash_prefix . $yesterday_date;
 
         // 从 Redis 中获取所有哈希表里的数据
-        $dates = Redis::hGetAll($hash);
+        $dates = Predis::hGetAll($hash);
 
         // 遍历，并同步到数据库中
         foreach ($dates as $user_id => $action) {
@@ -73,7 +73,7 @@ trait EveryAction
         }
 
         // 以数据库为中心的存储，既已同步，即可删除
-        Redis::del($hash);
+        Predis::del($hash);
         
     }
 
@@ -83,7 +83,7 @@ trait EveryAction
         // Redis 哈希表的命名，如：larabbs_last_actived_at_2017-10-21
         $hash = $this->hash_prefix .$today_date;
         // 从 Redis 中获取所有哈希表里的数据
-        $dates = Redis::hGetAll($hash);
+        $dates = Predis::hGetAll($hash);
         $today_jifen = 0;
         // 遍历，并同步到数据库中
         foreach ($dates as $user_id => $action) {
@@ -102,7 +102,7 @@ trait EveryAction
         // Redis 哈希表的命名，如：larabbs_last_actived_at_2017-10-21
         $hash = $this->hash_prefix .$today_date;
         // 从 Redis 中获取所有哈希表里的数据
-        $dates = Redis::hGetAll($hash);
+        $dates = Predis::hGetAll($hash);
         $list = array();
         // 遍历，并同步到数据库中
         foreach ($dates as $user_id => $action) {
