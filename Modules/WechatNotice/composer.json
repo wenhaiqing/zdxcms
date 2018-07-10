@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/wechatnotice",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\WechatNotice\\Providers\\WechatNoticeServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\WechatNotice\\": ""
+        }
+    }
+}

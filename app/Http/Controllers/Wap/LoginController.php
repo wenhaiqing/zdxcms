@@ -21,7 +21,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $res = $this->is_weixin();
+        //$res = $this->is_weixin();
         return view('wap.login.index');
     }
 

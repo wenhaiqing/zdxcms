@@ -1,0 +1,16 @@
+{
+    "name": "WechatNotice",
+    "alias": "wechatnotice",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\WechatNotice\\Providers\\WechatNoticeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
