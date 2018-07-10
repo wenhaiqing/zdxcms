@@ -16,8 +16,8 @@ class HomeController extends BaseController
             'document_root'   => $_SERVER['DOCUMENT_ROOT'], // 网站目录
             'server_os'       => PHP_OS,                    // 服务器系统
             'server_port'     => $_SERVER['SERVER_PORT'],   // web服务端口号
-            'server_ip'       => $_SERVER['SERVER_ADDR'],   // 服务器ip
-            'server_soft'     => $_SERVER['SERVER_SOFTWARE'], // web运行环境
+            'server_ip'       => '127.0.0.1',   // 服务器ip
+            'server_soft'     => 'centos 7', // web运行环境
             'php_version'     => PHP_VERSION,               // php版本
             'mysql_version'   => $mysqlVs[0]->ver,          // mysql版本
             'max_upload_size' => ini_get('upload_max_filesize') // 上传文件大小
