@@ -15,6 +15,9 @@
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 
+Route::group(['prefix' => 'zdxadmin','namespace' => 'Admin', 'middleware' => ['auth:web', 'language']],function ($router) {
+    $router->get('/', 'HomeController@index')->name('zdxadmin.home');
+});
 
 Route::get('wap/home', 'HomeController@test')->name('wap.test');
 Route::get('/getuser', 'WeChatController@get_userinfo')->name('wap.getuser');
