@@ -12,10 +12,10 @@ class HomeController extends BaseController
         $mysqlVs = DB::select('SELECT VERSION() AS ver'); // mysql 版本
 
         $systemInfo = [
-            'url'             => $_SERVER['HTTP_HOST'],   // 域名
-            'document_root'   => $_SERVER['DOCUMENT_ROOT'], // 网站目录
+            'url'             => 'http://whqrlm.com',   // 域名
+            'document_root'   => 'public', // 网站目录
             'server_os'       => PHP_OS,                    // 服务器系统
-            'server_port'     => $_SERVER['SERVER_PORT'],   // web服务端口号
+            'server_port'     => '5200',   // web服务端口号
             'server_ip'       => '127.0.0.1',   // 服务器ip
             'server_soft'     => 'centos 7', // web运行环境
             'php_version'     => PHP_VERSION,               // php版本
